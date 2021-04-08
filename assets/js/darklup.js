@@ -3,6 +3,10 @@
 
 	let d = {};
 
+	if (window.NodeList && !NodeList.prototype.forEach) {
+		NodeList.prototype.forEach = Array.prototype.forEach;
+	}
+
 	d = {
 
 		switchTrigger: '.switch-trigger',
@@ -24,6 +28,9 @@
 				$('html').toggleClass(this.darkEnabledClass);
 				$(this.switchTrigger).attr( 'checked', true );
 				$('.darkluplite-mode-switcher').addClass( 'darkluplite-dark-ignore' );
+				$("html").show()
+			}else{
+				$("html").show()
 			}
 
 		},

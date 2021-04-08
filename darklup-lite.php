@@ -3,7 +3,7 @@
  * Plugin Name:       Darklup Lite - WP Dark Mode
  * Plugin URI:        https://darklup.com/
  * Description:       All in one WordPress plugin to create a stunning dark version for your WordPress website and dashboard
- * Version:           1.0.6
+ * Version:           1.0.7
  * Author:            Darklup
  * Author URI:        https://darklup.com/
  * License:           GPL v2 or later

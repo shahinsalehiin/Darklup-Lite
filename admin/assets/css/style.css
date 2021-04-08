@@ -574,7 +574,7 @@
   margin-bottom: 12px;
 }
 
-#adminmenu .current-menu.toplevel_page_darkluplite-setting-admin {
+#adminmenu .wp-has-current-submenu.toplevel_page_darkluplite-setting-admin {
   background: rgb(0,251,213) !important;
   background: linear-gradient(90deg, rgba(0,251,213,1) 0%, rgba(0,198,254,1) 100%) !important;
   color: #000 !important;

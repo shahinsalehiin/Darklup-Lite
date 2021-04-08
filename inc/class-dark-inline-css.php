@@ -113,6 +113,24 @@ class Dark_Inline_CSS {
 		    border-color: {$borderColor}!important
 		}
 		
+		/* IE10+ */
+        @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+            html.darkluplite-dark-mode-enabled :not(.darkluplite-dark-ignore):not(input):not(textarea):not(button):not(select):not(mark):not(code):not(pre):not(ins):not(option):not(img):not(progress):not(iframe):not(.mejs-iframe-overlay):not(svg):not(video):not(canvas):not(a):not(path):not(.elementor-element-overlay):not(.elementor-background-overlay):not(i):not(button):not(a)  {
+                color: {$color} !important;
+                background-color: {$bgColor} !important;
+                border-color: {$borderColor}!important
+            }
+        }
+        
+        /* IE9,10 */
+        @media screen and (min-width:0\0){
+            html.darkluplite-dark-mode-enabled :not(.darkluplite-dark-ignore):not(input):not(textarea):not(button):not(select):not(mark):not(code):not(pre):not(ins):not(option):not(img):not(progress):not(iframe):not(.mejs-iframe-overlay):not(svg):not(video):not(canvas):not(a):not(path):not(.elementor-element-overlay):not(.elementor-background-overlay):not(i):not(button):not(a)  {
+                color: {$color} !important;
+                background-color: {$bgColor} !important;
+                border-color: {$borderColor}!important
+            }
+        }
+		
 		
 		html.darkluplite-dark-mode-enabled a {
 		  color: {$anchorColor} !important;

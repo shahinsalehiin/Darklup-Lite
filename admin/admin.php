@@ -53,6 +53,21 @@ if( ! defined( 'ABSPATH' ) ) {
 			6
 		);
 
+        add_submenu_page( 'darkluplite-setting-admin',
+            esc_html__( 'Darklup Lite', 'darklup-lite' ),
+            esc_html__( 'Settings', 'darklup-lite' ),
+            'manage_options',
+            'darkluplite-setting-admin',
+            array( $this, 'adminPage' )
+        );
+
+        add_submenu_page( 'darkluplite-setting-admin',
+            esc_html__( 'Get Pro', 'darklup-lite' ),
+            esc_html__( 'Get Pro', 'darklup-lite' ),
+            'manage_options',
+            'darkluplite-get-pro',
+            array( $this, 'darkluplite_get_pro' )
+        );
     }
 
 	 /**
@@ -87,6 +102,11 @@ if( ! defined( 'ABSPATH' ) ) {
         Admin_Page_Components::formArea();
 
     }
+
+     public function darkluplite_get_pro(){?>
+         <script>window.open("https://darklup.com", "_blank");</script>
+         <?php $this->adminPage();
+     }
 
    /**
     * Admin enqueue scripts 

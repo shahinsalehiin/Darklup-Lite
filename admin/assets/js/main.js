@@ -40,6 +40,9 @@
                 $('.darkluplite-mode-switcher').addClass( 'darkluplite-admin-dark-ignore' );
                 $darkIcon.show();
                 $lightIcon.hide();
+                $("html").show() /*Solve to Issue 1*/
+            }else{
+                $("html").show() /*Solve to Issue 1*/
             }
 
         },
