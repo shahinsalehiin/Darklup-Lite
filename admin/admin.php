@@ -31,7 +31,7 @@ if( ! defined( 'ABSPATH' ) ) {
 
       add_action( 'admin_menu', array( $this, 'addPluginPage' ) );
       add_action( 'admin_init', array( $this, 'pageInit' ) );
-      add_action( 'admin_enqueue_scripts', array( $this, 'enqueueScripts' ) ); 
+      add_action( 'admin_enqueue_scripts', array( $this, 'enqueueScripts' ) );
     }
 
    /**
@@ -42,7 +42,6 @@ if( ! defined( 'ABSPATH' ) ) {
     */
     public function addPluginPage()
     {
-        // This page will be under "Settings"
 		add_menu_page(
 			esc_html__( 'Darklup Lite', 'darklup-lite' ),
 			esc_html__( 'Darklup Lite', 'darklup-lite' ),
@@ -116,7 +115,7 @@ if( ! defined( 'ABSPATH' ) ) {
     */
     public function enqueueScripts() {
 
-        wp_enqueue_style( 'wp-color-picker' ); 
+        wp_enqueue_style( 'wp-color-picker' );
 
         wp_enqueue_style( 'darkluplite-grid', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'css/darkluplite-grid.css', array(), '1.0.0', false );
         wp_enqueue_style( 'magnific', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'css/magnific.min.css', array(), '1.0.0', false );

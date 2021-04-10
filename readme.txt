@@ -53,6 +53,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	<li><strong>Custom Color:</strong> To cope up with the dark mode you can adorn your website with custom color.</li>
 	<li><strong>Time-based dark mode:</strong> According to user demand and selected local time dark mode will be turned on.</li>
 	<li><strong>Set button location:</strong> You can display the button location anywhere on the website as you and your user demand.</li>
+        <li><strong>Switch Background Color:</strong>An amazing feature for having different background colors for dark mode switch. So, you don’t have to worry about the switch button color. Darklup provides you the scope to pick your desired color for the switch and this will help you to create a balanced, colorful, and well-decorated website according to your website and brand color</li>
 	<li><strong>Remember last time mode:</strong> Always remember the mode that you or the user have used last time.</li>
 	<li><strong>Border Color:</strong> Provide different border colors to organize your website in dark mode.</li>
 	<li><strong>Image opacity:</strong> You can adjust the transparency of images by giving the link of the light and dark version image.</li>
@@ -174,11 +175,12 @@ screenshot-4.png
 == Changelog ==
 
 = 1.0.7 =
+1. Fixed: Switch on Microsoft Edge (Mobile) Problem
+2. Fixed: White blink on Page Reload on both Frontend (User) and Backend (Admin Panel)
+3. Improve: Relocate Submenus under one Menu in Admin Sidebar
 
-1. Fixed not working issues on Internet Explorer and Microsoft Edge
-2. Fixed white blink on page reload
-3. Easy access Pro submenu added
-
+= 1.0.6 =
+Fixed CSS Issues
 
 = 1.0.5 =
 
