@@ -5,7 +5,7 @@ Tags: WordPress dark mode, Dark mode, dark theme, night mode, gutenberg block
 Requires PHP: 5.6
 Requires at least: 5.1
 Tested up to: 5.7
-Version: 1.0.7
+Version: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
