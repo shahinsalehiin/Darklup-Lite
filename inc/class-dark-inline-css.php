@@ -58,7 +58,9 @@ class Dark_Inline_CSS {
 	 */
 	public static function addStyle() {
 		$css  = self::inlineCss();
+        $js  = self::inlineJs();
 		wp_add_inline_style( 'darkluplite-dark-style', $css );
+        wp_add_inline_script( 'jquery', $js );
 	}
 	/**
 	 * 
@@ -76,6 +78,15 @@ class Dark_Inline_CSS {
 	 * @since  1.0.0
 	 * @return void
 	 */
+    public static function inlineJs() {
+        $enableOS  = \DarklupLite\Helper::getOptionData('enable_os_switcher');
+
+        if( $enableOS ) {
+            return "let isOSDarkModeEnabled = true;";
+        }else{
+            return "let isOSDarkModeEnabled = false;";
+        }
+    }
 	public static function inlineCss() {
 
 		$presetEnabled = \DarklupLite\Helper::getOptionData('color_preset_enabled');
@@ -123,7 +134,7 @@ class Dark_Inline_CSS {
         }
         
         /* IE9,10 */
-        @media screen and (min-width:0\0){
+        @media screen and (-webkit-min-device-pixel-ratio:0) and (max-width: 1024px) {
             html.darkluplite-dark-mode-enabled :not(.darkluplite-dark-ignore):not(input):not(textarea):not(button):not(select):not(mark):not(code):not(pre):not(ins):not(option):not(img):not(progress):not(iframe):not(.mejs-iframe-overlay):not(svg):not(video):not(canvas):not(a):not(path):not(.elementor-element-overlay):not(.elementor-background-overlay):not(i):not(button):not(a)  {
                 color: {$color} !important;
                 background-color: {$bgColor} !important;
@@ -169,46 +180,7 @@ class Dark_Inline_CSS {
 		
 		";
 
-		$os_inlinecss = "
-		@media (prefers-color-scheme: dark) {
-			
-			html :not(.darkluplite-dark-ignore):not(input):not(textarea):not(button):not(select):not(mark):not(code):not(pre):not(ins):not(option):not(img):not(progress):not(iframe):not(.mejs-iframe-overlay):not(svg):not(video):not(canvas):not(a):not(path):not(.elementor-element-overlay):not(.elementor-background-overlay):not(i):not(button *):not(a *) {
-				color: {$color} !important;
-			    background-color: {$bgColor} !important;
-			    border-color: {$borderColor}!important
-			}
-			
-			html a {
-			  color: {$anchorColor} !important;
-			}
-			html a:hover {
-				color: {$anchorHoverColor} !important;
-			}
-			html textarea,
-			html input {
-			  background: {$inputBgColor} !important;
-			  border-color: {$borderColor}!important;
-			  color: {$color} !important;
-			}
-			html button {
-			  color: {$btnColor} !important;
-			  background: {$btnBgColor} !important;
-			}
-			html .darkluplite-mode-switcher {
-				display: none !important;
-			}		
-
-		}
-		";
-
-		// Check os darkmode
-		if( $enableOS ) {
-			$getInlinecss = "{$inlinecss}{$os_inlinecss}";
-		} else {
-			$getInlinecss = "{$inlinecss}";
-		}
-
-		return $getInlinecss;
+		return $inlinecss;
 
 	}
 

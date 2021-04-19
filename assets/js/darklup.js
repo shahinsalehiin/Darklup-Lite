@@ -17,6 +17,7 @@
 			$this.darkModeSwitchEvent();
 			$this.darklupDarkIgnore();
 			$this.windowOnLoad();
+			$this.handleOSDark();
 		},
 		windowOnLoad: function(){
 
@@ -34,6 +35,36 @@
 			}
 
 		},
+		handleOSDark: function(){
+
+			if(isOSDarkModeEnabled){
+				let lightOnOSDarkCheked = localStorage.getItem("lightOnOSDarkCheked");
+				if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					if(!lightOnOSDarkCheked){
+						$('html').addClass(this.darkEnabledClass);
+						$(this.switchTrigger).attr( 'checked', true );
+						$('.darklup-mode-switcher').addClass( 'darklup-dark-ignore' );
+					}
+				}
+
+				window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+					const newColorScheme = e.matches ? "dark" : "light";
+					if(newColorScheme === "dark"){
+						if(!lightOnOSDarkCheked){
+							$('html').addClass(this.darkEnabledClass);
+							$(this.switchTrigger).attr( 'checked', true );
+							$('.darklup-mode-switcher').addClass( 'darklup-dark-ignore' );
+						}
+					}else{
+						$('html').removeClass(this.darkEnabledClass);
+						$(this.switchTrigger).attr( 'checked', false );
+						$('.darklup-mode-switcher').removeClass( 'darklup-dark-ignore' );
+					}
+				});
+			}
+
+
+		},
 		darkModeSwitchEvent: function() {
 
 			let $that = this;
@@ -43,18 +74,24 @@
 				let $this = $(this);
 
 				$('html').toggleClass($that.darkEnabledClass);
-				
+
 				// Storage data
 				if( $this.is(':checked') ) {
 					localStorage.setItem("darklupModeEnabled", $that.darkEnabledClass);
 					localStorage.setItem("triggerCheked", "checked");
 					$this.closest('.darkluplite-mode-switcher').addClass('darkluplite-dark-ignore');
 
+					if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+						localStorage.removeItem("lightOnOSDarkCheked");
+					}
 				} else {
 					$this.closest('.darkluplite-mode-switcher').removeClass('darkluplite-dark-ignore');
 					localStorage.removeItem("darklupModeEnabled");
 					localStorage.removeItem("triggerCheked");
-					
+
+					if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+						localStorage.setItem("lightOnOSDarkCheked", true);
+					}
 				}
 
 			} )
