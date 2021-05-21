@@ -201,11 +201,11 @@
   box-shadow: none;
   outline: none;
 }
-.darkluplite-menu-area ul li a.active, 
+.darkluplite-menu-area ul li a.active,
 .darkluplite-menu-area ul li a:hover {
   background: #fff;
 }
-.darkluplite-admin-dark-mode-enabled .darkluplite-menu-area ul li a.active, 
+.darkluplite-admin-dark-mode-enabled .darkluplite-menu-area ul li a.active,
 .darkluplite-admin-dark-mode-enabled .darkluplite-menu-area ul li a:hover {
   background-color: transparent;
   color: #fff !important;
@@ -350,7 +350,7 @@
   transition: 0.5s
 }
 .radio-img:hover img,
-.radio-img  > input:checked + img { 
+.radio-img  > input:checked + img {
   border:2px solid #3700B3;
   border-radius: 7px;
 }
@@ -738,7 +738,7 @@
   left: 0;
   background: #000;
   opacity: 0.5;
-  border-radius: 7px; 
+  border-radius: 7px;
 }
 html.darkluplite-admin-dark-mode-enabled .darkluplite-main-area .ace_scroller {
   background: #1d1d1d !important;

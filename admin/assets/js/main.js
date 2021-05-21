@@ -24,11 +24,11 @@
             this.windowOnLoad();
             this.repeaterField();
             this.mediaUploader();
-            
+
         },
         windowOnLoad: function() {
 
-            // 
+            //
             let getStorageData = localStorage.getItem("darklupModeEnabled"),
                 getTriggerCheked = localStorage.getItem("triggerCheked"),
                 $darkIcon   = $('.admin-dark-icon'),
@@ -67,7 +67,7 @@
                     $switcher.addClass('darkluplite-admin-dark-ignore');
                     $darkIcon.show();
                     $lightIcon.hide();
-                    
+
                 } else {
                     $switcher.removeClass('darkluplite-admin-dark-ignore');
                     localStorage.removeItem("darklupModeEnabled");
@@ -78,7 +78,7 @@
                 }
 
             } )
-            
+
         },
         niceSelect: function() {
 
@@ -89,39 +89,41 @@
         },
         SettingsPageTab: function() {
 
-            // Settings page tab
-            $('[data-target-id]').on( 'click', function( e ) {
+            if($(".darkluplite-menu-inner")[0]){
+                // Settings page tab
+                $('[data-target-id]').on( 'click', function( e ) {
 
-                e.preventDefault();
-                var $this = $(this),
-                    getId = $this.data('target-id');
+                    e.preventDefault();
+                    var $this = $(this),
+                        getId = $this.data('target-id');
 
-                localStorage.setItem("tabActivation", getId);
+                    localStorage.setItem("tabActivation", getId);
 
-                $('.active').removeClass('active');
-                $this.addClass('active');
+                    $('.active').removeClass('active');
+                    $this.addClass('active');
 
-                $('.darkluplite-d-show').removeClass('darkluplite-d-show').addClass('darkluplite-d-hide');
-                $('#'+getId).removeClass('darkluplite-d-hide').addClass('darkluplite-d-show');
+                    $('.darkluplite-d-show').removeClass('darkluplite-d-show').addClass('darkluplite-d-hide');
+                    $('#'+getId).removeClass('darkluplite-d-hide').addClass('darkluplite-d-show');
 
-            } )
+                } )
 
-            // Check active tab
-            let activateTab = localStorage.getItem("tabActivation");
+                // Check active tab
+                let activateTab = localStorage.getItem("tabActivation");
 
-            if( activateTab ) {
-                $('.active').removeClass('active');
-                $('[data-target-id="'+activateTab+'"]').addClass('active');
-                $('.darkluplite-d-show').removeClass('darkluplite-d-show').addClass('darkluplite-d-hide');
-                $('#'+activateTab).removeClass('darkluplite-d-hide').addClass('darkluplite-d-show');
+                if( activateTab ) {
+                    $('.active').removeClass('active');
+                    $('[data-target-id="'+activateTab+'"]').addClass('active');
+                    $('.darkluplite-d-show').removeClass('darkluplite-d-show').addClass('darkluplite-d-hide');
+                    $('#'+activateTab).removeClass('darkluplite-d-hide').addClass('darkluplite-d-show');
 
+                }
             }
 
         },
         MagnificPopup: function() {
 
             /* -------------------------------------------------
-                Magnific JS 
+                Magnific JS
             ------------------------------------------------- */
             $('.video-play-btn').magnificPopup({
               type: 'iframe',
@@ -132,9 +134,9 @@
               iframe: {
                 patterns: {
                   youtube: {
-                    index: 'youtube.com/', 
-                    id: 'v=', 
-                    src: '' 
+                    index: 'youtube.com/',
+                    id: 'v=',
+                    src: ''
                   }
                 }
               }
@@ -185,7 +187,7 @@
                 if( $( this ).is( ':checked' ) ) {
                     $this.show();
                 } else {
-                   $this.hide(); 
+                   $this.hide();
                 }
 
             } )
@@ -277,7 +279,7 @@
         proPopupClose: function() {
 
             $('.darklup-admin-close').on( 'click', function(e) {
-                
+
                 e.preventDefault();
 
                 $('.darklup-admin-popup-wrapper').fadeOut();
@@ -289,5 +291,5 @@
     }
 
     a.init();
-    
+
 })(jQuery);
