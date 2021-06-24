@@ -44,7 +44,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 <h3>WORDPRESS DARK MODE PLUGIN PRO FEATURES:</h3>
 <ol>
-	<li><strong>Dark Mode font size kit:</strong> You can change the font size as your need.</li>
+	<li><strong>Dark Mode font size kit:</strong> You can change the font size as your need on dark mode.</li>
 	<li><strong>Dark Color scheme for websites:</strong> Available so many color schemes to give an amazing dark look for your website.</li>
 	<li><strong>WooCommerce supports dark mode:</strong> Compatible With woo-commerce website which enriches the readability of your woo-commerce website.</li>
 	<li><strong>Custom CSS Supported dark mode:</strong> You can edit any specific section of your website with the help of custom CSS.</li>
@@ -174,12 +174,14 @@ screenshot-4.png
 
 == Changelog ==
 
+
 = 1.1.0 =
-1. Fixed conflict on Plugins Page natural design
+1. Fixed: conflict on Plugins Page natural design
+2. Improove: Removed slow transition on dark/light mode
 
 
 = 1.0.9 =
-1. Fixed issues on OS Enabled Dark Mode
+Fixed: Issue of OS Enabled Dark mode
 
 
 = 1.0.8 =

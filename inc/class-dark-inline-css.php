@@ -265,7 +265,7 @@ class Dark_Inline_CSS {
 		html.darkluplite-admin-dark-mode-enabled select, 
 		html.darkluplite-admin-dark-mode-enabled textarea {
 			background: {$inputBgColor} !important;
-			border-color: {$borderColor}!important;
+			border-color: {$borderColor};
 			color: {$color} !important;
 		}
 		";

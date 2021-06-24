@@ -746,3 +746,113 @@ html.darkluplite-admin-dark-mode-enabled .darkluplite-main-area .ace_scroller {
 html.darkluplite-admin-dark-mode-enabled .darkluplite-main-area .darkluplite-btn{
   box-shadow: -1px -1px 14px 0px rgb(220 220 220 / 30%);
 }
+
+/***
+Custom CSS
+***/
+.button-switch.rect-design {
+    text-align: center;
+}
+label.radio-img {
+    text-align: left;
+}
+.radio-image-wrapper {
+    flex-flow: row wrap;
+}
+label.radio-img {
+    position: relative;
+}
+.rect-design > .radio-img > input {
+    display: inline-block !important;
+    position: relative;
+    top: -27px;
+    left: 15px;
+}
+
+ .radio-image-wrapper .rect-design .radio-img{
+    width: 147px;
+    height: 136px;
+}
+
+span.label-text {
+    position: absolute;
+    bottom: 6px;
+    left: 35px;
+    color: #D4D4D4;
+    font-size: 12px;
+}
+input.Default[type=radio]:checked{
+    border-color:#3fb950 !important;
+}
+input.Default[type=radio]:checked::before{
+  background-color: #3fb950;  
+}
+input.Blue[type=radio]:checked{
+    border-color:#70A0FF !important;
+}
+input.Blue[type=radio]:checked::before{
+  background-color: #70A0FF;  
+}
+input.Orange[type=radio]:checked{
+    border-color:#ff8200 !important;
+}
+input.Orange[type=radio]:checked::before{
+  background-color: #ff8200;  
+}
+input.Bird.Flower[type=radio]:checked{
+    border-color:#ccae05 !important;
+}
+input.Bird.Flower[type=radio]:checked::before{
+  background-color: #ccae05;  
+}
+input.Dim.Light[type=radio]:checked{
+    border-color:#30ceff !important;
+}
+input.Dim.Light[type=radio]:checked::before{
+  background-color:#30ceff;  
+}
+
+input.Light.Green[type=radio]:checked{
+    border-color:#03dac5 !important;
+}
+input.Light.Green[type=radio]:checked::before{
+  background-color:#03dac5;  
+}
+input.Bright.Ube[type=radio]:checked{
+    border-color:#d19fe8 !important;
+}
+input.Bright.Ube[type=radio]:checked::before{
+  background-color:#d19fe8;  
+}
+
+input.Blush.Pink[type=radio]:checked{
+    border-color:#f976e8 !important;
+}
+input.Blush.Pink[type=radio]:checked::before{
+  background-color:#f976e8;  
+}
+
+input.Generic.Green[type=radio]:checked{
+    border-color:#00d577!important;
+}
+input.Generic.Green[type=radio]:checked::before{
+  background-color:#00d577;  
+}
+input.Facebook[type=radio]:checked{
+    border-color:#2e89ff!important;
+}
+input.Facebook[type=radio]:checked::before{
+  background-color:#2e89ff;  
+}
+input.Twitter.Lights.Out[type=radio]:checked{
+    border-color:#1da1f2!important;
+}
+input.Twitter.Lights.Out[type=radio]:checked::before{
+  background-color:#1da1f2;  
+}
+input.Twitter.Dim[type=radio]:checked{
+    border-color:#1da1f2!important;
+}
+input.Twitter.Dim[type=radio]:checked::before{
+  background-color:#1da1f2;  
+}
