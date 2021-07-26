@@ -32,6 +32,20 @@ if( ! defined( 'ABSPATH' ) ) {
       add_action( 'admin_menu', array( $this, 'addPluginPage' ) );
       add_action( 'admin_init', array( $this, 'pageInit' ) );
       add_action( 'admin_enqueue_scripts', array( $this, 'enqueueScripts' ) );
+      add_action( 'plugin_action_links_' . DARKLUPLITE_BASE_PATH, array( $this, 'darkluplite_action_links') );
+    }
+
+     /* action links on plugin page */
+    public function darkluplite_action_links($links) {
+        $settings_url = add_query_arg( 'page', 'darkluplite-setting-admin', get_admin_url() . 'admin.php' );
+        $pro_url = 'https://darklup.com';
+
+        $setting_arr = array('<a href="' . esc_url( $settings_url ) . '">' . __( 'Settings', 'darklup-lite' ) . '</a>');
+        $pro_arr = array('<a target="_blank" href="' . esc_url( $pro_url ) . '">' . __( 'Get Pro', 'darklup-lite' ) . '</a>');
+
+        $links = array_merge($pro_arr, $setting_arr, $links);
+
+        return $links;
     }
 
    /**
@@ -48,7 +62,7 @@ if( ! defined( 'ABSPATH' ) ) {
 			'manage_options',
 			'darkluplite-setting-admin',
 			array( $this, 'adminPage' ),
-			esc_url( DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'img/darkluplite-icon.png' ),
+			esc_url( DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'img/darkluplite-icon.svg' ),
 			6
 		);
 
@@ -117,18 +131,18 @@ if( ! defined( 'ABSPATH' ) ) {
 
         wp_enqueue_style( 'wp-color-picker' );
 
-        wp_enqueue_style( 'darkluplite-grid', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'css/darkluplite-grid.css', array(), '1.0.0', false );
-        wp_enqueue_style( 'magnific', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'css/magnific.min.css', array(), '1.0.0', false );
-        wp_enqueue_style( 'nice-select', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'css/nice-select.css', array(), '1.0.0', false );
-        wp_enqueue_style( 'select2', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'css/select2.min.css', array(), '1.0.0', false );
-        wp_enqueue_style( 'darkluplite-style', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'css/style.css', array(), '1.0.0', false );
-        wp_enqueue_style( 'darkluplite-responsive', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'css/responsive.css', array(), '1.0.0', false );
+        wp_enqueue_style( 'darkluplite-grid', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'css/darkluplite-grid.css', array(), DARKLUPLITE_VERSION, false );
+        wp_enqueue_style( 'magnific', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'css/magnific.min.css', array(), DARKLUPLITE_VERSION, false );
+        wp_enqueue_style( 'nice-select', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'css/nice-select.css', array(), DARKLUPLITE_VERSION, false );
+        wp_enqueue_style( 'select2', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'css/select2.min.css', array(), DARKLUPLITE_VERSION, false );
+        wp_enqueue_style( 'darkluplite-style', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'css/style.css', array(), DARKLUPLITE_VERSION, false );
+        wp_enqueue_style( 'darkluplite-responsive', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'css/responsive.css', array(), DARKLUPLITE_VERSION, false );
 
         wp_enqueue_script( 'ace-editor', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'js//ace/ace.js', array('jquery'), '1.0', true );
         wp_enqueue_script( 'magnific', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'js/magnific.min.js', array('jquery'), '1.0', true );
         wp_enqueue_script( 'select', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'js/select.min.js', array('jquery'), '1.0', true );
         wp_enqueue_script( 'select2', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'js/select2.min.js', array('jquery'), '1.0', true );
-        wp_enqueue_script( 'darkluplite-main', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'js/main.js', array( 'jquery', 'wp-color-picker' ), '1.0', true );
+        wp_enqueue_script( 'darkluplite-main', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'js/main.js', array( 'jquery', 'wp-color-picker' ), DARKLUPLITE_VERSION, true );
 
     }
 

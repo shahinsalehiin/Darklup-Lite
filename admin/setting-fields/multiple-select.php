@@ -57,7 +57,7 @@ trait Multiple_Selectbox {
 	      <div class="darkluplite-single-settings-inner">
           <?php 
           if( $args['is_pro'] == 'yes' ) {
-            echo '<div class="darklup-pro-ribbon">'.esc_html__( 'Pro', 'darklup' ).'</div>';
+            echo '<div class="darklup-pro-ribbon">'.esc_html__( 'Pro', 'darklup-lite' ).'</div>';
           }
           ?>
           <div class="details">
@@ -68,7 +68,7 @@ trait Multiple_Selectbox {
               }
               ?>
           </div>
-          <div class="button-switch">
+          <div class="button-switch" style="margin-left: 10px;">
               <div class="single-select-inner">
 
                   <select class="darkluplite-select2" name="<?php echo esc_attr( $optionName ).'['.$fieldName.'][]'; ?>" multiple="multiple">

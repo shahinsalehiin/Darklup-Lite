@@ -34,15 +34,16 @@
                 $darkIcon   = $('.admin-dark-icon'),
                 $lightIcon  = $('.admin-light-icon');
             //
-            if( getStorageData && getTriggerCheked ) {
+
+            if( getStorageData && getTriggerCheked && (typeof isBackendDarkLiteModeSettingsEnabled != 'undefined')) {
                 $('html').toggleClass(this.darkEnabledClass);
                 $('.switch-trigger').attr( 'checked', true );
                 $('.darkluplite-mode-switcher').addClass( 'darkluplite-admin-dark-ignore' );
                 $darkIcon.show();
                 $lightIcon.hide();
-                $("html").show() /*Solve to Issue 1*/
+                $("html").show()
             }else{
-                $("html").show() /*Solve to Issue 1*/
+                $("html").show()
             }
 
         },
@@ -97,7 +98,7 @@
                     var $this = $(this),
                         getId = $this.data('target-id');
 
-                    localStorage.setItem("tabActivation", getId);
+                    localStorage.setItem("tabActivationDarklupLite", getId);
 
                     $('.active').removeClass('active');
                     $this.addClass('active');
@@ -108,8 +109,7 @@
                 } )
 
                 // Check active tab
-                let activateTab = localStorage.getItem("tabActivation");
-
+                let activateTab = localStorage.getItem("tabActivationDarklupLite");
                 if( activateTab ) {
                     $('.active').removeClass('active');
                     $('[data-target-id="'+activateTab+'"]').addClass('active');

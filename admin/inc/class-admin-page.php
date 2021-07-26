@@ -14,8 +14,8 @@ class Admin_Page_Components {
 	public static function logo() {
 		?>
 		<div class="darkluplite-logo">
-      <img class="logo-light" src="<?php echo esc_url( DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'img/logo.png' ); ?>" alt="<?php esc_attr_e( 'plugin logo', 'darklup-lite' ); ?>">
-      <img class="logo-dark" src="<?php echo esc_url( DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'img/logo-dark.png' ); ?>" alt="<?php esc_attr_e( 'plugin logo', 'darklup-lite' ); ?>">
+      <img class="logo-light" src="<?php echo esc_url( DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'img/logo.svg' ); ?>" alt="<?php esc_attr_e( 'plugin logo', 'darklup-lite' ); ?>">
+      <img class="logo-dark" src="<?php echo esc_url( DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'img/logo-dark.svg' ); ?>" alt="<?php esc_attr_e( 'plugin logo', 'darklup-lite' ); ?>">
     </div>
 		<?php
 	}
@@ -49,6 +49,9 @@ class Admin_Page_Components {
                       require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-style-settings.php';
                       require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-color-settings.php';
                       require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-image-settings.php';
+                      require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-woocommerce-settings.php';
+                      require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-inc-exc-settings.php';
+                      require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-trigger-settings.php';
                       require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-custom-css.php';
                       ?>
                     </div>

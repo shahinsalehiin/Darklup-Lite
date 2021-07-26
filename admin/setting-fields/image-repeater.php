@@ -57,7 +57,7 @@ trait Image_Repeater {
           <div class="darkluplite-single-input-inner style-two">
           <?php 
           if( $args['is_pro'] == 'yes' ) {
-            echo '<div class="darklup-pro-ribbon">'.esc_html__( 'Pro', 'darklup' ).'</div>';
+            echo '<div class="darklup-pro-ribbon">'.esc_html__( 'Pro', 'darklup-lite' ).'</div>';
           }
           ?>
               <label for="darkluplite_<?php echo esc_attr( $fieldName ); ?>"><?php echo esc_html( $args['title'] ); ?></label>

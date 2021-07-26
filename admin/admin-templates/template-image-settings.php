@@ -23,8 +23,8 @@ class Image_Settings_Tab extends Settings_Fields_Base {
 
             'title' => esc_html__( 'IMAGE SETTINGS', 'darklup-lite' ),
             'class' => 'darkluplite-image-settings darkluplite-d-hide',
-            'icon'  => esc_url( DARKLUPLITE_DIR_URL. 'assets/img/settings.svg' ),
-            'dark_icon'  => esc_url( DARKLUPLITE_DIR_URL. 'assets/img/picture-white.png' ),
+            'icon'  => esc_url( DARKLUPLITE_DIR_URL. 'assets/img/picture.svg' ),
+            'dark_icon'  => esc_url( DARKLUPLITE_DIR_URL. 'assets/img/picture-white.svg' ),
             'id' => 'darkluplite_image_settings'
 
         ]);

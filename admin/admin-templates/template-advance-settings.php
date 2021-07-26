@@ -21,10 +21,18 @@ class Advance_Settings_Tab extends Settings_Fields_Base {
         $this->start_fields_section([
             'title' => esc_html__( 'ADVANCE SETTINGS', 'darklup-lite' ),
             'class' => 'darkluplite-advance-settings darkluplite-d-hide',
-            'icon'  => esc_url( DARKLUPLITE_DIR_URL. 'assets/img/advance.svg' ),
-            'dark_icon'  => esc_url( DARKLUPLITE_DIR_URL. 'assets/img/color-white.png' ),
+            'icon'  => esc_url( DARKLUPLITE_DIR_URL. 'assets/img/advanced.svg' ),
+            'dark_icon'  => esc_url( DARKLUPLITE_DIR_URL. 'assets/img/advanced-white.svg' ),
             'id'    => 'darkluplite_advance_settings'
         ]);
+
+       $this->switch_field([
+           'title'     => esc_html__( 'Dark Mode as Default', 'darklup-lite' ),
+           'sub_title' => esc_html__( 'Make dark mode by default. Users will see dark mode first after visiting.', 'darklup-lite' ),
+           'name'      => 'default_dark_mode',
+           'is_pro'    => 'yes',
+           'wrapper_class'     => 'pro-feature'
+       ]);
 
         $this->switch_field([
           'title'     => esc_html__( 'Display Switch in Menu', 'darklup-lite' ),

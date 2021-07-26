@@ -23,8 +23,8 @@ class General_Settings_Tab extends Settings_Fields_Base {
 
             'title' => 'GENERAL SETTINGS',
             'class' => 'darkluplite-general-settings darkluplite-d-hide',
-            'icon'  => esc_url( DARKLUPLITE_DIR_URL. 'assets/img/settings.svg' ),
-            'dark_icon'  => esc_url( DARKLUPLITE_DIR_URL. 'assets/img/settings-white-2.png' ),
+            'icon'  => esc_url( DARKLUPLITE_DIR_URL. 'assets/img/general.svg' ),
+            'dark_icon'  => esc_url( DARKLUPLITE_DIR_URL. 'assets/img/general-white.svg' ),
             'id' => 'darkluplite_general_settings'
 
         ]);

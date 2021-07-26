@@ -149,12 +149,12 @@ class Hooks{
             </svg>
           </a>
           <div class="offer-inner">
-            <h2><?php echo esc_html( '75% OFF', 'darklup-lite' ); ?></h2>
+            <h2><?php echo esc_html( '50% OFF', 'darklup-lite' ); ?></h2>
           </div>
           <div class="details">
             <h2><?php echo esc_html( 'Go Premium', 'darklup-lite' ); ?></h2>
             <p><?php echo esc_html( 'Purchase our premium version to unlock these features', 'darklup-lite' ); ?></p>
-            <a class="darklup-btn darklup-btn-red" href="https://darklup.com/pricing/" target="_blank"><?php echo esc_html( 'Get Pro', 'darklup-lite' ); ?></a>
+            <a class="darkluplite-btn darkluplite-btn-red" href="https://darklup.com/pricing/" target="_blank"><?php echo esc_html( 'Get Pro', 'darklup-lite' ); ?></a>
           </div>
         </div>
       </div>

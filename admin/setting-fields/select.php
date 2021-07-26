@@ -55,7 +55,7 @@ trait Select {
 	      <div class="darkluplite-single-settings-inner">
           <?php 
           if( $args['is_pro'] == 'yes' ) {
-            echo '<div class="darklup-pro-ribbon">'.esc_html__( 'Pro', 'darklup' ).'</div>';
+            echo '<div class="darklup-pro-ribbon">'.esc_html__( 'Pro', 'darklup-lite' ).'</div>';
           }
           ?>
           <div class="details">

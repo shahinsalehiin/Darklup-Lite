@@ -34,35 +34,7 @@ class Helper{
         ],
         '3' => [ 
             'name' => 'Switch 3',
-            'url' => DARKLUPLITE_DIR_URL.'assets/img/switch-3.svg'
-        ],
-        '4' => [
-            'name' => 'Switch 4',
-            'url' => DARKLUPLITE_DIR_URL.'assets/img/switch-4.png'
-        ],
-        '5' => [
-            'name' => 'Switch 5',
-            'url' => DARKLUPLITE_DIR_URL.'assets/img/switch-5.png'
-        ],
-        '6' => [
-            'name' => 'Switch 6',
-            'url' => DARKLUPLITE_DIR_URL.'assets/img/switch-6.svg'
-        ],
-        '7' => [
-            'name' => 'Switch 7',
-            'url' => DARKLUPLITE_DIR_URL.'assets/img/switch-7.svg'
-        ],
-        '8' => [
-            'name' => 'Switch 8',
             'url' => DARKLUPLITE_DIR_URL.'assets/img/switch-8.svg'
-        ],
-        '9' => [
-            'name' => 'Switch 9',
-            'url' => DARKLUPLITE_DIR_URL.'assets/img/switch-9.svg'
-        ],
-        '10' => [
-            'name' => 'Switch 10',
-            'url' => DARKLUPLITE_DIR_URL.'assets/img/switch-10.svg'
         ]
 
     ];
@@ -141,19 +113,85 @@ class Helper{
     ];
 
   }
-  /**
-   * Get pages list 
-   * 
-   * @return array
-   */
-  public static function getPages() {
-
-    $pages = [];
-    foreach( get_pages() as $page ) {
-      $pages[$page->post_name] = $page->post_title;
+    /**
+     * Get pages list
+     *
+     * @return array
+     */
+    public static function getPages()
+    {
+        $pages = [];
+        foreach (get_pages() as $page) {
+            $pages[$page->ID] = $page->post_title;
+        }
+        return $pages;
     }
-    return $pages;
 
-  }
+
+    /**
+     * Get Posts List
+     * @return array
+     */
+    public static function getPosts() {
+        $posts = [];
+
+        $posts_arg = array('orderby' => 'date', 'order'   => 'DESC', 'numberposts'   => -1);
+        foreach( get_posts($posts_arg) as $post ) {
+            $posts[$post->ID] = $post->post_title;
+        }
+        return $posts;
+    }
+
+
+    /**
+     * Get Category List
+     * @return array
+     */
+    public static function getCategories()
+    {
+        $categories = [];
+
+        $category_arg = array('orderby' => 'name', 'order' => 'ASC', 'hide_empty' => 0);
+        foreach (get_categories($category_arg) as $category) {
+            $categories[$category->term_id] = $category->name;
+        }
+        return $categories;
+    }
+
+    /**
+     * Get Woocommerce product list
+     *
+     * @return array
+     */
+    public static function getWooProducts()
+    {
+        $products = [];
+        if (class_exists('woocommerce')) {
+            $args = array('post_type' => 'product', 'posts_per_page' => -1);
+            foreach (get_posts($args) as $product) {
+                $products[$product->ID] = $product->post_title;
+            }
+        }
+        return $products;
+    }
+
+    /**
+     * Get Woocommerce category list
+     *
+     * @return array
+     */
+    public static function getWooCategories()
+    {
+        $categories = [];
+        if (class_exists('woocommerce')) {
+
+            $cat_args = array('taxonomy' => "product_cat", 'orderby' => 'name', 'order' => 'asc', 'hide_empty' => false);
+            $product_categories = get_terms($cat_args);
+            foreach ($product_categories as $category) {
+                $categories[$category->term_id] = $category->name;
+            }
+        }
+        return $categories;
+    }
     
 }

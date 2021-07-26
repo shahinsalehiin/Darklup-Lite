@@ -18,6 +18,7 @@ abstract class Settings_Fields_Base {
 
   use \DarklupLite\Admin\Field\CSS_Editor;
   use \DarklupLite\Admin\Field\Image_Radio_Button;
+  use \DarklupLite\Admin\Field\Color_Scheme_Button;
   use \DarklupLite\Admin\Field\Select;
   use \DarklupLite\Admin\Field\Switcher;
   use \DarklupLite\Admin\Field\Text_Area;
@@ -25,6 +26,7 @@ abstract class Settings_Fields_Base {
   use \DarklupLite\Admin\Field\Color_Picker;
   use \DarklupLite\Admin\Field\Multiple_Selectbox;
   use \DarklupLite\Admin\Field\Number;
+  use \DarklupLite\Admin\Field\Switch_Margin;
   use \DarklupLite\Admin\Field\Image_Repeater;
   use \DarklupLite\Admin\Field\Media_Upload;
 

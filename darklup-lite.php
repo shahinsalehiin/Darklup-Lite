@@ -3,7 +3,7 @@
  * Plugin Name:       Darklup Lite - WP Dark Mode
  * Plugin URI:        https://darklup.com/
  * Description:       All in one WordPress plugin to create a stunning dark version for your WordPress website and dashboard
- * Version:           1.1.0
+ * Version:           2.0.1
  * Author:            Darklup
  * Author URI:        https://darklup.com/
  * License:           GPL v2 or later
@@ -27,7 +27,7 @@ if( !defined( 'DARKLUPLITE_ALERT_MSG' ) ) {
 
 // Version constant
 if( !defined( 'DARKLUPLITE_VERSION' ) ) {
-	define( 'DARKLUPLITE_VERSION', '1.0.5' );
+	define( 'DARKLUPLITE_VERSION', '2.0.1' );
 }
 
 // Plugin dir path constant
@@ -54,7 +54,18 @@ if( !defined( 'DARKLUPLITE_DIR_INC' ) ) {
 if( !defined( 'DARKLUPLITE_DIR_PAGE_BUILDER' ) ) {
 	define( 'DARKLUPLITE_DIR_PAGE_BUILDER', trailingslashit( DARKLUPLITE_DIR_PATH.'page-builder' ) );
 }
+// Plugin Base Path
+if( !defined( 'DARKLUPLITE_BASE_PATH' ) ) {
+	define( 'DARKLUPLITE_BASE_PATH', plugin_basename(__FILE__) );
+}
 
+
+
+// Plugin uninstall hook
+register_uninstall_hook( __FILE__, 'pluginDarklupLiteDeleted' );
+function pluginDarklupLiteDeleted() {
+    delete_option('darkluplite_settings');
+}
 
 /**
  * DarklupLite final class
@@ -84,8 +95,6 @@ final class DarklupLite {
 		add_action( 'elementor/widgets/widgets_registered', [$this, 'elementorOnWidgetsRegistered'] );
 		// Plugin activation hook
 		register_activation_hook( __FILE__, [ $this, 'pluginActivate' ] );
-		// Plugin deactivation hook
-		register_deactivation_hook( __FILE__, [ $this, 'pluginDeactivate' ] );
 
 	}
 
@@ -156,7 +165,9 @@ final class DarklupLite {
 			"switch_position"		=> 'bottom_right'
 		);
 
-		update_option( 'darkluplite_settings', $defaultOption );
+        if(!get_option("darkluplite_settings")){
+            update_option( 'darkluplite_settings', $defaultOption );
+        }
 
 	}
 	/**
@@ -166,7 +177,7 @@ final class DarklupLite {
 	 * @return void
 	 */
 	public function pluginDeactivate() {
-		delete_option('darkluplite_settings');
+		//delete_option('darkluplite_settings');
 	}
 	/**
 	 * Elementor widgets registered

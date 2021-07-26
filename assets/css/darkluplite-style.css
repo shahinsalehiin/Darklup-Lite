@@ -32,6 +32,176 @@ html {
   cursor: pointer;
 }
 
+
+
+
+/******** button-switch ********/
+
+
+.darkluplite-switch-container{
+  width: 100px;
+  height: 40px;
+}
+.darkluplite-square-switch-container{
+  width: 50px;
+  height: 50px;
+}
+
+.darkluplite-switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100px;
+  height: 40px;
+}
+.darkluplite-square-switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+}
+
+.darkluplite-switch input, .darkluplite-square-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+
+
+
+
+/* ----- Style 1 ------ */
+
+.darkluplite-switch.style1{
+  background: #3700B3;
+  border-radius: 60px;
+  cursor: pointer;
+}
+.darkluplite-switch.style1 .toggle-btn{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 8px;
+  transition: left 0.4s;
+}
+.darkluplite-switch.style1 .toggle-btn svg{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.4s;
+}
+.darkluplite-switch.style1 .toggle-btn svg #style-1-light{
+  fill: #ffffff;
+}
+.darkluplite-switch.style1 .toggle-btn svg:nth-child(1){
+  opacity: 1;
+}
+.darkluplite-switch.style1 .toggle-btn svg:nth-child(2){
+  opacity: 0;
+}
+
+.darkluplite-switch.style1 .toggle-checkbox:checked + .toggle-btn {
+  left: 62px;
+}
+.darkluplite-switch.style1 .toggle-checkbox:checked + .toggle-btn svg:nth-child(1) {
+  opacity: 0;
+}
+.darkluplite-switch.style1 .toggle-checkbox:checked + .toggle-btn svg:nth-child(2) {
+  opacity: 1;
+}
+
+
+/* ----- Style 2 ------ */
+
+.darkluplite-switch.style2{
+  background: #03DAC5;
+  border-radius: 60px;
+  height: 14px;
+  cursor: pointer;
+}
+.darkluplite-switch.style2 .toggle-btn{
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  left: 8px;
+  transition: left 0.4s;
+}
+.darkluplite-switch.style2 .toggle-btn .plate{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 60px;
+  background: #3700B3;
+}
+.darkluplite-switch.style2 .toggle-btn svg{
+  position: absolute;
+  padding: 6px;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.4s;
+}
+.darkluplite-switch.style2 .toggle-btn svg #style-2-light{
+  fill: #ffffff;
+}
+.darkluplite-switch.style2 .toggle-btn svg:nth-child(1){
+  opacity: 1;
+}
+.darkluplite-switch.style2 .toggle-btn svg:nth-child(2){
+  opacity: 0;
+}
+
+.darkluplite-switch.style2 .toggle-checkbox:checked + .toggle-btn {
+  left: 57px;
+}
+.darkluplite-switch.style2 .toggle-checkbox:checked + .toggle-btn svg:nth-child(1) {
+  opacity: 0;
+}
+.darkluplite-switch.style2 .toggle-checkbox:checked + .toggle-btn svg:nth-child(2) {
+  opacity: 1;
+}
+
+
+/* ----- Style 8 ------ */
+
+.darkluplite-square-switch.style8{
+  background: #3700B3;
+  border-radius: 35px;
+  cursor: pointer;
+}
+.darkluplite-square-switch.style8 .toggle-btn{
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  left: 9px;
+  transition: left 0.4s;
+}
+.darkluplite-square-switch.style8 .toggle-btn svg{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.4s;
+}
+.darkluplite-square-switch.style8 .toggle-btn svg #style-8-light{
+  fill: #ffffff;
+}
+.darkluplite-square-switch.style8 .toggle-btn svg:nth-child(1){
+  opacity: 1;
+}
+.darkluplite-square-switch.style8 .toggle-btn svg:nth-child(2){
+  opacity: 0;
+}
+.darkluplite-square-switch.style8 .toggle-checkbox:checked + .toggle-btn svg:nth-child(1) {
+  opacity: 0;
+}
+.darkluplite-square-switch.style8 .toggle-checkbox:checked + .toggle-btn svg:nth-child(2) {
+  opacity: 1;
+}
+
+
+
+
 /**** btn switcher ****/
 .darkluplite-btn-area label {
   margin-bottom: 0px !important;

@@ -41,13 +41,13 @@ if( !class_exists( 'DarklupLite_Enqueue' ) ) {
 		*/
 		public function frontendEnqueueScripts() {
 			
-			wp_enqueue_style( 'darkluplite-style', DARKLUPLITE_DIR_URL.'assets/css/darkluplite-style.css', array(), '1.0.0', false );
+			wp_enqueue_style( 'darkluplite-style', DARKLUPLITE_DIR_URL.'assets/css/darkluplite-style.css', array(), DARKLUPLITE_VERSION, false );
 			
 			/********************
 				Js Enqueue
 			********************/
 
-			wp_enqueue_script( 'darklup-lite', DARKLUPLITE_DIR_URL.'assets/js/darklup.js', array('jquery'), '1.0', true );
+			wp_enqueue_script( 'darklup-lite', DARKLUPLITE_DIR_URL.'assets/js/darklup.js', array('jquery'), DARKLUPLITE_VERSION, true );
 			
 			wp_localize_script( 'darklup-lite', 'frontendObject',
 		        array(

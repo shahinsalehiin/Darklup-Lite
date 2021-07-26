@@ -24,7 +24,7 @@ class Image_Select extends \Elementor\Base_Data_Control{
 
         ?>
 		<div class="elementor-control-field">
-			<label for="<?php echo $control_uid; ?>" class="elementor-control-title"></label>
+			<label for="<?php echo esc_attr($control_uid); ?>" class="elementor-control-title"></label>
 			<div class="elementor-control-input-wrapper">
 				
 				<div class="select-image-wrapper">
@@ -46,8 +46,8 @@ class Image_Select extends \Elementor\Base_Data_Control{
 
     public function enqueue() {
 
-    	wp_enqueue_style( 'image-controls', plugin_dir_url( __FILE__ ).'assets/css/image-controls.css', array(), '1.0', false );
-    	wp_enqueue_script( 'image-controls', plugin_dir_url( __FILE__ ).'assets/js/image-controls.js', array('jquery'), '1.0', true );
+    	wp_enqueue_style( 'image-controls', plugin_dir_url( __FILE__ ).'assets/css/image-controls.css', array(), DARKLUPLITE_VERSION, false );
+    	wp_enqueue_script( 'image-controls', plugin_dir_url( __FILE__ ).'assets/js/image-controls.js', array('jquery'), DARKLUPLITE_VERSION, true );
   
     }
 

@@ -9,7 +9,7 @@ namespace DarklupLite;
   *
   */
 if( ! defined( 'ABSPATH' ) ) {
-    die( DARKLUP_ALERT_MSG );
+    die( DARKLUPLITE_ALERT_MSG );
 }
 
 class SwitchShortcode{

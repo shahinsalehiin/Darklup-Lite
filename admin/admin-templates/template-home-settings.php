@@ -22,7 +22,7 @@ class Home_Settings_Tab extends Settings_Fields_Base {
         'title' => esc_html__( 'Home', 'darklup-lite' ),
         'class' => 'darkluplite-home-settings darkluplite-d-show',
         'icon'  => esc_url( DARKLUPLITE_DIR_URL. 'assets/img/home.svg' ),
-        'dark_icon'  => esc_url( DARKLUPLITE_DIR_URL. 'assets/img/home-white.png' ),
+        'dark_icon'  => esc_url( DARKLUPLITE_DIR_URL. 'assets/img/home-white.svg' ),
         'id'    => 'darkluplite_home_settings',
         'display' => 'block'
       ]);

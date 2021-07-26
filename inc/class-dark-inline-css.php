@@ -70,14 +70,20 @@ class Dark_Inline_CSS {
 	 */
 	public static function adminAddStyle() {
 		$css  = self::adminInlineCss();
+        $js  = self::inlineAdminJs();
 		wp_add_inline_style( 'darkluplite-dark-style', $css );
+        wp_add_inline_script( 'jquery', $js );
 	}
-	/**
-	 * Front-End inline css
-	 *
-	 * @since  1.0.0
-	 * @return void
-	 */
+	public static function inlineAdminJs() {
+        $inline_js = "";
+        $backendDarkModeSettingsEnabled  = \DarklupLite\Helper::getOptionData('backend_darkmode');
+        if( $backendDarkModeSettingsEnabled ) {
+            $inline_js .= "let isBackendDarkLiteModeSettingsEnabled = true;";
+        }else{
+            $inline_js .= "let isBackendDarkLiteModeSettingsEnabled = false;";
+        }
+        return $inline_js;
+    }
     public static function inlineJs() {
         $enableOS  = \DarklupLite\Helper::getOptionData('enable_os_switcher');
 
@@ -265,7 +271,7 @@ class Dark_Inline_CSS {
 		html.darkluplite-admin-dark-mode-enabled select, 
 		html.darkluplite-admin-dark-mode-enabled textarea {
 			background: {$inputBgColor} !important;
-			border-color: {$borderColor};
+			border-color: {$borderColor}!important;
 			color: {$color} !important;
 		}
 		";

@@ -58,7 +58,7 @@ if(!class_exists('DarklupLite_Image_Switch_Param')) {
 					    position: relative;
 					}
 				</style>
-				<input type="hidden" value="<?php echo esc_attr( $hval ); ?>" id="imageradio<?php echo $settings['param_name']; ?>" name="<?php echo $settings['param_name']; ?>" class="wpb_vc_param_value wpb-input">
+				<input type="hidden" value="<?php echo esc_attr( $hval ); ?>" id="imageradio<?php echo esc_attr($settings['param_name']); ?>" name="<?php echo esc_attr($settings['param_name']); ?>" class="wpb_vc_param_value wpb-input">
 	            <?php 
 	            foreach( $settings['options'] as $key => $option ):
 
@@ -79,9 +79,9 @@ if(!class_exists('DarklupLite_Image_Switch_Param')) {
 	            ?>
 
 			<script>
-			jQuery(".wpb-radioinput<?php echo $settings['param_name']; ?>").change(function(){
+			jQuery(".wpb-radioinput<?php echo esc_html($settings['param_name']); ?>").change(function(){
 			    var s = jQuery(this).val();
-			    jQuery("#imageradio<?php echo $settings['param_name']; ?>").val(s);
+			    jQuery("#imageradio<?php echo esc_html($settings['param_name']); ?>").val(s);
 			    jQuery('.darkluplite_block-active').removeClass('darkluplite_block-active');
 			    jQuery(this).closest('.darkluplite-image-select-item').addClass('darkluplite_block-active');
 
