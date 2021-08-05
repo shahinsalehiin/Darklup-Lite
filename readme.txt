@@ -5,7 +5,7 @@ Tags: WordPress dark mode, Dark mode, dark theme, night mode, gutenberg block
 Requires PHP: 5.6
 Requires at least: 5.1
 Tested up to: 5.8
-Stable tag: 2.0.1
+Stable tag: 2.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,12 +18,15 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 <p>The most amazing dark mode plugin Darklup provides a huge number of features to make you and your WordPress website visitors more comfortable. The accessing procedure of this plugin is very easy. You just need to install and activate the plugin for your Wordpress website. You will find all the features accessing instruction in the settings option.The Darklup dark mode  plugin always keeps eyes in user preference and makes an elegant dark color scheme for your website. </p>
 
-<p>The smart color sensitivity adjusts the color contrast according to user preference. Boost productivity without affecting your eyes. Also has automatic color schemes with useful presets.</p>
-
 [youtube https://www.youtube.com/watch?v=Rg_LeF3KFF4]
 
-<p>🚀 <a href="https://darklup.com/pricing/" target="_blank">Get Pro</a> | 👁️ <a href="https://darklup.com/" target="_blank">Demo</a> | 👨‍💻 <a href="https://darklup.com/" target="_blank">Get Support</a></p>
+<p>The smart color sensitivity adjusts the color contrast according to user preference. Boost productivity without affecting your eyes. Also has automatic color schemes with useful presets.</p>
 
+<h3>🌟 You might not want to miss actual review of Darklup - Users Opinion</h3>
+
+[youtube https://www.youtube.com/watch?v=DoxRTG8ppVo]
+
+<p>🚀 <a href="https://darklup.com/pricing/" target="_blank">Get Pro</a> | 👁️ <a href="https://darklup.com/" target="_blank">Demo</a> | 👨‍💻 <a href="https://darklup.com/" target="_blank">Get Support</a></p>
 
 <h3>🌟 WordPress Dark Mode Plugin Free Features:</h3>
 <ol>
@@ -95,6 +98,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	<li><strong>Exclude Elements</strong> to avoid dark mode in specific places by CSS ID</li>
 </ol>
 
+<h3>🔥 DARKLUP FEATURED BY TOP REVIEWER:</h3>
+
+<p>Lot of love by DecisiveMarketer.</p>
+
+[youtube https://www.youtube.com/watch?v=Kr69mnLCHDI]
 
 <h3>👨‍💻 HOW CAN YOU USE OUR PLUGIN?</h3>
 <p>DarklupLite can remarkably enhance the colorful appearance of your website with the perfect-looking dark color schemes. To use this plugin, you need to activate it through proper installation.</p>
@@ -218,6 +226,12 @@ screenshot-3.png
 screenshot-4.png
 
 == Changelog ==
+
+= 2.0.3 =
+1. Improved: Performance of the plugin has been improved
+
+= 2.0.2 =
+1. Fixed: New WordPress 5.8 Widget Editor Issue
 
 = 2.0.1 =
 1. Improved: Performance of the plugin has been improved

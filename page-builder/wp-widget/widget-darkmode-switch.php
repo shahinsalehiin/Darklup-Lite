@@ -1,17 +1,17 @@
-<?php 
+<?php
  /**
-  * 
+  *
   * @package    DarklupLite - WP Dark Mode
   * @version    1.0.0
-  * @author     
-  * @Websites: 
+  * @author
+  * @Websites:
   *
   */
 
 /**************************************
 *Creating Widget
 ***************************************/
- 
+
 class DarklupLite_Darkmode_Switch extends WP_Widget {
 
 
@@ -19,14 +19,14 @@ function __construct() {
 
 parent::__construct(
 // Base ID of your widget
-'darkluplite_darkmode_switch_widget', 
+'darkluplite_darkmode_switch_widget',
 
 
 // Widget name will appear in UI
 esc_html__( 'Darkmode Switch [DarklupLite]', 'darklup-lite' ),
 
 // Widget description
-array( 'description' => esc_html__( 'Select darkmode switch.', 'darklup-lite' ), ) 
+array( 'description' => esc_html__( 'Select darkmode switch.', 'darklup-lite' ), )
 );
 
 }
@@ -40,28 +40,28 @@ $darkmodeSwitch 	= apply_filters( 'widget_darkmode_switch', $instance['darkmode_
 echo wp_kses_post( $args['before_widget'] );
 if ( ! empty( $title ) )
 echo wp_kses_post( $args['before_title'] . $title . $args['after_title'] );
-	
-	// Switch style 
+
+	// Switch style
 	echo \DarklupLite\Switch_Style::switchStyle( esc_html( $darkmodeSwitch ) );
 
 echo wp_kses_post( $args['after_widget'] );
 }
-		
-// Widget Backend 
+
+// Widget Backend
 public function form( $instance ) {
-	
+
 if ( isset( $instance[ 'title' ] ) ) {
 	$title = $instance[ 'title' ];
 }else {
 	$title = esc_html__( 'Dark Mode Switch', 'darklup-lite' );
 }
-//	
+//
 if ( isset( $instance[ 'darkmode_switch' ] ) ) {
 	$darkmodeSwitch  = $instance[ 'darkmode_switch' ];
 }else {
 	$darkmodeSwitch  = 1;
 }
-	
+
 
 // Widget admin form
 
@@ -69,12 +69,12 @@ if ( isset( $instance[ 'darkmode_switch' ] ) ) {
 $this->radio_image_style();
 ?>
 <p>
-<label style="font-weight:bold;margin-bottom:10px;display: block;" for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:' ,'darklup-lite'); ?></label> 
+<label style="font-weight:bold;margin-bottom:10px;display: block;" for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:' ,'darklup-lite'); ?></label>
 <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 </p>
 
 <div class="image-select-content-wrapper">
-<label style="font-weight:bold;margin-bottom:10px;display: block;" for="<?php echo esc_attr( $this->get_field_id( 'darkmode_switch' ) ); ?>"><?php esc_html_e( 'Select Switch:' ,'darklup-lite'); ?></label> 	
+<label style="font-weight:bold;margin-bottom:10px;display: block;" for="<?php echo esc_attr( $this->get_field_id( 'darkmode_switch' ) ); ?>"><?php esc_html_e( 'Select Switch:' ,'darklup-lite'); ?></label>
 <?php
 
 $images = \DarklupLite\Helper::switchDemoImage();
@@ -87,7 +87,7 @@ foreach( $images as $key => $option ):
         <img src="<?php echo esc_url( $option['url'] ); ?>" />
     </label>
 </div>
-<?php 
+<?php
 endforeach;
 ?>
 </div>
@@ -95,7 +95,7 @@ endforeach;
 <?php
 
 }
-	
+
 // Updating widget replacing old instances with new
 public function update( $new_instance, $old_instance ) {
 
@@ -157,4 +157,4 @@ function darkluplite_darkmode_switch_init_widget() {
 	register_widget( 'DarklupLite_Darkmode_Switch' );
 }
 add_action( 'widgets_init', 'darkluplite_darkmode_switch_init_widget' );
-	
+

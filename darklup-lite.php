@@ -3,7 +3,7 @@
  * Plugin Name:       Darklup Lite - WP Dark Mode
  * Plugin URI:        https://darklup.com/
  * Description:       All in one WordPress plugin to create a stunning dark version for your WordPress website and dashboard
- * Version:           2.0.1
+ * Version:           2.0.3
  * Author:            Darklup
  * Author URI:        https://darklup.com/
  * License:           GPL v2 or later
@@ -27,7 +27,7 @@ if( !defined( 'DARKLUPLITE_ALERT_MSG' ) ) {
 
 // Version constant
 if( !defined( 'DARKLUPLITE_VERSION' ) ) {
-	define( 'DARKLUPLITE_VERSION', '2.0.1' );
+	define( 'DARKLUPLITE_VERSION', '2.0.3' );
 }
 
 // Plugin dir path constant
@@ -134,7 +134,11 @@ final class DarklupLite {
 		require_once DARKLUPLITE_DIR_ADMIN.'inc/class-admin-page.php';
 		require_once DARKLUPLITE_DIR_PAGE_BUILDER.'shortcode/class-switch-shortcode.php';
 		require_once DARKLUPLITE_DIR_PAGE_BUILDER.'wpbakery/darkluplite-vc-init.php';
-		require_once DARKLUPLITE_DIR_PAGE_BUILDER . 'gutenberg-block/darkluplite-switch-block/src/init.php';
+
+        global $pagenow;
+        if( $pagenow != 'widgets.php' ) {
+            require_once DARKLUPLITE_DIR_PAGE_BUILDER . 'gutenberg-block/darkluplite-switch-block/src/init.php';
+        }
 		require_once DARKLUPLITE_DIR_PAGE_BUILDER.'wp-widget/widget-darkmode-switch.php';
 		// Elemenor custom control
 		require_once DARKLUPLITE_DIR_INC.'custom-controls/elemenor-control/custom-control.php';

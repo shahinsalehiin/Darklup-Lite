@@ -100,13 +100,14 @@ add_action( 'init', 'darkluplite_switch_block_cgb_block_assets' );
 
 // render callback
 function gutenberg_examples_dynamic_render_callback( $attributes ) {
-	
+
 	ob_start();
 
 	$alignment = !empty( $attributes['alignment'] ) ? $attributes['alignment'] : '';
+    $switchStyle = !empty( $attributes['switchStyle'] ) ? $attributes['switchStyle'] : '1';
 
 	echo '<div class="darkluplite-guten-darkmode-switch" style="text-align:'.esc_attr( $alignment ).'">';
-		echo do_shortcode('[darkluplite_darkmode_switch style="'.esc_html( $attributes['switchStyle'] ).'"]');
+		echo do_shortcode('[darkluplite_darkmode_switch style="'.esc_html( $switchStyle ).'"]');
 	echo '</div>';
 
 	return ob_get_clean();

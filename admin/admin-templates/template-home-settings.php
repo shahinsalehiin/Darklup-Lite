@@ -47,9 +47,9 @@ class Home_Settings_Tab extends Settings_Fields_Base {
             <div class="darkluplite-col-md-6 darkluplite-col-12 align-self-center">
               <div class="darkluplite-single-about darkluplite-single-about-red">
                 <div class="details">
-                  <h3><?php esc_html_e( 'Documantation', 'darklup-lite') ?></h3>
+                  <h3><?php esc_html_e( 'Documentation', 'darklup-lite') ?></h3>
                   <p><?php esc_html_e( 'We have created a well organized and detailed documentation to get familiar with DarklupLite- WP Dark Mode. You will easily understand how our plugin will work.', 'darklup-lite' )?></p>
-                  <a class="darkluplite-btn darkluplite-btn-base" href="https://documentation.darklup.com/" target="_blank"><?php esc_html_e( 'Documantation', 'darklup-lite' ); ?></a>
+                  <a class="darkluplite-btn darkluplite-btn-base" href="https://documentation.darklup.com/" target="_blank"><?php esc_html_e( 'Documentation', 'darklup-lite' ); ?></a>
                 </div>
               </div>
             </div>
@@ -68,7 +68,7 @@ class Home_Settings_Tab extends Settings_Fields_Base {
               <div class="darkluplite-col-md-7 darkluplite-col-12 align-self-center">
                 <div class="details">
                   <h3><?php esc_html_e( 'ARE WE MISSING ANY FEATURE?', 'darklup-lite' ); ?></h3>
-                  <p><?php esc_html_e( 'Are we missing any feature that you need a lot? We are requesting you to do a feature request so we can add that feature o our next update', 'darklup-lite'); ?></p>
+                  <p><?php esc_html_e( 'Are we missing any feature that you need a lot? We are requesting you to do a feature request so we can add that feature our next update.', 'darklup-lite'); ?></p>
                   <a class="darkluplite-btn darkluplite-btn-blue" href="https://wordpress.org/support/plugin/darklup-lite-wp-dark-mode/" target="_blank"><?php esc_html_e( 'FEATURE REQUEST', 'darklup-lite' ); ?></a>
                 </div>
               </div>

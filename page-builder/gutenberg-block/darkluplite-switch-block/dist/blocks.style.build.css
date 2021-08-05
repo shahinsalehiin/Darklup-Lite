@@ -17,375 +17,171 @@
   max-width: 740px;
   padding: 2rem; }
 
- 
 
-/**** btn switcher ****/
-.darkluplite-btn-area label {
-  margin-bottom: 0px !important;
-  cursor: pointer;
-  text-align: left;
-}
-.on-off-toggle {
-  display: inline-block;
-}
 
-.on-off-toggle-left-right {
-  padding-left: 150px;
-  position: relative;
-}
-.on-off-toggle-left-right span {
-  font-size: 40px;
-  color: #1D1D1D;
-  position: absolute;
-  top: 10px;
-}
-.on-off-toggle-left-right .prev {
-  margin-left: -120px;
-}
-.on-off-toggle-left-right .next {
-  margin-right: -110px;
-  right: 0;
-}
 
-.on-off-toggle__slider {
+
+
+/******** button-switch ********/
+
+
+.darkluplite-switch-container{
   width: 100px;
   height: 40px;
-  display: block;
-  border-radius: 60px;
-  transition: background-color 0.4s;
-  background: #3700B3;
-  position: relative;
 }
-.on-off-toggle__slider:before {
-  content: "";
-  display: block;
-  background-size: 100%;
-  bottom: 5px;
-  height: 28px;
-  left: 8px;
-  position: absolute;
-  transition: 0.4s;
-  width: 28px;
-  z-index: 5;
-  border-radius: 100%;
-}
-.on-off-toggle__slider:after {
-  display: block;
-  line-height: 24px;
-  font-size: 13px;
-  font-weight: bold;
-  color: #484848;
-  padding-left: 26px;
-  transition: all 0.4s;
+.darkluplite-square-switch-container{
+  width: 50px;
+  height: 50px;
 }
 
-.on-off-toggle__input {
+.darkluplite-switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100px;
+  height: 40px;
+}
+.darkluplite-square-switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+}
+
+.darkluplite-switch input, .darkluplite-square-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+
+
+
+
+/* ----- Style 1 ------ */
+
+.darkluplite-switch.style1{
+  background: #3700B3;
+  border-radius: 60px;
+  cursor: pointer;
+}
+.darkluplite-switch.style1 .toggle-btn{
   position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 8px;
+  transition: left 0.4s;
+}
+.darkluplite-switch.style1 .toggle-btn svg{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.4s;
+}
+.darkluplite-switch.style1 .toggle-btn svg #style-1-light{
+  fill: #ffffff;
+}
+.darkluplite-switch.style1 .toggle-btn svg:nth-child(1){
+  opacity: 1;
+}
+.darkluplite-switch.style1 .toggle-btn svg:nth-child(2){
   opacity: 0;
 }
 
-.on-off-toggle__input:checked + .on-off-toggle__slider:after {
-  color: #FFFFFF;
-  padding-left: 8px;
+.darkluplite-switch.style1 .toggle-checkbox:checked + .toggle-btn {
+  left: 62px;
+}
+.darkluplite-switch.style1 .toggle-checkbox:checked + .toggle-btn svg:nth-child(1) {
+  opacity: 0;
+}
+.darkluplite-switch.style1 .toggle-checkbox:checked + .toggle-btn svg:nth-child(2) {
+  opacity: 1;
 }
 
-/******** button-switch ********/
-.button-switch-1 .on-off-toggle__slider:before {
-  background-image: url("../img/2.png");
-}
-.button-switch-1 .on-off-toggle__input:checked + .on-off-toggle__slider:before {
-  transform: translateX(54px);
-  background-image: url("../img/1.png");
-}
 
-.button-switch-2 .on-off-toggle__slider:before {
-  background-image: url("../img/2.png");
-}
-.button-switch-2 .on-off-toggle__input:checked + .on-off-toggle__slider:before {
-  transform: translateX(54px);
-  background-image: url("../img/1.png");
-}
+/* ----- Style 2 ------ */
 
-.button-switch-3 .on-off-toggle__slider {
-  height: 14px;
+.darkluplite-switch.style2{
   background: #03DAC5;
-  border: 0;
+  border-radius: 60px;
+  height: 14px;
+  cursor: pointer;
 }
-.button-switch-3 .on-off-toggle__slider:before {
-  background-image: url("../img/2.png");
-  z-index: 2;
-  bottom: -11px;
-  height: 25px;
-  width: 25px;
-  bottom: -4px;
-  left: 13px;
-}
-.button-switch-3 .on-off-toggle__slider:after {
-  content: "";
-  display: block;
-  bottom: -10px;
+.darkluplite-switch.style2 .toggle-btn{
+  position: absolute;
+  width: 35px;
   height: 35px;
   left: 8px;
+  transition: left 0.4s;
+}
+.darkluplite-switch.style2 .toggle-btn .plate{
   position: absolute;
-  transition: 0.4s;
-  width: 35px;
-  z-index: 5;
-  border-radius: 100%;
+  width: 100%;
+  height: 100%;
+  border-radius: 60px;
   background: #3700B3;
-  z-index: 1;
 }
-.button-switch-3 .on-off-toggle__input:checked + .on-off-toggle__slider:before {
-  transform: translateX(50px);
-  background-image: url("../img/1.png");
+.darkluplite-switch.style2 .toggle-btn svg{
+  position: absolute;
+  padding: 6px;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.4s;
 }
-.button-switch-3 .on-off-toggle__input:checked + .on-off-toggle__slider:after {
-  transform: translateX(50px);
+.darkluplite-switch.style2 .toggle-btn svg #style-2-light{
+  fill: #ffffff;
 }
-
-.button-switch-4 .on-off-toggle__slider {
-  width: 100px;
+.darkluplite-switch.style2 .toggle-btn svg:nth-child(1){
+  opacity: 1;
 }
-.button-switch-4 .on-off-toggle__slider:before {
-  background: #fff;
-  content: "";
-  bottom: -1px;
-  height: 40px;
-  left: -1px;
-  width: 40px;
-}
-.button-switch-4 .on-off-toggle__input:checked + .on-off-toggle__slider:before {
-  transform: translateX(60px);
+.darkluplite-switch.style2 .toggle-btn svg:nth-child(2){
+  opacity: 0;
 }
 
-.button-switch-5 .on-off-toggle__slider {
-  width: 120px;
-  height: 40px;
-  background: #E8E8E8;
-  border: 0;
+.darkluplite-switch.style2 .toggle-checkbox:checked + .toggle-btn {
+  left: 57px;
 }
-.button-switch-5 .on-off-toggle__slider:before {
-  background: #fff;
-  content: "";
-  bottom: 0;
-  height: 40px;
-  left: -1px;
-  border-radius: 40px;
-  width: 60px;
+.darkluplite-switch.style2 .toggle-checkbox:checked + .toggle-btn svg:nth-child(1) {
+  opacity: 0;
 }
-.button-switch-5 .on-off-toggle__slider:after {
-  content: "Dark";
-  z-index: 5;
-  color: red;
-  position: relative;
-  line-height: 40px;
-  font-size: 15px;
-  font-weight: 400;
-  color: #444444;
-  padding-left: 12px;
+.darkluplite-switch.style2 .toggle-checkbox:checked + .toggle-btn svg:nth-child(2) {
+  opacity: 1;
 }
 
-.button-switch-5 .on-off-toggle__input:checked + .on-off-toggle__slider:before {
-  transform: translateX(60px);
-}
-.button-switch-5 .on-off-toggle__input:checked + .on-off-toggle__slider:after {
-  content: "Light";
-  padding-left: 8px;
-  transform: translateX(64px);
-  color: #444444;
-}
 
-.button-switch-6 .on-off-toggle__slider {
-  width: 100px;
-  height: 40px;
-  background: #1B171C;
-  border: 0;
-}
-.button-switch-6 .on-off-toggle__slider:before {
-  content: "";
-  bottom: 0;
-  height: 40px;
-  left: -1px;
-  border-radius: 40px;
-  width: 40px;
-  background-image: url("../img/5.png");
-  background-size: 100%;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-}
-.button-switch-6 .on-off-toggle__slider:after {
-  display: block;
-  line-height: 40px;
-  font-size: 13px;
-  font-weight: bold;
-  content: "Light";
-  color: #484848;
-  padding-left: 50px;
-  transition: all 0.4s;
-  color: #fff;
-}
-.button-switch-6 .on-off-toggle__input:checked + .on-off-toggle__slider {
-  background: #E8E8E8;
-}
-.button-switch-6 .on-off-toggle__input:checked + .on-off-toggle__slider:before {
-  transform: translateX(60px);
-  background-image: url("../img/6.png");
-}
-.button-switch-6 .on-off-toggle__input:checked + .on-off-toggle__slider:after {
-  content: "Dark";
-  padding-left: 13px;
-  color: #464646;
-}
+/* ----- Style 8 ------ */
 
-.button-switch-7 .on-off-toggle__slider {
-  width: 100px;
-  height: 40px;
+.darkluplite-square-switch.style8{
   background: #3700B3;
-  border: 0;
-}
-.button-switch-7 .on-off-toggle__slider:before {
-  content: "";
-  bottom: 0;
-  height: 40px;
-  left: -1px;
-  border-radius: 40px;
-  width: 40px;
-  background-image: url("../img/5.png");
-  background-size: 100%;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-}
-.button-switch-7 .on-off-toggle__slider:after {
-  display: block;
-  line-height: 40px;
-  font-size: 13px;
-  font-weight: bold;
-  content: "Dark";
-  color: #484848;
-  padding-left: 50px;
-  transition: all 0.4s;
-  color: #fff;
-}
-.button-switch-7 .on-off-toggle__input:checked + .on-off-toggle__slider:before {
-  transform: translateX(61px);
-  background-image: url("../img/6.png");
-}
-.button-switch-7 .on-off-toggle__input:checked + .on-off-toggle__slider:after {
-  content: "Light";
-  padding-left: 13px;
-}
-
-.button-switch-8 .on-off-toggle__slider {
-  width: 100px;
-  height: 40px;
-  background: #3D00C5;
-  border: 4px solid #3700B3;
-}
-.button-switch-8 .on-off-toggle__slider:before {
-  content: "";
-  bottom: 0;
-  height: 32px;
-  left: -1px;
-  border-radius: 32px;
-  width: 32px;
-  background-image: url("../img/8.png");
-  background-size: 100%;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-}
-.button-switch-8 .on-off-toggle__slider:after {
-  display: block;
-  line-height: 32px;
-  font-size: 13px;
-  font-weight: bold;
-  content: "Dark";
-  color: #484848;
-  padding-left: 50px;
-  transition: all 0.4s;
-  color: #fff;
-}
-.button-switch-8 .on-off-toggle__input:checked + .on-off-toggle__slider {
-  background: #242424;
-  border: 4px solid #3A3A3A;
-}
-.button-switch-8 .on-off-toggle__input:checked + .on-off-toggle__slider:before {
-  transform: translateX(60px);
-  background-image: url("../img/7.png");
-}
-.button-switch-8 .on-off-toggle__input:checked + .on-off-toggle__slider:after {
-  content: "Light";
-  padding-left: 13px;
-}
-.button-switch-10 .on-off-toggle__slider {
-  border: none;
-}
-.button-switch-10 .on-off-toggle__slider:before {
-  content: "";
-  height: 32px;
-  border-radius: 32px;
-  width: 32px;
-  bottom: 9px;
-  left: 11px;
-  background-image: url("../img/4.png");
-  background-size: 100%;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-}
-.button-switch-10 .on-off-toggle__input:checked + .on-off-toggle__slider:before {
-  background-image: url("../img/1.png");
-}
-.default-btn-inner {
-  position: relative;
-  display: inline-block;
-}
-
-.default-btn-inner .darkluplite-btn {
-  display: inline-block;
-  height: 50px;
-  width: 50px;
-  line-height: 50px;
-  padding-top: 7px;
-  padding-left: 12px;
-  background: #E8E8E8;
+  border-radius: 35px;
   cursor: pointer;
-  transition: 0.4s;
-  border-radius: 5px;
 }
-
-.button-switch-10 input[type=checkbox]:checked + .darkluplite-btn {
-  color: #fff;
-  background-color: #3700B3;
-  background-image: none;
-  background-image: none;
-  outline: 0;
-  border: 0;
+.darkluplite-square-switch.style8 .toggle-btn{
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  left: 9px;
+  transition: left 0.4s;
 }
-
-.default-btn-inner .darkluplite-btn path,
-.default-btn-inner .darkluplite-btn circle {
-  fill: #3b3b3b;
+.darkluplite-square-switch.style8 .toggle-btn svg{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.4s;
 }
-
-.default-btn-inner-one .darkluplite-btn {
-  border-radius: 50%;
+.darkluplite-square-switch.style8 .toggle-btn svg #style-8-light{
+  fill: #ffffff;
 }
-
-.button-switch-9 {
-  background: #000000;
-  padding: 12px;
-  border-radius: 50%;
+.darkluplite-square-switch.style8 .toggle-btn svg:nth-child(1){
+  opacity: 1;
 }
-.button-switch-9 .on-off-toggle__slider {
-  width: 40px;
-  overflow: hidden;
-  background: #000000;
+.darkluplite-square-switch.style8 .toggle-btn svg:nth-child(2){
+  opacity: 0;
 }
-.button-switch-9 .on-off-toggle__slider:before {
-  background: #fff;
-  content: "";
-  bottom: -1px;
-  height: 40px;
-  left: -1px;
-  width: 20px;
-  border-radius: 50% 0 0 50%;
+.darkluplite-square-switch.style8 .toggle-checkbox:checked + .toggle-btn svg:nth-child(1) {
+  opacity: 0;
 }
-.button-switch-9 .on-off-toggle__input:checked + .on-off-toggle__slider:before {
-  transform: translateX(20px);
-  border-radius: 0 50% 50% 0;
-  background: #F6DE3D;
+.darkluplite-square-switch.style8 .toggle-checkbox:checked + .toggle-btn svg:nth-child(2) {
+  opacity: 1;
 }
