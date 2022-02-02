@@ -1,5 +1,5 @@
 
-*, :after, :before {
+.darkluplite-main-area *, .darkluplite-main-area:after, .darkluplite-main-area:before {
   box-sizing: border-box;
 }
 .darkluplite-btn {
@@ -231,6 +231,7 @@
 .darkluplite-menu-area ul li a:hover {
   background: #fff;
 }
+
 .darkluplite-admin-dark-mode-enabled .darkluplite-menu-area ul li a.active,
 .darkluplite-admin-dark-mode-enabled .darkluplite-menu-area ul li a:hover {
   background-color: transparent;
@@ -244,7 +245,7 @@
   padding: 50px 80px;
   height: 100%;
   padding-bottom: 100px;
-  min-height: 930px;
+  min-height: 995px;
 }
 
 /********* darkluplite-single-settings-inner *********/
@@ -966,4 +967,99 @@ html.darkluplite-admin-dark-mode-enabled .darkluplite-main-area .ace_scroller {
 }
 html.darkluplite-admin-dark-mode-enabled .darkluplite-main-area .darkluplite-btn{
   box-shadow: -1px -1px 14px 0px rgb(220 220 220 / 30%);
+}
+
+
+
+
+
+/* ========= Switch Preview ========== */
+.darkluplite-switch-preview-inner{
+  background: #f8f8f8;
+  height: calc(100% - 20px);
+  min-height: 200px;
+  position: relative;
+  border-radius: 10px;
+  padding: 20px 20px;
+}
+html.darkluplite-admin-dark-mode-enabled .darkluplite-switch-preview-inner{
+  background: #000000 !important;
+}
+.darkluplite-switch-preview-inner h5 {
+  font-weight: 600;
+  font-size: 18px;
+  color: #121212;
+  margin: 0;
+  padding-bottom: 5px;
+}
+html.darkluplite-admin-dark-mode-enabled .darkluplite-switch-preview-inner h5 {
+  color: #ffffff;
+}
+.darkluplite-switch-preview-inner p {
+  color: #9A9A9A;
+  margin: 0;
+}
+.darkluplite-switch-preview-inner .darkluplite-switch-preview{
+  display: none;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
+
+/* Analytics dashboard css */
+.darklup-chart-wrapper{
+  position: relative;
+  width: 101%;
+}
+.darklup-chart-header{
+  margin-bottom: 20px;
+}
+.darklup-chart{
+  height: 300px; 
+  width:394px;
+}
+
+.darklup-chart-modal-wrapper{
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0) 0%, white 100%);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+}
+
+.darklup-chart-modal{
+  position: absolute;
+  padding: 1.5em 3em;
+  box-shadow: 0 0 25px 10px #ddd;
+  border-radius: 3px;
+  background-color: #fff;
+  text-align: center;
+  width: 22em;
+  padding-bottom: 2.5em;
+}
+
+.darklup-chart-modal h1{
+  color: #E43F5A;
+  font-size: 36px;
+  font-weight: 600;
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+.darklup-chart-modal p {
+  color: #121212;
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+
+.darklup-chart-modal a {
+  padding: 9px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  background: #c62842;
+  color: #fff;
 }

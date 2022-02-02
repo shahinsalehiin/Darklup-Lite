@@ -49,6 +49,11 @@ class General_Settings_Tab extends Settings_Fields_Base {
           'sub_title' => esc_html__( 'Show the floating dark mode switcher button on the frontend for the users.', 'darklup-lite' ),
           'name' => 'floating_switch'
         ]);
+       $this->switch_field([
+           'title' => esc_html__( 'Enable Keyboard Shortcut', 'darklup-lite' ),
+           'sub_title' => esc_html__( 'Press Ctrl+Alt+D to turn ON / OFF dark mode', 'darklup-lite' ),
+           'name' => 'keyboard_shortcut'
+       ]);
        
         $this->end_fields_section(); // End fields section
 

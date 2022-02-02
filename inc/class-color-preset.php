@@ -35,7 +35,6 @@ class Color_Preset {
 	}
 
     public static function color_preset_1() {
-
         return [
             'background-color' => '#0d1117',
             'color' => '#fff',

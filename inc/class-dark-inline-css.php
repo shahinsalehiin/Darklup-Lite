@@ -77,21 +77,41 @@ class Dark_Inline_CSS {
 	public static function inlineAdminJs() {
         $inline_js = "";
         $backendDarkModeSettingsEnabled  = \DarklupLite\Helper::getOptionData('backend_darkmode');
+        $enableKeyboardShortcut  = \DarklupLite\Helper::getOptionData('keyboard_shortcut');
+
         if( $backendDarkModeSettingsEnabled ) {
             $inline_js .= "let isBackendDarkLiteModeSettingsEnabled = true;";
         }else{
             $inline_js .= "let isBackendDarkLiteModeSettingsEnabled = false;";
         }
+
+        if( $enableKeyboardShortcut ) {
+            $inline_js .= "let isKeyShortDarkModeEnabled = true;";
+        }else{
+            $inline_js .= "let isKeyShortDarkModeEnabled = false;";
+        }
+
         return $inline_js;
     }
     public static function inlineJs() {
         $enableOS  = \DarklupLite\Helper::getOptionData('enable_os_switcher');
+        $enableKeyboardShortcut  = \DarklupLite\Helper::getOptionData('keyboard_shortcut');
+
+        $inline_js = "";
 
         if( $enableOS ) {
-            return "let isOSDarkModeEnabled = true;";
+            $inline_js .= "let isOSDarkModeEnabled = true;";
         }else{
-            return "let isOSDarkModeEnabled = false;";
+            $inline_js .= "let isOSDarkModeEnabled = false;";
         }
+
+        if( $enableKeyboardShortcut ) {
+            $inline_js .= "let isKeyShortDarkModeEnabled = true;";
+        }else{
+            $inline_js .= "let isKeyShortDarkModeEnabled = false;";
+        }
+
+        return $inline_js;
     }
 	public static function inlineCss() {
 
@@ -215,7 +235,7 @@ class Dark_Inline_CSS {
 		$btnColor 	  = esc_html( $presetColor['color'] );
 
 		$inlinecss = "
-		html.darkluplite-admin-dark-mode-enabled .darkluplite-main-area .darkluplite-admin-dark-ignore *:not(.wp-color-result):not(.wp-color-result-text):not(.iris-palette-container):not(.iris-palette):not(.wp-picker-clear):not(.wp-color-picker):not(.ace_scroller):not(.list):not(.option):not(input):not(.addFieldGroup):not(.darklup-pro-ribbon){
+		html.darkluplite-admin-dark-mode-enabled .darkluplite-main-area .darkluplite-admin-dark-ignore *:not(.darkluplite-switch-preview-inner):not(.darkluplite-switch-preview-inner *):not(.wp-color-result):not(.wp-color-result-text):not(.iris-palette-container):not(.iris-palette):not(.wp-picker-clear):not(.wp-color-picker):not(.ace_scroller):not(.list):not(.option):not(input):not(.addFieldGroup):not(.darklup-pro-ribbon){
 			background-color: transparent !important;
 		}
 		html.darkluplite-admin-dark-mode-enabled #wpcontent a {
@@ -237,7 +257,7 @@ class Dark_Inline_CSS {
 			background-color: #4e4e4e !important;
 		}
 		html.darkluplite-admin-dark-mode-enabled #wpcontent,
-		html.darkluplite-admin-dark-mode-enabled #wpbody :not(.darkluplite-admin-dark-ignore):not(span):not(.ace_gutter-cell):not(.ace_gutter):not(.ace_layer):not(mark):not(code):not(pre):not(ins):not(option):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path) {
+		html.darkluplite-admin-dark-mode-enabled #wpbody :not(.darkluplite-admin-dark-ignore):not(span):not(.darkluplite-switch-preview-inner):not(.darkluplite-switch-preview-inner *):not(.ace_gutter-cell):not(.ace_gutter):not(.ace_layer):not(mark):not(code):not(pre):not(ins):not(option):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path) {
 			background-color: {$bgColor};
 			color: {$color};
 			border-color: {$borderColor};
@@ -245,7 +265,7 @@ class Dark_Inline_CSS {
 		html.darkluplite-admin-dark-mode-enabled a:not(.submitdelete) {
 		  color: {$anchorColor} !important;
 		}
-		html.darkluplite-admin-dark-mode-enabled path {
+		html.darkluplite-admin-dark-mode-enabled path:not(.darkluplite-switch-preview-inner):not(.darkluplite-switch-preview-inner *){
     		fill: {$color} !important;
     		stroke: {$color} !important;
 		}

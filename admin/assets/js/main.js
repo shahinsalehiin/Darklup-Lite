@@ -21,9 +21,12 @@
             this.MagnificPopup();
             this.customCSSEditor();
             this.fieldContation();
+            this.switchStylePreview();
             this.windowOnLoad();
             this.repeaterField();
             this.mediaUploader();
+            this.handleKeyShortcut();
+            this.darklupliteAnalyticsChart();
 
         },
         windowOnLoad: function() {
@@ -45,6 +48,45 @@
             }else{
                 $("html").show()
             }
+
+        },
+        handleKeyShortcut: function(){
+            let $that = this;
+            if(isKeyShortDarkModeEnabled){
+                var ctrlDown = false;
+                $(document).keydown(function(e) {
+                    if (e.which === 17) ctrlDown = true;
+                })
+                $(document).keyup(function(e) {
+                    if (e.which === 17) ctrlDown = false;
+                });
+                $(document).keydown(function(event) {
+                    if (ctrlDown && event.altKey && event.which === 68)
+                    {
+
+                        $('html').toggleClass($that.darkEnabledClass);
+
+                        if($($that.switchTrigger).is(':checked') ) {
+                            localStorage.removeItem("darklupModeEnabled");
+                            localStorage.removeItem("triggerCheked");
+                            $($that.switchTrigger).prop( 'checked', false );
+                            $('.darkluplite-mode-switcher').removeClass( 'darkluplite-admin-dark-ignore' );
+                            $('.admin-dark-icon').hide();
+                            $('.admin-light-icon').show();
+                        }else{
+                            localStorage.setItem("darklupModeEnabled", $that.darkEnabledClass);
+                            localStorage.setItem("triggerCheked", "checked");
+                            $($that.switchTrigger).prop( 'checked', true );
+                            $('.darkluplite-mode-switcher').addClass( 'darkluplite-admin-dark-ignore' );
+                            $('.admin-dark-icon').show();
+                            $('.admin-light-icon').hide();
+                        }
+
+                    }
+                });
+
+            }
+
 
         },
         darkModeSwitchEvent: function() {
@@ -204,6 +246,38 @@
 
 
         },
+        switchStylePreview: function() {
+
+            for (var x = 1; x <= 15; x++) {
+                if( $('input[name="darkluplite_settings[switch_style]"][value="'+x+'"]').is( ':checked' ) ) {
+                    $('.darkluplite-switch-preview-inner .darkluplite-switch-preview').hide();
+                    $('.darkluplite-switch-preview-inner .darkluplite-switch-preview-'+x).show();
+
+                    $('.darkluplite-switch-preview-inner .darkluplite-switch-preview-'+x+' .toggle-checkbox').delay(1000).animate({
+                        'checked': true
+                    }, 600).delay(500).animate({
+                        'checked': false
+                    }, 600);
+                }
+            }
+
+            $('input[name="darkluplite_settings[switch_style]"]').on('click', function () {
+                for (var x = 1; x <= 15; x++) {
+                    if( $('input[name="darkluplite_settings[switch_style]"][value="'+x+'"]').is( ':checked' ) ) {
+                        $('.darkluplite-switch-preview-inner .darkluplite-switch-preview').hide();
+                        $('.darkluplite-switch-preview-inner .darkluplite-switch-preview-'+x).show();
+
+                        $('.darkluplite-switch-preview-inner .darkluplite-switch-preview-'+x+' .toggle-checkbox').delay(1000).animate({
+                            'checked': true
+                        }, 600).delay(500).animate({
+                            'checked': false
+                        }, 600);
+
+                    }
+                }
+            })
+
+        },
         mediaUploader: function () {
 
             // Media Upload
@@ -285,7 +359,46 @@
                 $('.darklup-admin-popup-wrapper').fadeOut();
                 $('.darklup-single-popup-wrapper').hide();
             } )
-        }
+        },
+        darklupliteAnalyticsChart: function() {
+           
+            const labels      = $("#darklup_analytics_Chart").attr("data-labels");
+            const data_values = $("#darklup_analytics_Chart").attr("data-values");
+
+            if( labels  != null ){
+                const data = {
+                    labels: JSON.parse(labels),
+                    datasets: [{
+                        label: 'Dark Mode Usages',
+                        backgroundColor: '#fff',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: JSON.parse(data_values) ,
+                    }]
+    
+                };
+    
+                const config = {
+                    type: 'line',
+                    data: data,
+                    options: {
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
+                };
+    
+    
+                const darklupAnalyticsChart = new Chart(
+                    document.getElementById('darklup_analytics_Chart'),
+                    config
+                );
+            }
+             
+
+ 
+		 }
 
 
     }

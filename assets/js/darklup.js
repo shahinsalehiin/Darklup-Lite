@@ -18,6 +18,7 @@
 			$this.darklupDarkIgnore();
 			$this.windowOnLoad();
 			$this.handleOSDark();
+			$this.handleKeyShortcut();
 		},
 		windowOnLoad: function(){
 
@@ -27,7 +28,7 @@
 			//
 			if( getStorageData && getTriggerCheked ) {
 				$('html').toggleClass(this.darkEnabledClass);
-				$(this.switchTrigger).attr( 'checked', true );
+				$(this.switchTrigger).prop( 'checked', true );
 				$('.darkluplite-mode-switcher').addClass( 'darkluplite-dark-ignore' );
 				$("html").show()
 			}else{
@@ -42,8 +43,8 @@
 				if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
 					if(!lightOnOSDarkCheked){
 						$('html').addClass(this.darkEnabledClass);
-						$(this.switchTrigger).attr( 'checked', true );
-						$('.darklup-mode-switcher').addClass( 'darklup-dark-ignore' );
+						$(this.switchTrigger).prop( 'checked', true );
+						$('.darkluplite-mode-switcher').addClass( 'darkluplite-dark-ignore' );
 					}
 				}
 
@@ -52,15 +53,50 @@
 					if(newColorScheme === "dark"){
 						if(!lightOnOSDarkCheked){
 							$('html').addClass(this.darkEnabledClass);
-							$(this.switchTrigger).attr( 'checked', true );
-							$('.darklup-mode-switcher').addClass( 'darklup-dark-ignore' );
+							$(this.switchTrigger).prop( 'checked', true );
+							$('.darkluplite-mode-switcher').addClass( 'darkluplite-dark-ignore' );
 						}
 					}else{
 						$('html').removeClass(this.darkEnabledClass);
-						$(this.switchTrigger).attr( 'checked', false );
-						$('.darklup-mode-switcher').removeClass( 'darklup-dark-ignore' );
+						$(this.switchTrigger).prop( 'checked', false );
+						$('.darkluplite-mode-switcher').removeClass( 'darkluplite-dark-ignore' );
 					}
 				});
+			}
+
+
+		},
+		handleKeyShortcut: function(){
+			let $that = this;
+			if(isKeyShortDarkModeEnabled){
+				var ctrlDown = false;
+				$(document).keydown(function(e) {
+					if (e.which === 17) ctrlDown = true;
+				})
+				$(document).keyup(function(e) {
+					if (e.which === 17) ctrlDown = false;
+				});
+				$(document).keydown(function(event) {
+					if (ctrlDown && event.altKey && event.which === 68)
+					{
+
+						$('html').toggleClass($that.darkEnabledClass);
+
+						if($($that.switchTrigger).is(':checked') ) {
+							localStorage.removeItem("darklupModeEnabled");
+							localStorage.removeItem("triggerCheked");
+							$($that.switchTrigger).prop( 'checked', false );
+							$('.darkluplite-mode-switcher').removeClass( 'darkluplite-dark-ignore' );
+						}else{
+							localStorage.setItem("darklupModeEnabled", $that.darkEnabledClass);
+							localStorage.setItem("triggerCheked", "checked");
+							$($that.switchTrigger).prop( 'checked', true );
+							$('.darkluplite-mode-switcher').addClass( 'darkluplite-dark-ignore' );
+						}
+
+					}
+				});
+
 			}
 
 

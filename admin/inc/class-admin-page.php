@@ -53,6 +53,8 @@ class Admin_Page_Components {
                       require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-inc-exc-settings.php';
                       require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-trigger-settings.php';
                       require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-custom-css.php';
+                      require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-analytics-settings.php';
+
                       ?>
                     </div>
                   </div>

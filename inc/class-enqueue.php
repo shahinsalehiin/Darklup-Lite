@@ -42,6 +42,7 @@ if( !class_exists( 'DarklupLite_Enqueue' ) ) {
 		public function frontendEnqueueScripts() {
 			
 			wp_enqueue_style( 'darkluplite-style', DARKLUPLITE_DIR_URL.'assets/css/darkluplite-style.css', array(), DARKLUPLITE_VERSION, false );
+            wp_enqueue_style( 'darkluplite-switch', DARKLUPLITE_DIR_URL.'assets/css/darkluplite-switch.css', array(), DARKLUPLITE_VERSION, false );
 			
 			/********************
 				Js Enqueue

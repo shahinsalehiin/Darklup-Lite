@@ -73,7 +73,7 @@ trait Image_Radio_Button {
                 <?php 
                 foreach( $args['options'] as $key => $option ) {
 
-                    if (!in_array($key, array("1", "2", "3"))) {
+                    if (!in_array($key, array("1", "2", "3", "4"))) {
                     echo '<label class="radio-img darkluplite-pro-item pro-feature"><img src="'.esc_url( $option ).'"></label>';
                   } else {
                     echo '<label class="radio-img"><input type="radio" name="'.esc_attr( $optionName ).'['.$fieldName.']" '.checked(  $value,$key,false ).' value="'.esc_attr( $key ).'" /><img src="'.esc_url( $option ).'"></label>';
@@ -83,6 +83,28 @@ trait Image_Radio_Button {
                 ?>
               </div>
           </div>
+        </div>
+        <div class="darkluplite-col-lg-2 darkluplite-col-md-12"></div>
+        <div class="darkluplite-col-lg-4 darkluplite-col-md-12">
+            <div class="darkluplite-switch-preview-inner" >
+                <div class="details">
+                    <h5><?php echo esc_html__('Switch Preview', 'darklup-lite'); ?></h5>
+                    <p><?php echo esc_html__('Choose Switch Style to preview switch toggle effect and style.', 'darklup-lite'); ?></p>
+                </div>
+
+                <div class="darkluplite-switch-preview darkluplite-switch-preview-1">
+                    <?php echo \DarklupLite\Switch_Style::switchStyle(1, true); ?>
+                </div>
+                <div class="darkluplite-switch-preview darkluplite-switch-preview-2">
+                    <?php echo \DarklupLite\Switch_Style::switchStyle(2, true); ?>
+                </div>
+                <div class="darkluplite-switch-preview darkluplite-switch-preview-3">
+                    <?php echo \DarklupLite\Switch_Style::switchStyle(3, true); ?>
+                </div>
+                <div class="darkluplite-switch-preview darkluplite-switch-preview-4">
+                    <?php echo \DarklupLite\Switch_Style::switchStyle(4, true); ?>
+                </div>
+            </div>
         </div>
       </div>
 		<?php

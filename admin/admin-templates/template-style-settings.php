@@ -34,18 +34,21 @@ class Style_Settings_Tab extends Settings_Fields_Base
             'class' => 'settings-color-preset',
             'name' => 'switch_style',
             'options' => [
-                '1' => DARKLUPLITE_DIR_URL . 'assets/img/switch-1.svg',
-                '2' => DARKLUPLITE_DIR_URL . 'assets/img/switch-2.svg',
-                '3' => DARKLUPLITE_DIR_URL . 'assets/img/switch-8.svg',
-                '4' => DARKLUPLITE_DIR_URL . 'assets/img/switch-3.svg',
-                '5' => DARKLUPLITE_DIR_URL . 'assets/img/switch-4.svg',
-                '6' => DARKLUPLITE_DIR_URL . 'assets/img/switch-5.png',
-                '7' => DARKLUPLITE_DIR_URL . 'assets/img/switch-6.svg',
-                '8' => DARKLUPLITE_DIR_URL . 'assets/img/switch-7.svg',
-                '9' => DARKLUPLITE_DIR_URL . 'assets/img/switch-9.svg',
-                '10' => DARKLUPLITE_DIR_URL . 'assets/img/switch-10.svg',
-                '11' => DARKLUPLITE_DIR_URL . 'assets/img/switch-11.png',
-                '12' => DARKLUPLITE_DIR_URL . 'assets/img/switch-12.png'
+                '1' => DARKLUPLITE_DIR_URL . 'assets/img/switch-15.svg',
+                '2' => DARKLUPLITE_DIR_URL . 'assets/img/switch-1.svg',
+                '3' => DARKLUPLITE_DIR_URL . 'assets/img/switch-2.svg',
+                '4' => DARKLUPLITE_DIR_URL . 'assets/img/switch-8.svg',
+                '5' => DARKLUPLITE_DIR_URL . 'assets/img/switch-3.svg',
+                '6' => DARKLUPLITE_DIR_URL . 'assets/img/switch-4.svg',
+                '7' => DARKLUPLITE_DIR_URL . 'assets/img/switch-5.png',
+                '8' => DARKLUPLITE_DIR_URL . 'assets/img/switch-6.svg',
+                '9' => DARKLUPLITE_DIR_URL . 'assets/img/switch-7.svg',
+                '10' => DARKLUPLITE_DIR_URL . 'assets/img/switch-9.svg',
+                '11' => DARKLUPLITE_DIR_URL . 'assets/img/switch-10.svg',
+                '12' => DARKLUPLITE_DIR_URL . 'assets/img/switch-11.png',
+                '13' => DARKLUPLITE_DIR_URL . 'assets/img/switch-12.png',
+                '14' => DARKLUPLITE_DIR_URL . 'assets/img/switch-13.svg',
+                '15' => DARKLUPLITE_DIR_URL . 'assets/img/switch-14.svg'
             ]
         ]);
 
@@ -57,10 +60,34 @@ class Style_Settings_Tab extends Settings_Fields_Base
             'is_pro' => 'yes',
             'wrapper_class' => 'pro-feature'
         ]);
+
+        $this->select_box([
+            'title' => esc_html__('Switch Animation', 'darklup-lite'),
+            'sub_title' => esc_html__('Select an animation effect for the switch.', 'darklup-lite'),
+            'name' => 'darkluplite_switcher_animate',
+            'options' => [
+                'none' => esc_html__('None', 'darklup-lite'),
+                'animate_vibrate'   => esc_html__('Vibrate', 'darklup-lite'),
+                'animate_shake'     => esc_html__('Shake', 'darklup-lite'),
+                'animate_heartbeat' => esc_html__('Heartbeat', 'darklup-lite'),
+                'animate_rotate'    => esc_html__('Rotate', 'darklup-lite'),
+                'animate_spring'    => esc_html__(' Spring', 'darklup-lite'),
+            ],
+            'is_pro' => 'yes',
+            'wrapper_class' => 'pro-feature'
+        ]);
+        
         $this->switch_field([
             'title' => esc_html__('Want to Customize Switch Colors?', 'darklup-lite'),
             'sub_title' => esc_html__('Customize switch background, icon and text colors', 'darklup-lite'),
             'name' => 'label_custom_color_enabled',
+            'is_pro' => 'yes',
+            'wrapper_class' => 'pro-feature'
+        ]);
+        $this->switch_field([
+            'title' => esc_html__('Want to Customize Switch Size?', 'darklup-lite'),
+            'sub_title' => esc_html__('Customize switch width, height', 'darklup-lite'),
+            'name' => 'label_custom_size_enabled',
             'is_pro' => 'yes',
             'wrapper_class' => 'pro-feature'
         ]);

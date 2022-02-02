@@ -33,6 +33,8 @@ if( ! defined( 'ABSPATH' ) ) {
       add_action( 'admin_init', array( $this, 'pageInit' ) );
       add_action( 'admin_enqueue_scripts', array( $this, 'enqueueScripts' ) );
       add_action( 'plugin_action_links_' . DARKLUPLITE_BASE_PATH, array( $this, 'darkluplite_action_links') );
+      //dashboard widget
+      add_action('wp_dashboard_setup', [ $this, 'darkluplite_dashboard_widgets' ], 10);
     }
 
      /* action links on plugin page */
@@ -136,14 +138,90 @@ if( ! defined( 'ABSPATH' ) ) {
         wp_enqueue_style( 'nice-select', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'css/nice-select.css', array(), DARKLUPLITE_VERSION, false );
         wp_enqueue_style( 'select2', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'css/select2.min.css', array(), DARKLUPLITE_VERSION, false );
         wp_enqueue_style( 'darkluplite-style', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'css/style.css', array(), DARKLUPLITE_VERSION, false );
+        wp_enqueue_style( 'darkluplite-switch', DARKLUPLITE_DIR_URL.'assets/css/darkluplite-switch.css', array(), DARKLUPLITE_VERSION, false );
         wp_enqueue_style( 'darkluplite-responsive', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'css/responsive.css', array(), DARKLUPLITE_VERSION, false );
+        wp_enqueue_style( 'darkluplite-dashboard-widget', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'css/dashboard-widget.css', array(), DARKLUPLITE_VERSION, false );
 
         wp_enqueue_script( 'ace-editor', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'js//ace/ace.js', array('jquery'), '1.0', true );
         wp_enqueue_script( 'magnific', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'js/magnific.min.js', array('jquery'), '1.0', true );
         wp_enqueue_script( 'select', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'js/select.min.js', array('jquery'), '1.0', true );
         wp_enqueue_script( 'select2', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'js/select2.min.js', array('jquery'), '1.0', true );
+        wp_enqueue_script('darkluplite-chart-js', DARKLUPLITE_DIR_ADMIN_ASSETS_URL . 'js/darkluplite-chart.js', array('jquery'), '1.0');
         wp_enqueue_script( 'darkluplite-main', DARKLUPLITE_DIR_ADMIN_ASSETS_URL.'js/main.js', array( 'jquery', 'wp-color-picker' ), DARKLUPLITE_VERSION, true );
 
+    } 
+
+    /**
+     * DarklupLite  Analytics  
+     * 
+     * @since  1.1.3
+     * @return void
+     */
+    public function darkluplite_dashboard_widgets() {
+
+
+        wp_add_dashboard_widget('darkluplite_dark_mode', esc_html__('Darklup Dark Mode Usage', 'darklup-lite'), [
+            $this,
+            'darkluplite_analytics_dashboard_widget'
+        ]);
+
+        // Globalize the metaboxes array, this holds all the widgets for wp-admin.
+        global $wp_meta_boxes;
+
+        // Get the regular dashboard widgets array
+        // (which already has our new widget but appended at the end).
+        $default_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
+
+        // Backup and delete our new dashboard widget from the end of the array.
+        $darkluplite_widget_backup = array('darkluplite_dark_mode' => $default_dashboard['darkluplite_dark_mode']);
+        unset($default_dashboard['darkluplite_dark_mode']);
+
+        // Merge the two arrays together so our widget is at the beginning.
+        $sorted_dashboard = array_merge($darkluplite_widget_backup, $default_dashboard);
+
+        // Save the sorted array back into the original metaboxes.
+        $wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
+    }
+
+    /**
+     * DarklupLite  Analytics  Dashboard Widget
+     * 
+     * @since  1.1.3
+     * @return void
+     */
+    public function darkluplite_analytics_dashboard_widget() {
+        
+        $label_data = [
+            '20 Dec',
+            '21 Dec',
+            '22 Dec',
+            '24 Dec',
+            '25 Dec',
+            '27 Dec',
+            '29 Dec',
+        ];
+
+        $values = [ '5', '25', '20', '15', '12', '10', '3' ];
+    ?>    
+
+        <div class="darklup-chart-wrapper">
+            <div class="darklup-chart-header">
+                <span><?php esc_html_e("How much percentage of users use dark mode in last 7 days.", 'darklup-lite'); ?></span>
+            </div>
+           
+            <div class="darklup-chart">
+                <canvas id="darklup_analytics_Chart" style="width: 394px;height: 300px;" data-labels='<?php echo json_encode( $label_data ); ?>' data-values='<?php echo json_encode( $values ); ?>'></canvas>
+            </div>
+            <div class="darklup-chart-modal-wrapper">
+                <div class="darklup-chart-modal">
+                    <h1>Go Premium</h1>
+                    <p>Purchase our premium version to unlock these features</p>
+                    <a target="_blank" href="https://darklup.com/pricing/">Get Pro</a>
+                </div>
+            </div>
+        </div>
+
+    <?php
     }
 
 

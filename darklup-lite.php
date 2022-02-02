@@ -3,7 +3,7 @@
  * Plugin Name:       Darklup Lite - WP Dark Mode
  * Plugin URI:        https://darklup.com/
  * Description:       All in one WordPress plugin to create a stunning dark version for your WordPress website and dashboard
- * Version:           2.0.3
+ * Version:           2.0.8
  * Author:            Darklup
  * Author URI:        https://darklup.com/
  * License:           GPL v2 or later
@@ -27,7 +27,7 @@ if( !defined( 'DARKLUPLITE_ALERT_MSG' ) ) {
 
 // Version constant
 if( !defined( 'DARKLUPLITE_VERSION' ) ) {
-	define( 'DARKLUPLITE_VERSION', '2.0.3' );
+	define( 'DARKLUPLITE_VERSION', '2.0.8' );
 }
 
 // Plugin dir path constant
@@ -67,6 +67,15 @@ function pluginDarklupLiteDeleted() {
     delete_option('darkluplite_settings');
 }
 
+
+
+
+
+
+
+
+
+
 /**
  * DarklupLite final class
  */
@@ -95,6 +104,16 @@ final class DarklupLite {
 		add_action( 'elementor/widgets/widgets_registered', [$this, 'elementorOnWidgetsRegistered'] );
 		// Plugin activation hook
 		register_activation_hook( __FILE__, [ $this, 'pluginActivate' ] );
+
+
+        $this->appsero_init_tracker_darklup_lite_wp_dark_mode();
+
+
+        if(time() < 1638705540){
+            add_action('wp_dashboard_setup', [$this, 'darkluplite_dashboard_widgets']);
+        }
+
+
 
 	}
 
@@ -174,6 +193,90 @@ final class DarklupLite {
         }
 
 	}
+
+    /**
+     * Initialize the plugin tracker
+     *
+     * @return void
+     */
+    public function appsero_init_tracker_darklup_lite_wp_dark_mode() {
+
+        if ( ! class_exists( 'Appsero\Client' ) ) {
+            require_once __DIR__  . '/appsero/src/Client.php';
+        }
+
+        $client = new Appsero\Client( 'b190c422-bdd4-48ca-be75-7ae3fc5d6d07', 'Darklup Lite - WP Dark Mode', __FILE__ );
+
+        // Active insights
+        $client->insights()->init();
+
+    }
+
+
+
+
+
+
+    /* ====== Display Dashboard Widget ======= */
+    function darkluplite_dashboard_widgets() {
+        global $wp_meta_boxes;
+        wp_add_dashboard_widget('darkluplite_news_widget', 'Darklup - News & Updates', [$this, 'darkluplite_dashboard_news_updates']);
+    }
+
+    function darkluplite_dashboard_news_updates() {
+        echo '
+        
+        <div class="darkluplite-news-banner">
+            <a href="https://darklup.com/pricing/" target="_blank">
+                <img src="https://darklup.com/plugin-dashboard-news-contents/black_friday_cover.jpg" alt="Darklup Black Friday Banner">
+            </a>
+        </div>
+        
+        <div class="darkluplite-news-description">
+            <p>Darklup Black Friday sale is here. Enjoy up to <strong>70% Off</strong> on Darklup premium plans. <a href="https://darklup.com/pricing/" target="_blank"><strong>BUY NOW</strong></a>.
+            <br>
+            <a href="https://darklup.com/pricing/" target="_blank">👉 https://darklup.com/pricing/</a></p>
+        </div>
+        
+        <div class="line-divider"></div>
+        
+        
+        <div class="darkluplite-news-blog-posts">
+            <p><a href="https://wpcommerz.com/black-friday-and-cyber-monday-deals/" target="_blank">Best WordPress Black Friday And Cyber Monday Deals 2021</a></p>
+            <p><a href="https://darklup.com/googles-new-amazing-dark-mode-comforts-your-sore-eyes/" target="_blank">Google’s New Amazing Dark Mode Comforts Your Sore Eyes</a></p>
+            <p><a href="https://darklup.com/windows-11-default-dark-mode/" target="_blank">Microsoft Windows 11 Brings Default Dark Mode & We Empower WordPress With Default Dark Mode</a></p>
+            <p><a href="https://darklup.com/how-to-turn-on-dark-mode-on-smart-devices/" target="_blank">How To Turn On Dark Mode On Smart Devices In 2021 | Best Ways</a></p>
+        </div>
+        
+        <div class="line-divider"></div>
+        
+        <div class="darkluplite-news-footer">
+            <ul>
+                <li><a href="https://darklup.com/blog/" target="_blank">Blog <span aria-hidden="true" class="dashicons dashicons-external"></span></a></li>
+                <div class="li-divider"></div>
+                <li><a href="https://wpcommerz.com/contact/" target="_blank">Help <span aria-hidden="true" class="dashicons dashicons-external"></span></a></li>
+                <div class="li-divider"></div>
+                <li><a href="https://darklup.com/pricing/" target="_blank">Go Pro <span aria-hidden="true" class="dashicons dashicons-external"></span></a></li>
+                <div class="li-divider"></div>
+                <li><a href="https://wpcommerz.com/black-friday/" target="_blank">Black Friday <span aria-hidden="true" class="dashicons dashicons-external"></span></a></li>
+                <div class="li-divider"></div>
+                <li><a href="https://www.facebook.com/groups/816424282580036" target="_blank">Community <span aria-hidden="true" class="dashicons dashicons-external"></span></a></li>
+            </ul>
+        </div>
+        
+        
+        ';
+    }
+    /* ====== Display Dashboard Widget ======= */
+
+
+
+
+
+
+
+
+
 	/**
 	 * Delete settings options when plugin deactivate
 	 *
@@ -209,3 +312,11 @@ function darkluplite_check_premium_activation() {
 }
 add_action( 'darkluplite_init', 'darkluplite_check_premium_activation', 10, 2 );
 do_action( 'darkluplite_init');
+
+
+
+
+
+
+
+

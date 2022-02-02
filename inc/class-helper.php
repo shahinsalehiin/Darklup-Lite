@@ -24,15 +24,19 @@ class Helper{
 	public static function switchDemoImage() {
 
     $images = [
-        '1' => [ 
+        '1' => [
+            'name' => 'Switch 1',
+            'url' => DARKLUPLITE_DIR_URL.'assets/img/switch-15.svg'
+        ],
+        '2' => [
             'name' => 'Switch 1',
             'url' => DARKLUPLITE_DIR_URL.'assets/img/switch-1.svg'
         ],
-        '2' => [ 
+        '3' => [
             'name' => 'Switch 2',
             'url' => DARKLUPLITE_DIR_URL.'assets/img/switch-2.svg'
         ],
-        '3' => [ 
+        '4' => [
             'name' => 'Switch 3',
             'url' => DARKLUPLITE_DIR_URL.'assets/img/switch-8.svg'
         ]

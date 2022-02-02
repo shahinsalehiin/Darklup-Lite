@@ -44,23 +44,22 @@ class Image_Settings_Tab extends Settings_Fields_Base {
           'is_pro'    => 'yes',
           'wrapper_class'     => 'pro-feature'
         ]);
-        $this->number_field([
-          'title' => esc_html__( 'Image Opacity', 'darklup-lite' ),
-          'sub_title' => esc_html__( 'Set image opacity.', 'darklup-lite' ),
-          'class' => 'settings-switch-position',
-          'name'  => 'image_opacity',
-          'is_pro'    => 'yes',
-          'step'  => '0.1',
-          'max'   => '1',
-          'placeholder' => esc_html__( '0.5', 'darklup-lite' ),
-          'wrapper_class'     => 'pro-feature'
-        ]);
+        
         $this->image_repeater_field([
           'title' => esc_html__( 'Dark Mode Image Upload', 'darklup-lite' ),
           'sub_title' => esc_html__( 'Set darkmode image.', 'darklup-lite' ),
           'class' => 'settings-switch-position',
           'is_pro'    => 'yes',
           'name'  => 'image_darkmode',
+          'wrapper_class'     => 'pro-feature'
+        ]);
+
+        
+        $this->switch_field([
+          'title' => esc_html__( 'Show Image Effects', 'darklup-lite' ),
+          'sub_title' => esc_html__( 'Enable/ disable the dark mode image effects.', 'darklup-lite' ),
+          'name' => 'darklup_lite_image_effects',
+          'is_pro'    => 'yes',
           'wrapper_class'     => 'pro-feature'
         ]);
 

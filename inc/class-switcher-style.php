@@ -20,23 +20,26 @@ class Switch_Style {
 	 * @param number $style 
 	 * @return void
 	 */
-	public static function switchStyle( $style ) {
+	public static function switchStyle( $style, $preview = false ) {
 
 		$getStyle = '';
 
 		switch( $style ) {
 
 			case '1' :
-				$getStyle = self::style_1();
+				$getStyle = self::style_15($preview);
 				break;
 			case '2' :
-				$getStyle = self::style_2();
+				$getStyle = self::style_1($preview);
 				break;
             case '3' :
-                $getStyle = self::style_8();
+                $getStyle = self::style_2($preview);
+                break;
+            case '4' :
+                $getStyle = self::style_8($preview);
                 break;
 			default :
-				$getStyle = self::style_1();
+				$getStyle = self::style_15($preview);
 				break;
 				
 		}
@@ -44,18 +47,39 @@ class Switch_Style {
 		return $getStyle;
 
 	}
+
+
+    /**
+     * Switch style 15
+     *
+     * @since 1.0.0
+     * @return void
+     */
+    public static function style_15($preview = false) {
+        ob_start();
+        ?>
+        <div class="darkluplite-switch-container darkluplite-dark-ignore">
+            <label class="darkluplite-switch style15 darkluplite-dark-ignore">
+                <input type="checkbox" class="toggle-checkbox <?php echo (!$preview) ? "switch-trigger" : ""; ?>">
+                <div class="toggle-btn darkluplite-dark-ignore"> </div>
+            </label>
+        </div>
+        <?php
+        return ob_get_clean();
+    }
+
 	/**
 	 * Switch style 1
 	 * 
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public static function style_1() {
+	public static function style_1($preview = false) {
 		ob_start();
 		?>
         <div class="darkluplite-switch-container darkluplite-dark-ignore">
             <label class="darkluplite-switch style1 darkluplite-dark-ignore">
-                <input type="checkbox" class="toggle-checkbox switch-trigger">
+                <input type="checkbox" class="toggle-checkbox <?php echo (!$preview) ? "switch-trigger" : ""; ?>">
                 <div class="toggle-btn darkluplite-dark-ignore">
                     <svg xmlns="http://www.w3.org/2000/svg" width="54.312" height="54.312" viewBox="0 0 54.312 54.312">
                         <circle id="style-1-light" cx="17.71" cy="17.71" r="17.71" transform="translate(9.446 9.446)" fill="#fff"/>
@@ -90,12 +114,12 @@ class Switch_Style {
 	 * @return void
 	 */
 	
-	public static function style_2() {
+	public static function style_2($preview = false) {
 		ob_start();
 		?>
         <div class="darkluplite-switch-container darkluplite-dark-ignore">
             <label class="darkluplite-switch style2 darkluplite-dark-ignore">
-                <input type="checkbox" class="toggle-checkbox switch-trigger">
+                <input type="checkbox" class="toggle-checkbox <?php echo (!$preview) ? "switch-trigger" : ""; ?>">
                 <div class="toggle-btn darkluplite-dark-ignore">
                     <div class="plate darkluplite-dark-ignore">
                         <svg xmlns="http://www.w3.org/2000/svg" width="54.312" height="54.312" viewBox="0 0 54.312 54.312">
@@ -133,12 +157,12 @@ class Switch_Style {
      * @return void
      */
     
-	public static function style_8() {
+	public static function style_8($preview = false) {
 		ob_start();
 		?>
         <div class="darkluplite-square-switch-container darkluplite-dark-ignore">
             <label class="darkluplite-square-switch style8 darkluplite-dark-ignore">
-                <input type="checkbox" class="toggle-checkbox switch-trigger">
+                <input type="checkbox" class="toggle-checkbox <?php echo (!$preview) ? "switch-trigger" : ""; ?>">
                 <div class="toggle-btn darkluplite-dark-ignore">
                     <svg xmlns="http://www.w3.org/2000/svg" width="70.067" height="70.067" viewBox="0 0 70.067 70.067">
                         <circle id="style-8-light" cx="22.848" cy="22.848" r="22.848" transform="translate(12.185 12.185)" fill="#3b3b3b"/>
