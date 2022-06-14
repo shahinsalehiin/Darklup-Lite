@@ -8,8 +8,8 @@ html {
 
 .darkluplite-mode-switcher {
   position: fixed;
-  bottom: 10px;
-  right: 20px;
+  /* bottom: 10px;
+  right: 20px; */
   z-index: 100000000000;
 }
 .darkluplite-mode-switcher.top_right {
