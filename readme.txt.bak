@@ -75,8 +75,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
     <li><strong>Switch Tooltip Setting:</strong> Tooltip allows you to alert your user to use this feature if they want. You can use any customized text.</li>
     <li><strong>Switch Animation:</strong> Switch animation to make the floating switch appear in a stylish way. Choose between multiple animation styles.</li>
     <li><strong>Usage Analytics:</strong> Get an overview of Darklup usage report on Dashboard widget as well as scheduled report via email.</li>
-	<li><strong>Display Floating Switch in Desktop:</strong> Display floating switch in desktop allows you to display the floating switch in every desktop screen. </li>
-	<li><strong>Display Floating Switch in Mobile:</strong> Enable display floating switch in mobile and a floating switch that enables dark mode will stick around in mobile screen.</li>
 </ol>
 
 <p>🚀 <a href="https://darklup.com/pricing/" target="_blank">Get Pro</a> | 👁️ <a href="https://darklup.com/" target="_blank">Demo</a> | 👨‍💻 <a href="https://darklup.com/" target="_blank">Get Support</a></p>
