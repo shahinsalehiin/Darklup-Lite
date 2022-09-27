@@ -3,7 +3,7 @@
  * Plugin Name:       Darklup Lite - WP Dark Mode
  * Plugin URI:        https://darklup.com/
  * Description:       All in one WordPress plugin to create a stunning dark version for your WordPress website and dashboard
- * Version:           2.1.0
+ * Version:           2.1.1
  * Author:            Darklup
  * Author URI:        https://darklup.com/
  * License:           GPL v2 or later
@@ -27,7 +27,7 @@ if( !defined( 'DARKLUPLITE_ALERT_MSG' ) ) {
 
 // Version constant
 if( !defined( 'DARKLUPLITE_VERSION' ) ) {
-	define( 'DARKLUPLITE_VERSION', '2.1.0' );
+	define( 'DARKLUPLITE_VERSION', '2.1.1' );
 }
 
 // Plugin dir path constant
@@ -174,10 +174,14 @@ final class DarklupLite {
 		// Default options set
 		$defaultOption = array(
 
-			"frontend_darkmode"		=> 'yes',
-			"backend_darkmode"		=> 'yes',
+            "frontend_darkmode"		=> 'yes',
+            "backend_darkmode"		=> 'yes',
+
+            "switch_in_desktop"		=> 'yes',
+            "switch_in_mobile"		=> 'yes',
+
 			"enable_os_switcher"	=> 'yes',
-			"floating_switch"		=> 'yes',
+			/*"floating_switch"		=> 'yes',*/
 			"color_preset_enabled"	=> 'yes',
 			"custom_color_enabled"	=> 'no',
 			"admin_color_preset_enabled"	=> 'yes',
