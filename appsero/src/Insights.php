@@ -104,7 +104,7 @@ class Insights {
      *
      * @return \self
      */
-    public function notice( $text ) {
+    public function notice($text='' ) {
         $this->notice = $text;
 
         return $this;
@@ -163,7 +163,6 @@ class Insights {
         if ( $this->show_notice ) {
             // tracking notice
             add_action( 'admin_notices', array( $this, 'admin_notice' ) );
-
         }
 
         add_action( 'admin_init', array( $this, 'handle_optin_optout' ) );
@@ -245,21 +244,27 @@ class Insights {
             'is_local'         => $this->is_local_server(),
         );
 
-        $plugins_data = array();
-        foreach ( $all_plugins['active_plugins'] as $slug => $plugin) {
-
-            $slug = strstr( $slug, '/', true );
-            if( ! $slug )
-                continue;
-
-            $plugins_data[ $slug ] = array(
-                'name' => isset( $plugin['name'] ) ? $plugin['name'] : '',
-                'version' => isset( $plugin['version'] ) ? $plugin['version'] : '',
-            );
-        }
-
         // Add Plugins
-        if( $this->plugin_data ) {
+        if ($this->plugin_data) {
+            
+            $plugins_data = array();
+
+            foreach ($all_plugins['active_plugins'] as $slug => $plugin) {
+                $slug = strstr($slug, '/', true);
+                if (! $slug) {
+                    continue;
+                }
+
+                $plugins_data[ $slug ] = array(
+                    'name' => isset($plugin['name']) ? $plugin['name'] : '',
+                    'version' => isset($plugin['version']) ? $plugin['version'] : '',
+                );
+            }
+
+            if (array_key_exists($this->client->slug, $plugins_data)) {
+                unset($plugins_data[$this->client->slug]);
+            }
+            
             $data['plugins'] = $plugins_data;
         }
 
@@ -308,9 +313,13 @@ class Insights {
             'Number of users in your site',
             'Site language',
             'Number of active and inactive plugins',
-            'Site name and url',
+            'Site name and URL',
             'Your name and email address',
         );
+
+        if ($this->plugin_data) { 
+            array_splice($data, 4, 0, ["active plugins' name"]);
+        }
 
         return $data;
     }
@@ -356,9 +365,9 @@ class Insights {
      * @return boolean
      */
     private function is_local_server() {
-        return false;
-        /*$host       = $_SERVER['HTTP_HOST'];
-        $ip         = $_SERVER['SERVER_ADDR'];
+
+        $host       = isset( $_SERVER['HTTP_HOST'] ) ? $_SERVER['HTTP_HOST'] : 'localhost';
+        $ip         = isset( $_SERVER['SERVER_ADDR'] ) ? $_SERVER['SERVER_ADDR'] : '127.0.0.1';
         $is_local   = false;
 
         if( in_array( $ip,array( '127.0.0.1', '::1' ) )
@@ -368,7 +377,7 @@ class Insights {
             $is_local = true;
         }
 
-        return apply_filters( 'appsero_is_local', $is_local );*/
+        return apply_filters( 'appsero_is_local', $is_local );
     }
 
     /**
@@ -399,8 +408,6 @@ class Insights {
      * @return void
      */
     public function admin_notice() {
-
-
 
         if ( $this->notice_dismissed() ) {
             return;
@@ -774,6 +781,14 @@ class Insights {
             wp_send_json_error();
         }
 
+        if ( ! wp_verify_nonce( $_POST['nonce'], 'appsero-security-nonce' ) ) {
+            wp_send_json_error( 'Nonce verification failed' );
+        }
+
+        if ( ! current_user_can( 'manage_options' ) ) {
+            wp_send_json_error( 'You are not allowed for this task' );
+        }
+
         $data                = $this->get_tracking_data();
         $data['reason_id']   = sanitize_text_field( $_POST['reason_id'] );
         $data['reason_info'] = isset( $_REQUEST['reason_info'] ) ? trim( stripslashes( $_REQUEST['reason_info'] ) ) : '';
@@ -916,6 +931,7 @@ class Insights {
                             url: ajaxurl,
                             type: 'POST',
                             data: {
+                                nonce: '<?php echo wp_create_nonce( 'appsero-security-nonce' ); ?>',
                                 action: '<?php echo $this->client->slug; ?>_submit-uninstall-reason',
                                 reason_id: ( 0 === $radio.length ) ? 'none' : $radio.val(),
                                 reason_info: ( 0 !== $input.length ) ? $input.val().trim() : ''
