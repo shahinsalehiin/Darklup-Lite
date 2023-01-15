@@ -4,8 +4,8 @@ Donate link: https://darklup.com/
 Tags: WordPress dark mode, Dark mode, dark theme, night mode, gutenberg block
 Requires PHP: 5.6
 Requires at least: 5.1
-Tested up to: 6.0
-Stable tag: 2.1.2
+Tested up to: 6.1
+Stable tag: 2.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -235,6 +235,9 @@ screenshot-3.png
 screenshot-4.png
 
 == Changelog ==
+
+= 2.1.3 =
+1. Improved: Performance Improved
 
 = 2.1.2 =
 1. Fixed: Security vulnerabilities to make the plugin more secure.
