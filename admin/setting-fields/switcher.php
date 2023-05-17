@@ -26,6 +26,7 @@ trait Switcher {
       'class'     => '',
       'class'     => '',
       'wrapper_class' => '',
+	  'condition'   => '',
       'is_pro' 	  => 'no'
 
     ];
@@ -45,34 +46,43 @@ trait Switcher {
 	    $getData = self::$getOptionData;
 	    $fieldName  = $args['name'];
 	    $value = !empty( $getData[$fieldName] ) ? $getData[$fieldName] : '';
-
+		$conditionData = '';
+		if( !empty( $args['condition'] ) ) {
+		  $conditionData = json_encode( $args['condition'] );
+		}
 		?>
-		<div class="darkluplite-row <?php echo esc_html( $args['wrapper_class'].' '.$args['class'] ); ?>">
-	      	<div class="darkluplite-col-lg-6 darkluplite-col-md-12">
-				<div class="darkluplite-single-settings-inner">
-					<?php 
+<div class="darkluplite-row <?php echo esc_html( $args['wrapper_class'].' '.$args['class'] ); ?> darkluplite-switcher--field"
+    data-condition="<?php echo esc_html($conditionData); ?>">
+    <div class="darkluplite-col-lg-12 darkluplite-col-md-12">
+        <div class="darkluplite-single-settings-inner">
+            <?php 
 					if( $args['is_pro'] == 'yes' ) {
 						echo '<div class="darklup-pro-ribbon">'.esc_html__( 'Pro', 'darklup-lite' ).'</div>';
 					}
 					?>
-
-				    <div class="details">
-				        <h5><?php echo esc_html( $args['title'] ); ?></h5>
-				        <?php
+            <div class="darkluplite-switcher-inner-content">
+                <div class="details">
+                    <h5><?php echo esc_html( $args['title'] ); ?></h5>
+                    <?php
 						if( !empty( $args['sub_title'] ) ) {
 							echo '<p>'.esc_html( $args['sub_title'] ).'</p>';
 						}
 			            ?>
-				    </div>
-				    <div class="on-off-toggle button-switch">
-				        <input class="on-off-toggle__input <?php echo esc_attr($fieldName); ?>" name="<?php echo esc_attr( $optionName ).'['.$fieldName.']'; ?>" value="yes" type="checkbox" <?php checked( $value, 'yes' ); ?> id="darkluplite_<?php echo esc_attr( $fieldName ); ?>" />
-				        <label for="darkluplite_<?php echo esc_attr( $fieldName ); ?>" class="on-off-toggle__slider"></label>
-				    </div>
-				</div>
-			</div>
-		</div>
-		<?php
+                </div>
+                <div class="switcher-colon">:</div>
+                <div class="on-off-toggle button-switch">
+                    <input class="on-off-toggle__input <?php echo esc_attr($fieldName); ?>"
+                        name="<?php echo esc_attr( $optionName ).'['.$fieldName.']'; ?>" value="yes" type="checkbox"
+                        <?php checked( $value, 'yes' ); ?> id="darkluplite_<?php echo esc_attr( $fieldName ); ?>" />
+                    <label for="darkluplite_<?php echo esc_attr( $fieldName ); ?>"
+                        class="on-off-toggle__slider"></label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<?php
 	}
 
 }  
-

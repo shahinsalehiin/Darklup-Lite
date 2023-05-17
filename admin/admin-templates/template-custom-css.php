@@ -22,7 +22,7 @@ class Custom_Css_Settings_Tab extends Settings_Fields_Base {
         $this->start_fields_section([
 
             'title' => esc_html__( 'CUSTOM CSS SETTINGS', 'darklup-lite' ),
-            'class' => 'darkluplite-customcss-settings darkluplite-d-hide',
+            'class' => 'darkluplite-customcss-settings darkluplite-d-hide darkluplite-settings-content',
             'icon'  => esc_url( DARKLUPLITE_DIR_URL. 'assets/img/css.svg' ),
             'dark_icon'  => esc_url( DARKLUPLITE_DIR_URL. 'assets/img/css-white.svg' ),
             'id'    => 'darkluplite_custom_css_settings'

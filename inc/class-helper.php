@@ -100,7 +100,108 @@ class Helper{
     ];
 
   }
-  
+      /**
+     * Time maping
+     *
+     * @return bool
+     */
+    public static function darkmodeTimeMaping()
+    {
+
+        $basedDarkModeActive = self::getOptionData('time_based_darkmode');
+
+        if (!$basedDarkModeActive) {
+            return;
+        }
+
+        $getStartTime = self::getOptionData('mode_start_time');
+        $getEndTime = self::getOptionData('mode_end_time');
+        date_default_timezone_set("Asia/Dhaka");
+        // date_default_timezone_set("Europe/Copenhagen");
+
+        $currentTime = date('H:i');
+        
+        $currentTime = strtotime(date('H:i'));
+        // echo $currentTime;
+        $startTime = strtotime($getStartTime);
+        $endTime = strtotime($getEndTime);
+
+        // echo $currentTime.'<br>';
+        // echo $startTime.'<br>';
+        // echo $endTime.'<br>';
+        
+        $darkModeActivity = false;
+
+        if ($startTime > $endTime) {
+            if ($currentTime <= $endTime) {
+                $darkModeActivity = true;
+            }
+            $endTime += (24 * 3600);
+        }
+
+        if ($currentTime >= $startTime && $currentTime <= $endTime) {
+            $darkModeActivity = true;
+        }
+        
+        $darkModeActivity = false;
+        return $darkModeActivity;
+
+    }
+
+    // cehck if string is a real color
+    public static function is_real_color($color_string) {
+        // Remove any whitespace or other characters that might interfere with the pattern matching
+        $color_string = preg_replace('/\s+/', '', $color_string);
+      
+        // Check if the string matches any of the color patterns
+        if (preg_match('/^#?([a-fA-F0-9]{3}|[a-fA-F0-9]{6}|[a-fA-F0-9]{8})$/', $color_string) ||
+            preg_match('/^rgb\((\d{1,3}),(\d{1,3}),(\d{1,3})\)$/', $color_string) ||
+            preg_match('/^rgba\((\d{1,3}),(\d{1,3}),(\d{1,3}),([01]?\.?\d*?)\)$/', $color_string)) {
+          return $color_string;
+        } else {
+          return false;
+        }
+      }
+
+    public static function hex_to_color($colorString) {
+
+        $trimColorString = trim($colorString, "# ");
+
+        // check if the string is already an RGB color
+        if (preg_match('/^rgb\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)$/', $trimColorString, $matches)) {
+            return $colorString;
+            // return array($matches[1], $matches[2], $matches[3]);
+        }
+        if (ctype_xdigit($trimColorString) && strlen($trimColorString) == 6) {
+            // convert the hexadecimal string to RGB values
+            $rgb = array(
+              hexdec(substr($trimColorString, 0, 2)),
+              hexdec(substr($trimColorString, 2, 2)),
+              hexdec(substr($trimColorString, 4, 2))
+            );
+            $colorString = "rgb($rgb[0], $rgb[1], $rgb[1])";
+            return $colorString;
+      }
+      return $colorString;
+    }
+
+    /**
+     * Get nav menu location
+     *
+     * @return array
+     */
+    public static function getMenuLocations()
+    {
+
+        $menus = [];
+        foreach (get_nav_menu_locations() as $key => $menu) {
+            $menus[$key] = str_replace('-', ' ', $key);
+        }
+
+        return $menus;
+
+    }
+
   /**
    * Set dark mode switch text light/dark
    * 

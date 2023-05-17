@@ -55,24 +55,25 @@ trait Color_Scheme_Button {
         }
 
         ?>
-        <div class="darkluplite-row <?php echo esc_html( $args['wrapper_class'].' '.$args['class'] ); ?>" data-condition="<?php echo esc_html($conditionData); ?>">
-            <div class="darkluplite-col-lg-9 darkluplite-col-md-12">
-                <div class="darkluplite-single-settings-inner color_scheme_wrapper">
-                    <?php
+<div class="darkluplite-row <?php echo esc_html( $args['wrapper_class'].' '.$args['class'] ); ?>"
+    data-condition="<?php echo esc_html($conditionData); ?>">
+    <div class="darkluplite-col-lg-12 darkluplite-col-md-12">
+        <div class="darkluplite-single-settings-inner color_scheme_wrapper">
+            <?php
                     if( $args['is_pro'] == 'yes' ) {
                         echo '<div class="darklup-pro-ribbon">'.esc_html__( 'Pro', 'darklup-lite' ).'</div>';
                     }
                     ?>
-                    <div class="details">
-                        <h5><?php echo esc_html( $args['title'] ); ?></h5>
-                        <?php
+            <div class="details">
+                <h5><?php echo esc_html( $args['title'] ); ?></h5>
+                <?php
                         if( !empty( $args['sub_title'] ) ) {
                             echo '<p>'.esc_html( $args['sub_title'] ).'</p>';
                         }
                         ?>
-                    </div>
-                    <div class="rect-design">
-                        <?php
+            </div>
+            <div class="rect-design">
+                <?php
                         foreach( $args['options'] as $key => $option ) {
 
                             /*if( $key > 2 ) {
@@ -88,11 +89,11 @@ trait Color_Scheme_Button {
 
                         }
                         ?>
-                    </div>
-                </div>
             </div>
         </div>
-        <?php
+    </div>
+</div>
+<?php
     }
 
 }

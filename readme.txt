@@ -1,11 +1,11 @@
-=== DarklupLite - WP Dark Mode ===
+=== DarklupLite - The Most Advanced And Uprising WordPress Dark Mode Plugin  ===
 Contributors: darklup, wpcommerz
 Donate link: https://darklup.com/
-Tags: WordPress dark mode, Dark mode, dark theme, night mode, gutenberg block
+Tags: dark, dark mode, dark theme, night mode, wordpress dark mode
 Requires PHP: 5.6
 Requires at least: 5.1
-Tested up to: 6.1
-Stable tag: 2.1.3
+Tested up to: 6.2
+Stable tag: 3.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	<li><strong>Ready for translation ( .pot files included):</strong> You can translate from the predefined language to your required language because .pot file is included in this plugin to serve you in your native language.</li>
 	<li><strong>Well Documented:</strong> Proper documentation is created in the settings option and all the details about this plugin and tutorials are available in the documentation section to guide you in the easiest way.</li>
 	<li><strong>Keyboard Shortcut:</strong> Easy to turn ON or OFF dark mode using Ctrl+Alt+D. Keyboard Shortcut works on both Frontend and Backend of the site.</li>
+	<li><strong>Dynamic Dark Mode:</strong> With the help of the dynamic dark mode option, you can easily enable the dark mode feature on your website without doing any complex configuration. Darklup Dark Mode utilizes an intelligent, dynamic algorithm to effortlessly generate stunning dark mode color schemes for your website.</li>
+	<li><strong>Add Overlay to all Background Images:</strong> Enable the overlay option to add a visually appealing effect to all background images, enhancing their appearance without the need for image replacement.</li>
 </ol>
 
 
@@ -68,7 +70,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	<li><strong>Exclude Elements:</strong> You can avoid a particular element or portion to display the dark mode switch button by selecting the class, div, id of your website.</li>
 	<li><strong>Replace Logo in Dark Mode:</strong> You can wisely change your dark or light logo as you want. We have added an option to upload logos for both dark and bright version.</li>
 	<li><strong>New Accessibility Switch Added:</strong> New switch buttons of various styles have been added. These new switch styles will surely help you to attract your audience.</li>
-	<li><strong>WooCommerce Compatibility Added:</strong> This remarkable feature will increase the compatibility to cope up and maintain the balance with dark mode for your Woocommerce website to increase the readability.</li>
+	<li><strong>WooCommerce Compatibility Added:</strong> This remarkable feature will increase the compatibility to cope up and maintain the balance with dark mode for your WooCommerce website to increase the readability.</li>
 	<li><strong>Default Dark Mode:</strong> You can set dark mode as your default color scheme for your website. That means your users never need to switch from bright to dark. They will see dark mode by default.</li>
 	<li><strong>Floating Switch Customization:</strong> Darklup has a floating switch option. You can customize it as you want. You can customize the switch with icon and text.</li>
 	<li><strong>Fully Customizable Icon, background, and pallet Color for Switches:</strong> Not just floating switch you can also customize dark mode switch’s icon, background color, and color pallet. These features allow you to match your own color scheme and look better.</li>
@@ -77,6 +79,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
     <li><strong>Usage Analytics:</strong> Get an overview of Darklup usage report on Dashboard widget as well as scheduled report via email.</li>
 	<li><strong>Display Floating Switch in Desktop:</strong> Display floating switch in desktop allows you to display the floating switch in every desktop screen. </li>
 	<li><strong>Display Floating Switch in Mobile:</strong> Enable display floating switch in mobile and a floating switch that enables dark mode will stick around in mobile screen.</li>
+	<li><strong>Draggable Switch:</strong> You can drag the dark mode button to a desired position on the screen to make it easier to use. The option is available for both iOS and Android.</li>
+	<li><strong>Dark Mode Intensity:</strong> Adjust the dark mode intensity for your website by selecting a desired level. The website background will become darker as you increase the value. At 100%, the background color will be completely dark. Implementing this adjustment can significantly enhance the visual aesthetics of your website. Surprisingly, you may not need to replace any existing images on your website to look good in dark mode.</li>
+	<li><strong>Exclude Background Image Overlay:</strong> When 'image overlay' enabled, all background images receive an overlay in dark mode. You can remove the overlay from a specific element by providing the class or ID of that element.</li>
 </ol>
 
 <p>🚀 <a href="https://darklup.com/pricing/" target="_blank">Get Pro</a> | 👁️ <a href="https://darklup.com/" target="_blank">Demo</a> | 👨‍💻 <a href="https://darklup.com/" target="_blank">Get Support</a></p>
@@ -235,6 +240,44 @@ screenshot-3.png
 screenshot-4.png
 
 == Changelog ==
+
+= 3.1.0 =
+1. Added: Dynamic dark mode
+2. Added: Functionality for exclude a specific background overlay from any background images
+3. Added: Functionality to add background overlay to all background images
+4. Revised: Several minor issues have been resolved.
+5. Enhanced: The plugin's performance has been optimized.
+
+= 3.0.1 =
+1. Revised: Several minor issues have been resolved.
+2. Enhanced: The plugin's performance has been optimized.
+
+= 3.0 =
+1. IMPORTANT: This is a major release, and we strongly recommend testing it in your staging environment before implementing it on your live site.
+2. Improved: The backend UI has been enhanced to provide a better user experience.
+3. Improved: The core functionality of Darklup has been improved to work seamlessly with complex designs.
+4. New: The free version now includes a new feature called 'Time Based Dark Mode.'
+5. New: Another new feature called 'Display Switch in Menu' has also been added to the free version.
+6. New: Users can now customize different switches for mobile devices and the switch in the menu.
+8. New: The free version now includes several image effects, such as Sepia, Opacity, Contrast, Brightness, and Grayscale.
+9. New: Users can also set 'Dark Mode as Default' in the free version.
+10. New: The plugin offers customization options for individual colors in color presets.
+11. Tweak: General settings options have been moved to the advanced settings section for better organization.
+12. Tweak: Style related settings have been reorganized and moved to different sections, such as Desktop, Mobile, Menu, and Advance Settings.
+13. Refactor: Removed jQuery dependency from darklup functionality
+14. Fixed: Time based dark mode issue has been fixed.
+
+= 2.1.6 =
+1. Fixed: Some small issues.
+2. Improved: Performance of the plugin has been improved.
+
+= 2.1.5 =
+1. Fixed: Draggable Floating switch position issue.
+2. Improved: Performance of the plugin has been improved.
+
+= 2.1.4 =
+1. Added: Draggable Floating switch has been added.
+2. Improved: Performance of the plugin has been improved.
 
 = 2.1.3 =
 1. Improved: Performance Improved

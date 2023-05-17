@@ -21,7 +21,7 @@ class Analytics_Settings_Tab extends Settings_Fields_Base {
         $this->start_fields_section([
 
             'title' => 'USAGE ANALYTICS',
-            'class' => 'darkluplite_analytics_settings darkluplite-d-hide',
+            'class' => 'darkluplite_analytics_settings darkluplite-d-hide darkluplite-settings-content',
             'icon'  => esc_url(  DARKLUPLITE_DIR_URL. 'assets/img/analysis.svg' ),
             'dark_icon'  => esc_url(  DARKLUPLITE_DIR_URL. 'assets/img/analysis-white.svg' ),
             'id' => 'darkluplite_analytics_settings'

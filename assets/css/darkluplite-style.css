@@ -2,22 +2,24 @@ html {
   display: none;
 }
 
-/**
- * Switcher Css
- */
+html.darkluplite-dark-mode-enabled *:not(.darkluplite-dark-ignore):not(.darkluplite-dark-ignore *) {
+  color: rgb(237 237 237) !important;
+}
+html.darkluplite-dark-mode-enabled *:not(:is(.darkluplite-dark-ignore, .darkluplite-dark-ignore *)):before,
+html.darkluplite-dark-mode-enabled *:not(:is(.darkluplite-dark-ignore, .darkluplite-dark-ignore *)):after {
+  color: #ddd !important;
+}
 
 .darkluplite-mode-switcher {
   position: fixed;
-  /* bottom: 10px;
-  right: 20px; */
   z-index: 100000000000;
 }
 .darkluplite-mode-switcher.top_right {
-  top:38px;
+  top: 38px;
   right: 20px;
 }
 .darkluplite-mode-switcher.top_left {
-  top:38px;
+  top: 38px;
   left: 20px;
 }
 .darkluplite-mode-switcher.bottom_right {
@@ -31,5 +33,3 @@ html {
 .darkluplite-mode-switcher .mode-switcher-inner {
   cursor: pointer;
 }
-
-

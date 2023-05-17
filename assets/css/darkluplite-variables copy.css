@@ -1,0 +1,97 @@
+body {
+  /* background: red !important; */
+}
+
+html.darkluplite-dark-mode-enabled :not(.darkluplite-dark-ignore):not(input):not(textarea):not(button):not(select):not(mark):not(code):not(pre):not(ins):not(option):not(img):not(progress):not(iframe):not(.mejs-iframe-overlay):not(svg):not(video):not(canvas):not(a):not(path):not(.elementor-element-overlay):not(.elementor-background-overlay):not(i):not(button *):not(a *) {
+  color: var(--wpc-darkluplite--text-color) !important;
+  background-color: var(--wpc-darkluplite--bg) !important;
+  border-color: var(--wpc-darkluplite--border-color) !important;
+}
+
+html.darkluplite-dark-mode-enabled a {
+  color: var(--wpc-darkluplite--link-color) !important;
+}
+
+html.darkluplite-dark-mode-enabled a:hover {
+  color: var(--wpc-darkluplite--link-hover-color) !important;
+}
+
+html.darkluplite-dark-mode-enabled textarea,
+html.darkluplite-dark-mode-enabled input {
+  background: var(--wpc-darkluplite--input-bg) !important;
+  border-color: var(--wpc-darkluplite--border-color) !important;
+  color: var(--wpc-darkluplite--input-text-color) !important;
+}
+
+html.darkluplite-dark-mode-enabled button {
+  color: var(--wpc-darkluplite--btn-text-color) !important;
+  background: var(--wpc-darkluplite--btn-bg) !important;
+}
+
+/***********************************************************/
+a:focus-visible,
+a:focus {
+  outline: none !important;
+}
+
+.wpc-darkluplite--bg {
+  background-color: var(--wpc-darkluplite--bg) !important;
+}
+
+.wpc-darkluplite--secondary-bg {
+  background-color: var(--wpc-darkluplite--secondary-bg) !important;
+}
+
+.wpc-darkluplite-bg-txt-border {
+  background-color: var(--wpc-darkluplite--bg) !important;
+  border-color: var(--wpc-darkluplite--border-color) !important;
+  color: var(--wpc-darkluplite--text-color) !important;
+}
+
+
+.wpc-darkluplite--text {
+  color: var(--wpc-darkluplite--text-color) !important;
+}
+
+.wpc-darkluplite--text-color {
+  color: var(--wpc-darkluplite--text-color) !important;
+}
+
+/*Link Styles*/
+.wpc-darkluplite--link {
+  color: var(--wpc-darkluplite--link-color) !important;
+}
+
+.wpc-darkluplite--link:hover {
+  color: var(--wpc-darkluplite--link-hover-color) !important;
+}
+
+/*Input Styles*/
+.wpc-darkluplite--input {
+  background-color: var(--wpc-darkluplite--input-bg) !important;
+  color: var(--wpc-darkluplite--input-text-color) !important;
+  border-color: var(--wpc-darkluplite--border-color) !important;
+}
+
+.wpc-darkluplite--input::placeholder {
+  color: var(--wpc-darkluplite--text-color) !important;
+}
+
+.wpc-darkluplite--input:focus,
+.wpc-darkluplite--input:focus-visible {
+  outline: none !important;
+}
+
+.wpc-darkluplite--border {
+  border-color: var(--wpc-darkluplite--border-color) !important;
+}
+
+.wpc-darkluplite--border-color {
+  border-color: var(--wpc-darkluplite--border-color) !important;
+}
+
+/*Button Styles*/
+.wpc-darkluplite--btn {
+  background-color: var(--wpc-darkluplite--btn-bg) !important;
+  color: var(--wpc-darkluplite--btn-text-color) !important;
+}

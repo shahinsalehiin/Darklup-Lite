@@ -22,7 +22,7 @@ class Woocommerce_Settings_Tab extends Settings_Fields_Base
 
         $this->start_fields_section([
             'title' => esc_html__('WOOCOMMERCE SETTINGS', 'darklup-lite'),
-            'class' => 'darkluplite-woocommerce-settings darkluplite-d-hide',
+            'class' => 'darkluplite-woocommerce-settings darkluplite-d-hide darkluplite-settings-content',
             'icon' => esc_url(DARKLUPLITE_DIR_URL . 'assets/img/woocommerce.svg'),
             'dark_icon' => esc_url(DARKLUPLITE_DIR_URL . 'assets/img/woocommerce-white.svg'),
             'id' => 'darkluplite_woocommerce_settings'
@@ -36,27 +36,11 @@ class Woocommerce_Settings_Tab extends Settings_Fields_Base
             'is_pro' => 'yes',
             'options' => \DarklupLite\Helper::getWooProducts()
         ]);
-        $this->Multiple_select_box([
-            'title' => esc_html__('Include WooCommerce Products', 'darklup-lite'),
-            'sub_title' => esc_html__('Select the products where you want to show the dark mode switch except all other products', 'darklup-lite'),
-            'name' => 'include_woo_products',
-            'wrapper_class' => 'pro-feature',
-            'is_pro' => 'yes',
-            'options' => \DarklupLite\Helper::getWooProducts()
-        ]);
+        
         $this->Multiple_select_box([
             'title' => esc_html__('Exclude WooCommerce Categories', 'darklup-lite'),
             'sub_title' => esc_html__('Select the categories where you don\'t want to show the dark mode switch', 'darklup-lite'),
             'name' => 'exclude_woo_categories',
-            'wrapper_class' => 'pro-feature',
-            'is_pro' => 'yes',
-            'options' => \DarklupLite\Helper::getWooCategories()
-        ]);
-
-        $this->Multiple_select_box([
-            'title' => esc_html__('Include WooCommerce Categories', 'darklup-lite'),
-            'sub_title' => esc_html__('Select the categories where you want to show the dark mode switch except all other categories', 'darklup-lite'),
-            'name' => 'include_woo_categories',
             'wrapper_class' => 'pro-feature',
             'is_pro' => 'yes',
             'options' => \DarklupLite\Helper::getWooCategories()

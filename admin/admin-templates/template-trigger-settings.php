@@ -22,7 +22,7 @@ class Trigger_Settings_Tab extends Settings_Fields_Base
 
         $this->start_fields_section([
             'title' => esc_html__('TRIGGER SETTINGS', 'darklup-lite'),
-            'class' => 'darkluplite-trigger-settings darkluplite-d-hide',
+            'class' => 'darkluplite-trigger-settings darkluplite-d-hide darkluplite-settings-content',
             'icon' => esc_url(DARKLUPLITE_DIR_URL . 'assets/img/trigger.svg'),
             'dark_icon' => esc_url(DARKLUPLITE_DIR_URL . 'assets/img/trigger-white.svg'),
             'id' => 'darkluplite_trigger_settings'
@@ -37,14 +37,6 @@ class Trigger_Settings_Tab extends Settings_Fields_Base
             'options' => \DarklupLite\Helper::getPages()
         ]);
 
-        $this->Multiple_select_box([
-            'title' => esc_html__('Include Pages', 'darklup-lite'),
-            'sub_title' => esc_html__('Select the pages where you want to show the dark mode switch except all other pages', 'darklup-lite'),
-            'name' => 'include_pages',
-            'wrapper_class' => 'pro-feature',
-            'is_pro' => 'yes',
-            'options' => \DarklupLite\Helper::getPages()
-        ]);
 
         $this->Multiple_select_box([
             'title' => esc_html__('Exclude Posts', 'darklup-lite'),
@@ -55,14 +47,6 @@ class Trigger_Settings_Tab extends Settings_Fields_Base
             'options' => \DarklupLite\Helper::getPosts()
         ]);
 
-        $this->Multiple_select_box([
-            'title' => esc_html__('Include Posts', 'darklup-lite'),
-            'sub_title' => esc_html__('Select the posts where you want to show the dark mode switch except all other posts', 'darklup-lite'),
-            'name' => 'include_posts',
-            'wrapper_class' => 'pro-feature',
-            'is_pro' => 'yes',
-            'options' => \DarklupLite\Helper::getPosts()
-        ]);
 
         $this->Multiple_select_box([
             'title' => esc_html__('Exclude Categories', 'darklup-lite'),
@@ -73,14 +57,6 @@ class Trigger_Settings_Tab extends Settings_Fields_Base
             'options' => \DarklupLite\Helper::getCategories()
         ]);
 
-        $this->Multiple_select_box([
-            'title' => esc_html__('Include Categories', 'darklup-lite'),
-            'sub_title' => esc_html__('Select the categories where you want to show the dark mode switch except all other category posts', 'darklup-lite'),
-            'name' => 'include_categories',
-            'wrapper_class' => 'pro-feature',
-            'is_pro' => 'yes',
-            'options' => \DarklupLite\Helper::getCategories()
-        ]);
 
         $this->end_fields_section(); // End fields section
 

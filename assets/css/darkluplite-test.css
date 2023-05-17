@@ -1,0 +1,113 @@
+body {
+    --dracula-bg--wp--preset--color--black: #0d0d0d;
+    --dracula-text--wp--preset--color--black: #e5e0d8;
+    --dracula-border--wp--preset--color--black: #8f8475;
+
+    --dracula-bg--wp--preset--color--cyan-bluish-gray: #444d53;
+    --dracula-text--wp--preset--color--cyan-bluish-gray: #bbb3a7;
+    --dracula-border--wp--preset--color--cyan-bluish-gray: #4d5151;
+
+    --dracula-bg--wp--preset--color--white: #242525;
+    --dracula-text--wp--preset--color--white: #e5e0d8;
+    --dracula-border--wp--preset--color--white: #3a3d3d;
+
+    --dracula-bg--wp--preset--color--pale-pink: #70182d;
+    --dracula-text--wp--preset--color--pale-pink: #e9879a;
+    --dracula-border--wp--preset--color--pale-pink: #7c1a30;
+
+    --dracula-bg--wp--preset--color--vivid-red: #9d3331;
+    --dracula-text--wp--preset--color--vivid-red: #c8504d;
+    --dracula-border--wp--preset--color--vivid-red: #8c2f2d;
+
+    --dracula-bg--wp--preset--color--luminous-vivid-orange: #bf5d16;
+    --dracula-text--wp--preset--color--luminous-vivid-orange: #ee7e2e;
+    --dracula-border--wp--preset--color--luminous-vivid-orange: #aa5315;
+
+    --dracula-bg--wp--preset--color--luminous-vivid-amber: #c29419;
+    --dracula-text--wp--preset--color--luminous-vivid-amber: #f3bf33;
+    --dracula-border--wp--preset--color--luminous-vivid-amber: #ae8617;
+
+    --dracula-bg--wp--preset--color--light-green-cyan: #327860;
+    --dracula-text--wp--preset--color--light-green-cyan: #87d3af;
+    --dracula-border--wp--preset--color--light-green-cyan: #327859;
+
+    --dracula-bg--wp--preset--color--vivid-green-cyan: #1a9f6c;
+    --dracula-text--wp--preset--color--vivid-green-cyan: #53f0b1;
+    --dracula-border--wp--preset--color--vivid-green-cyan: #1db77a;
+
+    --dracula-bg--wp--preset--color--pale-cyan-blue: #174f70;
+    --dracula-text--wp--preset--color--pale-cyan-blue: #8ac6e9;
+    --dracula-border--wp--preset--color--pale-cyan-blue: #19577e;
+
+    --dracula-bg--wp--preset--color--vivid-cyan-blue: #1d77a8;
+    --dracula-text--wp--preset--color--vivid-cyan-blue: #45ace3;
+    --dracula-border--wp--preset--color--vivid-cyan-blue: #1d76a6;
+
+    --dracula-bg--wp--preset--color--vivid-purple: #5d298a;
+    --dracula-text--wp--preset--color--vivid-purple: #9f64cf;
+    --dracula-border--wp--preset--color--vivid-purple: #582882;
+
+    --dracula-bgimg--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg, #1d77a8 0%, #5d298a 100%);
+    --dracula-bgimg--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg, #327860 0%, #1a9f6a 100%);
+    --dracula-bgimg--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg, #c29419 0%, #bf5d16 100%);
+    --dracula-bgimg--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg, #bf5d16 0%, #9d3331 100%);
+    --dracula-bgimg--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg, #2d2e2e 0%, #444e55 100%);
+    --dracula-bgimg--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg, #2a968c 0%, #4c3572 20%, #9e328d 40%, #a32057 60%, #881a14 80%, #7a7516 100%);
+    --dracula-bgimg--wp--preset--gradient--blush-light-purple: linear-gradient(135deg, #521037 0%, #1e1c67 100%);
+    --dracula-bgimg--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg, #683a12 0%, #a31312 50%, #571038 100%);
+    --dracula-bgimg--wp--preset--gradient--luminous-dusk: linear-gradient(135deg, #875d14 0%, #8c3c83 50%, #344290 100%);
+    --dracula-bgimg--wp--preset--gradient--pale-ocean: linear-gradient(135deg, #453b11 0%, #2e5649 50%, #3c858b 100%);
+    --dracula-bgimg--wp--preset--gradient--electric-grass: linear-gradient(135deg, #4d6017 0%, #3a7b4e 100%);
+    --dracula-bgimg--wp--preset--gradient--midnight: linear-gradient(135deg, #111061 0%, #1749a3 100%);
+    --dracula-bgimg--wp--preset--duotone--dark-grayscale: url("https://wceazy.kom/#wp-duotone-dark-grayscale");
+    --dracula-bgimg--wp--preset--duotone--grayscale: url("https://wceazy.kom/#wp-duotone-grayscale");
+    --dracula-bgimg--wp--preset--duotone--purple-yellow: url("https://wceazy.kom/#wp-duotone-purple-yellow");
+    --dracula-bgimg--wp--preset--duotone--blue-red: url("https://wceazy.kom/#wp-duotone-blue-red");
+    --dracula-bgimg--wp--preset--duotone--midnight: url("https://wceazy.kom/#wp-duotone-midnight");
+    --dracula-bgimg--wp--preset--duotone--magenta-yellow: url("https://wceazy.kom/#wp-duotone-magenta-yellow");
+    --dracula-bgimg--wp--preset--duotone--purple-green: url("https://wceazy.kom/#wp-duotone-purple-green");
+    --dracula-bgimg--wp--preset--duotone--blue-orange: url("https://wceazy.kom/#wp-duotone-blue-orange");
+    --wp--preset--font-size--small: 13px;
+    --wp--preset--font-size--medium: 20px;
+    --wp--preset--font-size--large: 36px;
+    --wp--preset--font-size--x-large: 42px;
+    --wp--preset--spacing--20: 0.44rem;
+    --wp--preset--spacing--30: 0.67rem;
+    --wp--preset--spacing--40: 1rem;
+    --wp--preset--spacing--50: 1.5rem;
+    --wp--preset--spacing--60: 2.25rem;
+    --wp--preset--spacing--70: 3.38rem;
+    --wp--preset--spacing--80: 5.06rem;
+}
+
+
+:root {
+    --dracula-bg--ast-global-color-0: #176c9e;
+    --dracula-text--ast-global-color-0: #4caee8;
+    --dracula-border--ast-global-color-0: #1977af;
+    --dracula-bgimg--ast-global-color-0: #0084d6;
+    --dracula-bg--ast-global-color-1: #16618e;
+    --dracula-text--ast-global-color-1: #5ab3e9;
+    --dracula-border--ast-global-color-1: #197ab5;
+    --dracula-bg--ast-global-color-2: #0d0d0d;
+    --dracula-text--ast-global-color-2: #e5e0d8;
+    --dracula-border--ast-global-color-2: #8f8475;
+    --dracula-bg--ast-global-color-3: #313333;
+    --dracula-text--ast-global-color-3: #c7c0b5;
+    --dracula-border--ast-global-color-3: #7f7668;
+    --dracula-bg--ast-global-color-4: #282929;
+    --dracula-text--ast-global-color-4: #d7dbdb;
+    --dracula-border--ast-global-color-4: #343d47;
+    --dracula-bg--ast-global-color-5: #242525;
+    --dracula-text--ast-global-color-5: #e5e0d8;
+    --dracula-border--ast-global-color-5: #3a3d3d;
+    --dracula-bg--ast-global-color-6: #2a355b;
+    --dracula-text--ast-global-color-6: #9ab2cf;
+    --dracula-border--ast-global-color-6: #3f5295;
+    --dracula-bg--ast-global-color-7: #252626;
+    --dracula-text--ast-global-color-7: #cbdcee;
+    --dracula-border--ast-global-color-7: #112563;
+    --dracula-bg--ast-global-color-8: #353737;
+    --dracula-text--ast-global-color-8: #a6c8ec;
+    --dracula-border--ast-global-color-8: #122c72;
+}

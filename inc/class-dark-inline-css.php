@@ -1,305 +1,359 @@
 <?php
+
 namespace DarklupLite;
- /**
-  * 
-  * @package    DarklupLite - WP Dark Mode
-  * @version    1.0.0
-  * @author     
-  * @Websites: 
-  *
-  */
+
+/**
+ *
+ * @package    DarklupLite - WP Dark Mode
+ * @version    1.0.0
+ * @author
+ * @Websites:
+ *
+ */
 
 /**
  * Dark_Inline_CSS class
  */
-class Dark_Inline_CSS {
+class Dark_Inline_CSS
+{
 
-	/**
-	 * Dark_Inline_CSS constructor
-	 * @since  1.0.0
-	 * @return void
-	 */
-	function __construct() {
-		add_action( 'wp_enqueue_scripts', [ __CLASS__, 'enqueueStyle' ] );
-		add_action( 'admin_enqueue_scripts', [ __CLASS__, 'adminEnqueueStyle' ] );
-	}
+    /**
+     * Dark_Inline_CSS constructor
+     * @since  1.0.0
+     * @return void
+     */
+    public function __construct()
+    {
+        add_action('wp_enqueue_scripts', [__CLASS__, 'enqueueStyle']);
+        add_action('admin_enqueue_scripts', [__CLASS__, 'adminEnqueueStyle']);
+    }
 
-	/**
-	 * Admin enqueue style
-	 * 
-	 * @since  1.0.0
-	 * @return void
-	 */
-	public static function adminEnqueueStyle() {
-		
-		$backendDarkmode = \DarklupLite\Helper::getOptionData('backend_darkmode');
-		if( !$backendDarkmode ) {
-			return;
-		}
-		wp_enqueue_style( 'darkluplite-dark-style', DARKLUPLITE_DIR_URL.'assets/css/dark-style.css' );
-		self::adminAddStyle();
-	}
+    /**
+     * Admin enqueue style
+     *
+     * @since  1.0.0
+     * @return void
+     */
+    public static function adminEnqueueStyle()
+    {
 
-	/**
-	 * Enqueue style
-	 * 
-	 * @since  1.0.0
-	 * @return void
-	 */
-	public static function enqueueStyle() {
-		wp_enqueue_style( 'darkluplite-dark-style', DARKLUPLITE_DIR_URL.'assets/css/dark-style.css' );
-		self::addStyle();
-	}
-	/**
-	 * Add Front-End inline css
-	 * 
-	 * @since  1.0.0
-	 * @return void
-	 */
-	public static function addStyle() {
-		$css  = self::inlineCss();
-        $js  = self::inlineJs();
-		wp_add_inline_style( 'darkluplite-dark-style', $css );
-        wp_add_inline_script( 'jquery', $js );
-	}
-	/**
-	 * 
-	 * 
-	 * @since  1.0.0
-	 * @return void
-	 */
-	public static function adminAddStyle() {
-		$css  = self::adminInlineCss();
-        $js  = self::inlineAdminJs();
-		wp_add_inline_style( 'darkluplite-dark-style', $css );
-        wp_add_inline_script( 'jquery', $js );
-	}
-	public static function inlineAdminJs() {
+        $backendDarkmode = \DarklupLite\Helper::getOptionData('backend_darkmode');
+        if (!$backendDarkmode) {
+            return;
+        }
+        wp_enqueue_style('darkluplite-dark-style', DARKLUPLITE_DIR_URL . 'assets/css/dark-style.css');
+        self::adminAddStyle();
+    }
+
+    /**
+     * Enqueue style
+     *
+     * @since  1.0.0
+     * @return void
+     */
+    public static function enqueueStyle()
+    {
+        wp_enqueue_style('darkluplite-dark-style', DARKLUPLITE_DIR_URL . 'assets/css/dark-style.css');
+        self::addStyle();
+    }
+    /**
+     * Add Front-End inline css
+     *
+     * @since  1.0.0
+     * @return void
+     */
+    public static function addStyle()
+    {
+        $css = self::inlineCss();
+        $js = self::inlineJs();
+        wp_add_inline_style('darkluplite-dark-style', $css);
+        // wp_add_inline_script('jquery', $js);
+        $colorMode = 'darklup_dynamic';
+        $getMode = Helper::getOptionData('full_color_settings');
+        if($getMode !== 'darklup_dynamic'){
+            $colorMode = 'darklup_presets';
+        }
+        wp_add_inline_script($colorMode, $js, 'before');
+        // wp_add_inline_script('darklup_dynamic', $js, 'before');
+    }
+    /**
+     *
+     *
+     * @since  1.0.0
+     * @return void
+     */
+    public static function adminAddStyle()
+    {
+        $css = self::adminInlineCss();
+        $js = self::inlineAdminJs();
+        wp_add_inline_style('darkluplite-dark-style', $css);
+        wp_add_inline_script('jquery', $js);
+    }
+    public static function inlineAdminJs()
+    {
         $inline_js = "";
-        $backendDarkModeSettingsEnabled  = \DarklupLite\Helper::getOptionData('backend_darkmode');
-        $enableKeyboardShortcut  = \DarklupLite\Helper::getOptionData('keyboard_shortcut');
+        $backendDarkModeSettingsEnabled = \DarklupLite\Helper::getOptionData('backend_darkmode');
+        $enableKeyboardShortcut = \DarklupLite\Helper::getOptionData('keyboard_shortcut');
 
-        if( $backendDarkModeSettingsEnabled ) {
+        if ($backendDarkModeSettingsEnabled) {
             $inline_js .= "let isBackendDarkLiteModeSettingsEnabled = true;";
-        }else{
+        } else {
             $inline_js .= "let isBackendDarkLiteModeSettingsEnabled = false;";
         }
 
-        if( $enableKeyboardShortcut ) {
+        if ($enableKeyboardShortcut) {
             $inline_js .= "let isKeyShortDarkModeEnabled = true;";
-        }else{
+        } else {
             $inline_js .= "let isKeyShortDarkModeEnabled = false;";
         }
 
         return $inline_js;
     }
-    public static function inlineJs() {
-        $enableOS  = \DarklupLite\Helper::getOptionData('enable_os_switcher');
-        $enableKeyboardShortcut  = \DarklupLite\Helper::getOptionData('keyboard_shortcut');
-
+    public static function inlineJs()
+    {
+        $enableOS = \DarklupLite\Helper::getOptionData('enable_os_switcher');
+        $enableKeyboardShortcut = \DarklupLite\Helper::getOptionData('keyboard_shortcut');
+        $defaultDarkMode  = \DarklupLite\Helper::getOptionData('default_dark_mode');
         $inline_js = "";
 
-        if( $enableOS ) {
+        if ($enableOS) {
             $inline_js .= "let isOSDarkModeEnabled = true;";
-        }else{
+        } else {
             $inline_js .= "let isOSDarkModeEnabled = false;";
         }
 
-        if( $enableKeyboardShortcut ) {
+        if ($enableKeyboardShortcut) {
             $inline_js .= "let isKeyShortDarkModeEnabled = true;";
-        }else{
+        } else {
             $inline_js .= "let isKeyShortDarkModeEnabled = false;";
         }
 
+        if( $defaultDarkMode ) {
+            $inline_js .= "let isDefaultDarkModeEnabled = true;";
+        }else{
+            $inline_js .= "let isDefaultDarkModeEnabled = false;";
+        }
+
+
         return $inline_js;
     }
-	public static function inlineCss() {
+    public static function inlineCss()
+    {
 
-		$presetEnabled = \DarklupLite\Helper::getOptionData('color_preset_enabled');
-		$customEnabled = \DarklupLite\Helper::getOptionData('custom_color_enabled');
-		$enableOS  = \DarklupLite\Helper::getOptionData('enable_os_switcher');
 
-		$lightText = esc_html__( 'Light', 'darklup-lite' );
-		$darkText  = esc_html__( 'Dark', 'darklup-lite' );
+        //  Switch Position In Desktop
+        $marginUnit = 'px';
+        $switchMarginUnit 	  = \DarklupLite\Helper::getOptionData('switch_margin_unit');
+        if($switchMarginUnit == 'percent') $marginUnit = '%';
+        $topMargin = \DarklupLite\Helper::getOptionData('switch_top_margin').$marginUnit;
+        $bottomMargin = \DarklupLite\Helper::getOptionData('switch_bottom_margin').$marginUnit;
+        $leftMargin = \DarklupLite\Helper::getOptionData('switch_left_margin').$marginUnit;
+        $rightMargin = \DarklupLite\Helper::getOptionData('switch_right_margin').$marginUnit;
 
-		// Preset Color
-		$colorPreset = \DarklupLite\Helper::getOptionData('color_preset');
-		$presetColor =  \DarklupLite\Color_Preset::getColorPreset( $colorPreset );
+        $customBg = \DarklupLite\Helper::getOptionData('custom_bg_color');
+        $customBg = \DarklupLite\Helper::is_real_color($customBg);
+        $customSecondaryBg = \DarklupLite\Helper::getOptionData('custom_secondary_bg_color');
+        $customSecondaryBg = \DarklupLite\Helper::is_real_color($customSecondaryBg);
+        $customTertiaryBg = \DarklupLite\Helper::getOptionData('custom_tertiary_bg_color');
+        $customTertiaryBg = \DarklupLite\Helper::is_real_color($customTertiaryBg);
+        $customColor = \DarklupLite\Helper::getOptionData('custom_text_color');
+        $customColor = \DarklupLite\Helper::is_real_color($customColor);
 
-		$topMargin 	  = \DarklupLite\Helper::getOptionData('switch_top_margin');
-		$bottomMargin = \DarklupLite\Helper::getOptionData('switch_bottom_margin');
-		$leftMargin   = \DarklupLite\Helper::getOptionData('switch_left_margin');
-		$rightMargin  = \DarklupLite\Helper::getOptionData('switch_right_margin');
 
-		$bgColor 	 = esc_html( $presetColor['background-color'] );
-		$color 		 = esc_html( $presetColor['color'] );
-		$anchorColor = esc_html( $presetColor['anchor-color'] );
-		$anchorHoverColor = esc_html( $presetColor['anchor-hover-color'] );
-		$inputBgColor = esc_html( $presetColor['input-bg-color'] );
-		$borderColor  = esc_html( $presetColor['border-color'] );
-		$btnBgColor   = esc_html( $presetColor['btn-bg-color'] );
-		$btnColor 	  = esc_html( $presetColor['color'] );
+        // Preset Color
+        $colorPreset = \DarklupLite\Helper::getOptionData('color_preset');
+        $presetColor = \DarklupLite\Color_Preset::getColorPreset($colorPreset);
 
-		$inlinecss = "
-		
-		
-		
-		html.darkluplite-dark-mode-enabled :not(.darkluplite-dark-ignore):not(input):not(textarea):not(button):not(select):not(mark):not(code):not(pre):not(ins):not(option):not(img):not(progress):not(iframe):not(.mejs-iframe-overlay):not(svg):not(video):not(canvas):not(a):not(path):not(.elementor-element-overlay):not(.elementor-background-overlay):not(i):not(button *):not(a *)  {
-			color: {$color} !important;
-		    background-color: {$bgColor} !important;
-		    border-color: {$borderColor}!important
-		}
-		
-		/* IE10+ */
-        @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-            html.darkluplite-dark-mode-enabled :not(.darkluplite-dark-ignore):not(input):not(textarea):not(button):not(select):not(mark):not(code):not(pre):not(ins):not(option):not(img):not(progress):not(iframe):not(.mejs-iframe-overlay):not(svg):not(video):not(canvas):not(a):not(path):not(.elementor-element-overlay):not(.elementor-background-overlay):not(i):not(button):not(a)  {
-                color: {$color} !important;
-                background-color: {$bgColor} !important;
-                border-color: {$borderColor}!important
-            }
-        }
+
+        $bgColor = esc_html($presetColor['background-color']);
+        if($customBg) $bgColor = $customBg;
         
-        /* IE9,10 */
-        @media screen and (-webkit-min-device-pixel-ratio:0) and (max-width: 1024px) {
-            html.darkluplite-dark-mode-enabled :not(.darkluplite-dark-ignore):not(input):not(textarea):not(button):not(select):not(mark):not(code):not(pre):not(ins):not(option):not(img):not(progress):not(iframe):not(.mejs-iframe-overlay):not(svg):not(video):not(canvas):not(a):not(path):not(.elementor-element-overlay):not(.elementor-background-overlay):not(i):not(button):not(a)  {
-                color: {$color} !important;
-                background-color: {$bgColor} !important;
-                border-color: {$borderColor}!important
-            }
+        $bgSecondaryColor = esc_html($presetColor['secondary_bg']);
+        if($customSecondaryBg) $bgSecondaryColor = $customSecondaryBg;
+
+        $bgTertiary = esc_html($presetColor['tertiary_bg']);
+        if($customTertiaryBg) $bgTertiary = $customTertiaryBg;
+
+        $color = esc_html($presetColor['color']);
+        if($customColor) $color = $customColor;
+
+
+        $anchorColor = esc_html($presetColor['anchor-color']);
+        $anchorHoverColor = esc_html($presetColor['anchor-hover-color']);
+        $inputBgColor = esc_html($presetColor['input-bg-color']);
+        $borderColor = esc_html($presetColor['border-color']);
+        $btnBgColor = esc_html($presetColor['btn-bg-color']);
+        $btnColor = esc_html($presetColor['color']);
+        $boxShadow = esc_html($presetColor['color']);
+
+
+        $imgFilter = esc_html('brightness(85%)');
+        $bgImgFilter = esc_html('brightness(90%) grayscale(5%)');
+        $inlineSvgFilter = esc_html('brightness(90%) grayscale(5%) invert(90%)');
+
+        // Switch button width and height for desktop
+        $switch_size_base_width = \DarklupLite\Helper::getOptionData('switch_size_base_width');
+        $switch_size_base_height = \DarklupLite\Helper::getOptionData('switch_size_base_height');
+        $switch_size_base_width =  empty( $switch_size_base_width) ? "100" : $switch_size_base_width;
+        $switch_size_base_height =  empty( $switch_size_base_height) ? "40" : $switch_size_base_height;
+        // Switch button Icon width and height for desktop
+        $switch_icon_size_width_height = '';
+        $switch_size_icon_width = \DarklupLite\Helper::getOptionData('floating_switch_icon_width');
+        $switch_size_icon_height = \DarklupLite\Helper::getOptionData('floating_switch_icon_height');
+        if(!empty( $switch_size_icon_width)){
+            $switch_icon_size_width_height .= "--darkluplite-btn-icon-width: {$switch_size_icon_width}px;";
         }
-		
-		
-		html.darkluplite-dark-mode-enabled a {
-		  color: {$anchorColor} !important;
-		}
-		html.darkluplite-dark-mode-enabled a:hover {
-			color: {$anchorHoverColor} !important;
-		}
-		html.darkluplite-dark-mode-enabled textarea,
-		html.darkluplite-dark-mode-enabled input {
-		  background: {$inputBgColor} !important;
-		  border-color: {$borderColor}!important;
-		  color: {$color} !important;
-		}
-		html.darkluplite-dark-mode-enabled button {
-		  color: {$btnColor} !important;
-		  background: {$btnBgColor} !important;
-		}
-		.button-switch-6 .on-off-toggle__input:checked + .on-off-toggle__slider:after,
-		.button-switch-7 .on-off-toggle__input:checked + .on-off-toggle__slider:after,
-		.button-switch-8 .on-off-toggle__input:checked + .on-off-toggle__slider:after,
-		.button-switch-5 .on-off-toggle__input:checked + .on-off-toggle__slider:after {
-			content: '{$darkText}';
-		}
-		.button-switch-6 .on-off-toggle__slider:after,
-		.button-switch-7 .on-off-toggle__slider:after,
-		.button-switch-8 .on-off-toggle__slider:after,
-		.button-switch-5 .on-off-toggle__slider:after {
-			content: '{$lightText}';
-		}
-		.darkluplite-mode-switcher {
-			top: {$topMargin}px !important;
-			bottom: {$bottomMargin}px !important;
-			left: {$leftMargin}px !important;
-			right: {$rightMargin}px !important;
-		}
-		
-		";
+        if(!empty( $switch_size_icon_height)){
+            $switch_icon_size_width_height .= "--darkluplite-btn-icon-height: {$switch_size_icon_height}px;";
+        }
 
-		return $inlinecss;
 
-	}
+        $darklup_image_effects  = Helper::getOptionData('darkluplite_image_effects');
+        $darklup_image_effects = !empty($darklup_image_effects) ? $darklup_image_effects : 'no';
 
-	/**
-	 * Admin inline css
-	 * 
-	 * @since  1.0.0
-	 * @return void
-	 */
-	public static function adminInlineCss() {
+        $imgGrayscale  = Helper::getOptionData('image_grayscale');
+        $imgGrayscale  = !empty($imgGrayscale) ? $imgGrayscale : '0';
+        $imgBrightness = Helper::getOptionData('image_brightness');
+        $imgBrightness = !empty($imgBrightness) ? $imgBrightness : '1';
+        $imgContrast   = Helper::getOptionData('image_contrast');
+        $imgContrast   = !empty($imgContrast ) ? $imgContrast  : '1';
+        $imgOpacity    = Helper::getOptionData('image_opacity');
+        $imgOpacity    = !empty($imgOpacity ) ? $imgOpacity  : '1';
+        $imgSepia      = Helper::getOptionData('image_sepia');
+        $imgSepia      = !empty($imgSepia ) ? $imgSepia  : '0';
+        
 
-		$presetEnabled = \DarklupLite\Helper::getOptionData('admin_color_preset_enabled');
-		$customEnabled = \DarklupLite\Helper::getOptionData('admin_custom_color_enabled');
+        $inlinecss = "
+        :root {
+            --wpc-darkluplite--bg: $bgColor;
+            --wpc-darkluplite--secondary-bg: $bgSecondaryColor;
+            --wpc-darkluplite--tertiary-bg: $bgTertiary;
+            --wpc-darkluplite--text-color: $color;
+            --wpc-darkluplite--link-color: $anchorColor;
+            --wpc-darkluplite--link-hover-color: $anchorHoverColor;
+            --wpc-darkluplite--input-bg: $inputBgColor;
+            --wpc-darkluplite--input-text-color: $color;
+            --wpc-darkluplite--input-placeholder-color: $color;
+            --wpc-darkluplite--border-color: $borderColor;
+            --wpc-darkluplite--btn-bg: $btnBgColor;
+            --wpc-darkluplite--btn-text-color: $btnColor;
+            --wpc-darkluplite--img-filter: $imgFilter;
+            --wpc-darkluplite--bg-img-filter: $bgImgFilter;
+            --wpc-darkluplite--svg-filter: $inlineSvgFilter;
+            --wpc-darkluplite--box-shadow: $boxShadow;
+            --darkluplite-btn-width: {$switch_size_base_width}px;
+            --darkluplite-btn-height: {$switch_size_base_height}px;
+            {$switch_icon_size_width_height}
+        }
 
-		// Preset Color
-		$colorPreset = \DarklupLite\Helper::getOptionData('color_admin_preset');
-		$presetColor =  \DarklupLite\Color_Preset::getColorPreset( $colorPreset );
-
-		$bgColor 	 = esc_html( $presetColor['background-color'] );
-		$color 		 = esc_html( $presetColor['color'] );
-		$anchorColor = esc_html( $presetColor['anchor-color'] );
-		$anchorHoverColor = esc_html( $presetColor['anchor-hover-color'] );
-		$inputBgColor = esc_html( $presetColor['input-bg-color'] );
-		$borderColor  = esc_html( $presetColor['border-color'] );
-		$btnBgColor   = esc_html( $presetColor['btn-bg-color'] );
-		$btnColor 	  = esc_html( $presetColor['color'] );
-
-		$inlinecss = "
-		html.darkluplite-admin-dark-mode-enabled .darkluplite-main-area .darkluplite-admin-dark-ignore *:not(.darkluplite-switch-preview-inner):not(.darkluplite-switch-preview-inner *):not(.wp-color-result):not(.wp-color-result-text):not(.iris-palette-container):not(.iris-palette):not(.wp-picker-clear):not(.wp-color-picker):not(.ace_scroller):not(.list):not(.option):not(input):not(.addFieldGroup):not(.darklup-pro-ribbon){
-			background-color: transparent !important;
-		}
-		html.darkluplite-admin-dark-mode-enabled #wpcontent a {
-			background-color: transparent;
-		}
-		html.darkluplite-admin-dark-mode-enabled .darkluplite-menu-area ul li a.active,
-		html.darkluplite-admin-dark-mode-enabled .darkluplite-main-area .darkluplite-settings-area {
-			background-color: #2B2B2B !important;
-		}
-		html.darkluplite-admin-dark-mode-enabled .nice-select .option.selected.focus:hover, 
-		html.darkluplite-admin-dark-mode-enabled .nice-select .option:hover,
-		html.darkluplite-admin-dark-mode-enabled .darkluplite-single-input-inner input.darkluplite_image_upload_btn,
-		html.darkluplite-admin-dark-mode-enabled .img-url-repeater .addFieldGroup,
-		.darkluplite-admin-dark-mode-enabled .wp-core-ui .darkluplite-section-title .button {
-			background-color: {$anchorColor} !important;
-		}
-		html.darkluplite-admin-dark-mode-enabled .darkluplite-main-area .darkluplite-settings-area input[type='number'],
-		html.darkluplite-admin-dark-mode-enabled .darkluplite-main-area .darkluplite-settings-area input[type='text'] {
-			background-color: #4e4e4e !important;
-		}
-		html.darkluplite-admin-dark-mode-enabled #wpcontent,
-		html.darkluplite-admin-dark-mode-enabled #wpbody :not(.darkluplite-admin-dark-ignore):not(span):not(.darkluplite-switch-preview-inner):not(.darkluplite-switch-preview-inner *):not(.ace_gutter-cell):not(.ace_gutter):not(.ace_layer):not(mark):not(code):not(pre):not(ins):not(option):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path) {
-			background-color: {$bgColor};
-			color: {$color};
-			border-color: {$borderColor};
-		}
-		html.darkluplite-admin-dark-mode-enabled a:not(.submitdelete) {
-		  color: {$anchorColor} !important;
-		}
-		html.darkluplite-admin-dark-mode-enabled path:not(.darkluplite-switch-preview-inner):not(.darkluplite-switch-preview-inner *){
-    		fill: {$color} !important;
-    		stroke: {$color} !important;
-		}
-		html.darkluplite-admin-dark-mode-enabled .radio-img > input:checked + img {
-			border-color: {$anchorColor} !important;
-		}
-		html.darkluplite-admin-dark-mode-enabled input[type=color], 
-		html.darkluplite-admin-dark-mode-enabled input[type=date], 
-		html.darkluplite-admin-dark-mode-enabled input[type=datetime-local], 
-		html.darkluplite-admin-dark-mode-enabled input[type=datetime], 
-		html.darkluplite-admin-dark-mode-enabled input[type=email], 
-		html.darkluplite-admin-dark-mode-enabled input[type=month], 
-		html.darkluplite-admin-dark-mode-enabled input[type=number], 
-		html.darkluplite-admin-dark-mode-enabled input[type=password], 
-		html.darkluplite-admin-dark-mode-enabled input[type=search], 
-		html.darkluplite-admin-dark-mode-enabled input[type=tel], 
-		html.darkluplite-admin-dark-mode-enabled input[type=text], 
-		html.darkluplite-admin-dark-mode-enabled input[type=time], 
-		html.darkluplite-admin-dark-mode-enabled input[type=url], 
-		html.darkluplite-admin-dark-mode-enabled input[type=week],
-		html.darkluplite-admin-dark-mode-enabled input[type=checkbox], 
-		html.darkluplite-admin-dark-mode-enabled input[type=radio],
-		html.darkluplite-admin-dark-mode-enabled select, 
-		html.darkluplite-admin-dark-mode-enabled textarea {
-			background: {$inputBgColor} !important;
-			border-color: {$borderColor}!important;
-			color: {$color} !important;
+		.darkluplite-desktop-switcher {
+			top: {$topMargin} !important;
+			bottom: {$bottomMargin} !important;
+			left: {$leftMargin} !important;
+			right: {$rightMargin} !important;
 		}
 		";
 
-		return $inlinecss;
+		if($darklup_image_effects == "yes"){
+            $inlinecss .= "html.darkluplite-dark-mode-enabled img {
+                                filter: grayscale({$imgGrayscale}) opacity({$imgOpacity}) sepia({$imgSepia}) brightness({$imgBrightness}) contrast({$imgContrast}) !important;
+                            }";
+        }
 
-	}
-	
+        return $inlinecss;
+        // return $colorMode . ' Cute';
+    }
+
+    /**
+     * Admin inline css
+     *
+     * @since  1.0.0
+     * @return void
+     */
+    public static function adminInlineCss()
+    {
+
+
+        $customBg = \DarklupLite\Helper::getOptionData('admin_custom_bg_color');
+        $customBg = \DarklupLite\Helper::is_real_color($customBg);
+        $customSecondaryBg = \DarklupLite\Helper::getOptionData('admin_custom_secondary_bg_color');
+        $customSecondaryBg = \DarklupLite\Helper::is_real_color($customSecondaryBg);
+        $customTertiaryBg = \DarklupLite\Helper::getOptionData('admin_custom_tertiary_bg_color');
+        $customTertiaryBg = \DarklupLite\Helper::is_real_color($customTertiaryBg);
+        $customColor = \DarklupLite\Helper::getOptionData('admin_custom_text_color');
+        $customColor = \DarklupLite\Helper::is_real_color($customColor);
+
+        $colorPreset = \DarklupLite\Helper::getOptionData('admin_color_preset');
+        $presetColor = \DarklupLite\Color_Preset::getColorPreset($colorPreset);
+
+        $bgColor = esc_html($presetColor['background-color']);
+        if($customBg) $bgColor = $customBg;
+        
+        $bgSecondaryColor = esc_html($presetColor['secondary_bg']);
+        if($customSecondaryBg) $bgSecondaryColor = $customSecondaryBg;
+
+        $bgTertiary = esc_html($presetColor['tertiary_bg']);
+        if($customTertiaryBg) $bgTertiary = $customTertiaryBg;
+
+        $color = esc_html($presetColor['color']);
+        if($customColor) $color = $customColor;
+
+        $anchorColor = esc_html($presetColor['anchor-color']);
+        $anchorHoverColor = esc_html($presetColor['anchor-hover-color']);
+        $inputBgColor = esc_html($presetColor['input-bg-color']);
+        $borderColor = esc_html($presetColor['border-color']);
+        $btnBgColor = esc_html($presetColor['btn-bg-color']);
+        $btnColor = esc_html($presetColor['color']);
+        $boxShadow = esc_html($presetColor['color']);
+
+        $imgFilter = esc_html('brightness(85%)');
+        $bgImgFilter = esc_html('brightness(90%) grayscale(5%)');
+        $inlineSvgFilter = esc_html('brightness(90%) grayscale(5%) invert(90%)');
+
+        $darklup_image_effects  = Helper::getOptionData('darkluplite_image_effects');
+        $darklup_image_effects = !empty($darklup_image_effects) ? $darklup_image_effects : 'yes';
+
+        $imgGrayscale  = Helper::getOptionData('image_grayscale');
+        $imgGrayscale  = !empty($imgGrayscale) ? $imgGrayscale : '0';
+        $imgBrightness = Helper::getOptionData('image_brightness');
+        $imgBrightness = !empty($imgBrightness) ? $imgBrightness : '1';
+        $imgContrast   = Helper::getOptionData('image_contrast');
+        $imgContrast   = !empty($imgContrast ) ? $imgContrast  : '1';
+        $imgOpacity    = Helper::getOptionData('image_opacity');
+        $imgOpacity    = !empty($imgOpacity ) ? $imgOpacity  : '1';
+        $imgSepia      = Helper::getOptionData('image_sepia');
+        $imgSepia      = !empty($imgSepia ) ? $imgSepia  : '0';
+
+
+        $inlinecss = "
+
+        :root {
+            --wpc-darkluplite--bg: $bgColor;
+            --wpc-darkluplite--secondary-bg: $bgSecondaryColor;
+            --wpc-darkluplite--tertiary-bg: $bgTertiary;
+            --wpc-darkluplite--text-color: $color;
+            --wpc-darkluplite--link-color: $anchorColor;
+            --wpc-darkluplite--link-hover-color: $anchorHoverColor;
+            --wpc-darkluplite--input-bg: $inputBgColor;
+            --wpc-darkluplite--input-text-color: $color;
+            --wpc-darkluplite--input-placeholder-color: $color;
+            --wpc-darkluplite--border-color: $borderColor;
+            --wpc-darkluplite--btn-bg: $btnBgColor;
+            --wpc-darkluplite--btn-text-color: $btnColor;
+            --wpc-darkluplite--img-filter: $imgFilter;
+            --wpc-darkluplite--bg-img-filter: $bgImgFilter;
+            --wpc-darkluplite--svg-filter: $inlineSvgFilter;
+            --wpc-darkluplite--box-shadow: $boxShadow;
+        }
+
+		";
+		if($darklup_image_effects == "yes"){
+            $inlinecss .= ".darkluplite-image-effects-preview img {
+                                filter: grayscale({$imgGrayscale}) opacity({$imgOpacity}) sepia({$imgSepia}) brightness({$imgBrightness}) contrast({$imgContrast});
+                            }";
+        }
+        return $inlinecss;
+    }
 }
 
 // Init Dark Inline CSS obj

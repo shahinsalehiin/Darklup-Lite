@@ -26,6 +26,10 @@ trait Switch_Margin {
             'step'      => '1',
             'min'       => '1',
             'max'       => '10',
+            'condition'   => '',
+            'wrapper_class' => '',
+            'is_pro' 	  => 'no'
+      
         ];
 
         $args = wp_parse_args( $args, $default );
@@ -55,33 +59,45 @@ trait Switch_Margin {
 
         ?>
 
-        <div class="darkluplite-row" data-condition="<?php echo esc_html($conditionData); ?>">
-            <div class="darkluplite-col-lg-6 darkluplite-col-md-12">
-                <div class="input-area">
-                    <div class="darkluplite-multi-input-inner style-two">
-                        <label><?php echo esc_html( $args['title'] ); ?></label>
-                        <?php
+<div class="darkluplite-row darkluplite-margin--field <?php echo esc_html( $args['wrapper_class'] ); ?>"
+    data-condition="<?php echo esc_html($conditionData); ?>">
+    <div class="darkluplite-col-lg-12 darkluplite-col-md-12">
+        <div class="input-area">
+            <div class="darkluplite-multi-input-inner style-two">
+
+                <?php 
+					if( $args['is_pro'] == 'yes' ) {
+						echo '<div class="darklup-pro-ribbon">'.esc_html__( 'Pro', 'darklup-lite' ).'</div>';
+					}
+					?>
+
+                <label><?php echo esc_html( $args['title'] ); ?></label>
+                <?php
                         if( !empty( $args['sub_title'] ) ) {
                             echo '<p>'.esc_html( $args['sub_title'] ).'</p>';
                         }
                         ?>
-                        <div class="darkluplite-row">
-                            <?php
+                <div class="darkluplite-row">
+                    <?php
                             foreach ($fieldName as $key=>$field){
                                 ?>
-                                <div class="darkluplite-col-lg-6 darkluplite-col-md-12 darkluplite-multi-field-container">
-                                    <input id="darkluplite_<?php echo esc_attr( $field ); ?>" step="<?php echo esc_attr( $args['step'] ); ?>" max="<?php echo esc_attr( $args['max'] ); ?>" type="number" name="<?php echo esc_attr( $optionName ).'['.$field.']'; ?>" placeholder="<?php echo esc_attr( $args['placeholder'][$key] ); ?>" value="<?php echo esc_html( $value[$key] ); ?>">
-                                </div>
-                                <?php
+                    <div class="darkluplite-col-lg-3 darkluplite-col-md-12 darkluplite-multi-field-container">
+                        <input id="darkluplite_<?php echo esc_attr( $field ); ?>"
+                            step="<?php echo esc_attr( $args['step'] ); ?>"
+                            max="<?php echo esc_attr( $args['max'] ); ?>" type="number"
+                            name="<?php echo esc_attr( $optionName ).'['.$field.']'; ?>"
+                            placeholder="<?php echo esc_attr( $args['placeholder'][$key] ); ?>"
+                            value="<?php echo esc_html( $value[$key] ); ?>">
+                    </div>
+                    <?php
                             }
                             ?>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-        <?php
+    </div>
+</div>
+<?php
     }
 
 }
-
