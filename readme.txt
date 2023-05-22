@@ -1,87 +1,107 @@
-=== DarklupLite - The Most Advanced And Uprising WordPress Dark Mode Plugin  ===
+=== DarklupLite - WP Dark Mode ===
 Contributors: darklup, wpcommerz
 Donate link: https://darklup.com/
 Tags: dark, dark mode, dark theme, night mode, wordpress dark mode
 Requires PHP: 5.6
 Requires at least: 5.1
-Tested up to: 6.2
-Stable tag: 3.1.0
+Tested up to: 6.2.2
+Stable tag: 3.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-<p>DarklupLite is a POWERFUL dark mode plugin for WordPress.</p>
-<p>👨‍💻 Dark mode reduces damages from bright screen lights and grants up to 70% eye protection.</p>
+<p>Change the appearance of your WordPress website aesthetically by activating the most user-friendly plugin  - DarklupLite within a few moments.</p>
+<p>👓 Dark mode reduces damages from bright screen lights and grants up to 70% eye protection.</p>
 
-<p>Turn any WordPress website into an eye-pleasing reading experience by simply activating DarklupLite.</p>
+<p>📋 Turn any WordPress website into an eye-pleasing reading experience by simply activating DarklupLite.</p>
 
-<p>The most amazing dark mode plugin Darklup provides a huge number of features to make you and your WordPress website visitors more comfortable. The accessing procedure of this plugin is very easy. You just need to install and activate the plugin for your Wordpress website. You will find all the features accessing instruction in the settings option.The Darklup dark mode  plugin always keeps eyes in user preference and makes an elegant dark color scheme for your website. </p>
+<p>DarklupLite - The Best WordPress Dark Mode Plugin has numerous essential features for optimizing dark mode for WordPress website owners. Enable a visually stunning dark interface without facing any hassle with the help of Darklup's flexible and user-friendly functions.</p>
+
+<p>This essential dark mode plugin has been built based on advanced and smart artificial algorithms. It can automatically analyze the structure of the website and intelligently implement dark mode without creating any complications in the website design.</p>
+
+<p>The smart color sensitivity adjusts the color contrast according to user preference. Boost productivity without affecting your eyes. Also, you can use pre-generated 12 color presets for multiple dark mode designs</p>
+
+
+<h3>Why Choose DarklupLite?</h3> 
+<p>Choosing the best WordPress dark mode plugin can make your website user experience more appreciable. Darkluplite has unique dark mode optimization features that are efficient to improve the bounce rate of your website. It is also helpful for the visitors to keep safe from blue light exposure.</p>
+
+<p>We are glad some user reviews of our plugin - </p>
+
+@<a href="https://wordpress.org/support/topic/happy-with-this-plugin-37/">artlover1</a> ⭐⭐⭐⭐⭐
+<blockquote>“I am using darklup for last 1 month and it works good. faced some problems in sections thats are looking weired. then i contact on customer support and they fixed my issues. all the best team”</blockquote>
+
+@<a href="https://wordpress.org/support/topic/good-but-very-limited-on-free-version-and-has-issues-with-switch/">pherojoe</a> ⭐⭐⭐⭐⭐
+<blockquote>“I initially had some problems with the free version, but it is BY FAR the best looking dark mode plugin available, so I bought the premium version as I had some minor issues. But the developer was responsive even over xmas holidays and fixed them within a few days. <br> Highly recommended!”</blockquote>
+
+@<a href="https://wordpress.org/support/topic/the-best-dark-mode-plugin-for-your-wp-website/">Ronen</a> ⭐⭐⭐⭐⭐
+<blockquote>“with lot’s of options to custom your button, the color and much more, great support for any issues, working great on my websites!”</blockquote>
+
 
 [youtube https://www.youtube.com/watch?v=Rg_LeF3KFF4]
 
-<p>The smart color sensitivity adjusts the color contrast according to user preference. Boost productivity without affecting your eyes. Also has automatic color schemes with useful presets.</p>
+<p>👁️ <a href="https://darklup.com/" target="_blank">Demo</a> | 🚀 <a href="https://darklup.com/pricing/" target="_blank">Get Pro</a> | 👨‍💻 <a href="https://darklup.com/my-account/support-tickets/" target="_blank">Get Support</a></p>
 
-<p>🚀 <a href="https://darklup.com/pricing/" target="_blank">Get Pro</a> | 👁️ <a href="https://darklup.com/" target="_blank">Demo</a> | 👨‍💻 <a href="https://darklup.com/" target="_blank">Get Support</a></p>
 
 <h3>🌟 WordPress Dark Mode Plugin Free Features:</h3>
 <ol>
-	<li><strong>Dark mode Elementor widget:</strong> Dark mode Elementor widget allows you to set the dark mode switch button in any post or page and customize your website entirely.
-</li>
- 	<li><strong>Dark Mode Gutenberg widget:</strong> Using the dark mode switch Gutenberg widget, you can place the dark mode switch button in any page or post as your demand.
-</li>
- 	<li><strong>Dark mode WP widget:</strong> Enabling dark mode for WP widget is available in the plugin.</li>
- 	<li><strong>Frontend dark mode:</strong> After activating the WordPress dark mode plugin for the website's frontend portion the plugin will display a dark mode accessing switch button for your website's audience.</li>
- 	<li><strong>Backend Dark mode:</strong> As a dashboard user you can also enable dark mode for your WordPress backend admin section.</li>
- 	<li><strong>Automatic mode:</strong> To enjoy this feature set start and end time and the plugin will serve dark mode automatically within the predefined time.</li>
- 	<li><strong>Floating switch button:</strong> You can locate floating switch buttons anywhere on your website.</li>
-	<li><strong>Re-positioning floating switch:</strong> The floating switch can be displayed at top right, top left, bottom right, bottom left on your webpage. But sometimes these fixed positions may clash with your chatbot, tooltip, or scroll to top button.To avoid this clash you can set a floating switch margin to move the switch to up or down, left or right wherever you want.</li>
-	<li><strong>OS based color mode:</strong> Almost all leading operating systems support WordPress Dark Mode Plugin for showing dark mode color scheme.</li>
-	<li><strong>3+ Exclusive color preset:</strong> More than 3 exclusive color presets are obtainable to adorn the website with proper balanced color.</li>
-	<li><strong>4+ exclusive switch styles:</strong> More than 4 exclusive switch styles are available to enrich the productivity of a website.</li>
-	<li><strong>Ready for translation ( .pot files included):</strong> You can translate from the predefined language to your required language because .pot file is included in this plugin to serve you in your native language.</li>
-	<li><strong>Well Documented:</strong> Proper documentation is created in the settings option and all the details about this plugin and tutorials are available in the documentation section to guide you in the easiest way.</li>
-	<li><strong>Keyboard Shortcut:</strong> Easy to turn ON or OFF dark mode using Ctrl+Alt+D. Keyboard Shortcut works on both Frontend and Backend of the site.</li>
-	<li><strong>Dynamic Dark Mode:</strong> With the help of the dynamic dark mode option, you can easily enable the dark mode feature on your website without doing any complex configuration. Darklup Dark Mode utilizes an intelligent, dynamic algorithm to effortlessly generate stunning dark mode color schemes for your website.</li>
-	<li><strong>Add Overlay to all Background Images:</strong> Enable the overlay option to add a visually appealing effect to all background images, enhancing their appearance without the need for image replacement.</li>
+	<li style="margin-bottom:10px"><strong>Dark Mode Elementor Widget:</strong> Dark mode Elementor widget allows you to set the dark mode switch button in any post or page and customize your website entirely.</li>
+    <li style="margin-bottom:10px"><strong>Dark Mode Gutenberg Widget:</strong> Using the dark mode switch Gutenberg widget, you can place the dark mode switch button in any page or post as your demand.</li>
+ 	<li style="margin-bottom:10px"><strong>Dark Mode WP Widget:</strong> Darklup will allow you to easily enable WP widgets without any difficulty.</li>
+ 	<li style="margin-bottom:10px"><strong>Frontend Dark Mode:</strong>  Enable the dark mode function for the frontend portion of your WordPress website.</li>
+ 	<li style="margin-bottom:10px"><strong>Backend Dark Mode:</strong> Enable the dark mode function for the admin panel of your WordPress website.</li>
+ 	<li style="margin-bottom:10px"><strong>Time-Based Dark Mode:</strong> You can easily turn on automated dark mode based on your preferred time. Also, you can set up start and end times.</li>
+ 	<li style="margin-bottom:10px"><strong>Floating Switch Button:</strong> You can add and enable floating switch buttons anywhere on your website.</li>
+	<li style="margin-bottom:10px"><strong>Re-Positioning Floating Switch:</strong> The floating switch can be displayed at the top right, top left, bottom right, and bottom left on your webpage. Customize the floating switch margin to top, bottom, left, and right.</li>
+	<li style="margin-bottom:10px"><strong>OS-Based Dark Mode:</strong> Almost all leading operating systems support Darklup plugin for showing the dark mode color scheme.</li>
+	<li style="margin-bottom:10px"><strong>3+ Exclusive Color Presets:</strong> More than 3+ exclusive color presets for admin and dashboard which are obtainable to adorn the website with proper balanced color.</li>
+	<li style="margin-bottom:10px"><strong>4+ Exclusive Switch Styles:</strong> More than 4 exclusive switch styles are available to enrich the productivity of a website.</li>
+	<li style="margin-bottom:10px"><strong>Ready for Translation ( .pot files included):</strong> You can translate from the predefined language to your required language because .pot file is included in this plugin to serve you in your native language.</li>
+	<li style="margin-bottom:10px"><strong>Keyboard Shortcut:</strong> Easy to turn ON or OFF dark mode using Ctrl+Alt+D. Keyboard Shortcut works on both Frontend and Backend of the site.</li>
+	<li style="margin-bottom:10px"><strong>Dynamic Dark Mode:</strong> Dynamic dark mode will allow you to enable auto-generated dark mode. It utilizes an intelligent, dynamic algorithm to effortlessly generate stunning dark-mode color schemes for your website.</li>
+	<li style="margin-bottom:10px"><strong>Add Overlay to all Background Images:</strong> Enable the overlay option to add a visually appealing effect to all background images, enhancing their appearance without the need for image replacement.</li>
+	<li style="margin-bottom:10px"><strong>Proper Image Optimization: </strong> Easily adjust multiple factors (brightness, contrast, opacity, sepia) of your website images to make it visually clear and user-friendly in dark mode settings.</li>
+	<li style="margin-bottom:10px"><strong>Set Button Location:</strong> You can display the dark mode switch button anywhere on the website as you and your user demand.</li>
+	<li style="margin-bottom:10px"><strong>Remember Last Time Mode:</strong> Remember the mode that you or the audience have used last time and activate the mode according to the last accessing mode automatically.</li>
+	<li style="margin-bottom:10px"><strong>Set Button Size:</strong> You can change the dark mode switch button size. Floating Switch can be scaled to increase or decrease size maintaining the aspect ratio.</li>
+	<li style="margin-bottom:10px"><strong>Switch Preview:</strong> You can see the Floating Switch live preview on Plugin Back-end.</li>
+	<li style="margin-bottom:10px"><strong>Well Documented:</strong> You can find the full-fledged information and proper installation guide in the “documentation” section of the Darklup plugin.</li>
 </ol>
+
 
 
 <h3>🔥 WordPress Dark Mode Plugin PRO Features:</h3>
 <ol>
-	<li><strong>Smart Dark Color Schemes:</strong> DarklupLite is developed in such a way that it automatically picks up color schemes that go perfectly with your website. Because of that, the dark mode doesn't cause any color distortion on the website. Rather, you will get perfect color replacements on the webpage that has lots of colors.</li>
-	<li><strong>Exclude WooCommerce products & categories (Exclude specific categories or products):</strong> To enrich your woocommerce website, this feature allows you to show the dark mode switch button on some product and category. So, you can exclude or include any product or category to show the dark switch button.</li>
-	<li><strong>Triggering Dark Mode between Pages, Posts and Categories:</strong> This amazing feature will let you select particular pages,posts and categories where you don’t want to show the dark mode switch.</li>
-	<li><strong>Custom CSS Supported dark mode:</strong> Allow to edit any specific section of your website by adding some code in the custom CSS section.</li>
-	<li><strong>Dark Mode image support:</strong> The plugin allows to maintain the images brightness and contrast which helps to keep a balance with the dark color scheme in the website.</li>
-	<li><strong>Shortcode integration:</strong> You can insert a shortcode to change the location of the dark mode switch button.</li>
-	<li><strong>Custom Color:</strong> Customizing color according to your choice is obtainable to garnish your website with proper balanced color with dark mode.</li>
-	<li><strong>Schedule dark mode:</strong> Set the WordPress dark mode activation time according to your local time and enjoy the automatic activation of dark mode on the website.</li>
-	<li><strong>Set button location:</strong> You can display the dark mode switch button anywhere on the website as you and your user demand.</li>
-	<li><strong>Set Button Size:</strong> You can change the dark mode switch button size. Floating Switch can be scaled to increase or decrease size maintaining the aspect ratio.</li>
-	<li><strong>Switch Background Color:</strong> Darklup provides you the scope to pick your desired color for the switch’s background and this will create a well-decorated website according to your website and brand color.</li>
-	<li><strong>Switch Preview:</strong> You can see the Floating Switch live preview on Plugin Back-end.</li>
-	<li><strong>Remember last time mode:</strong> Remember the mode that you or the audience have used last time and activate the mode according to the last accessing mode automatically.</li>
-	<li><strong>Dark mode switch in the menu:</strong> You can select a menu to display the dark mode switch button beside the menu.</li>
-	<li><strong>Border Color:</strong> Provide different border colors to decorate your website in dark mode.</li>
-	<li><strong>Image opacity:</strong> You can adjust the transparency and contrast of images by giving the link of the light and dark version image.</li>
-	<li><strong>Link hover color:</strong> To create an eye-catchy website in dark mode, different link hover colors can be chosen.</li>
-	<li><strong>Dark Mode font size kit:</strong> You may feel the necessity to change the text’s font size to cope up with your website and this feature will allow you to change the font size.</li>
-	<li><strong>Exclude Elements:</strong> You can avoid a particular element or portion to display the dark mode switch button by selecting the class, div, id of your website.</li>
-	<li><strong>Replace Logo in Dark Mode:</strong> You can wisely change your dark or light logo as you want. We have added an option to upload logos for both dark and bright version.</li>
-	<li><strong>New Accessibility Switch Added:</strong> New switch buttons of various styles have been added. These new switch styles will surely help you to attract your audience.</li>
-	<li><strong>WooCommerce Compatibility Added:</strong> This remarkable feature will increase the compatibility to cope up and maintain the balance with dark mode for your WooCommerce website to increase the readability.</li>
-	<li><strong>Default Dark Mode:</strong> You can set dark mode as your default color scheme for your website. That means your users never need to switch from bright to dark. They will see dark mode by default.</li>
-	<li><strong>Floating Switch Customization:</strong> Darklup has a floating switch option. You can customize it as you want. You can customize the switch with icon and text.</li>
-	<li><strong>Fully Customizable Icon, background, and pallet Color for Switches:</strong> Not just floating switch you can also customize dark mode switch’s icon, background color, and color pallet. These features allow you to match your own color scheme and look better.</li>
-    <li><strong>Switch Tooltip Setting:</strong> Tooltip allows you to alert your user to use this feature if they want. You can use any customized text.</li>
-    <li><strong>Switch Animation:</strong> Switch animation to make the floating switch appear in a stylish way. Choose between multiple animation styles.</li>
-    <li><strong>Usage Analytics:</strong> Get an overview of Darklup usage report on Dashboard widget as well as scheduled report via email.</li>
-	<li><strong>Display Floating Switch in Desktop:</strong> Display floating switch in desktop allows you to display the floating switch in every desktop screen. </li>
-	<li><strong>Display Floating Switch in Mobile:</strong> Enable display floating switch in mobile and a floating switch that enables dark mode will stick around in mobile screen.</li>
-	<li><strong>Draggable Switch:</strong> You can drag the dark mode button to a desired position on the screen to make it easier to use. The option is available for both iOS and Android.</li>
-	<li><strong>Dark Mode Intensity:</strong> Adjust the dark mode intensity for your website by selecting a desired level. The website background will become darker as you increase the value. At 100%, the background color will be completely dark. Implementing this adjustment can significantly enhance the visual aesthetics of your website. Surprisingly, you may not need to replace any existing images on your website to look good in dark mode.</li>
-	<li><strong>Exclude Background Image Overlay:</strong> When 'image overlay' enabled, all background images receive an overlay in dark mode. You can remove the overlay from a specific element by providing the class or ID of that element.</li>
+	<li style="margin-bottom:10px"><strong>Exclude WooCommerce Products & Categories:</strong> To enrich your woocommerce website, this feature allows you to show the dark mode switch button on some product and category. So, you can exclude or include any product or category to show the dark switch button.</li>
+	<li style="margin-bottom:10px"><strong>Triggering Dark Mode Setting:</strong> This amazing feature will let you select particular pages,posts and categories where you don't want to show the dark mode switch.</li>
+	<li style="margin-bottom:10px"><strong>Custom CSS Supported Dark Mode:</strong> You can edit the specific sections of your WordPress website with custom CSS support in dark mode.</li>
+	<li style="margin-bottom:10px"><strong>Shortcode integration:</strong> You can insert a shortcode [darklup_darkmode_switch style="1"] to change the location of the dark mode switch button.</li>
+	<li style="margin-bottom:10px"><strong>Color Customization:</strong> Independently customize the color of various sections of your website such as background color, link color, hover color, etc.</li>
+	<li style="margin-bottom:10px"><strong>Schedule Dark Mode:</strong> Set the WordPress dark mode activation time according to your local time and enjoy the automatic activation of dark mode on the website.</li>
+	
+	
+	<li style="margin-bottom:10px"><strong>Switch Background Color:</strong> You can also customize switch the background color based on your website design and brand identity.</li>
+	
+	
+	<li style="margin-bottom:10px"><strong>Dark Mode Menu Switch:</strong> You can select a menu to display the dark mode switch button beside the menu.</li>
+	<li style="margin-bottom:10px"><strong>Border Color:</strong> Provide different border colors to decorate your website in dark mode.</li>
+	<li style="margin-bottom:10px"><strong>Link Hover Color:</strong> Customize the link hover color to make the link more navigable to the website visitors.</li>
+	<li style="margin-bottom:10px"><strong>Dark Mode Font Size Kit:</strong> You may feel the necessity to change the text’s font size to cope up with your website and this feature will allow you to change the font size.</li>
+
+	<li style="margin-bottom:10px"><strong>Exclude Elements:</strong> You can avoid a particular element or portion to display the dark mode switch button by selecting the class, div, id of your website.</li>
+	<li style="margin-bottom:10px"><strong>Replace Logo in Dark Mode:</strong> You can wisely change your dark or light logo as you want. We have added an option to upload logos for both dark and bright version.</li>
+	<li style="margin-bottom:10px"><strong>New Accessibility Switch Added:</strong> New switch buttons of various styles have been added. These new switch styles will surely help you to attract your audience.</li>
+	<li style="margin-bottom:10px"><strong>WooCommerce Compatibility Added:</strong> Darklup plugin is fully compatible with the WooCommerce platform to change the appearance of product and category pages.</li>
+	<li style="margin-bottom:10px"><strong>Default Dark Mode:</strong> You can set dark mode as your default color scheme for your website. That means your users never need to switch from bright to dark. They will see dark mode by default.</li>
+	<li style="margin-bottom:10px"><strong>Floating Switch Customization:</strong> Darklup has a floating switch customization option. You can customize it as you want. You can customize the switch with icons, backgrounds, and color pallets.</li>
+    <li style="margin-bottom:10px"><strong>Switch Tooltip Setting:</strong> Tooltip allows you to alert your user to use this feature if they want. You can use any customized text.</li>
+    <li style="margin-bottom:10px"><strong>Switch Animation:</strong> Switch animation to make the floating switch appear in a stylish way. Choose between multiple animation styles.</li>
+    <li style="margin-bottom:10px"><strong>Usage Analytics:</strong> Get an overview of Darklup usage report on Dashboard widget as well as scheduled report via email.</li>
+	<li style="margin-bottom:10px"><strong>Display Floating Switch in Desktop:</strong> Display floating switch in desktop allows you to display the floating switch in every desktop screen. </li>
+	<li style="margin-bottom:10px"><strong>Display Floating Switch in Mobile:</strong> Enable display floating switch in mobile and a floating switch that enables dark mode will stick around in mobile screen.</li>
+	<li style="margin-bottom:10px"><strong>Draggable Switch:</strong> You can drag the dark mode button to a desired position on the screen to make it easier to use. The option is available for both iOS and Android.</li>
+	<li style="margin-bottom:10px"><strong>Dark Mode Intensity:</strong> Adjust the dark mode intensity for your website by selecting a desired level. The website background will become darker as you increase the value. At 100%, the background color will be completely dark. Implementing this adjustment can significantly enhance the visual aesthetics of your website. Surprisingly, you may not need to replace any existing images on your website to look good in dark mode.</li>
+	<li style="margin-bottom:10px"><strong>Exclude Background Image Overlay:</strong> When 'image overlay' enabled, all background images receive an overlay in dark mode. You can remove the overlay from a specific element by providing the class or ID of that element.</li>
 </ol>
 
 <p>🚀 <a href="https://darklup.com/pricing/" target="_blank">Get Pro</a> | 👁️ <a href="https://darklup.com/" target="_blank">Demo</a> | 👨‍💻 <a href="https://darklup.com/" target="_blank">Get Support</a></p>
@@ -89,19 +109,19 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 <h3>🔥 MORE PREMIUM VERSION FEATURES:</h3>
 <ol>
-	<li>Advanced <strong>Custom Color Picker</strong></li>
-	<li>WCAG  standard <strong>circular color palette</strong></li>
-	<li><strong>Font Size Kit</strong> for dark mode</li>
-	<li><strong>WooCommerce</strong> support & features</li>
-	<li><strong>Custom CSS</strong> for developers and pro users</li>
-	<li><strong>Image property</strong> customization (brightness, contrast, opacity) on target webpage</li>
-	<li><strong>Essential Shortcodes</strong></li>
-	<li><strong>Background color switcher</strong> with lots of amazing colors</li>
-	<li><strong>Color Mode Reminder</strong> for better user experience</li>
-	<li><strong>In-Menu Switch, Border Color, Image Opacity</strong> options included</li>
-	<li><strong>Hover Color</strong> setting for <strong>Links</strong></li>
-	<li><strong>Page & Post Selection</strong>, use dark mode only where you need</li>
-	<li><strong>Exclude Elements</strong> to avoid dark mode in specific places by CSS ID</li>
+	<li style="margin-bottom:10px">Advanced <strong>Custom Color Picker</strong></li>
+	<li style="margin-bottom:10px">WCAG  standard <strong>circular color palette</strong></li>
+	<li style="margin-bottom:10px"><strong>Font Size Kit</strong> for dark mode</li>
+	<li style="margin-bottom:10px"><strong>WooCommerce</strong> support & features</li>
+	<li style="margin-bottom:10px"><strong>Custom CSS</strong> for developers and pro users</li>
+	<li style="margin-bottom:10px"><strong>Image property</strong> customization (brightness, contrast, opacity) on target webpage</li>
+	<li style="margin-bottom:10px"><strong>Essential Shortcodes</strong></li>
+	<li style="margin-bottom:10px"><strong>Background color switcher</strong> with lots of amazing colors</li>
+	<li style="margin-bottom:10px"><strong>Color Mode Reminder</strong> for better user experience</li>
+	<li style="margin-bottom:10px"><strong>In-Menu Switch, Border Color, Image Opacity</strong> options included</li>
+	<li style="margin-bottom:10px"><strong>Hover Color</strong> setting for <strong>Links</strong></li>
+	<li style="margin-bottom:10px"><strong>Page & Post Selection</strong>, use dark mode only where you need</li>
+	<li style="margin-bottom:10px"><strong>Exclude Elements</strong> to avoid dark mode in specific places by CSS ID</li>
 </ol>
 
 <h3>🔥 DARKLUP FEATURED BY TOP REVIEWER:</h3>
@@ -110,40 +130,25 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 [youtube https://www.youtube.com/watch?v=Kr69mnLCHDI]
 
-<h3>👨‍💻 HOW CAN YOU USE OUR PLUGIN?</h3>
-<p>DarklupLite can remarkably enhance the colorful appearance of your website with the perfect-looking dark color schemes. To use this plugin, you need to activate it through proper installation.</p>
-<p>By default, your website will turn dark mode right after activating the plugin. To navigate all the available options, go to your <strong>WordPress Admin Dashboard> Darklup> Settings</strong> and take a tour of the menu.</p>
-<p>The sections included in the settings tab are the following:</p>
+
+<h3> Learn More:</h3>
 <ol>
-	<li><strong>Home:</strong> contains basic info about the plugin, links for tutorials, documentation, support, suggestion page link, and rating button.</li>
-	<li><strong>General Settings:</strong> has 4 switchers to enable/disable Frontend, Backend, OS aware mode, & Floating switch.</li>
-	<li><strong>Advanced Settings:</strong> has 3 switchers to enable/disable Default mode, Display switch in menu, and Time based operation.</li>
-	<li><strong>Switch Styles:</strong> can choose Switch style, Position, Label, Custom margins, etc.</li>
-	<li><strong>Color Settings:</strong> has Frontend & Admin color Presets & Custom color customization.</li>
-	<li><strong>Image Settings:</strong> image customization to reduce brightness, contrast, opacity for better visual</li>
-	<li><strong>WooCommerce:</strong> Include & Exclude option for WooCommerce Products & Categories</li>
-	<li><strong>Filter Elements:</strong> use filter to Include/Exclude elements like div, section, class, id</li>
-	<li><strong>Triggers:</strong> Include/Exclude posts, pages, & categories in general</li>
-	<li><strong>Custom CSS:</strong> custom CSS field made for developers</li>
-</ol>
-<p>For more information go through our FAQ section. Enjoy our dark mode plugin in the best way.</p>
+    <li style="margin-bottom:10px"> <a href="https://darklup.com/enable-dark-mode-for-wordpress-dark-mode-for-wordpress/">5 Easy Steps to Enable Dark Mode for WordPress</a></li>
+    <li style="margin-bottom:10px"> <a href="https://darklup.com/cracked-wordpress-plugins/">Looking for Darklup-WP Dark Mode Nolled Version? Beware of Cracked WordPress Plugins</a></li>
+    <li style="margin-bottom:10px"> <a href="https://darklup.com/best-ways-of-decreasing-bounce-rate-with-dark-mode/">Best ways of decreasing bounce rate with Dark Mode - Darklup</a></li>
+</ul>
 
+<h3> 🎉 Whats Next</h3>
 
-<h3>🙌 HOW TO ACCESS / ENABLE ALL THESE AMAZING FEATURES:</h3>
-<p>After completing the installation and activation process the WordPress dark mode plugin is ready to serve you in every manner. In the <strong>Home</strong> section you will find all the documentation which instructs you about the accessing process of this plugin. To turn ON/OFF the dark mode for the both front and back portion go to the <strong>General Settings>> Enable Frontend dark mode/Enable backend dark mode</strong> and enable the option and a switch button will appear for your selected portion to enable dark mode. Always remember to save the changes after making any kind of changes in the settings.</p>
-<p>OS aware dark mode and floating switch enabling options are in the <strong>General Settings</strong>. In the <strong>Advanced Settings</strong> you will have the default dark mode enabling option, time based dark mode and switch in menu. <strong>Switch Styles</strong> portion provides all the switch styles and other style related features to customize your website in the proper way.</p>
-<p>To customize color in the frontend section, backend section, text, background etc.go to the <strong>Color Setting</strong> section and enable the required option to turn ON or OFF. <strong>Image Settings</strong> and <strong>Woocommerce</strong> gives you the perfect image and woocommerce website related support. </p>
-<p>From <strong>Filter Element</strong> you can exclude or include any element. You have to Set the element like div, section, class, id which you want to ignore darkmode. The other new feature <strong>Triggers</strong> also allow you to include or exclude any page, post or category to display the dark mode switch button. </p>
-<p>To cope up with the dark mode scheme when using our WordPress Dark Mode Plugin, you must set logo light and dark url and image opacity in image settings. To have any other change as your demand goes to the custom CSS section and insert code for your required function.</p>
-<p>The Plugin for <strong>WordPress dark mode</strong> provides all the features, color contrast, image support etc. to embellish your website for you and your user.</p>
-<p><strong>Grab the efficient Darklup Dark Mode plugin and enjoy a comfortable reading experience by reducing eye strain through minimum display light exposure.</strong></p>
-
+<p>By the way, we also have multiple essential plugins for WooCommerce stores. You can use these plugins to grow your Woocommerce business more efficiently.</p>
+<p>✳️ <a href="https://wordpress.org/plugins/guidant/">WP Guidant- Plugins</a>  - With the help of WP Guidant WooCommerce website owners can easily create multi-step guided selling process for the customers. It will enhance the conversion rate more efficiently.</p>
+<p>✳️  <a href="https://wordpress.org/plugins/wceazy/">wcEazy – Supercharge your WooCommerce Store – WordPress plugin</a>  - All-in-one solution WordPress plugin for optimizing WooCommerce store. Access several modules and increase the sales of your store.</p>
 
 <h3>❤️ LOVED DARKLUPLITE?</h3>
 <ol>
-	<li>Join our <a href="https://www.facebook.com/wpcommerz" target="_blank">Facebook Group</a></li>
-	<li>Learn from our tutorials on <a href="https://www.youtube.com/channel/UCwbKkyju-e6bCkR0qQUUPZQ" target="_blank">Youtube Channel</a></li>
-	<li>Or rate DarklupLite on <a href="https://wordpress.org/support/plugin/darklup-lite-wp-dark-mode/reviews/" target="_blank">WordPress</a></li>
+	<li style="margin-bottom:10px">Join our <a href="https://www.facebook.com/wpcommerz" target="_blank">Facebook Group</a></li>
+	<li style="margin-bottom:10px">Learn from our tutorials on <a href="https://www.youtube.com/channel/UCwbKkyju-e6bCkR0qQUUPZQ" target="_blank">Youtube Channel</a></li>
+	<li style="margin-bottom:10px">Or rate DarklupLite on <a href="https://wordpress.org/support/plugin/darklup-lite-wp-dark-mode/reviews/" target="_blank">WordPress</a></li>
 </ol>
 
 
@@ -240,6 +245,10 @@ screenshot-3.png
 screenshot-4.png
 
 == Changelog ==
+
+= 3.1.1 =
+1. Revised: Several minor issues have been resolved.
+2. Enhanced: The plugin's performance has been optimized.
 
 = 3.1.0 =
 1. Added: Dynamic dark mode

@@ -1,4 +1,7 @@
 /***********************************************************/
+html {
+  display: none;
+}
 html.darkluplite-dark-mode-enabled {
   background-color: #fff;
 }

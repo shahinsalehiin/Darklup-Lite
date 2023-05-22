@@ -46,7 +46,7 @@ if (!class_exists('DarklupLite_Enqueue')) {
         public function frontendEnqueueScripts()
         {
 
-            wp_enqueue_style('darkluplite-style', DARKLUPLITE_DIR_URL . 'assets/css/darkluplite-style.css', array(), DARKLUPLITE_VERSION, false);
+            // wp_enqueue_style('darkluplite-style', DARKLUPLITE_DIR_URL . 'assets/css/darkluplite-style.css', array(), DARKLUPLITE_VERSION, false);
             wp_enqueue_style('darkluplite-switch', DARKLUPLITE_DIR_URL . 'assets/css/darkluplite-switch.css', array(), DARKLUPLITE_VERSION, false);
 
             /********************
@@ -56,13 +56,13 @@ if (!class_exists('DarklupLite_Enqueue')) {
              $colorMode = 'darklup_dynamic';
              // $getMode = 'darklup_presets';
              $getMode = Helper::getOptionData('full_color_settings');
- 
-             if($getMode !== 'darklup_dynamic'){
+              if($getMode !== 'darklup_dynamic'){
                  $colorMode = 'darklup_presets';
                  $this->addDarklupJSWithDynamicVersion('darklup_presets', $src = 'assets/es-js/presets.js', $dep = NULL, $js_footer = false);
                  wp_enqueue_style('darkluplite-variables', DARKLUPLITE_DIR_URL . 'assets/css/darkluplite-variables.css', array(), DARKLUPLITE_VERSION, false);
              }else{
                  $this->addDarklupJSWithDynamicVersion();
+                 wp_enqueue_style('darkluplite-dynamic', DARKLUPLITE_DIR_URL . 'assets/css/darkluplite-dynamic.css', array(), DARKLUPLITE_VERSION, false);
              }
  
              $darkenLevel = 80;
