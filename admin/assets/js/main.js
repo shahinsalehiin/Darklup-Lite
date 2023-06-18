@@ -19,6 +19,7 @@
       this.MagnificPopup();
       this.customCSSEditor();
       this.fieldCondition();
+      this.dynamicPresetsCondition();
       this.switchStylePreview();
       this.repeaterField();
       this.mediaUploader();
@@ -346,6 +347,107 @@
           document.getElementById("editortext").value = cssEditor.getValue();
         });
       }
+    },
+    dynamicPresetsCondition(){
+      let thisClass = this;
+      // console.log($(this));
+      // console.log(`Nested Try`);
+      let condition = $("[data-extra_condition]");
+      condition.each(function () {
+        let $this = $(this);
+        // console.log($this.getAttr());
+        let i = $(this).data("extra_condition");
+
+        if (!i) return;
+
+        let o = $("." + i.key);
+        if (o.length == 0) {
+          // console.log(`O length 0)`);
+          // let btnCondition = $this.data("btncondition");
+
+          let btnCondition = $this.data("extra_condition");
+          // console.log(btnCondition);
+
+          var radio = 'input[name="darkluplite_settings[' + i.key + ']"]';
+          // console.log(radio);
+          
+          var radioChecked = 'input[name="darkluplite_settings[' + i.key + ']"]:checked';
+          // console.log(radioChecked);
+          
+          
+          if ($(radioChecked).val() == i.value) {
+            $this.show();
+            thisClass.fieldCondition();
+
+
+            // let thisSwitcher = $(`.${btnCondition.key}`);
+            // if (thisSwitcher.is(":checked")) {
+            //   $this.show();
+            // } else {
+            //   $this.hide();
+            // }
+
+            // if (btnCondition) {
+            //   console.log(btnCondition);
+            //   let thisSwitcher = $(`.${btnCondition.key}`);
+            //   console.log(thisSwitcher);
+            //   if (thisSwitcher.is(":checked")) {
+            //     $this.show();
+            //   } else {
+            //     $this.hide();
+            //   }
+            // } else {
+            //   $this.show();
+            // }
+          } else {
+            $this.hide();
+          }
+
+          $(radio).click(function () {
+            if ($(this).val() == i.value) {
+              if (btnCondition) {
+                let thisSwitcher = $(`.${btnCondition.key}`);
+                if (thisSwitcher.is(":checked")) {
+                  $this.show();
+                } else {
+                  $this.hide();
+                  thisClass.fieldCondition();
+                }
+              } else {
+                $this.show();
+              }
+            } else {
+              // if (btnCondition) {
+              //   console.log(btnCondition);
+              //   console.log(`Hide`);
+              //   console.log($this);
+              // }
+
+              $this.hide();
+            }
+          });
+        } else {
+          console.log(`O length recorded)`);
+          o.on("click", function () {
+            if ($(this).is(":checked")) {
+              $this.show();
+            } else {
+              $this.hide();
+            }
+          });
+
+          // On load event
+          if (o.is(":checked")) {
+            let nestedCheck = $this.data("extra_condition");
+            if(nestedCheck){
+              console.log(`Nested Detected`);
+            }
+            $this.show();
+          } else {
+            $this.hide();
+          }
+        }
+      });
     },
     fieldCondition: function () {
       /**

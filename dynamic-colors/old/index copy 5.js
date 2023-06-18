@@ -1,23 +1,33 @@
+// import tinycolor from "tinycolor2";
 import tinycolor from "./../node_modules/tinycolor2/dist/tinycolor-min.js";
 
-/**
- * Optimization Idea
- * Remove Pro/ Unused function
- * Remove Exclusions
- * Refactor
- */
+let excludeSelectors = [];
+let excludeBgOverlay = [];
+// console.log("free dynamic index");
+// let defaultExcludes = [".button.wp-color-result", ".darkluplite-menu-switch"];
+let defaultExcludes = [".button.wp-color-result"];
+excludeSelectors = [...DarklupJs.exclude_element];
+excludeSelectors = [...excludeSelectors, ...defaultExcludes];
+let applyBgOverlay = false;
+if (DarklupJs.apply_bg_overlay == "yes") {
+  applyBgOverlay = true;
+}
+// console.log("Hello, Prio. Are you doing good?");
+excludeBgOverlay = [...DarklupJs.exclude_bg_overlay];
+let darklupDarkLogo = frontendObject.darklogo;
+let darklupLightLogo = frontendObject.lightlogo;
+
+let darkAmount = 80;
 
 class Darklup {
   constructor() {
-    this.topContents();
     this.setRequiredVariables();
 
-    if (this.isGutenburg || this.isCustomizer || this.isOxygenBuilder) {
+    if (this.isGutenburg || this.isCustomizer) {
       this.htmlElement.style.display = "block";
       return;
     }
 
-    this.addUsersDynamicStyles();
     this.getExcludedElements();
     this.getAllElements();
 
@@ -42,79 +52,6 @@ class Darklup {
 
     this.htmlElement.style.display = "block";
   }
-  addUsersDynamicStyles(){
-    
-    let htmlDarkClass = 'html.darkluplite-dark-mode-enabled';
-    if (this.isWpAdmin) {
-      htmlDarkClass = 'html.darkluplite-admin-dark-mode-enabled';
-    }
-    
-    this.usersDynamicCss = `
-      ${htmlDarkClass}  *:not(:is(.darkluplite-dark-ignore, .darkluplite-dark-ignore *)){
-        color: var(--darkluplite-dynamic-color) !important;
-        border-color: var(--darkluplite-dynamic-border-color) !important;
-      }
-      ${htmlDarkClass} *:not(:is(.darkluplite-dark-ignore, .darkluplite-dark-ignore *)):before,
-      ${htmlDarkClass} *:not(:is(.darkluplite-dark-ignore, .darkluplite-dark-ignore *)):after {
-        color: var(--darkluplite-dynamic-sudo-color) !important;
-      }
-      ${htmlDarkClass} a :not(:is(.darkluplite-dark-ignore, .darkluplite-dark-ignore *)):before,
-      ${htmlDarkClass} a *:not(:is(.darkluplite-dark-ignore, .darkluplite-dark-ignore *)):after,
-      ${htmlDarkClass}  a *:not(:is(.darkluplite-dark-ignore, .darkluplite-dark-ignore *)),
-      ${htmlDarkClass}  a:not(:is(.darkluplite-dark-ignore, .darkluplite-dark-ignore *)){
-        color: var(--darkluplite-dynamic-link-color) !important;
-      }
-      ${htmlDarkClass} a:hover :not(:is(.darkluplite-dark-ignore, .darkluplite-dark-ignore *)):before,
-      ${htmlDarkClass} a:hover *:not(:is(.darkluplite-dark-ignore, .darkluplite-dark-ignore *)):after,
-      ${htmlDarkClass}  a:hover *:not(:is(.darkluplite-dark-ignore, .darkluplite-dark-ignore *)),
-      ${htmlDarkClass}  a:hover:not(:is(.darkluplite-dark-ignore, .darkluplite-dark-ignore *)){
-        color: var(--darkluplite-dynamic-link-hover-color) !important;
-      }
-      ${htmlDarkClass}  button:not(:is(.darkluplite-dark-ignore, .darkluplite-dark-ignore *)){
-        color: var(--darkluplite-dynamic-btn-text-color) !important;
-      }
-    `;
-
-    // console.log(frontendObject);
-    // console.log(this.usersDynamicCss);
-
-    // this.usersDynamicCss = this.usersDynamicCss.trim();
-    
-    // this.usersDynamicCss = this.usersDynamicCss.replace(/\s+/g, ' ').trim();
-    // console.log(this.usersDynamicCss);
-    
-    
-  }
-  topContents(){
-    // console.log('top contents');
-
-    // Darken Levels
-    this.darkenLevel = 75;
-    this.brandingDarkenLevel = 10;
-    
-    //Image Overlay
-    this.imgGrad = `linear-gradient(rgba(0, 0, 0, ${DarklupJs.bg_image_dark_opacity}), rgba(0, 0, 0,${DarklupJs.bg_image_dark_opacity}))`;
-    // Box shadow
-    this.darklupBoxShadow = "0px 5px 10px rgba(255, 255, 255, 0.04);";
-    
-    // Bg overlay
-    this.applyBgOverlay = false;
-    if (DarklupJs.apply_bg_overlay == "yes")  this.applyBgOverlay = true;
-    
-    // logos
-    this.darklupDarkLogo = frontendObject.darklogo;
-    this.darklupLightLogo = frontendObject.lightlogo;
-    
-    // Exclude Elements
-    this.excludeSelectors = [];
-    let defaultExcludes = [".button.wp-color-result"];
-    this.excludeSelectors = [...DarklupJs.exclude_element];
-    this.excludeSelectors = [...this.excludeSelectors, ...defaultExcludes];
-    
-    //Background Exclude
-    this.excludeBgOverlay = [];
-    this.excludeBgOverlay = [...DarklupJs.exclude_bg_overlay];
-  }
   setRequiredVariables() {
     this.allElements = [];
     this.cssAllSelectors = [];
@@ -132,7 +69,6 @@ class Darklup {
     this.isWpAdmin = false;
     this.isGutenburg = false;
     this.isCustomizer = false;
-    this.isOxygenBuilder = false;
     this.bgColors = [];
     this.bgVars = [];
     this.colorVars = [];
@@ -172,9 +108,7 @@ class Darklup {
     if (bodyElement.classList.contains("wp-customizer")) {
       this.isCustomizer = true;
     }
-    if (bodyElement.classList.contains("oxygen-builder-body")) {
-      this.isOxygenBuilder = true;
-    }
+
     let bodyBg = this.hasBgColor(bodyElement);
     let htmlBg = this.hasBgColor(this.htmlElement);
     if (bodyBg) {
@@ -183,6 +117,7 @@ class Darklup {
       this.primaryBg = htmlBg;
     } else {
       this.primaryBg = "rgb(255, 255, 255)";
+      // bodyElement.classList.add("darklup--bg");
       bodyElement.classList.add("darklup_bg_0");
     }
   }
@@ -300,10 +235,10 @@ class Darklup {
       "#wpadminbar a",
       "noscript",
     ];
-    if (this.excludeSelectors.length > 0) {
-      excludes = [...this.excludeSelectors, ...excludes];
-      this.darkModeIgnoreInheritedBg(this.excludeSelectors);
-      this.darkModeIgnoreInheritedColor(this.excludeSelectors);
+    if (excludeSelectors.length > 0) {
+      excludes = [...excludeSelectors, ...excludes];
+      this.darkModeIgnoreInheritedBg(excludeSelectors);
+      this.darkModeIgnoreInheritedColor(excludeSelectors);
     }
     selectAll = this.excludeAndSelect(excludes, "html, html *");
     this.allElements = document.querySelectorAll(selectAll);
@@ -429,12 +364,6 @@ class Darklup {
     let cssRules = "body{background-color:#242525;}";
     for (let i = 0; i < styleSheets.length; i++) {
       const styleSheet = styleSheets[i];
-      
-      if(styleSheet.href === null){
-        let id = styleSheet?.ownerNode?.id;
-        if(id.includes('darklup')) continue;
-      }
-      
       try {
         const rules = styleSheet.cssRules || styleSheet.rules;
         let element;
@@ -449,7 +378,7 @@ class Darklup {
             /*************** Do Optimize Exclusion ****************** */
             /*************** Do Optimize Exclusion ****************** */
 
-            if (this.excludeBgOverlay.length > 0) {
+            if (excludeBgOverlay.length > 0) {
               if (rule.selectorText) {
                 element = document.querySelector(rule.selectorText);
                 if (element) {
@@ -457,9 +386,7 @@ class Darklup {
                 }
               }
             }
-            // console.log(this.excludeBgOverlay);
-            // console.log(this.excludeSelectors);
-            if (this.excludeSelectors.length > 0) {
+            if (excludeSelectors.length > 0) {
               if (rule.selectorText) {
                 element = document.querySelector(rule.selectorText);
                 if (element) {
@@ -475,16 +402,44 @@ class Darklup {
               let bgApplied = false;
               let bgColor = rule.style.backgroundColor;
               let bgImage = rule.style.backgroundImage;
+              // let color = rule.style.color;
               let boxShadow = rule.style.boxShadow;
               if (boxShadow && boxShadow !== "none") {
-                filteredStyle += `box-shadow: ${this.darklupBoxShadow};`;
+                let darkShadow = "0px 5px 10px rgba(255, 255, 255, 0.05);";
+                filteredStyle += `box-shadow: ${darkShadow};`;
               }
+              let borders = [rule.style.borderColor, rule.style.borderTopColor, rule.style.borderRightColor, rule.style.borderBottomColor, rule.style.borderLeftColor];
+              borders.forEach((b, i) => {
+                if (b) {
+                  let side;
+                  if (i == 0) {
+                    side = "";
+                  } else if (i == 1) {
+                    side = "top-";
+                  } else if (i == 2) {
+                    side = "right-";
+                  } else if (i == 3) {
+                    side = "bottom-";
+                  } else if (i == 4) {
+                    side = "left-";
+                  }
+                  if (b.includes("var")) {
+                    darkBg = this.addDarklupWithVars(b, "--darklup-bg");
+                    filteredStyle += `border-${side}color: ${darkBg};`;
+                  } else if (this.isRealColor(b)) {
+                    filteredStyle += `border-${side}color: ${this.getDarkenBg(b)};`;
+                    // filteredStyle += `border-${side}color: ${this.getDarkenBorder(b)} !important;`;
+                  }
+                }
+              });
+              // if (!bgColor && !bgImage && !this.isRealColor(bgColor) && !bgColor.includes("var") && !this.isBgImage(bgImage)) {
 
               let bg = rule.style.background;
               if (bg) {
                 if (bg.includes("var")) {
                   darkBg = this.addDarklupWithVars(bg, "--darklup-bg");
                   filteredStyle += `background: ${darkBg} !important;`;
+                  // } else if (this.isRealColor(bg)) {
                 } else {
                   let bg2 = tinycolor(bg);
                   if (bg2.isValid()) {
@@ -497,6 +452,7 @@ class Darklup {
                 if (bgColor.includes("var")) {
                   darkBg = this.addDarklupWithVars(bgColor, "--darklup-bg");
                   filteredStyle += `background-color: ${darkBg} !important;`;
+                  // } else if (this.isRealColor(bgColor)) {
                 } else {
                   let bgColor2 = tinycolor(bgColor);
                   if (bgColor2.isValid()) {
@@ -507,6 +463,7 @@ class Darklup {
 
               if (bgImage && this.isBgImage(bgImage)) {
                 if (bgImage.includes("var")) {
+                  // console.log(`Current Bg: ${bgImage}`);
                   darkImage = this.addDarklupWithManyVars(bgImage, "--darklup-bg");
                 } else {
                   // Fix broken link from CSS files
@@ -530,9 +487,14 @@ class Darklup {
                   bgApplied = true;
                 }
               }
+
+              // if (color) {
+              //   filteredStyle += `color: rgb(237 237 237) !important;`;
+              // }
             }
 
             if (filteredStyle.length > 0) {
+              // console.log(rule.selectorText);
               if (rule.selectorText.includes(",")) {
                 const splitStr = rule.selectorText.split(", ");
                 const modifiedStr = splitStr.map((s) => s + ":not(.darkluplite-dark-ignore)").join(", ");
@@ -544,12 +506,11 @@ class Darklup {
           }
         }
       } catch (e) {}
+      // }
     }
 
     // console.log(cssRules);
     // console.log(this.cssAllSelectors);
-    
-    cssRules += this.usersDynamicCss;
     return cssRules;
     // const cssRules = getAllCSSRules();
     // console.log(bgRules);
@@ -559,8 +520,8 @@ class Darklup {
   }
 
   getExcludedBgOverlay() {
-    if (this.excludeBgOverlay.length > 0) {
-      this.excludeBgOverlay.forEach((e) => {
+    if (excludeBgOverlay.length > 0) {
+      excludeBgOverlay.forEach((e) => {
         let thisElement = document.querySelectorAll(e);
         this.excludedBgOverlays = [...thisElement, ...this.excludedBgOverlays];
       });
@@ -568,8 +529,9 @@ class Darklup {
     }
   }
   getExcludedElements() {
-    if (this.excludeSelectors.length > 0) {
-      this.excludeSelectors.forEach((e) => {
+    // console.log(excludeSelectors);
+    if (excludeSelectors.length > 0) {
+      excludeSelectors.forEach((e) => {
         let thisElement = document.querySelectorAll(e);
         this.excludedElements = [...thisElement, ...this.excludedElements];
       });
@@ -577,6 +539,7 @@ class Darklup {
     this.excludedElements.forEach((e) => {
       e.classList.add("darkluplite-dark-ignore");
     });
+    // console.log(this.excludedElements);
   }
 
   replaceUrlWithFullUrl(match, p1, offset, string) {
@@ -632,19 +595,28 @@ class Darklup {
   getDarkenBg(c) {
     let darkBg = tinycolor(c);
     if (darkBg.getLuminance() * 10 > 4) {
-      darkBg = darkBg.darken(this.darkenLevel).toRgbString();
+      darkBg = darkBg.darken(darkAmount).toRgbString();
     } else {
-      darkBg = darkBg.darken(this.brandingDarkenLevel).toRgbString();
+      darkBg = darkBg.darken(10).toRgbString();
     }
     return darkBg;
   }
-
+  getDarkenBorder(c) {
+    console.log(c);
+    let darkBg = tinycolor(c);
+    if (darkBg.getLuminance() * 10 > 4) {
+      darkBg = darkBg.darken(15).toRgbString();
+    } else {
+      darkBg = darkBg.darken(10).toRgbString();
+    }
+    return darkBg;
+  }
   getTinyDarkenBg(c) {
     let darkBg = tinycolor(c);
     if (darkBg.getLuminance() * 10 > 4) {
-      darkBg = darkBg.darken(this.darkenLevel);
+      darkBg = darkBg.darken(darkAmount);
     } else {
-      darkBg = darkBg.darken(this.brandingDarkenLevel);
+      darkBg = darkBg.darken(10);
     }
     return darkBg;
   }
@@ -838,7 +810,7 @@ class Darklup {
           let thisTrigger = e.target;
           if (thisTrigger.checked) {
             this.activateDarkMode();
-            // this.addGlobalInlineCSS(this.getAllCSSRules());
+            this.addGlobalInlineCSS(this.getAllCSSRules());
 
             if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
               localStorage.removeItem("lightOnOSDarkChecked");
@@ -850,7 +822,7 @@ class Darklup {
             }
           } else {
             this.deactivateDarkMode();
-            // this.removeGlobalInlineCSS();
+            this.removeGlobalInlineCSS();
             if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
               localStorage.setItem("lightOnOSDarkChecked", true);
             }
@@ -888,14 +860,10 @@ class Darklup {
         const newColorScheme = e.matches ? "dark" : "light";
         if (newColorScheme === "dark") {
           if (!lightOnOSDarkChecked) {
-            // this.enableDarkMode();
-            this.activateDarkMode();
-            // this.addGlobalInlineCSS(this.getAllCSSRules());
+            this.enableDarkMode();
           }
         } else {
-          this.deactivateDarkMode();
-          // this.removeGlobalInlineCSS();
-          // this.disableDarkMode();
+          this.disableDarkMode();
         }
       });
     }
@@ -916,10 +884,10 @@ class Darklup {
           let darkMode = this.isDarkModeEnabled();
           if (darkMode) {
             this.deactivateDarkMode();
-            // this.removeGlobalInlineCSS();
+            this.removeGlobalInlineCSS();
           } else {
             this.activateDarkMode();
-            // this.addGlobalInlineCSS(this.getAllCSSRules());
+            this.addGlobalInlineCSS(this.getAllCSSRules());
           }
         }
       });
@@ -928,12 +896,10 @@ class Darklup {
   activateDarkMode() {
     this.saveDarkModeStatus();
     this.enableDarkMode();
-    this.addGlobalInlineCSS(this.getAllCSSRules());
   }
   deactivateDarkMode() {
     this.removeDarkModeStatus();
     this.disableDarkMode();
-    this.removeGlobalInlineCSS();
   }
   activateAdminDarkMode() {
     this.saveAdminDarkModeStatus();
@@ -962,10 +928,10 @@ class Darklup {
 
   disableDarkMedia() {
     if (typeof frontendObject == "undefined") return;
-    const darkLogo = document.querySelector('[src="' + this.darklupDarkLogo + '"]');
+    const darkLogo = document.querySelector('[src="' + darklupDarkLogo + '"]');
     if (darkLogo) {
-      darkLogo.src = this.darklupLightLogo;
-      darkLogo.srcset = this.darklupLightLogo;
+      darkLogo.src = darklupLightLogo;
+      darkLogo.srcset = darklupLightLogo;
     }
     frontendObject.darkimages.forEach(function (item) {
       const darkImg = document.querySelector('[src="' + item[1] + '"]');
@@ -977,10 +943,10 @@ class Darklup {
   }
   enableDarkMedia() {
     if (typeof frontendObject == "undefined") return;
-    var lightLogo = document.querySelector('[src="' + this.darklupLightLogo + '"]');
+    var lightLogo = document.querySelector('[src="' + darklupLightLogo + '"]');
     if (lightLogo) {
-      lightLogo.src = this.darklupDarkLogo;
-      lightLogo.srcset = this.darklupDarkLogo;
+      lightLogo.src = darklupDarkLogo;
+      lightLogo.srcset = darklupDarkLogo;
     }
     frontendObject.darkimages?.forEach(function (item) {
       var lightImg = document.querySelector('[src="' + item[0] + '"]');
@@ -1316,8 +1282,9 @@ class Darklup {
         if (!this.alreadyHasOverlay(element)) {
           if (this.excludedBgOverlays.includes(element)) {
           } else {
-            if (this.applyBgOverlay) {
-              let imgOverlay = `${this.imgGrad}, ${BgImage}`;
+            if (applyBgOverlay) {
+              let imgGrad = `linear-gradient(rgba(0, 0, 0, ${DarklupJs.bg_image_dark_opacity}), rgba(0, 0, 0,${DarklupJs.bg_image_dark_opacity}))`;
+              let imgOverlay = `${imgGrad}, ${BgImage}`;
               element.style.setProperty("background-image", imgOverlay);
             }
           }
@@ -1338,8 +1305,9 @@ class Darklup {
     if (BgImage.includes("linear-gradient") && BgImage.includes("url")) {
       newBg = this.getGradientBgImage(BgImage);
     } else if (BgImage.includes("url")) {
-      if (this.applyBgOverlay) {
-        let imgOverlay = `${this.imgGrad}, ${BgImage}`;
+      if (applyBgOverlay) {
+        let imgGrad = `linear-gradient(rgba(0, 0, 0, ${DarklupJs.bg_image_dark_opacity}), rgba(0, 0, 0,${DarklupJs.bg_image_dark_opacity}))`;
+        let imgOverlay = `${imgGrad}, ${BgImage}`;
         newBg = imgOverlay;
       }
     } else if (BgImage.includes("linear-gradient")) {
@@ -1466,36 +1434,26 @@ class Darklup {
   }
 
   applyDynamicStyles() {
+    // console.log(this.elementsWithBoxShadow);
     this.elementsWithBgImage?.forEach((element) => this.applyBgImage(element));
     this.elementsWithBoxShadow?.forEach((element) => this.applyBoxShadow(element));
     this.addInlineCSS();
+
+    this.enableDarkMedia();
     this.handleDarklupExcluded();
   }
   resetDynamicStyles() {
     this.elementsWithBgImage?.forEach((element) => this.resetBgImage(element));
     this.elementsWithBoxShadow?.forEach((element) => this.resetBoxShadow(element));
+    this.disableDarkMedia();
     this.removeInlineCSS();
-  }
-  isIterable(obj) {
-    if((typeof obj !== 'undefined')){
-      return typeof obj[Symbol.iterator] === 'function';
-    }else{
-      return false;
-    }
   }
   getDynamicExcluded(node) {
     let dynamicExcludes = [];
-    if (this.excludeSelectors.length > 0) {
-      this.excludeSelectors.forEach((e) => {
+    if (excludeSelectors.length > 0) {
+      excludeSelectors.forEach((e) => {
         let thisElement = node.parentElement?.querySelectorAll(e);
-        if((typeof thisElement !== 'undefined') && this.isIterable(thisElement)){
-          // console.log(thisElement);
-          // console.log('yes');
-          
-          dynamicExcludes = [...thisElement, ...dynamicExcludes];
-        }
-        
-        // dynamicExcludes = [...thisElement, ...dynamicExcludes];
+        dynamicExcludes = [...thisElement, ...dynamicExcludes];
       });
     }
     dynamicExcludes.forEach((element) => {

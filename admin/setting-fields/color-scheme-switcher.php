@@ -28,7 +28,8 @@ trait Color_Scheme_Button {
             'wrapper_class'  => '',
             'is_pro'    => 'no',
             'options_title'=> [],
-            'options' => []
+            'options' => [],
+            'extra_cond' => [],
 
         ];
 
@@ -53,10 +54,14 @@ trait Color_Scheme_Button {
         if( !empty( $args['condition'] ) ) {
             $conditionData = json_encode( $args['condition'] );
         }
-
+        
+        $extraCondition = '';
+        if (!empty($args['extra_cond'])) {
+            $extraCondition = json_encode($args['extra_cond']);
+        }
         ?>
 <div class="darkluplite-row <?php echo esc_html( $args['wrapper_class'].' '.$args['class'] ); ?>"
-    data-condition="<?php echo esc_html($conditionData); ?>">
+    data-condition="<?php echo esc_html($conditionData); ?>"  data-extra_condition="<?php echo esc_html($extraCondition); ?>">
     <div class="darkluplite-col-lg-12 darkluplite-col-md-12">
         <div class="darkluplite-single-settings-inner color_scheme_wrapper">
             <?php

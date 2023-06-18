@@ -54,15 +54,15 @@ class Helper{
    */
   public static function getOptionData( $optionKey ) {
 
-      $options = get_option( 'darkluplite_settings' );
+    $options = get_option( 'darkluplite_settings' );
 
-      $value = '';
+    $value = '';
 
-      if( !empty( $options[$optionKey] ) ) {
-          $value = $options[$optionKey];
-      }
+    if( !empty( $options[$optionKey] ) ) {
+        $value = $options[$optionKey];
+    }
 
-      return $value;
+    return $value;
 
   }
   /**

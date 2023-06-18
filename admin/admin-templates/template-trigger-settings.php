@@ -36,7 +36,14 @@ class Trigger_Settings_Tab extends Settings_Fields_Base
             'is_pro' => 'yes',
             'options' => \DarklupLite\Helper::getPages()
         ]);
-
+        $this->Multiple_select_box([
+            'title' => esc_html__('Include Pages', 'darklup'),
+            'sub_title' => esc_html__('Select the pages where you want to show the dark mode switch except all other pages', 'darklup'),
+            'name' => 'include_pages',
+            'wrapper_class' => 'pro-feature',
+            'is_pro' => 'yes',
+            'options' => \DarklupLite\Helper::getPages()
+        ]);
 
         $this->Multiple_select_box([
             'title' => esc_html__('Exclude Posts', 'darklup-lite'),
@@ -46,7 +53,14 @@ class Trigger_Settings_Tab extends Settings_Fields_Base
             'is_pro' => 'yes',
             'options' => \DarklupLite\Helper::getPosts()
         ]);
-
+        $this->Multiple_select_box([
+            'title' => esc_html__('Include Posts', 'darklup'),
+            'sub_title' => esc_html__('Select the posts where you want to show the dark mode switch except all other posts', 'darklup'),
+            'name' => 'include_posts',
+            'wrapper_class' => 'pro-feature',
+            'is_pro' => 'yes',
+            'options' => \DarklupLite\Helper::getPosts()
+        ]);
 
         $this->Multiple_select_box([
             'title' => esc_html__('Exclude Categories', 'darklup-lite'),
@@ -56,7 +70,14 @@ class Trigger_Settings_Tab extends Settings_Fields_Base
             'is_pro' => 'yes',
             'options' => \DarklupLite\Helper::getCategories()
         ]);
-
+        $this->Multiple_select_box([
+            'title' => esc_html__('Include Categories', 'darklup'),
+            'sub_title' => esc_html__('Select the categories where you want to show the dark mode switch except all other category posts', 'darklup'),
+            'name' => 'include_categories',
+            'wrapper_class' => 'pro-feature',
+            'is_pro' => 'yes',
+            'options' => \DarklupLite\Helper::getCategories()
+        ]);
 
         $this->end_fields_section(); // End fields section
 

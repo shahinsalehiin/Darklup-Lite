@@ -41,9 +41,8 @@ class Admin_Page_Components {
           ?>
         <div class="darkluplite-main-area darkluplite-admin-settings-area">
             <div class="darkluplite-row">
-                <div class="darkluplite-col-sm-3 darkluplite-col-md-3 darkluplite-col-12 padding-0">
-                    <?php
-                      	?>
+                <div class="darkluplite-col-sm-3 darkluplite-col-md-3 darkluplite-col-12 padding-0 darkluplite-menu-column">
+                    
                     <div class="darkluplite-menu-area">
                         <?php
                       	self::logo();
@@ -53,21 +52,21 @@ class Admin_Page_Components {
                     </div>
                 </div>
 
-                <div class="darkluplite-col-sm-9 darkluplite-col-md-9 darkluplite-col-12 padding-0">
+                <div class="darkluplite-col-sm-9 darkluplite-col-md-9 darkluplite-col-12 padding-0 darkluplite-content-column">
                     <div class="darkluplite-settings-area darkluplite-admin-dark-ignore">
                         <?php
-                      require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-home-settings.php';
-                      require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-advance-settings.php';
-                      require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-style-settings.php';
-                      require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-color-settings.php';
-                      require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-image-settings.php';
-                      require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-woocommerce-settings.php';
-                      require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-inc-exc-settings.php';
-                      require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-trigger-settings.php';
-                      require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-custom-css.php';
-                      require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-analytics-settings.php';
+                        require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-home-settings.php';
+                        require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-advance-settings.php';
+                        require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-style-settings.php';
+                        require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-color-settings.php';
+                        require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-image-settings.php';
+                        require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-woocommerce-settings.php';
+                        require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-inc-exc-settings.php';
+                        require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-trigger-settings.php';
+                        require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-custom-css.php';
+                        require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-analytics-settings.php';
 
-                      ?>
+                    ?>
                     </div>
                 </div>
             </div>

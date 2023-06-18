@@ -1,14 +1,21 @@
 html {
   display: none;
 }
-html.darkluplite-admin-dark-mode-enabled *:not(.darkluplite-dark-ignore):not(.darkluplite-dark-ignore *) {
+.darkluplite-admin-dark-mode-enabled .darkluplite-admin-settings-area .on-off-toggle__slider:before {
+  background-color: rgb(237 237 237) !important;
+}
+.darkluplite-admin-dark-mode-enabled .darkluplite-admin-settings-area .on-off-toggle__input + .on-off-toggle__slider {
+  border: 1px solid rgb(237 237 237) !important;
+}
+/* html.darkluplite-admin-dark-mode-enabled *:not(.darkluplite-dark-ignore):not(.darkluplite-dark-ignore *) {
   color: rgb(237 237 237) !important;
 }
 html.darkluplite-admin-dark-mode-enabled *:not(:is(.darkluplite-dark-ignore, .darkluplite-dark-ignore *)):before,
 html.darkluplite-admin-dark-mode-enabled *:not(:is(.darkluplite-dark-ignore, .darkluplite-dark-ignore *)):after {
   color: #ddd !important;
-}
-.darkluplite-admin-dark-mode-enabled .darklup-admin-settings-area .on-off-toggle__input + .on-off-toggle__slider {
+} */
+
+/* .darkluplite-admin-dark-mode-enabled .darklup-admin-settings-area .on-off-toggle__input + .on-off-toggle__slider {
   border: 1px solid #fff !important;
 }
 .darkluplite-admin-dark-mode-enabled .darkluplite-admin-settings-area .on-off-toggle__input + .on-off-toggle__slider:not(.darkluplite-dark-ignore) {
@@ -23,4 +30,5 @@ html.darkluplite-admin-dark-mode-enabled *:not(:is(.darkluplite-dark-ignore, .da
 }
 .darkluplite-admin-dark-mode-enabled .wp-picker-container .wp-color-result-text {
   color: rgb(237 237 237) !important;
-}
+} */
+

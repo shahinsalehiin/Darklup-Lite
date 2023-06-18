@@ -4,7 +4,7 @@
  * Plugin Name:       Darklup Lite - WP Dark Mode
  * Plugin URI:        https://darklup.com/
  * Description:       All in one WordPress plugin to create a stunning dark version for your WordPress website and dashboard
- * Version:           3.1.2
+ * Version:           3.2.0
  * Author:            Darklup
  * Author URI:        https://darklup.com/
  * License:           GPL v2 or later
@@ -30,7 +30,7 @@ if (!defined('DARKLUPLITE_ALERT_MSG')) {
 
 // Version constant
 if (!defined('DARKLUPLITE_VERSION')) {
-    define('DARKLUPLITE_VERSION', '3.1.2');
+    define('DARKLUPLITE_VERSION', '3.2.0');
 }
 
 // Plugin dir path constant
@@ -95,12 +95,16 @@ final class DarklupLite
     {
 
         $this->includeFiels();
+        
+        
         // $this->pluginActivate();
         // Register Elementor New Widgets
         add_action('elementor/widgets/widgets_registered', [$this, 'elementorOnWidgetsRegistered']);
         // Plugin activation hook
         register_activation_hook(__FILE__, [$this, 'pluginActivate']);
-
+        
+        // Update recent settings
+        $this->updateRecentSettings();
         $this->appsero_init_tracker_darklup_lite_wp_dark_mode();
 
         if (time() < 1638705540) {
@@ -184,16 +188,74 @@ final class DarklupLite
             "color_admin_preset" => '1',
             "switch_position" => 'bottom_right',
             "desktop_switch_position" => 'bottom_right',
-            "full_color_settings" => 'darklup_dynamic',
+            "color_modes" => 'darklup_dynamic',
+            "full_color_settings" => 'front_end_colors',
             "switch_cases" => 'desktop_switch',
             "darkluplite_image_effects" => 'yes',
         );
 
-        if (!get_option("darkluplite_settings")) {
+        // if (!get_option("darkluplite_settings")) {
+        //     update_option('darkluplite_settings', $defaultOption);
+        // }
+        
+        $darkluplite_options = get_option( 'darkluplite_settings' );
+        
+        if (!$darkluplite_options) {
             update_option('darkluplite_settings', $defaultOption);
+        }else{
+            $getMode = '';
+            if( !empty( $darkluplite_options['color_modes'] ) ) {
+                $getMode = $darkluplite_options['color_modes'];
+            }
+            if($getMode == ''){
+                $getPrevMode = '';
+                if( !empty( $darkluplite_options['full_color_settings'] ) ) {
+                    $getPrevMode = $darkluplite_options['full_color_settings'];
+                }
+                if($getPrevMode == 'darklup_dynamic'){
+                    $darkluplite_options['color_modes'] = 'darklup_dynamic';
+                    update_option('darkluplite_settings', $darkluplite_options);
+                }else{
+                    $getMode = 'darklup_presets';
+                    $darkluplite_options['color_modes'] = 'darklup_presets';
+                    update_option('darkluplite_settings', $darkluplite_options);
+                }
+            }
         }
+        
     }
 
+    /**
+     * Add default values for recent settings
+     *
+     * @return void
+     */
+    public function updateRecentSettings(){
+        $darkluplite_options = get_option( 'darkluplite_settings' );
+        
+        if ($darkluplite_options) {
+            $getMode = '';
+            if( !empty( $darkluplite_options['color_modes'] ) ) {
+                $getMode = $darkluplite_options['color_modes'];
+            }
+            
+            if($getMode == ''){
+                $getPrevMode = '';
+                if( !empty( $darkluplite_options['full_color_settings'] ) ) {
+                    $getPrevMode = $darkluplite_options['full_color_settings'];
+                }
+                if($getPrevMode == 'darklup_dynamic'){
+                    $darkluplite_options['color_modes'] = 'darklup_dynamic';
+                    update_option('darkluplite_settings', $darkluplite_options);
+                }else{
+                    // $getMode = 'darklup_presets';
+                    $darkluplite_options['color_modes'] = 'darklup_presets';
+                    update_option('darkluplite_settings', $darkluplite_options);
+                }
+            }
+        }
+    }
+    
     /**
      * Initialize the plugin tracker
      *

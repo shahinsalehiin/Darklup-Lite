@@ -37,8 +37,23 @@ class Color_Settings_Tab extends Settings_Fields_Base
       //     'dashoard_colors' => 'Admin Dashboard Colors',
       // ];
 
-      $switch_cases = [
+      $color_modes = [
+        // 'darklup_dynamic' => 'Dynamic',
         'darklup_dynamic' => 'Dynamic',
+        'darklup_presets' => 'Presets',
+      ];
+
+      $this->button_radio_field([
+          'title' => esc_html__( 'Choose Your Color Mode', 'darklup' ),
+          // 'sub_title' => esc_html__( 'Select the front-end darkmode color.', 'darklup' ),
+          'class' => 'settings-color-preset',
+          'name' => 'color_modes',
+          'options' => $color_modes,
+          'default' => 'darklup_dynamic',
+      ]);
+      
+      $switch_cases = [
+        // 'darklup_dynamic' => 'Dynamic',
         'front_end_colors' => 'Front End Color Presets',
         'dashoard_colors' => 'Admin Dashboard Color Presets',
       ];
@@ -47,24 +62,19 @@ class Color_Settings_Tab extends Settings_Fields_Base
           'name' => 'full_color_settings',
           'options' => $switch_cases,
           'default' => 'front_end_colors',
+          'condition' => ["key" => "color_modes", "value" => "darklup_presets"],
       ]);
-
-
 
       ?>
 
-<div class="darkluplite-row  darkluplite-dynamic-color"
-    data-condition='{"key":"full_color_settings","value":"darklup_dynamic"}'>
+<div class="darkluplite-row  darkluplite-dynamic-color" data-condition='{"key":"color_modes","value":"darklup_dynamic"}'>
     <div class="darkluplite-col-lg-12 darkluplite-col-md-12 darkluplite-col-12 align-self-center">
         <div class="darkluplite-single-about">
             <div class="details">
-                <h3><span
-                        class="dashicons dashicons-info-outline important-note--icon"></span><?php esc_html_e('About Dynamic Dark Mode', 'darklup-lite');?>
+                <h3><span class="dashicons dashicons-info-outline important-note--icon"></span><?php esc_html_e('About Dynamic Dark Mode', 'darklup-lite');?>
                 </h3>
                 <p class="darkluplite-welcome--notice">
-                    <?php esc_html_e("With the help of the dynamic dark mode option, you can easily enable the dark mode feature on your website
-          without doing any complex configuration. Darklup Dark Mode utilizes an intelligent, dynamic algorithm to
-          effortlessly generate stunning dark mode color schemes for your website.", 'darklup-lite')?>
+                    <?php esc_html_e("With the help of the dynamic dark mode option, you can easily enable the dark mode feature on your website without doing any complex configuration. Darklup Dark Mode utilizes an intelligent, dynamic algorithm to effortlessly generate stunning dark mode color schemes for your website.", 'darklup-lite')?>
                 </p>
             </div>
         </div>
@@ -74,8 +84,7 @@ class Color_Settings_Tab extends Settings_Fields_Base
 </div>
 
 
-<div class="darkluplite-presets-customization-wrap darkluplite-dynamic-color-level"
-    data-condition='{"key":"full_color_settings","value":"darklup_dynamic"}'>
+<div class="darkluplite-presets-customization-wrap darkluplite-dynamic-color-level" data-condition='{"key":"color_modes","value":"darklup_dynamic"}'>
     <div class="darkluplite-row darkluplite-section--header">
         <h3>Dark Mode Intensity (Default: 80)</h3>
         <p>Adjust the dark mode intensity for your website by selecting a desired level. The website background will
@@ -90,7 +99,8 @@ class Color_Settings_Tab extends Settings_Fields_Base
         'title' => esc_html__( 'Value', 'darklup' ),
         // 'sub_title' => esc_html__( 'Adjust the dark mode intensity for your website by selecting a desired level. The website background will become darker as you increase the value. At 100%, the background color will be completely dark.', 'darklup' ),
         'sub_title' => esc_html__( '', 'darklup' ),
-        'condition' => ["key" => "full_color_settings", "value" => "darklup_dynamic"],
+        // 'condition' => ["key" => "full_color_settings", "value" => "darklup_dynamic"],
+        'condition' => ["key" => "color_modes", "value" => "darklup_dynamic"],
         'default_value' => '85',
         'class' => 'settings-slider',
         'name'  => 'darkmode_level',
@@ -102,6 +112,32 @@ class Color_Settings_Tab extends Settings_Fields_Base
       ]);
 ?>
 </div>
+
+<div class="darkluplite-presets-customization-wrap darkluplite-dynamic-color-level darkluplite-mt-20" data-condition='{"key":"color_modes","value":"darklup_dynamic"}'>
+        <div class="darkluplite-row darkluplite-section--header">
+            <h3>Branding Color Intensity (Default: 10)</h3>
+            <p>Dynamic Dark mode will preserve branding colors (Ex: Colors like red, green, yellow, etc). By default, branding colors will be 10% darker.<br> You can also select a desired level to adjust the dark mode intensity for branding colors. The colors will become darker as you increase the value. At 100%, the background colors will be completely dark.</p>
+        </div>
+
+        <?php
+
+          $this->range_slider([
+            'title' => esc_html__( 'Value', 'darklup' ),
+            // 'sub_title' => esc_html__( 'Adjust the dark mode intensity for your website by selecting a desired level. The website background will become darker as you increase the value. At 100%, the background color will be completely dark.', 'darklup' ),
+            'sub_title' => esc_html__( '', 'darklup' ),
+            'condition' => ["key" => "color_modes", "value" => "darklup_dynamic"],
+            'default_value' => '10',
+            'class' => 'settings-slider',
+            'name'  => 'branding_darkmode_level',
+            'step'  => '1',
+            'max'   => '100',
+            'min'   => '0',
+            'is_pro' => 'yes',
+            'wrapper_class' => 'pro-feature',    
+          ]);
+
+    ?>
+    </div> 
 
 <?php
 
@@ -127,8 +163,8 @@ class Color_Settings_Tab extends Settings_Fields_Base
             'sub_title' => esc_html__('Select the front-end darkmode color.', 'darklup-lite'),
             'class' => 'settings-color-preset front-end-dark--presets',
             'name' => 'color_preset',
-            // 'condition' => ["key" => "color_preset_enabled", "value" => "yes"],
             'condition' => ["key" => "full_color_settings", "value" => "front_end_colors"],
+            'extra_cond' => ["key" => "color_modes", "value" => "darklup_presets"],
             'options_title' => $preset_image_titles,
             'options' => $preset_images,
         ]);
@@ -140,17 +176,84 @@ class Color_Settings_Tab extends Settings_Fields_Base
           'class' => 'settings-color-preset dashboard-dark--presets',
           'name' => 'admin_color_preset',
           'condition' => ["key" => "full_color_settings", "value" => "dashoard_colors"],
+          'extra_cond' => ["key" => "color_modes", "value" => "darklup_presets"],
           'options_title' => $preset_image_titles,
           'options' => $preset_images,
       ]);
 
 
       ?>
-<div class="darkluplite-presets-customization-wrap"
-    data-condition='{"key":"full_color_settings","value":"front_end_colors"}'>
+      
+          <!-- Dynamic mode Colors -->
+    <div class="darkluplite-presets-customization-wrap darkluplite-mt-20" data-condition='{"key":"color_modes","value":"darklup_dynamic"}'>
+        <div class="darkluplite-row darkluplite-section--header">
+            <h3>Dynamic Mode Color Customization</h3>
+            <p>Customize colors whatever you want in the Dynamic mode.</p>
+        </div>
+
+        <?php
+
+          $this->color_field([
+            'title' => esc_html__( 'Text Color', 'darklup-lite' ),
+            'sub_title' => esc_html__( 'Set custom text color.', 'darklup-lite' ),
+            'is_pro' => 'yes',
+            'wrapper_class' => 'pro-feature',
+            'name' => 'dynamic_custom_text_color'
+          ]);
+          $this->color_field([
+            'title' => esc_html__( 'Link Color', 'darklup-lite' ),
+            'sub_title' => esc_html__( 'Set custom link color.', 'darklup-lite' ),
+            'is_pro' => 'yes',
+            'wrapper_class' => 'pro-feature',
+            'name' => 'dynamic_custom_link_color',
+          ]);
+          $this->color_field([
+            'title' => esc_html__( 'Link Hover Color', 'darklup-lite' ),
+            'sub_title' => esc_html__( 'Set custom link hover color.', 'darklup-lite' ),
+            'is_pro' => 'yes',
+            'wrapper_class' => 'pro-feature',
+            'name' => 'dynamic_custom_link_hover_color'
+          ]);
+          $this->color_field([
+            'title' => esc_html__( 'Border Color', 'darklup-lite' ),
+            'sub_title' => esc_html__( 'Set custom border color.', 'darklup-lite' ),
+            'is_pro' => 'yes',
+            'wrapper_class' => 'pro-feature',
+            'name' => 'dynamic_custom_border_color'
+          ]);
+
+          $this->color_field([
+            'title' => esc_html__( 'Button Background Color', 'darklup-lite' ),
+            'sub_title' => esc_html__( 'Set custom button background Color.', 'darklup-lite' ),
+            'is_pro' => 'yes',
+            'wrapper_class' => 'pro-feature',
+            'name' => 'dynamic_custom_btn_bg_color'
+          ]);
+          $this->color_field([
+            'title' => esc_html__( 'Button Text Color', 'darklup-lite' ),
+            'sub_title' => esc_html__( 'Set custom button text Color.', 'darklup-lite' ),
+            'is_pro' => 'yes',
+            'wrapper_class' => 'pro-feature',
+            'name' => 'dynamic_custom_btn_text_color'
+          ]);
+          $this->color_field([
+            'title' => esc_html__( 'Input Field Background Color', 'darklup-lite' ),
+            'sub_title' => esc_html__( 'Set custom button text Color.', 'darklup-lite' ),
+            'is_pro' => 'yes',
+            'wrapper_class' => 'pro-feature',
+            'name' => 'dynamic_custom_input_bg_color'
+          ]);
+          
+          ?>
+    </div>
+      
+      
+      
+      
+<div class="darkluplite-presets-customization-wrap" data-condition='{"key":"full_color_settings","value":"front_end_colors"}' data-extra_condition='{"key":"color_modes","value":"darklup_presets"}'>
     <div class="darkluplite-row darkluplite-section--header">
         <h3>Preset Color Customization</h3>
-        <p>Customize the preset colors whatever you want.</p>
+        <p>Customize front-end the preset colors whatever you want.</p>
     </div>
 
     <?php
@@ -252,11 +355,10 @@ class Color_Settings_Tab extends Settings_Fields_Base
                 // Admin Colors
           
                 ?>
-<div class="darkluplite-presets-customization-wrap"
-    data-condition='{"key":"full_color_settings","value":"dashoard_colors"}'>
+<div class="darkluplite-presets-customization-wrap" data-condition='{"key":"full_color_settings","value":"dashoard_colors"}' data-extra_condition='{"key":"color_modes","value":"darklup_presets"}'>
     <div class="darkluplite-row darkluplite-section--header">
         <h3>Preset Color Customization</h3>
-        <p>Customize the preset colors whatever you want.</p>
+        <p>Customize the admin dashoard preset colors whatever you want.</p>
     </div>
     <?php
 

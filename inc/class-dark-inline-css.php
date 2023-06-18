@@ -12,6 +12,9 @@ namespace DarklupLite;
  */
 
 /**
+ * *************************************************************************
+ * This template needs optimaztion (Refactor -> algorithm)
+ * *************************************************************************
  * Dark_Inline_CSS class
  */
 class Dark_Inline_CSS
@@ -69,7 +72,8 @@ class Dark_Inline_CSS
         wp_add_inline_style('darkluplite-dark-style', $css);
         // wp_add_inline_script('jquery', $js);
         $colorMode = 'darklup_dynamic';
-        $getMode = Helper::getOptionData('full_color_settings');
+        // $getMode = Helper::getOptionData('full_color_settings');
+        $getMode = Helper::getOptionData('color_modes');
         if($getMode !== 'darklup_dynamic'){
             $colorMode = 'darklup_presets';
         }
@@ -221,7 +225,6 @@ class Dark_Inline_CSS
         $imgOpacity    = !empty($imgOpacity ) ? $imgOpacity  : '1';
         $imgSepia      = Helper::getOptionData('image_sepia');
         $imgSepia      = !empty($imgSepia ) ? $imgSepia  : '0';
-        
 
         $inlinecss = "
         :root {
@@ -243,6 +246,12 @@ class Dark_Inline_CSS
             --wpc-darkluplite--box-shadow: $boxShadow;
             --darkluplite-btn-width: {$switch_size_base_width}px;
             --darkluplite-btn-height: {$switch_size_base_height}px;
+            --darkluplite-dynamic-color: rgb(237 237 237);
+            --darkluplite-dynamic-border-color: #74747469;
+            --darkluplite-dynamic-sudo-color: #ddd;
+            --darkluplite-dynamic-link-color: rgb(237 237 237);
+            --darkluplite-dynamic-link-hover-color: rgb(237 237 237);
+            --darkluplite-dynamic-btn-text-color: rgb(237 237 237);
             {$switch_icon_size_width_height}
         }
 
@@ -344,6 +353,12 @@ class Dark_Inline_CSS
             --wpc-darkluplite--bg-img-filter: $bgImgFilter;
             --wpc-darkluplite--svg-filter: $inlineSvgFilter;
             --wpc-darkluplite--box-shadow: $boxShadow;
+            --darkluplite-dynamic-color: rgb(237 237 237);
+            --darkluplite-dynamic-border-color: #74747469;
+            --darkluplite-dynamic-sudo-color: #ddd;
+            --darkluplite-dynamic-link-color: rgb(237 237 237);
+            --darkluplite-dynamic-link-hover-color: rgb(237 237 237);
+            --darkluplite-dynamic-btn-text-color: rgb(237 237 237);
         }
 
 		";

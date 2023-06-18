@@ -1,11 +1,11 @@
-=== DarklupLite - WP Dark Mode ===
+=== DarklupLite - The Most Advanced and Uprising WordPress Dark Mode Plugin ===
 Contributors: darklup, wpcommerz
 Donate link: https://darklup.com/
 Tags: dark, dark mode, dark theme, night mode, wordpress dark mode
 Requires PHP: 5.6
 Requires at least: 5.1
 Tested up to: 6.2.2
-Stable tag: 3.1.2
+Stable tag: 3.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,7 +26,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 <h3>Why Choose DarklupLite?</h3> 
 <p>Choosing the best WordPress dark mode plugin can make your website user experience more appreciable. Darkluplite has unique dark mode optimization features that are efficient to improve the bounce rate of your website. It is also helpful for the visitors to keep safe from blue light exposure.</p>
 
-<p>We are glad some user reviews of our plugin - </p>
+<p>We are glad about some user reviews of our plugin - </p>
 
 @<a href="https://wordpress.org/support/topic/happy-with-this-plugin-37/">artlover1</a> ⭐⭐⭐⭐⭐
 <blockquote>“I am using darklup for last 1 month and it works good. faced some problems in sections thats are looking weired. then i contact on customer support and they fixed my issues. all the best team”</blockquote>
@@ -72,10 +72,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 <h3>🔥 WordPress Dark Mode Plugin PRO Features:</h3>
 <ol>
-	<li><strong>Exclude WooCommerce Products & Categories:</strong> To enrich your woocommerce website, this feature allows you to show the dark mode switch button on some product and category. So, you can exclude or include any product or category to show the dark switch button.</li>
+	<li><strong>Exclude WooCommerce Products & Categories:</strong> To enrich your WooCommerce website, this feature allows you to show the dark mode switch button on some product and category. So, you can exclude or include any product or category to show the dark switch button.</li>
 	<li><strong>Triggering Dark Mode Setting:</strong> This amazing feature will let you select particular pages,posts and categories where you don't want to show the dark mode switch.</li>
 	<li><strong>Custom CSS Supported Dark Mode:</strong> You can edit the specific sections of your WordPress website with custom CSS support in dark mode.</li>
-	<li><strong>Shortcode integration:</strong> You can insert a shortcode [darklup_darkmode_switch style="1"] to change the location of the dark mode switch button.</li>
+	<li><strong>Shortcode integration:</strong> You can insert a shortcode [darklup_darkmode_switch] to change the location of the dark mode switch button.</li>
 	<li><strong>Color Customization:</strong> Independently customize the color of various sections of your website such as background color, link color, hover color, etc.</li>
 	<li><strong>Schedule Dark Mode:</strong> Set the WordPress dark mode activation time according to your local time and enjoy the automatic activation of dark mode on the website.</li>
 	
@@ -104,8 +104,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	<li><strong>Exclude Background Image Overlay:</strong> When 'image overlay' enabled, all background images receive an overlay in dark mode. You can remove the overlay from a specific element by providing the class or ID of that element.</li>
 </ol>
 
-<p>🚀 <a href="https://darklup.com/pricing/" target="_blank">Get Pro</a> | 👁️ <a href="https://darklup.com/" target="_blank">Demo</a> | 👨‍💻 <a href="https://darklup.com/" target="_blank">Get Support</a></p>
 
+<p>👁️ <a href="https://darklup.com/" target="_blank">Demo</a> | 🚀 <a href="https://darklup.com/pricing/" target="_blank">Get Pro</a> | 👨‍💻 <a href="https://darklup.com/my-account/support-tickets/" target="_blank">Get Support</a></p>
 
 <h3>🔥 MORE PREMIUM VERSION FEATURES:</h3>
 <ol>
@@ -245,6 +245,16 @@ screenshot-3.png
 screenshot-4.png
 
 == Changelog ==
+
+= 3.2.0 =
+1. Added: Customization for Dynamic Dark Mode.
+2. Improved: The UI/UX of the settings page has been improved.
+3. Fixed: OS Aware Dark Mode issue 
+4. Improved: The performance of the plugin has been upgraded.
+
+= 3.1.3 =
+1.Reworked: A number of small problems have been addressed.
+2.Improved: The performance of the plugin has been upgraded.
 
 = 3.1.2 =
 1. Revised: Several minor issues have been resolved.

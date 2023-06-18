@@ -56,7 +56,7 @@ trait Choose_Radio_Buttons
         }
 
         ?>
-<div class="darkluplite-row <?php echo esc_html($args['wrapper_class'] . ' ' . $args['class']); ?>"
+<div class="darkluplite-row btn-switcher-field <?php echo esc_html($args['wrapper_class'] . ' ' . $args['class']); ?>"
     data-condition="<?php echo esc_html($conditionData); ?>">
     <div class="darkluplite-col-lg-12 darkluplite-col-md-12">
         <div class="darkluplite-single-settings-inner radio-image-wrapper">

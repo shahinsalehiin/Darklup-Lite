@@ -158,7 +158,6 @@ window.open("https://darklup.com", "_blank");
         wp_enqueue_script('select', DARKLUPLITE_DIR_ADMIN_ASSETS_URL . 'js/select.min.js', array('jquery'), '1.0', true);
         wp_enqueue_script('select2', DARKLUPLITE_DIR_ADMIN_ASSETS_URL . 'js/select2.min.js', array('jquery'), '1.0', true);
         wp_enqueue_script('darkluplite-chart-js', DARKLUPLITE_DIR_ADMIN_ASSETS_URL . 'js/darkluplite-chart.js', array('jquery'), '1.0');
-        // wp_enqueue_script('darkluplite-main', DARKLUPLITE_DIR_ADMIN_ASSETS_URL . 'js/main.js', array('jquery', 'wp-color-picker'), DARKLUPLITE_VERSION, true);
 
         DarklupLite_Enqueue::addDarklupJSWithDynamicVersion('darkluplite-main', 'admin/assets/js/main.js', array('jquery', 'wp-color-picker'), true);
         
@@ -177,39 +176,34 @@ window.open("https://darklup.com", "_blank");
         if(!$dashboardDarkMode) return;
         
         $colorMode = 'darklup_dynamic';
-        $getMode = Helper::getOptionData('full_color_settings');
-
+        $getMode = Helper::getOptionData('color_modes');
+        
+        // Remove this in version 4.0
+        // if($getMode == ""){
+        //     $darkluplite_options = get_option("darkluplite_settings");
+        //     if ($darkluplite_options ) {
+        //         $getPrevMode = Helper::getOptionData('full_color_settings');
+        //         if($getPrevMode == 'darklup_dynamic'){
+        //             $darkluplite_options['color_modes'] = 'darklup_dynamic';
+        //             update_option('darkluplite_settings', $darkluplite_options);
+        //         }else{
+        //             $getMode = 'darklup_presets';
+        //             $darkluplite_options['color_modes'] = 'darklup_presets';
+        //             update_option('darkluplite_settings', $darkluplite_options);
+        //         }
+        //     }
+        // }
+        
+        
         if($getMode !== 'darklup_dynamic'){
             $colorMode = 'darklup_presets';
             wp_enqueue_style('darkluplite-admin-variables', DARKLUPLITE_DIR_ADMIN_ASSETS_URL . 'css/admin-variable.css', array(), DARKLUPLITE_VERSION, false);
             DarklupLite_Enqueue::addDarklupJSWithDynamicVersion('darklup_presets', $src = 'assets/es-js/presets.js', $dep = NULL, $js_footer = false);
-            // wp_enqueue_style('darklup-admin-variables', DARKLUPLITE_DIR_ADMIN_ASSETS_URL . 'css/admin-variables.css', array(), DARKLUPLITE_VERSION, false);
         }else{
             wp_enqueue_style('darklup-dynamic-new', DARKLUPLITE_DIR_ADMIN_ASSETS_URL . 'css/new-dynamic-style.css', array(), DARKLUPLITE_VERSION, false);
             DarklupLite_Enqueue::addDarklupJSWithDynamicVersion();
         }
-
         $darkenLevel = 80;
-
-
-
-        // wp_enqueue_script('darklup-dynamic', DARKLUPLITE_DIR_URL . 'inc/dynamic-colors/dist/index.js', null, DARKLUPLITE_VERSION, $js_in_footer);
-        
-        // Added Darklup JS dynamically for avoiding caching Problem
-        // DarklupLite_Enqueue::addDarklupJSWithDynamicVersion();
-        
-        // $colorPreset = \DarklupLite\Helper::getOptionData('color_admin_preset');
-        // $presetColor = \DarklupLite\Color_Preset::getColorPreset($colorPreset);
-
-        // $darklup_js = [
-        //     'primary_bg' => esc_html($presetColor['background-color']),
-        //     'secondary_bg' => esc_html($presetColor['secondary_bg']),
-        //     'tertiary_bg' => esc_html($presetColor['tertiary_bg']),
-        //     'primary_bg_rgba' => 'rgba(39, 40, 39, 0.6)',
-        //     'secondary_bg_rgba' => 'rgba(36, 37, 37, 0.6)',
-        //     'bg_image_dark_opacity' => '0.5',
-        // ];
-
 
         $colorPreset = \DarklupLite\Helper::getOptionData('admin_color_preset');
         $presetColor = \DarklupLite\Color_Preset::getColorPreset($colorPreset);
@@ -225,9 +219,6 @@ window.open("https://darklup.com", "_blank");
         $customTertiaryBg = \DarklupLite\Helper::is_real_color($customTertiaryBg);
 
 
-        // echo $customBg;
-        // var_dump($customBg);
-
         $bgColor = esc_html($presetColor['background-color']);
         if($customBg) $bgColor = $customBg;
         $bgColor = \DarklupLite\Helper::hex_to_color($bgColor);
@@ -241,16 +232,6 @@ window.open("https://darklup.com", "_blank");
         $bgTertiary = \DarklupLite\Helper::hex_to_color($bgTertiary);
 
 
-        // $darklup_js = [
-        //     'primary_bg' => $bgColor,
-        //     'secondary_bg' => $bgSecondaryColor,
-        //     'tertiary_bg' => $bgTertiary,
-        //     'bg_image_dark_opacity' => '0.5',
-        // ];
-
-        // wp_localize_script('darklup-dynamic', 'DarklupJs', $darklup_js);
-
-
         $darklup_js = [
             'primary_bg' => $bgColor,
             'secondary_bg' => $bgSecondaryColor,
@@ -262,9 +243,6 @@ window.open("https://darklup.com", "_blank");
 
         wp_localize_script($colorMode, 'DarklupJs', $darklup_js);
 
-
-
-        // $siteLogo = Helper::getSiteLogo();
         $frontendObject = array(
             'ajaxUrl' 	  	=> admin_url( 'admin-ajax.php' ),
             'sitelogo' 		=> '',
@@ -280,19 +258,6 @@ window.open("https://darklup.com", "_blank");
         );
 
         wp_localize_script( $colorMode, 'frontendObject', $frontendObject);
-
-        // wp_localize_script(
-        //     // 'darklup-lite',
-        //     'darklup-dynamic',
-        //     'frontendObject',
-        //     array(
-        //         'ajaxUrl' => admin_url('admin-ajax.php'),
-        //         'timeBasedMode' => Helper::darkmodeTimeMaping(),
-        //         'time_based_mode_active' => \DarklupLite\Helper::getOptionData('time_based_darkmode'),
-        //         'time_based_mode_start_time' => \DarklupLite\Helper::getOptionData('mode_start_time'),
-        //         'time_based_mode_end_time' => \DarklupLite\Helper::getOptionData('mode_end_time'),
-        //     )
-        // );
 
     }
 

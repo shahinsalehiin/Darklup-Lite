@@ -36,15 +36,30 @@ class Woocommerce_Settings_Tab extends Settings_Fields_Base
             'is_pro' => 'yes',
             'options' => \DarklupLite\Helper::getWooProducts()
         ]);
-        
         $this->Multiple_select_box([
-            'title' => esc_html__('Exclude WooCommerce Categories', 'darklup-lite'),
-            'sub_title' => esc_html__('Select the categories where you don\'t want to show the dark mode switch', 'darklup-lite'),
+            'title' => esc_html__('Include WooCommerce Products', 'darklup'),
+            'sub_title' => esc_html__('Select the products where you want to show the dark mode switch except all other products', 'darklup'),
+            'name' => 'include_woo_products',
+            'wrapper_class' => 'pro-feature',
+            'is_pro' => 'yes',
+            'options' => \DarklupLite\Helper::getWooProducts()
+        ]);
+        $this->Multiple_select_box([
+            'title' => esc_html__('Exclude WooCommerce Categories', 'darklup'),
+            'sub_title' => esc_html__('Select the categories where you don\'t want to show the dark mode switch', 'darklup'),
             'name' => 'exclude_woo_categories',
             'wrapper_class' => 'pro-feature',
             'is_pro' => 'yes',
             'options' => \DarklupLite\Helper::getWooCategories()
         ]);
+        $this->Multiple_select_box([
+            'title' => esc_html__('Include WooCommerce Categories', 'darklup'),
+            'sub_title' => esc_html__('Select the categories where you want to show the dark mode switch except all other categories', 'darklup'),
+            'name' => 'include_woo_categories',
+            'wrapper_class' => 'pro-feature',
+            'is_pro' => 'yes',
+            'options' => \DarklupLite\Helper::getWooCategories()
+        ]);        
 
         $this->end_fields_section(); // End fields section
 

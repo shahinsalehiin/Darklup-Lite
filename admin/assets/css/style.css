@@ -270,6 +270,9 @@
   -ms-grid-row-align: center;
   align-items: center;
 }
+.btn-switcher-field .radio-image-wrapper .details h5{
+  padding-left: 10px;  
+}
 .on-off-toggle.button-switch {
   position: relative;
 }
@@ -395,10 +398,6 @@
   padding: 0 10px;
 }
 
-/*.radio-image-wrapper {
-  border: none;
-  padding: 30px 90px 30px 25px;
-}*/
 .radio-img > input {
   display: none;
 }
@@ -647,7 +646,7 @@
   align-self: center;
 }
 .darkluplite-single-about .details {
-  padding: 30px 40px 40px 40px;
+  padding: 30px 40px 40px 25px;
 }
 .darkluplite-single-about .details h3 {
   font-size: 30px;

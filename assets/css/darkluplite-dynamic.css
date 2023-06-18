@@ -1,10 +1,4 @@
 html {
     display: none;
 }
-html.darkluplite-dark-mode-enabled *:not(.darkluplite-dark-ignore):not(.darkluplite-dark-ignore *) {
-    color: rgb(237 237 237) !important;
-}
-html.darkluplite-dark-mode-enabled *:not(:is(.darkluplite-dark-ignore, .darkluplite-dark-ignore *)):before,
-html.darkluplite-dark-mode-enabled *:not(:is(.darkluplite-dark-ignore, .darkluplite-dark-ignore *)):after {
-    color: #ddd !important;
-}
+
