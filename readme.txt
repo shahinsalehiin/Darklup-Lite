@@ -1,11 +1,11 @@
-=== DarklupLite - The Most Advanced and Uprising WordPress Dark Mode Plugin ===
-Contributors: darklup, wpcommerz
+=== Darklup - The Most Advanced and Uprising WordPress Dark Mode Plugin ===
+Contributors: darklup, wpcommerz, devmahbub
 Donate link: https://darklup.com/
 Tags: dark, dark mode, dark theme, night mode, wordpress dark mode
 Requires PHP: 5.6
 Requires at least: 5.1
 Tested up to: 6.2.2
-Stable tag: 3.2.0
+Stable tag: 3.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -245,6 +245,12 @@ screenshot-3.png
 screenshot-4.png
 
 == Changelog ==
+
+= 3.2.1 =
+1. Added: Dark Mode Support for Login/Registration page.
+2. Added: Dark Mode Support for Gutenberg/Site editor.
+3. Improved: Enhanced UI/UX on settings page.
+4. Updated: AJAX implementation for seamless settings changes without page reload.
 
 = 3.2.0 =
 1. Added: Customization for Dynamic Dark Mode.

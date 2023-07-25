@@ -162,7 +162,12 @@ class Helper{
           return false;
         }
       }
-
+    /**
+     * Convert Hex color to Rbg Color
+     *
+     * @param [string] $colorString
+     * @return string
+     */
     public static function hex_to_color($colorString) {
 
         $trimColorString = trim($colorString, "# ");
@@ -298,5 +303,97 @@ class Helper{
         }
         return $categories;
     }
-    
+    public static function getFrontendObject()
+    {
+        $frontendObject = array(
+            'ajaxUrl' 	  	=> admin_url( 'admin-ajax.php' ),
+            'sitelogo' 		=> '',
+            'lightlogo' 	=> '',
+            'darklogo' 		=> '',
+            'darkenLevel' 	=> 80,
+            'darkimages' 	=> [],
+            'timeBasedMode' => self::darkmodeTimeMaping(),
+            'security' => wp_create_nonce('darklup_analytics_hashkey'),
+            'time_based_mode_active' => self::getOptionData('time_based_darkmode'),
+            'time_based_mode_start_time' => self::getOptionData('mode_start_time'),
+            'time_based_mode_end_time' => self::getOptionData('mode_end_time'),
+        );
+        
+        return $frontendObject;
+    }
+    public function getDarklupJsAdmin($admin ='')
+    {
+        $colorPreset = Helper::getOptionData('admin_color_preset');
+        $presetColor = Color_Preset::getColorPreset($colorPreset);
+        $customBg = Helper::getOptionData('admin_custom_bg_color');
+        $customBg = Helper::is_real_color($customBg);
+        $customSecondaryBg = Helper::getOptionData('admin_custom_secondary_bg_color');
+        $customSecondaryBg = Helper::is_real_color($customSecondaryBg);
+        $customTertiaryBg = Helper::getOptionData('admin_custom_tertiary_bg_color');
+        $customTertiaryBg = Helper::is_real_color($customTertiaryBg);
+
+        $bgColor = esc_html($presetColor['background-color']);
+        if($customBg) $bgColor = $customBg;
+        $bgColor = Helper::hex_to_color($bgColor);
+
+        $bgSecondaryColor = esc_html($presetColor['secondary_bg']);
+        if($customSecondaryBg) $bgSecondaryColor = $customSecondaryBg;
+        $bgSecondaryColor = Helper::hex_to_color($bgSecondaryColor);
+
+        $bgTertiary = esc_html($presetColor['tertiary_bg']);
+        if($customTertiaryBg) $bgTertiary = $customTertiaryBg;
+        $bgTertiary = Helper::hex_to_color($bgTertiary);
+
+        $darklup_js = [
+            'primary_bg' => $bgColor,
+            'secondary_bg' => $bgSecondaryColor,
+            'tertiary_bg' => $bgTertiary,
+            'bg_image_dark_opacity' => '0.5',
+            'exclude_element' => '',
+            'exclude_bg_overlay' => '',
+        ];
+        return $darklup_js;
+    }
+    public static function getDarklupJs($admin ='')
+    {
+        //admin_color_preset
+        $colorPreset = Helper::getOptionData($admin . 'color_preset'); 
+        $presetColor = Color_Preset::getColorPreset($colorPreset);
+        // admin_custom_bg_color
+        $customBg = Helper::getOptionData($admin . 'custom_bg_color');
+        $customBg = Helper::is_real_color($customBg);
+        
+        $bgColor = esc_html($presetColor['background-color']);
+        if($customBg) $bgColor = $customBg;
+        $bgColor = Helper::hex_to_color($bgColor);
+        
+        // admin_custom_secondary_bg_color
+        $customSecondaryBg = Helper::getOptionData($admin . 'custom_secondary_bg_color');
+        $customSecondaryBg = Helper::is_real_color($customSecondaryBg);
+        
+        $bgSecondaryColor = esc_html($presetColor['secondary_bg']);
+        if($customSecondaryBg) $bgSecondaryColor = $customSecondaryBg;
+        $bgSecondaryColor = Helper::hex_to_color($bgSecondaryColor);
+        
+        
+        // admin_custom_tertiary_bg_color
+        $customTertiaryBg = Helper::getOptionData($admin . 'custom_tertiary_bg_color');
+        $customTertiaryBg = Helper::is_real_color($customTertiaryBg);
+        
+        $bgTertiary = esc_html($presetColor['tertiary_bg']);
+        if($customTertiaryBg) $bgTertiary = $customTertiaryBg;
+        $bgTertiary = Helper::hex_to_color($bgTertiary);
+
+        $ifBgOverlay  = Helper::getOptionData('apply_bg_overlay');
+        $darklup_js = [
+            'primary_bg' => $bgColor,
+            'secondary_bg' => $bgSecondaryColor,
+            'tertiary_bg' => $bgTertiary,
+            'bg_image_dark_opacity' => '0.5',
+            'exclude_element' => '',
+            'apply_bg_overlay' => $ifBgOverlay,
+            'exclude_bg_overlay' => '',
+        ];
+        return $darklup_js;
+    }
 }

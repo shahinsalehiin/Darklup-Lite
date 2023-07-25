@@ -41,6 +41,7 @@ class Advance_Settings_Tab extends Settings_Fields_Base
             // 'condition' => ["key" => "full_color_settings", "value" => "dashoard_colors"],
             'name' => 'backend_darkmode',
         ]);
+        
         $this->switch_field([
             'title' => esc_html__('Enable OS Aware Dark Mode', 'darklup-lite'),
             'sub_title' => esc_html__('This option will be served a dark mode of your website when their device preference is set to Dark Mode.', 'darklup-lite'),

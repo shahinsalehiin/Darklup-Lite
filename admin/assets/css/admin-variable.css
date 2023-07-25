@@ -4,7 +4,7 @@ html {
 }
 .darkluplite-admin-dark-mode-enabled a:focus-visible,
 .darkluplite-admin-dark-mode-enabled a:focus {
-  outline: none !important;
+  /* outline: none !important; */
 }
 
 /* For Dynamic Contents */

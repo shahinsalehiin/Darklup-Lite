@@ -12,13 +12,16 @@ class Darklup {
     this.topContents();
     this.setRequiredVariables();
 
-    if (this.isGutenburg || this.isCustomizer || this.isOxygenBuilder) {
+    // if (this.isGutenburg || this.isCustomizer || this.isOxygenBuilder) {
+    if ( this.isCustomizer || this.isOxygenBuilder) {
       this.htmlElement.style.display = "block";
       return;
     }
 
     this.addUsersDynamicStyles();
     this.getExcludedElements();
+    
+    this.getExcludedBgOverlay();
     this.getAllElements();
 
     // console.log(this.allElements);
@@ -28,8 +31,6 @@ class Darklup {
     // this.handleRootVariables();
     // this.htmlElement.style.display = "block";
     // return;
-
-    this.getExcludedBgOverlay();
 
     this.handleRootVariables();
     // this.getAllCSSRules();
@@ -87,7 +88,18 @@ class Darklup {
   }
   topContents(){
     // console.log('top contents');
-
+    
+    this.isWpAdmin = false;
+    this.isWpLogin = false;
+    
+    // Top level variables
+    this.htmlElement = document.querySelector("html");
+    this.bodyElement = document.querySelector("body");
+    
+    if (this.bodyElement.classList.contains("wp-admin"))  this.isWpAdmin = true;
+    if (this.bodyElement.classList.contains("login"))  this.isWpLogin = true;
+    
+    
     // Darken Levels
     this.darkenLevel = 75;
     this.brandingDarkenLevel = 10;
@@ -106,14 +118,19 @@ class Darklup {
     this.darklupLightLogo = frontendObject.lightlogo;
     
     // Exclude Elements
-    this.excludeSelectors = [];
-    let defaultExcludes = [".button.wp-color-result"];
-    this.excludeSelectors = [...DarklupJs.exclude_element];
-    this.excludeSelectors = [...this.excludeSelectors, ...defaultExcludes];
-    
+    if(this.isWpAdmin){
+      this.excludeSelectors = [".button.wp-color-result"];
+    }else{
+      this.excludeSelectors = [];
+    }
+    // this.excludeSelectors = [".button.wp-color-result"];
     //Background Exclude
-    this.excludeBgOverlay = [];
-    this.excludeBgOverlay = [...DarklupJs.exclude_bg_overlay];
+    if(this.isWpLogin){
+      this.excludeBgOverlay = ['.login h1 a'];
+    }else{
+      this.excludeBgOverlay = [];
+    }
+    // this.excludeBgOverlay = ['.login h1 a'];
   }
   setRequiredVariables() {
     this.allElements = [];
@@ -129,7 +146,7 @@ class Darklup {
     this.elementsWithBgImage = [];
     this.elementsWithAlphaBg = [];
     this.elementsWithBoxShadow = [];
-    this.isWpAdmin = false;
+    // this.isWpAdmin = false;
     this.isGutenburg = false;
     this.isCustomizer = false;
     this.isOxygenBuilder = false;
@@ -142,7 +159,7 @@ class Darklup {
     this.excludedElements = [];
     this.bgColorsCount = 0;
     this.maxArea = 0;
-    this.htmlElement = document.querySelector("html");
+    // this.htmlElement = document.querySelector("html");
     this.switcherCheckbox = document.querySelector(".switch-trigger");
     // this.switcherFont = document.querySelector(".switch-font-trigger");
     this.switcherCheckboxes = document.querySelectorAll(".switch-trigger");
@@ -159,23 +176,20 @@ class Darklup {
     this.adminDarkEnabledClass = "darkluplite-admin-dark-mode-enabled";
 
     // Set Body Width And Primary BG
-    let bodyElement = document.querySelector("body");
-    if (bodyElement.classList.contains("wp-admin")) {
-      this.isWpAdmin = true;
-    }
-    if (bodyElement.classList.contains("block-editor-page")) {
+
+    if (this.bodyElement.classList.contains("block-editor-page")) {
       this.isGutenburg = true;
     }
-    if (bodyElement.classList.contains("site-editor-php")) {
+    if (this.bodyElement.classList.contains("site-editor-php")) {
       this.isGutenburg = true;
     }
-    if (bodyElement.classList.contains("wp-customizer")) {
+    if (this.bodyElement.classList.contains("wp-customizer")) {
       this.isCustomizer = true;
     }
-    if (bodyElement.classList.contains("oxygen-builder-body")) {
+    if (this.bodyElement.classList.contains("oxygen-builder-body")) {
       this.isOxygenBuilder = true;
     }
-    let bodyBg = this.hasBgColor(bodyElement);
+    let bodyBg = this.hasBgColor(this.bodyElement);
     let htmlBg = this.hasBgColor(this.htmlElement);
     if (bodyBg) {
       this.primaryBg = bodyBg;
@@ -183,63 +197,10 @@ class Darklup {
       this.primaryBg = htmlBg;
     } else {
       this.primaryBg = "rgb(255, 255, 255)";
-      bodyElement.classList.add("darklup_bg_0");
+      this.bodyElement.classList.add("darklup_bg_0");
     }
   }
-  PREVsetRequiredVariables() {
-    this.allElements = [];
-    this.allAnchors = [];
-    this.allButtons = [];
-    this.allInputs = [];
-    this.allImages = [];
-    this.allInlineSvgs = [];
-    this.elementsWithText = [];
-    this.elementsWithRealBgColor = [];
-    this.elementsWithRealBorder = [];
-    this.elementsWithBgImage = [];
-    this.elementsWithAlphaBg = [];
-    this.elementsWithBoxShadow = [];
-    this.isWpAdmin = false;
-    this.isGutenburg = false;
-    this.maxArea = 0;
-    this.htmlElement = document.querySelector("html");
-    this.switcherCheckbox = document.querySelector(".switch-trigger");
-    this.switcherCheckboxes = document.querySelectorAll(".switch-trigger");
-    this.switchTrigger = ".switch-trigger";
-    this.switchWrapper = document.querySelector(".darkluplite-mode-switcher");
-    this.switchWrapper2 = document.querySelector("#wp-admin-bar-darkluplite-admin-switch");
-    this.switchWrapper3 = document.querySelector(".darkluplite-menu-switch");
-    this.switchWrappers = [this.switchWrapper, this.switchWrapper2, this.switchWrapper3];
-    this.floatingSwitch = this.switchWrapper?.querySelector(".switch-trigger");
-    this.adminSwitch = this.switchWrapper2?.querySelector(".switch-trigger");
-    this.menuSwitch = this.switchWrapper3?.querySelector(".switch-trigger");
-    this.switches = [this.floatingSwitch, this.adminSwitch, this.menuSwitch];
-    this.darkEnabledClass = "darkluplite-dark-mode-enabled";
-    this.adminDarkEnabledClass = "darkluplite-admin-dark-mode-enabled";
 
-    // Set Body Width And Primary BG
-    let bodyElement = document.querySelector("body");
-    if (bodyElement.classList.contains("wp-admin")) {
-      this.isWpAdmin = true;
-    }
-    if (bodyElement.classList.contains("block-editor-page")) {
-      this.isGutenburg = true;
-    }
-    if (bodyElement.classList.contains("site-editor-php")) {
-      this.isGutenburg = true;
-    }
-    // this.bodyWidth = this.getElementWidth(bodyElement);
-    let bodyBg = this.hasBgColor(bodyElement);
-    let htmlBg = this.hasBgColor(this.htmlElement);
-    if (bodyBg) {
-      this.primaryBg = bodyBg;
-    } else if (htmlBg) {
-      this.primaryBg = htmlBg;
-    } else {
-      this.primaryBg = "rgb(255, 255, 255)";
-      bodyElement.classList.add("darkluplite--bg");
-    }
-  }
   getAllElements() {
     let excludes, selectAll;
 
@@ -448,7 +409,8 @@ class Darklup {
 
             /*************** Do Optimize Exclusion ****************** */
             /*************** Do Optimize Exclusion ****************** */
-
+            // console.log(this.excludedBgOverlays);
+            
             if (this.excludeBgOverlay.length > 0) {
               if (rule.selectorText) {
                 element = document.querySelector(rule.selectorText);
@@ -551,7 +513,7 @@ class Darklup {
     
     cssRules += this.usersDynamicCss;
     return cssRules;
-    // const cssRules = getAllCSSRules();
+    
     // console.log(bgRules);
     // console.log(this.bgVars);
     // console.log(this.colorVars);
@@ -838,7 +800,6 @@ class Darklup {
           let thisTrigger = e.target;
           if (thisTrigger.checked) {
             this.activateDarkMode();
-            // this.addGlobalInlineCSS(this.getAllCSSRules());
 
             if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
               localStorage.removeItem("lightOnOSDarkChecked");
@@ -850,7 +811,7 @@ class Darklup {
             }
           } else {
             this.deactivateDarkMode();
-            // this.removeGlobalInlineCSS();
+            
             if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
               localStorage.setItem("lightOnOSDarkChecked", true);
             }
@@ -888,14 +849,10 @@ class Darklup {
         const newColorScheme = e.matches ? "dark" : "light";
         if (newColorScheme === "dark") {
           if (!lightOnOSDarkChecked) {
-            // this.enableDarkMode();
             this.activateDarkMode();
-            // this.addGlobalInlineCSS(this.getAllCSSRules());
           }
         } else {
           this.deactivateDarkMode();
-          // this.removeGlobalInlineCSS();
-          // this.disableDarkMode();
         }
       });
     }
@@ -916,10 +873,8 @@ class Darklup {
           let darkMode = this.isDarkModeEnabled();
           if (darkMode) {
             this.deactivateDarkMode();
-            // this.removeGlobalInlineCSS();
           } else {
             this.activateDarkMode();
-            // this.addGlobalInlineCSS(this.getAllCSSRules());
           }
         }
       });

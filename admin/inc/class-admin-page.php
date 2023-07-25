@@ -35,26 +35,30 @@ class Admin_Page_Components {
 		?>
 <div class="darkluplite-admin-wrap">
     <form class="admin-darklup" method="post" action="options.php">
-        <?php 
-          settings_fields( 'darkluplite-settings-group' ); 
-          do_settings_sections( 'darkluplite-settings-group' );
-          ?>
+        <?php
+            $settingsGorup = 'darkluplite-settings-group';
+            $nonce = wp_create_nonce( 'darluplitenonce' );
+            settings_fields( $settingsGorup ); 
+            do_settings_sections( $settingsGorup );
+        ?>
+        
+        <input type="hidden" id="darluplitenonce" name="darluplitenonce" value="<?php echo $nonce; ?>">
         <div class="darkluplite-main-area darkluplite-admin-settings-area">
             <div class="darkluplite-row">
                 <div class="darkluplite-col-sm-3 darkluplite-col-md-3 darkluplite-col-12 padding-0 darkluplite-menu-column">
                     
                     <div class="darkluplite-menu-area">
                         <?php
-                      	self::logo();
+                        self::logo();
                         // Tab menu
                         require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-tabs.php';
-                      	?>
+                        ?>
                     </div>
                 </div>
 
                 <div class="darkluplite-col-sm-9 darkluplite-col-md-9 darkluplite-col-12 padding-0 darkluplite-content-column">
                     <div class="darkluplite-settings-area darkluplite-admin-dark-ignore">
-                        <?php
+                    <?php
                         require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-home-settings.php';
                         require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-advance-settings.php';
                         require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-style-settings.php';

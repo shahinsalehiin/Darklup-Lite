@@ -40,6 +40,7 @@ class Hooks
     {
 
         add_action('wp_footer', [__CLASS__, 'modeSwitcher']);
+        add_action('login_footer', [__CLASS__, 'modeSwitcher']);
         if(is_admin()){
             $switchInAdminMenu = \DarklupLite\Helper::getOptionData('backend_darkmode');
             if (!empty($switchInAdminMenu) && $switchInAdminMenu == 'yes') {

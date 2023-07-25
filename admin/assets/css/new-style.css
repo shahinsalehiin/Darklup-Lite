@@ -426,6 +426,57 @@
   display: flex;
   align-items: center;
 }
+.wrap-darkluplite-ajax-save{
+  position: relative;
+}
+.wrap-darkluplite-ajax-save .dashicons-darkluplite-ajax-save{
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  color: #fff;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+input.darkluplite-ajax-save{
+  padding-right: 45px !important;
+  min-width: 165px;
+  text-transform: uppercase;
+}
+
+.wp-core-ui .button.darkluplite-ajax-save:disabled,
+.wp-core-ui .button.darkluplite-ajax-save[disabled],
+input.darkluplite-ajax-save:disabled{
+  background: #044193 !important;
+  color: #fff !important;
+}
+
+.toast-container .toast.toast-success{
+  background: #ef5812 !important;
+}
+.darkluplite--spin {
+  animation-name: darlupspin;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.wp-core-ui .darkluplite-section-title .button:hover {
+  background-color: #0e55b3;
+}
+@keyframes darlupspin {
+  0% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
+.darkluplite-ajax-save{
+  
+}
+.darkluplite-ajax-save:before{
+  content: '';
+}
 
 @media (max-width: 1600px) {
   .darkluplite-main-area .darkluplite-menu-area ul li a {

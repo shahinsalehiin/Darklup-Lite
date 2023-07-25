@@ -28,6 +28,7 @@ class Dark_Inline_CSS
     public function __construct()
     {
         add_action('wp_enqueue_scripts', [__CLASS__, 'enqueueStyle']);
+        add_action('login_enqueue_scripts', [__CLASS__, 'enqueueStyle']);
         add_action('admin_enqueue_scripts', [__CLASS__, 'adminEnqueueStyle']);
     }
 
@@ -40,7 +41,7 @@ class Dark_Inline_CSS
     public static function adminEnqueueStyle()
     {
 
-        $backendDarkmode = \DarklupLite\Helper::getOptionData('backend_darkmode');
+        $backendDarkmode = Helper::getOptionData('backend_darkmode');
         if (!$backendDarkmode) {
             return;
         }
@@ -88,7 +89,7 @@ class Dark_Inline_CSS
      */
     public static function adminAddStyle()
     {
-        $css = self::adminInlineCss();
+        $css = self::commonInlineCss('admin_');
         $js = self::inlineAdminJs();
         wp_add_inline_style('darkluplite-dark-style', $css);
         wp_add_inline_script('jquery', $js);
@@ -96,8 +97,8 @@ class Dark_Inline_CSS
     public static function inlineAdminJs()
     {
         $inline_js = "";
-        $backendDarkModeSettingsEnabled = \DarklupLite\Helper::getOptionData('backend_darkmode');
-        $enableKeyboardShortcut = \DarklupLite\Helper::getOptionData('keyboard_shortcut');
+        $backendDarkModeSettingsEnabled = Helper::getOptionData('backend_darkmode');
+        $enableKeyboardShortcut = Helper::getOptionData('keyboard_shortcut');
 
         if ($backendDarkModeSettingsEnabled) {
             $inline_js .= "let isBackendDarkLiteModeSettingsEnabled = true;";
@@ -115,11 +116,11 @@ class Dark_Inline_CSS
     }
     public static function inlineJs()
     {
-        $enableOS = \DarklupLite\Helper::getOptionData('enable_os_switcher');
-        $enableKeyboardShortcut = \DarklupLite\Helper::getOptionData('keyboard_shortcut');
-        $defaultDarkMode  = \DarklupLite\Helper::getOptionData('default_dark_mode');
+        $enableOS = Helper::getOptionData('enable_os_switcher');
+        $enableKeyboardShortcut = Helper::getOptionData('keyboard_shortcut');
+        $defaultDarkMode  = Helper::getOptionData('default_dark_mode');
         $inline_js = "";
-
+        
         if ($enableOS) {
             $inline_js .= "let isOSDarkModeEnabled = true;";
         } else {
@@ -138,120 +139,43 @@ class Dark_Inline_CSS
             $inline_js .= "let isDefaultDarkModeEnabled = false;";
         }
 
-
         return $inline_js;
     }
     public static function inlineCss()
     {
 
-
         //  Switch Position In Desktop
         $marginUnit = 'px';
-        $switchMarginUnit 	  = \DarklupLite\Helper::getOptionData('switch_margin_unit');
+        $switchMarginUnit 	  = Helper::getOptionData('switch_margin_unit');
         if($switchMarginUnit == 'percent') $marginUnit = '%';
-        $topMargin = \DarklupLite\Helper::getOptionData('switch_top_margin').$marginUnit;
-        $bottomMargin = \DarklupLite\Helper::getOptionData('switch_bottom_margin').$marginUnit;
-        $leftMargin = \DarklupLite\Helper::getOptionData('switch_left_margin').$marginUnit;
-        $rightMargin = \DarklupLite\Helper::getOptionData('switch_right_margin').$marginUnit;
-
-        $customBg = \DarklupLite\Helper::getOptionData('custom_bg_color');
-        $customBg = \DarklupLite\Helper::is_real_color($customBg);
-        $customSecondaryBg = \DarklupLite\Helper::getOptionData('custom_secondary_bg_color');
-        $customSecondaryBg = \DarklupLite\Helper::is_real_color($customSecondaryBg);
-        $customTertiaryBg = \DarklupLite\Helper::getOptionData('custom_tertiary_bg_color');
-        $customTertiaryBg = \DarklupLite\Helper::is_real_color($customTertiaryBg);
-        $customColor = \DarklupLite\Helper::getOptionData('custom_text_color');
-        $customColor = \DarklupLite\Helper::is_real_color($customColor);
-
-
-        // Preset Color
-        $colorPreset = \DarklupLite\Helper::getOptionData('color_preset');
-        $presetColor = \DarklupLite\Color_Preset::getColorPreset($colorPreset);
-
-
-        $bgColor = esc_html($presetColor['background-color']);
-        if($customBg) $bgColor = $customBg;
-        
-        $bgSecondaryColor = esc_html($presetColor['secondary_bg']);
-        if($customSecondaryBg) $bgSecondaryColor = $customSecondaryBg;
-
-        $bgTertiary = esc_html($presetColor['tertiary_bg']);
-        if($customTertiaryBg) $bgTertiary = $customTertiaryBg;
-
-        $color = esc_html($presetColor['color']);
-        if($customColor) $color = $customColor;
-
-
-        $anchorColor = esc_html($presetColor['anchor-color']);
-        $anchorHoverColor = esc_html($presetColor['anchor-hover-color']);
-        $inputBgColor = esc_html($presetColor['input-bg-color']);
-        $borderColor = esc_html($presetColor['border-color']);
-        $btnBgColor = esc_html($presetColor['btn-bg-color']);
-        $btnColor = esc_html($presetColor['color']);
-        $boxShadow = esc_html($presetColor['color']);
-
-
-        $imgFilter = esc_html('brightness(85%)');
-        $bgImgFilter = esc_html('brightness(90%) grayscale(5%)');
-        $inlineSvgFilter = esc_html('brightness(90%) grayscale(5%) invert(90%)');
+        $topMargin = Helper::getOptionData('switch_top_margin').$marginUnit;
+        $bottomMargin = Helper::getOptionData('switch_bottom_margin').$marginUnit;
+        $leftMargin = Helper::getOptionData('switch_left_margin').$marginUnit;
+        $rightMargin = Helper::getOptionData('switch_right_margin').$marginUnit;
 
         // Switch button width and height for desktop
-        $switch_size_base_width = \DarklupLite\Helper::getOptionData('switch_size_base_width');
-        $switch_size_base_height = \DarklupLite\Helper::getOptionData('switch_size_base_height');
+        $switch_size_base_width = Helper::getOptionData('switch_size_base_width');
+        $switch_size_base_height = Helper::getOptionData('switch_size_base_height');
         $switch_size_base_width =  empty( $switch_size_base_width) ? "100" : $switch_size_base_width;
         $switch_size_base_height =  empty( $switch_size_base_height) ? "40" : $switch_size_base_height;
         // Switch button Icon width and height for desktop
         $switch_icon_size_width_height = '';
-        $switch_size_icon_width = \DarklupLite\Helper::getOptionData('floating_switch_icon_width');
-        $switch_size_icon_height = \DarklupLite\Helper::getOptionData('floating_switch_icon_height');
+        $switch_size_icon_width = Helper::getOptionData('floating_switch_icon_width');
+        $switch_size_icon_height = Helper::getOptionData('floating_switch_icon_height');
         if(!empty( $switch_size_icon_width)){
             $switch_icon_size_width_height .= "--darkluplite-btn-icon-width: {$switch_size_icon_width}px;";
         }
         if(!empty( $switch_size_icon_height)){
             $switch_icon_size_width_height .= "--darkluplite-btn-icon-height: {$switch_size_icon_height}px;";
         }
-
-
-        $darklup_image_effects  = Helper::getOptionData('darkluplite_image_effects');
-        $darklup_image_effects = !empty($darklup_image_effects) ? $darklup_image_effects : 'no';
-
-        $imgGrayscale  = Helper::getOptionData('image_grayscale');
-        $imgGrayscale  = !empty($imgGrayscale) ? $imgGrayscale : '0';
-        $imgBrightness = Helper::getOptionData('image_brightness');
-        $imgBrightness = !empty($imgBrightness) ? $imgBrightness : '1';
-        $imgContrast   = Helper::getOptionData('image_contrast');
-        $imgContrast   = !empty($imgContrast ) ? $imgContrast  : '1';
-        $imgOpacity    = Helper::getOptionData('image_opacity');
-        $imgOpacity    = !empty($imgOpacity ) ? $imgOpacity  : '1';
-        $imgSepia      = Helper::getOptionData('image_sepia');
-        $imgSepia      = !empty($imgSepia ) ? $imgSepia  : '0';
-
+        
+        $commonCss = self::commonInlineCss();
+        
         $inlinecss = "
+        $commonCss
         :root {
-            --wpc-darkluplite--bg: $bgColor;
-            --wpc-darkluplite--secondary-bg: $bgSecondaryColor;
-            --wpc-darkluplite--tertiary-bg: $bgTertiary;
-            --wpc-darkluplite--text-color: $color;
-            --wpc-darkluplite--link-color: $anchorColor;
-            --wpc-darkluplite--link-hover-color: $anchorHoverColor;
-            --wpc-darkluplite--input-bg: $inputBgColor;
-            --wpc-darkluplite--input-text-color: $color;
-            --wpc-darkluplite--input-placeholder-color: $color;
-            --wpc-darkluplite--border-color: $borderColor;
-            --wpc-darkluplite--btn-bg: $btnBgColor;
-            --wpc-darkluplite--btn-text-color: $btnColor;
-            --wpc-darkluplite--img-filter: $imgFilter;
-            --wpc-darkluplite--bg-img-filter: $bgImgFilter;
-            --wpc-darkluplite--svg-filter: $inlineSvgFilter;
-            --wpc-darkluplite--box-shadow: $boxShadow;
-            --darkluplite-btn-width: {$switch_size_base_width}px;
             --darkluplite-btn-height: {$switch_size_base_height}px;
-            --darkluplite-dynamic-color: rgb(237 237 237);
-            --darkluplite-dynamic-border-color: #74747469;
-            --darkluplite-dynamic-sudo-color: #ddd;
-            --darkluplite-dynamic-link-color: rgb(237 237 237);
-            --darkluplite-dynamic-link-hover-color: rgb(237 237 237);
-            --darkluplite-dynamic-btn-text-color: rgb(237 237 237);
+            --darkluplite-btn-width: {$switch_size_base_width}px;
             {$switch_icon_size_width_height}
         }
 
@@ -262,48 +186,31 @@ class Dark_Inline_CSS
 			right: {$rightMargin} !important;
 		}
 		";
-
-		if($darklup_image_effects == "yes"){
-            $inlinecss .= "html.darkluplite-dark-mode-enabled img {
-                                filter: grayscale({$imgGrayscale}) opacity({$imgOpacity}) sepia({$imgSepia}) brightness({$imgBrightness}) contrast({$imgContrast}) !important;
-                            }";
-        }
-
         return $inlinecss;
-        // return $colorMode . ' Cute';
     }
 
-    /**
-     * Admin inline css
-     *
-     * @since  1.0.0
-     * @return void
-     */
-    public static function adminInlineCss()
+    public static function commonInlineCss($admin='')
     {
-
-
-        $customBg = \DarklupLite\Helper::getOptionData('admin_custom_bg_color');
-        $customBg = \DarklupLite\Helper::is_real_color($customBg);
-        $customSecondaryBg = \DarklupLite\Helper::getOptionData('admin_custom_secondary_bg_color');
-        $customSecondaryBg = \DarklupLite\Helper::is_real_color($customSecondaryBg);
-        $customTertiaryBg = \DarklupLite\Helper::getOptionData('admin_custom_tertiary_bg_color');
-        $customTertiaryBg = \DarklupLite\Helper::is_real_color($customTertiaryBg);
-        $customColor = \DarklupLite\Helper::getOptionData('admin_custom_text_color');
-        $customColor = \DarklupLite\Helper::is_real_color($customColor);
-
-        $colorPreset = \DarklupLite\Helper::getOptionData('admin_color_preset');
-        $presetColor = \DarklupLite\Color_Preset::getColorPreset($colorPreset);
-
+        $colorPreset = Helper::getOptionData($admin. 'color_preset');
+        $presetColor = Color_Preset::getColorPreset($colorPreset);
+        
         $bgColor = esc_html($presetColor['background-color']);
+        $customBg = Helper::getOptionData($admin. 'custom_bg_color');
+        $customBg = Helper::is_real_color($customBg);
         if($customBg) $bgColor = $customBg;
         
+        $customSecondaryBg = Helper::getOptionData($admin. 'custom_secondary_bg_color');
+        $customSecondaryBg = Helper::is_real_color($customSecondaryBg);
         $bgSecondaryColor = esc_html($presetColor['secondary_bg']);
         if($customSecondaryBg) $bgSecondaryColor = $customSecondaryBg;
-
+        
+        $customTertiaryBg = Helper::getOptionData($admin. 'custom_tertiary_bg_color');
+        $customTertiaryBg = Helper::is_real_color($customTertiaryBg);
         $bgTertiary = esc_html($presetColor['tertiary_bg']);
         if($customTertiaryBg) $bgTertiary = $customTertiaryBg;
-
+        
+        $customColor = Helper::getOptionData($admin. 'custom_text_color');
+        $customColor = Helper::is_real_color($customColor);
         $color = esc_html($presetColor['color']);
         if($customColor) $color = $customColor;
 
@@ -333,9 +240,7 @@ class Dark_Inline_CSS
         $imgSepia      = Helper::getOptionData('image_sepia');
         $imgSepia      = !empty($imgSepia ) ? $imgSepia  : '0';
 
-
         $inlinecss = "
-
         :root {
             --wpc-darkluplite--bg: $bgColor;
             --wpc-darkluplite--secondary-bg: $bgSecondaryColor;
@@ -363,9 +268,8 @@ class Dark_Inline_CSS
 
 		";
 		if($darklup_image_effects == "yes"){
-            $inlinecss .= ".darkluplite-image-effects-preview img {
-                                filter: grayscale({$imgGrayscale}) opacity({$imgOpacity}) sepia({$imgSepia}) brightness({$imgBrightness}) contrast({$imgContrast});
-                            }";
+            $inlinecss .= "html.darkluplite-dark-mode-enabled img, .darkluplite-image-effects-preview img {
+                filter: grayscale({$imgGrayscale}) opacity({$imgOpacity}) sepia({$imgSepia}) brightness({$imgBrightness}) contrast({$imgContrast}) !important; }";
         }
         return $inlinecss;
     }

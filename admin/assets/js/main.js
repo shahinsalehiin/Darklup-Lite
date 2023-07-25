@@ -28,6 +28,7 @@
       this.previewAdminLivePresets();
       this.sliderValue();
       this.imageEffects();
+      this.saveFormValue();
     },
     windowOnLoad: function () {
       //
@@ -81,7 +82,82 @@
         });
       }
     },
-
+    configureToast: function(){
+      toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-bottom-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "2000",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+      }  
+    },
+    
+    saveFormValue: function(){
+      this.configureToast();
+      let formSelector = '.admin-darklup';
+      let submitBtn = jQuery('.darkluplite-ajax-save');
+      let spinner = jQuery('.dashicons-darkluplite-ajax-save');
+      
+      function serializeFormValues() {
+        return $(formSelector).serializeArray();
+      }
+      $(document).ready(function() {
+        $(formSelector).submit(function(e) {
+          e.preventDefault(); // Prevent form submission
+          
+          submitBtn.val('Please Wait..');
+          submitBtn.prop('disabled', true);
+          spinner.addClass('darkluplite--spin');
+          
+          var formValues = serializeFormValues();
+          
+          let darklupData = {
+            'action': 'darkluplite_save_admin_settings',
+            'data': formValues
+          };
+          // console.log(darklupData);
+          
+          jQuery.ajax({
+            url: darklupPresets.ajaxurl, type: "POST", data: darklupData,
+            success: function (response) {
+            
+              // console.log(response);
+              if(response == 'update_success'){
+                Command: toastr["success"]("Settings Saved Successfully!");
+                submitBtn.val('Save Settings');
+                submitBtn.prop('disabled', false);
+                spinner.removeClass('darkluplite--spin');
+              }else if(response == 'same'){
+                Command: toastr["warning"]("Nothing updated");
+                submitBtn.val('Save Settings');
+                submitBtn.prop('disabled', false);
+                spinner.removeClass('darkluplite--spin');
+              }else{
+                Command: toastr["error"]("Failed, Please try again!");
+                submitBtn.val('Save Settings');
+                submitBtn.prop('disabled', false);
+                spinner.removeClass('darkluplite--spin');
+              }
+            
+            },
+            error: function(response) {
+              console.log(response);
+            }
+        });
+          
+        });
+      });
+    },
     previewLivePresets: function () {
       var presets = $(".settings-color-preset.front-end-dark--presets .rect-design input");
       presets.on("click", (e) => {
@@ -720,7 +796,9 @@
         inlineCss = inlineCss.concat(contrastCss);
         inlineCss = inlineCss.concat(opacityCss);
         inlineCss = inlineCss.concat(sepiaCss);
-        $(".darkluplite-image-effects-preview img").css({ filter: inlineCss });
+        // $(".darkluplite-image-effects-preview img").css({ filter: inlineCss });
+        $('.darkluplite-image-effects-preview img').css('cssText', `filter: ${inlineCss} !important;`);
+
       }
     },
     imageEffects: function () {

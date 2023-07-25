@@ -34,6 +34,8 @@ if (!class_exists('DarklupLite_Enqueue')) {
 
             if (\DarklupLite\Helper::getOptionData('frontend_darkmode') == 'yes') {
                 add_action('wp_enqueue_scripts', array($this, 'frontendEnqueueScripts'));
+                add_action('login_enqueue_scripts', array($this, 'frontendEnqueueScripts'), 10);
+                add_action('login_enqueue_scripts', array($this, 'loginEnqueueScripts'), 10);
                 // add_filter('script_loader_tag', array($this, 'deferScriptInHead'), 10, 3);
             }
         }
@@ -46,32 +48,15 @@ if (!class_exists('DarklupLite_Enqueue')) {
         public function frontendEnqueueScripts()
         {
 
-            // wp_enqueue_style('darkluplite-style', DARKLUPLITE_DIR_URL . 'assets/css/darkluplite-style.css', array(), DARKLUPLITE_VERSION, false);
             wp_enqueue_style('darkluplite-switch', DARKLUPLITE_DIR_URL . 'assets/css/darkluplite-switch.css', array(), DARKLUPLITE_VERSION, false);
 
             /********************
             Js Enqueue
-             ********************/
+            ********************/
 
             $colorMode = 'darklup_dynamic';
             // $getMode = 'darklup_presets';
             $getMode = Helper::getOptionData('color_modes');
-            
-            // Remove this in version 4.0
-            // if($getMode == ""){
-            //     $darkluplite_options = get_option("darkluplite_settings");
-            //     if ($darkluplite_options ) {
-            //         $getPrevMode = Helper::getOptionData('full_color_settings');
-            //         if($getPrevMode == 'darklup_dynamic'){
-            //             $darkluplite_options['color_modes'] = 'darklup_dynamic';
-            //             update_option('darkluplite_settings', $darkluplite_options);
-            //         }else{
-            //             $getMode = 'darklup_presets';
-            //             $darkluplite_options['color_modes'] = 'darklup_presets';
-            //             update_option('darkluplite_settings', $darkluplite_options);
-            //         }                    
-            //     }
-            // }
             
             if($getMode !== 'darklup_dynamic'){
                 $colorMode = 'darklup_presets';
@@ -81,49 +66,45 @@ if (!class_exists('DarklupLite_Enqueue')) {
                 $this->addDarklupJSWithDynamicVersion();
                 wp_enqueue_style('darkluplite-dynamic', DARKLUPLITE_DIR_URL . 'assets/css/darkluplite-dynamic.css', array(), DARKLUPLITE_VERSION, false);
             }
+            
+            // Localize Variables
+            $frontObj = Helper::getFrontendObject();
+			wp_localize_script( $colorMode, 'frontendObject', $frontObj);
+            // $DarklupJs = $this->getDarklupJs();
+            $DarklupJs = Helper::getDarklupJs();
+            wp_localize_script($colorMode, 'DarklupJs', $DarklupJs);
+            
+        }
+        public function loginEnqueueScripts()
+        {
+            wp_enqueue_style('darkluplite-login', DARKLUPLITE_DIR_URL . 'assets/css/darkluplite-login.css', array(), DARKLUPLITE_VERSION, false);
+        }
+        public function getDarklupJs()
+        {
+            $colorPreset = Helper::getOptionData('color_preset');
+            $presetColor = Color_Preset::getColorPreset($colorPreset);
 
-            $darkenLevel = 80;
-
-			$frontendObject = array(
-				'ajaxUrl' 	  	=> admin_url( 'admin-ajax.php' ),
-				'sitelogo' 		=> '',
-				'lightlogo' 	=> '',
-				'darklogo' 		=> '',
-				'darkenLevel' 	=> $darkenLevel,
-				'darkimages' 	=> [],
-				'timeBasedMode' => Helper::darkmodeTimeMaping(),
-				'security' => wp_create_nonce('darklup_analytics_hashkey'),
-				'time_based_mode_active' => Helper::getOptionData('time_based_darkmode'),
-				'time_based_mode_start_time' => Helper::getOptionData('mode_start_time'),
-				'time_based_mode_end_time' => Helper::getOptionData('mode_end_time'),
-			);
-
-			wp_localize_script( $colorMode, 'frontendObject', $frontendObject);
-
-            $colorPreset = \DarklupLite\Helper::getOptionData('color_preset');
-            $presetColor = \DarklupLite\Color_Preset::getColorPreset($colorPreset);
-
-            $customBg = \DarklupLite\Helper::getOptionData('custom_bg_color');
-            $customBg = \DarklupLite\Helper::is_real_color($customBg);
+            $customBg = Helper::getOptionData('custom_bg_color');
+            $customBg = Helper::is_real_color($customBg);
     
             // Custom colors
-            $customSecondaryBg = \DarklupLite\Helper::getOptionData('custom_secondary_bg_color');
-            $customSecondaryBg = \DarklupLite\Helper::is_real_color($customSecondaryBg);
+            $customSecondaryBg = Helper::getOptionData('custom_secondary_bg_color');
+            $customSecondaryBg = Helper::is_real_color($customSecondaryBg);
     
-            $customTertiaryBg = \DarklupLite\Helper::getOptionData('custom_tertiary_bg_color');
-            $customTertiaryBg = \DarklupLite\Helper::is_real_color($customTertiaryBg);
+            $customTertiaryBg = Helper::getOptionData('custom_tertiary_bg_color');
+            $customTertiaryBg = Helper::is_real_color($customTertiaryBg);
     
             $bgColor = esc_html($presetColor['background-color']);
             if($customBg) $bgColor = $customBg;
-            $bgColor = \DarklupLite\Helper::hex_to_color($bgColor);
+            $bgColor = Helper::hex_to_color($bgColor);
 
             $bgSecondaryColor = esc_html($presetColor['secondary_bg']);
             if($customSecondaryBg) $bgSecondaryColor = $customSecondaryBg;
-            $bgSecondaryColor = \DarklupLite\Helper::hex_to_color($bgSecondaryColor);
+            $bgSecondaryColor = Helper::hex_to_color($bgSecondaryColor);
 
             $bgTertiary = esc_html($presetColor['tertiary_bg']);
             if($customTertiaryBg) $bgTertiary = $customTertiaryBg;
-            $bgTertiary = \DarklupLite\Helper::hex_to_color($bgTertiary);
+            $bgTertiary = Helper::hex_to_color($bgTertiary);
 
             $ifBgOverlay  = Helper::getOptionData('apply_bg_overlay');
 			$darklup_js = [
@@ -135,8 +116,7 @@ if (!class_exists('DarklupLite_Enqueue')) {
 				'apply_bg_overlay' => $ifBgOverlay,
 				'exclude_bg_overlay' => '',
             ];
-            wp_localize_script($colorMode, 'DarklupJs', $darklup_js);
-
+            return $darklup_js;
         }
         public function deferScriptInHead($tag, $handle)
         {

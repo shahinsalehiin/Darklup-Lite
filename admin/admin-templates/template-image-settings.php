@@ -17,16 +17,14 @@ class Image_Settings_Tab extends Settings_Fields_Base {
     }
 
 
-   public function tab_setting_fields() {
+  public function tab_setting_fields() {
 
         $this->start_fields_section([
-
             'title' => esc_html__( 'IMAGE SETTINGS', 'darklup-lite' ),
             'class' => 'darkluplite-image-settings darkluplite-d-hide darkluplite-settings-content',
             'icon'  => esc_url( DARKLUPLITE_DIR_URL. 'assets/img/picture.svg' ),
             'dark_icon'  => esc_url( DARKLUPLITE_DIR_URL. 'assets/img/picture-white.svg' ),
             'id' => 'darkluplite_image_settings'
-
         ]);
 
         $this->image_effects_switch_field([
