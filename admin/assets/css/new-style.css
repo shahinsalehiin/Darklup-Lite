@@ -477,7 +477,10 @@ input.darkluplite-ajax-save:disabled{
 .darkluplite-ajax-save:before{
   content: '';
 }
-
+.darkluplite-get-pro{
+  font-weight: bold;
+  color: #D9724B; 
+}
 @media (max-width: 1600px) {
   .darkluplite-main-area .darkluplite-menu-area ul li a {
     font-size: 16px;

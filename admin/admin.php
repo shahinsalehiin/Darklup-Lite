@@ -50,9 +50,9 @@ class DarklupLite_Settings_Page
         $pro_url = 'https://darklup.com';
 
         $setting_arr = array('<a href="' . esc_url($settings_url) . '">' . __('Settings', 'darklup-lite') . '</a>');
-        $pro_arr = array('<a target="_blank" href="' . esc_url($pro_url) . '">' . __('Get Pro', 'darklup-lite') . '</a>');
+        $pro_arr = array('<a class="darkluplite-get-pro" target="_blank" href="' . esc_url($pro_url) . '">' . __('Get Pro', 'darklup-lite') . '</a>');
 
-        $links = array_merge($pro_arr, $setting_arr, $links);
+        $links = array_merge($setting_arr, $links,$pro_arr);
 
         return $links;
     }
