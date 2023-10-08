@@ -1,30 +1,30 @@
-=== Darklup - The Most Advanced and Uprising WordPress Dark Mode Plugin ===
+=== Darklup - The most Advanced and Uprising WordPress Dark Mode Plugin ===
 Contributors: darklup, wpcommerz, devmahbub
 Donate link: https://darklup.com/
 Tags: dark, dark mode, dark theme, night mode, wordpress dark mode
 Requires PHP: 5.6
 Requires at least: 5.1
-Tested up to: 6.2.2
-Stable tag: 3.2.1
+Tested up to: 6.3
+Stable tag: 3.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-<p>Change the appearance of your WordPress website aesthetically by activating the most user-friendly plugin  - DarklupLite within a few moments.</p>
+<p>Change the appearance of your WordPress website aesthetically by activating the most user-friendly plugin  - Darklup within a few moments.</p>
 <p>👓 Dark mode reduces damages from bright screen lights and grants up to 70% eye protection.</p>
 
-<p>📋 Turn any WordPress website into an eye-pleasing reading experience by simply activating DarklupLite.</p>
+<p>📋 Turn any WordPress website into an eye-pleasing reading experience by simply activating Darklup.</p>
 
-<p>DarklupLite - The Best WordPress Dark Mode Plugin has numerous essential features for optimizing dark mode for WordPress website owners. Enable a visually stunning dark interface without facing any hassle with the help of Darklup's flexible and user-friendly functions.</p>
+<p>Darklup - The Best WordPress Dark Mode Plugin has numerous essential features for optimizing dark mode for WordPress website owners. Enable a visually stunning dark interface without facing any hassle with the help of Darklup's flexible and user-friendly functions.</p>
 
 <p>This essential dark mode plugin has been built based on advanced and smart artificial algorithms. It can automatically analyze the structure of the website and intelligently implement dark mode without creating any complications in the website design.</p>
 
 <p>The smart color sensitivity adjusts the color contrast according to user preference. Boost productivity without affecting your eyes. Also, you can use pre-generated 12 color presets for multiple dark mode designs</p>
 
 
-<h3>Why Choose DarklupLite?</h3> 
-<p>Choosing the best WordPress dark mode plugin can make your website user experience more appreciable. Darkluplite has unique dark mode optimization features that are efficient to improve the bounce rate of your website. It is also helpful for the visitors to keep safe from blue light exposure.</p>
+<h3>Why Choose Darklup?</h3> 
+<p>Choosing the best WordPress dark mode plugin can make your website user experience more appreciable. Darklup has unique dark mode optimization features that are efficient to improve the bounce rate of your website. It is also helpful for the visitors to keep safe from blue light exposure.</p>
 
 <p>We are glad about some user reviews of our plugin - </p>
 
@@ -148,12 +148,12 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 <ol>
 	<li>Join our <a href="https://www.facebook.com/wpcommerz" target="_blank">Facebook Group</a></li>
 	<li>Learn from our tutorials on <a href="https://www.youtube.com/channel/UCwbKkyju-e6bCkR0qQUUPZQ" target="_blank">Youtube Channel</a></li>
-	<li>Or rate DarklupLite on <a href="https://wordpress.org/support/plugin/darklup-lite-wp-dark-mode/reviews/" target="_blank">WordPress</a></li>
+	<li>Or rate Darklup on <a href="https://wordpress.org/support/plugin/darklup-lite-wp-dark-mode/reviews/" target="_blank">WordPress</a></li>
 </ol>
 
 
 ## Privacy Policy
-DarklupLite  WP Dark Mode uses [Appsero](https://appsero.com) SDK to collect some telemetry data upon user's confirmation. This helps us to troubleshoot problems faster & make product improvements.
+Darklup  WP Dark Mode uses [Appsero](https://appsero.com) SDK to collect some telemetry data upon user's confirmation. This helps us to troubleshoot problems faster & make product improvements.
 
 Appsero SDK **does not gather any data by default.** The SDK only starts gathering basic telemetry data **when a user allows it via the admin notice**. We collect the data to ensure a great user experience for all our users.
 
@@ -166,13 +166,13 @@ Learn more about how [Appsero collects and uses this data](https://appsero.com/p
 
 **The easy way.**
 
-Go to your WordPress Dashboard. Navigate to Plugins > Add New and then search for "darkluplite". Click on Install and then Activate the Plugin.
+Go to your WordPress Dashboard. Navigate to Plugins > Add New and then search for "darklup". Click on Install and then Activate the Plugin.
 
-That's it, Darklup Lite Plugin is now activated on your site!
+That's it, Darklup Plugin is now activated on your site!
 
 **The hard way..**
 
-Download "Darklup Lite WordPress Plugin"  and then extract the zip file and just drop the contents in the wp-content/plugins/ directory of your WordPress installation and then activate the Plugin from Plugins page.
+Download "Darklup WordPress Plugin"  and then extract the zip file and just drop the contents in the wp-content/plugins/ directory of your WordPress installation and then activate the Plugin from Plugins page.
 
 
 
@@ -245,6 +245,10 @@ screenshot-3.png
 screenshot-4.png
 
 == Changelog ==
+
+= 3.2.2 =
+1. Fix: Several minor issues have been resolved.
+2. Improved: The plugin's performance has been optimized.
 
 = 3.2.1 =
 1. Added: Dark Mode Support for Login/Registration page.
@@ -397,7 +401,7 @@ Fixed CSS Issues
 = 1.0.4 =
 
 1. Fixed some CSS issue
-2. Fixed DarklupLite Settings page design issue 
+2. Fixed Darklup Settings page design issue 
 
 = 1.0.3 =
 
@@ -414,4 +418,4 @@ Fixed CSS Issues
 3. Fixed some other issue
 
 = 1.0.0 =
-This is initial Release for Darklup Lite
+This is initial Release for Darklup

@@ -4,7 +4,7 @@
  * Plugin Name:       Darklup
  * Plugin URI:        https://darklup.com/
  * Description:       All in one WordPress plugin to create a stunning dark version for your WordPress website and dashboard.
- * Version:           3.2.1
+ * Version:           3.2.2
  * Author:            Darklup
  * Author URI:        https://darklup.com/
  * License:           GPL v2 or later
@@ -30,7 +30,7 @@ if (!defined('DARKLUPLITE_ALERT_MSG')) {
 
 // Version constant
 if (!defined('DARKLUPLITE_VERSION')) {
-    define('DARKLUPLITE_VERSION', '3.2.1');
+    define('DARKLUPLITE_VERSION', '3.2.2');
 }
 
 // Plugin dir path constant
@@ -70,7 +70,7 @@ function pluginDarklupLiteDeleted()
 }
 
 /**
- * DarklupLite final class
+ * Darklup final class
  */
 
 final class DarklupLite

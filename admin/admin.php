@@ -66,8 +66,8 @@ class DarklupLite_Settings_Page
     public function addPluginPage()
     {
         add_menu_page(
-            esc_html__('Darklup Lite', 'darklup-lite'),
-            esc_html__('Darklup Lite', 'darklup-lite'),
+            esc_html__('Darklup', 'darklup-lite'),
+            esc_html__('Darklup', 'darklup-lite'),
             'manage_options',
             'darkluplite-setting-admin',
             array($this, 'adminPage'),
@@ -76,7 +76,7 @@ class DarklupLite_Settings_Page
         );
 
         add_submenu_page('darkluplite-setting-admin',
-            esc_html__('Darklup Lite', 'darklup-lite'),
+            esc_html__('Darklup', 'darklup-lite'),
             esc_html__('Settings', 'darklup-lite'),
             'manage_options',
             'darkluplite-setting-admin',
