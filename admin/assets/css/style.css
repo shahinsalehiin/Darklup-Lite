@@ -907,40 +907,6 @@
   padding: 12px 60px 11px 60px;
   font-weight: 600;
 }
-
-/* New CSS For image banner start*/
-.darklup-single-popup {
-  padding: 0px;
-  /* max-height: 319px; */
-  border-radius: 20px !important;
-  background-color: transparent;
-}
-.darklup-single-popup *{
-  border-radius: 20px !important;
-  
-}
-.darklup-single-popup .darklup-buy-now-banner {
-  line-height: 0;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-.darklup-single-popup .darklup-buy-now-banner a{
-  min-width: 300px;
-  display: inline-block;
-  max-height: 100%;
-}
-
-.darklup-single-popup .darklup-buy-now-banner a img{
-  max-width: 100%;
-  border-radius: 7px;
-}
-.darklup-single-popup .darklup-close{
-  /* z-index: 99; */
-  padding: 5px;
-}
-
-/* New CSS For image banner end*/
-
 .pro-feature .darkluplite-single-input-inner::after,
 .pro-feature .darkluplite-single-settings-inner::after {
   content: "";

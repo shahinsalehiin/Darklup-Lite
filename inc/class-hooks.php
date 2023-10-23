@@ -145,24 +145,24 @@ class Hooks
         if (self::getOptionData('frontend_darkmode') == 'yes') {
 
             if (!empty($switchInDesktop) && $switchInDesktop == 'yes' && !$get_screen) {?>
-<div class="darkluplite-mode-switcher <?php echo esc_attr($switchPosition); ?> darkluplite-desktop-switcher">
-    <div class="mode-switcher-inner switcher-darkmode-enabled darkluplite-dark-ignore">
-        <?php echo self::getSwitchStyle(); ?>
-    </div>
-</div>
-<?php } else if (!empty($switchInMobile) && $switchInMobile == 'yes' && $get_screen) {?>
-<div class="darkluplite-mode-switcher <?php echo esc_attr($switchPosition); ?> darkluplite-mobile-switcher">
-    <div class="mode-switcher-inner switcher-darkmode-enabled darkluplite-dark-ignore">
-        <?php echo self::getMobileSwitchStyle(); ?>
-    </div>
-</div>
-<?php } else if (!empty($switchInDesktop) && $switchInDesktop == 'yes' && (!empty($switchInMobile) && $switchInMobile == 'yes')) {?>
-<div class="darkluplite-mode-switcher <?php echo esc_attr($switchPosition); ?> darkluplite-desktop-mobile-switcher">
-    <div class="mode-switcher-inner switcher-darkmode-enabled darkluplite-dark-ignore">
-        <?php echo self::getSwitchStyle(); ?>
-    </div>
-</div>
-<?php }
+                <div class="darkluplite-mode-switcher <?php echo esc_attr($switchPosition); ?> darkluplite-desktop-switcher">
+                    <div class="mode-switcher-inner switcher-darkmode-enabled darkluplite-dark-ignore">
+                        <?php echo self::getSwitchStyle(); ?>
+                    </div>
+                </div>
+                <?php } else if (!empty($switchInMobile) && $switchInMobile == 'yes' && $get_screen) {?>
+                <div class="darkluplite-mode-switcher <?php echo esc_attr($switchPosition); ?> darkluplite-mobile-switcher">
+                    <div class="mode-switcher-inner switcher-darkmode-enabled darkluplite-dark-ignore">
+                        <?php echo self::getMobileSwitchStyle(); ?>
+                    </div>
+                </div>
+                <?php } else if (!empty($switchInDesktop) && $switchInDesktop == 'yes' && (!empty($switchInMobile) && $switchInMobile == 'yes')) {?>
+                <div class="darkluplite-mode-switcher <?php echo esc_attr($switchPosition); ?> darkluplite-desktop-mobile-switcher">
+                    <div class="mode-switcher-inner switcher-darkmode-enabled darkluplite-dark-ignore">
+                        <?php echo self::getSwitchStyle(); ?>
+                    </div>
+                </div>
+            <?php }
 
         }
     }

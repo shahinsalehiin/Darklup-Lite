@@ -26,6 +26,7 @@ class DarklupLite_Settings_Page
      * @since  1.0.0
      * @return void
      */
+    public $offer_tran_key = 'darkluplite_offer_notice_dismissed';
     public function __construct()
     {
 
@@ -41,8 +42,58 @@ class DarklupLite_Settings_Page
         // Ajax save actions
         add_action('wp_ajax_nopriv_darkluplite_save_admin_settings', [$this, 'saveAdminSettings']);
         add_action('wp_ajax_darkluplite_save_admin_settings', [$this, 'saveAdminSettings']);
+        
+        
+        add_action( 'admin_notices', [$this, 'darklup_admin_darkluplite_offer_notice'] );
+        
+        
+        
+        add_action('wp_ajax_dismiss_darkluplite_offer_notice', [$this,'dismiss_darkluplite_offer_notice']);
+        add_action('wp_ajax_nopriv_dismiss_darkluplite_offer_notice', [$this,'dismiss_darkluplite_offer_notice']);
+        
+        // Remove transient 
+        $this->delete_darkluplite_offer_notice_transient();
+        
     }
+    public function darklup_admin_darkluplite_offer_notice()
+    {
+        $dismissed = get_transient($this->offer_tran_key);
+        if ($dismissed)  return;
+        
+        $class = 'notice notice-info is-dismissible darkluplite-offer--notice';
+        if(wp_is_mobile()){
+            $img_link = DARKLUPLITE_DIR_URL."assets/img/halloween-darklup-mobile.jpg";
+        }else{
+            $img_link = DARKLUPLITE_DIR_URL."assets/img/halloween-darklup.jpg";
+        }
+        $notice_url = 'https://darklup.com/pricing/';
+        $admin_url = admin_url('admin-ajax.php');
+        
+        printf( '<div class="%1$s"><div class="darkluplite-offer-notice--inner"><a href="%2$s" target="_blank"><img src="%3$s" alt="Buy Now"></a></div></div>', esc_attr( $class ), esc_url( $notice_url ),esc_url( $img_link ) );
+        ?>
+        <script>
+            jQuery(document).on('click', '.darkluplite-offer--notice button.notice-dismiss', function () {
+                let  daeklupAdminAjaxUrl = '<?php echo $admin_url; ?>';
+                jQuery.ajax({
+                    type: 'POST',
+                    data: {
+                        action: 'dismiss_darkluplite_offer_notice',
+                    },
+                    url: daeklupAdminAjaxUrl
+                });
+            });
+        </script>
+        <?php
 
+    }
+    function dismiss_darkluplite_offer_notice() {
+        
+        set_transient($this->offer_tran_key, true, 0); // Store the dismissed state
+    }
+    function delete_darkluplite_offer_notice_transient() {
+        delete_transient($this->offer_tran_key);
+    }
+    
     /* action links on plugin page */
     public function darkluplite_action_links($links)
     {
@@ -364,26 +415,26 @@ window.open("https://darklup.com", "_blank");
         $values = ['5', '25', '20', '15', '12', '10', '3'];
         ?>
 
-<div class="darklup-chart-wrapper">
-    <div class="darklup-chart-header">
-        <span><?php esc_html_e("How much percentage of users use dark mode in last 7 days.", 'darklup-lite');?></span>
-    </div>
+        <div class="darklup-chart-wrapper">
+            <div class="darklup-chart-header">
+                <span><?php esc_html_e("How much percentage of users use dark mode in last 7 days.", 'darklup-lite');?></span>
+            </div>
 
-    <div class="darklup-chart">
-        <canvas id="darklup_analytics_Chart" style="width: 394px;height: 300px;"
-            data-labels='<?php echo json_encode($label_data); ?>'
-            data-values='<?php echo json_encode($values); ?>'></canvas>
-    </div>
-    <div class="darklup-chart-modal-wrapper">
-        <div class="darklup-chart-modal">
-            <h1>Go Premium</h1>
-            <p>Purchase our premium version to unlock these features</p>
-            <a target="_blank" href="https://darklup.com/pricing/">Get Pro</a>
+            <div class="darklup-chart">
+                <canvas id="darklup_analytics_Chart" style="width: 394px;height: 300px;"
+                    data-labels='<?php echo json_encode($label_data); ?>'
+                    data-values='<?php echo json_encode($values); ?>'></canvas>
+            </div>
+            <div class="darklup-chart-modal-wrapper">
+                <div class="darklup-chart-modal">
+                    <h1>Go Premium</h1>
+                    <p>Purchase our premium version to unlock these features</p>
+                    <a target="_blank" href="https://darklup.com/pricing/">Get Pro</a>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
-<?php
+    <?php
 }
 
 }

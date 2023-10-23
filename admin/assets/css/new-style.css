@@ -481,6 +481,80 @@ input.darkluplite-ajax-save:disabled{
   font-weight: bold;
   color: #D9724B; 
 }
+
+/* New CSS For image banner start*/
+.darklup-single-popup {
+  padding: 0px;
+  border-radius: 20px !important;
+  background-color: transparent;
+}
+.darklup-single-popup *{
+  border-radius: 20px !important;
+  
+}
+.darklup-single-popup .darklup-buy-now-banner {
+  line-height: 0;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.darklup-single-popup .darklup-buy-now-banner a{
+  min-width: 300px;
+  display: inline-block;
+  max-height: 100%;
+}
+
+.darklup-single-popup .darklup-buy-now-banner a img{
+  max-width: 100%;
+  border-radius: 7px;
+}
+.darklup-single-popup .darklup-close{
+  /* z-index: 99; */
+  padding: 5px;
+}
+
+/* New CSS For image banner end*/
+
+/* Admin offer notice styles start*/
+.darkluplite-offer--notice{
+  border: 0;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* max-width: 1250px; */
+  /* background-color: #292766; */
+  background-image: url("../../../assets/img/halloween-darklup.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.darkluplite-offer-notice--inner{
+  
+}
+.darkluplite-offer--notice .notice-dismiss:before{
+  color: #fff;
+  color: red;
+}
+.darkluplite-offer--notice a{
+  display: inline-block;
+  width: 100%;
+  min-height: 75px;
+}
+.darkluplite-offer--notice img{
+  max-width: 100%;
+  max-height: 70px;
+  display: none;
+}
+
+/* Admin offer notice styles end*/
+
+
+
+
+
+
+
+
+/* Responsive */
 @media (max-width: 1600px) {
   .darkluplite-main-area .darkluplite-menu-area ul li a {
     font-size: 16px;
@@ -494,7 +568,7 @@ input.darkluplite-ajax-save:disabled{
   }
   .darkluplite-menu-area {
     padding-left: 20px;
-}
+  }
 }
 @media (max-width: 1366px) {
   .darkluplite-main-area .darkluplite-menu-area ul li a {
@@ -502,6 +576,20 @@ input.darkluplite-ajax-save:disabled{
     padding: 20px 14px;
   }
 }
+@media (max-width: 1199px) {
+  .darkluplite-offer--notice{
+    background-image: url("../../../assets/img/halloween-darklup-mobile.jpg");
+    background-size: contain;
+  }
+  .darkluplite-offer--notice .notice-dismiss{
+    padding: 1px;
+  }
+  .darkluplite-offer--notice a{
+    min-height: 40px;
+  }
+}
+
+
 @media (max-width: 767px) {
   .darkluplite-content-column{
     margin-top: 20px;

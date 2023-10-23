@@ -1,7 +1,0 @@
-{
-  "mangle": {
-    "properties": {
-      "reserved": ["frontendObject", "getImgUrl"]
-    }
-  }
-}
