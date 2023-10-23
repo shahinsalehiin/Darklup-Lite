@@ -210,37 +210,68 @@ class Hooks
     public static function admin_pro_popup()
     {
         ?>
-<!-- darklup-single-popup start  -->
-<div class="darklup-single-popup-wrapper">
-    <div class="darklup-single-container">
-        <div class="darklup-single-popup">
-            <a class="darklup-close darklup-admin-close" href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18.243" height="18.243" viewBox="0 0 20.243 20.243">
-                    <g id="Group_175" data-name="Group 175" transform="translate(-1139.379 -1190.379)">
-                        <line id="Line_4" data-name="Line 4" x2="16" y2="16" transform="translate(1141.5 1192.5)"
-                            fill="none" stroke="#777" stroke-linecap="round" stroke-width="3" />
-                        <line id="Line_5" data-name="Line 5" x1="16" y2="16" transform="translate(1141.5 1192.5)"
-                            fill="none" stroke="#777" stroke-linecap="round" stroke-width="3" />
-                    </g>
-                </svg>
-            </a>
-            <div class="offer-inner">
-                <h2><?php echo esc_html('50% OFF', 'darklup-lite'); ?></h2>
+            <!-- darklup-single-popup start  -->
+            <div class="darklup-single-popup-wrapper">
+                <div class="darklup-single-container">
+                    <div class="darklup-single-popup">
+                        <a class="darklup-close darklup-admin-close" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18.243" height="18.243" viewBox="0 0 20.243 20.243">
+                                <g id="Group_175" data-name="Group 175" transform="translate(-1139.379 -1190.379)">
+                                    <line id="Line_4" data-name="Line 4" x2="16" y2="16" transform="translate(1141.5 1192.5)"
+                                        fill="none" stroke="#777" stroke-linecap="round" stroke-width="3" />
+                                    <line id="Line_5" data-name="Line 5" x1="16" y2="16" transform="translate(1141.5 1192.5)"
+                                        fill="none" stroke="#777" stroke-linecap="round" stroke-width="3" />
+                                </g>
+                            </svg>
+                        </a>
+                        
+                        <div class="darklup-buy-now-banner">
+                            <a href="https://darklup.com/pricing/" target="_blank">
+                                <img src="<?php echo DARKLUPLITE_DIR_URL.'assets/img/darklup-by-pro-banner.jpg'; ?>" alt="Buy Now">
+                            </a>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
-            <div class="details">
-                <h2><?php echo esc_html('Go Premium', 'darklup-lite'); ?></h2>
-                <p><?php echo esc_html('Purchase our premium version to unlock these features', 'darklup-lite'); ?>
-                </p>
-                <a class="darkluplite-btn darkluplite-btn-red" href="https://darklup.com/pricing/"
-                    target="_blank"><?php echo esc_html('Get Pro', 'darklup-lite'); ?></a>
+            <div class="darklup-admin-popup-wrapper"></div>
+            <!-- darklup-single-popup End  -->
+        <?php
+    }
+    public static function admin_pro_popupPrev()
+    {
+        ?>
+            <!-- darklup-single-popup start  -->
+            <div class="darklup-single-popup-wrapper">
+                <div class="darklup-single-container">
+                    <div class="darklup-single-popup">
+                        <a class="darklup-close darklup-admin-close" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18.243" height="18.243" viewBox="0 0 20.243 20.243">
+                                <g id="Group_175" data-name="Group 175" transform="translate(-1139.379 -1190.379)">
+                                    <line id="Line_4" data-name="Line 4" x2="16" y2="16" transform="translate(1141.5 1192.5)"
+                                        fill="none" stroke="#777" stroke-linecap="round" stroke-width="3" />
+                                    <line id="Line_5" data-name="Line 5" x1="16" y2="16" transform="translate(1141.5 1192.5)"
+                                        fill="none" stroke="#777" stroke-linecap="round" stroke-width="3" />
+                                </g>
+                            </svg>
+                        </a>
+                        <div class="offer-inner">
+                            <h2><?php echo esc_html('50% OFF', 'darklup-lite'); ?></h2>
+                        </div>
+                        <div class="details">
+                            <h2><?php echo esc_html('Go Premium', 'darklup-lite'); ?></h2>
+                            <p><?php echo esc_html('Purchase our premium version to unlock these features', 'darklup-lite'); ?>
+                            </p>
+                            <a class="darkluplite-btn darkluplite-btn-red" href="https://darklup.com/pricing/"
+                                target="_blank"><?php echo esc_html('Get Pro', 'darklup-lite'); ?></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="darklup-admin-popup-wrapper"></div>
-<!-- darklup-single-popup End  -->
-<?php
-}
+            <div class="darklup-admin-popup-wrapper"></div>
+            <!-- darklup-single-popup End  -->
+        <?php
+    }
 
 }
 
