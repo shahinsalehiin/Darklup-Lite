@@ -129,9 +129,16 @@ if (!class_exists('DarklupLite_Enqueue')) {
         }
         public static function addDarklupJSWithDynamicVersion($handle = 'darklup_dynamic', $src = 'assets/es-js/index.js', $dep = [], $js_footer = false)
         {
+            
             $dirFull = DARKLUPLITE_DIR_PATH . $src;
             $uriFull = DARKLUPLITE_DIR_URL . $src;
-            $version = date("3.0.ymdGis", filemtime( $dirFull ));
+            $version = date( DARKLUPLITE_VERSION . "ymdGis", filemtime( $dirFull ));
+            
+            $exclude_from_cahcing = Helper::getOptionData('exclude_from_cahcing');
+            if($exclude_from_cahcing == 'yes'){
+                $version = microtime();
+            }
+            
             wp_enqueue_script( $handle, $uriFull, $dep , $version , $js_footer );	
         }
     }

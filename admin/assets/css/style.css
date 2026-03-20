@@ -130,8 +130,11 @@
   border: 1px solid #707070;
   -webkit-transition: background-color 0.4s;
   transition: background-color 0.4s;
+  cursor: pointer;
 }
-
+.darkluplite-admin-settings-area .radio-btn-label {
+  cursor: pointer;
+}
 .darkluplite-admin-settings-area .on-off-toggle__slider:before {
   content: "";
   display: block;

@@ -1,13 +1,15 @@
-=== Darklup - The most Advanced and Uprising WordPress Dark Mode Plugin ===
-Contributors: darklup, wpcommerz, devmahbub
+=== Darklup - Enhanced WordPress Dark Mode, Dark Theme, Night Mode Plugin ===
+Contributors: darklup, wpcommerz
 Donate link: https://darklup.com/
-Tags: dark, dark mode, dark theme, night mode, wordpress dark mode
-Requires PHP: 5.6
-Requires at least: 5.1
-Tested up to: 6.3
-Stable tag: 3.2.2
+Tags: dark mode plugin, dark mode, dark theme, WordPress dark mode, wp dark mode
+Requires PHP: 7.4
+Requires at least: 6.5
+Tested up to: 6.9
+Stable tag: 3.2.15
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+Experience Darklup — Your WordPress ally for dark mode, dark themes, and night mode. Switch to an eye-friendly dark view.
 
 == Description ==
 
@@ -66,9 +68,14 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	<li><strong>Set Button Size:</strong> You can change the dark mode switch button size. Floating Switch can be scaled to increase or decrease size maintaining the aspect ratio.</li>
 	<li><strong>Switch Preview:</strong> You can see the Floating Switch live preview on Plugin Back-end.</li>
 	<li><strong>Well Documented:</strong> You can find the full-fledged information and proper installation guide in the “documentation” section of the Darklup plugin.</li>
+	<li><strong>Exclude from Caching:</strong> You can prevent Darklup from being cached by plugins like WP Rocket and others.</li>
 </ol>
 
+Exclude from Caching: You can prevent Darklup from being cached by plugin like WP Rocket and others.
 
+Prevent Darklup from being cached by plugin like WP Rocket and others.
+
+Helps avoid dark mode conflicts on sites using server-side caching tools like LiteSpeed or WP Rocket by optionally excluding Darklup from being cached.
 
 <h3>🔥 WordPress Dark Mode Plugin PRO Features:</h3>
 <ol>
@@ -245,6 +252,66 @@ screenshot-3.png
 screenshot-4.png
 
 == Changelog ==
+
+= 3.2.15 =
+
+1. Added compatibility to 6.9
+
+
+
+= 3.2.14 =
+
+1. Improved: Performance Improved.
+2. Fixed: Minor issues
+
+= 3.2.13 =
+
+1. Fixed: Minor issues
+
+= 3.2.12 =
+
+1. Added: Option for exclude from server side caching
+2. Improved: Performance Improved.
+3. Fixed: Minor issues
+
+= 3.2.11 =
+
+1. Improved: Performance Improved.
+2. Fixed minor issues
+
+= 3.2.9 =
+
+1. Fixed the issue where the background image was not dark.
+2. Fixed PHP error
+
+= 3.2.8 =
+
+1. Fixed WordPress 6.7 load_textdomain error
+2. Update POT file
+
+= 3.2.7 =
+
+1. Compatible with latest WordPress version 6.7
+2. Fixed Translate string missing issue 
+3. Update POT file
+
+= 3.2.6 =
+1. Compatible with latest WordPress version.
+2. Admin Settings optimization
+3. Fixed some error 
+
+= 3.2.5 =
+1. Fixed: Some error issues
+2. Improved: The plugin's performance has been optimized.
+3. Compatible with latest WordPress version.
+
+= 3.2.4 =
+1. Fix: Several minor issues have been resolved.
+2. Improved: Performance Improved.
+
+= 3.2.3 =
+1. Fix: Several minor issues have been resolved.
+2. Improved: The plugin's performance has been optimized.
 
 = 3.2.2 =
 1. Fix: Several minor issues have been resolved.

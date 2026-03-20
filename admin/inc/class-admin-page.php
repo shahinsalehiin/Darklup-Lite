@@ -64,9 +64,7 @@ class Admin_Page_Components {
                         require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-style-settings.php';
                         require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-color-settings.php';
                         require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-image-settings.php';
-                        require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-woocommerce-settings.php';
-                        require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-inc-exc-settings.php';
-                        require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-trigger-settings.php';
+                        require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-exclude-settings.php';
                         require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-custom-css.php';
                         require DARKLUPLITE_DIR_ADMIN .'admin-templates/template-analytics-settings.php';
 
