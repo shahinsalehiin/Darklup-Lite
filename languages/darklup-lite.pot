@@ -1,9 +1,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Darklup Lite - WP Dark Mode\n"
+"Project-Id-Version: Darklup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-07 18:15+0000\n"
+"POT-Creation-Date: 2024-12-01 09:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -13,27 +13,57 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.5.0; wp-5.6\n"
+"X-Loco-Version: 2.6.14; wp-6.7.1\n"
 "X-Domain: darklup-lite"
 
-#: admin/admin-templates/template-image-settings.php:55
-msgid "0.5"
+#: admin/admin-templates/template-style-settings.php:514
+msgid " Spring"
 msgstr ""
 
-#: admin/admin-templates/template-style-settings.php:62
-msgid "14"
+#. %s: Number of installations.
+#: admin/useful-plugins.php:354
+#, php-format
+msgid "%s Active Installations"
 msgstr ""
 
-#: admin/admin-templates/template-color-settings.php:62
-msgid "Admin Darkmode Color Preset"
+#. %s: Human-readable time difference.
+#: admin/useful-plugins.php:336
+#, php-format
+msgid "%s ago"
 msgstr ""
 
-#: admin/admin-templates/template-color-settings.php:57
-msgid "Admin Darkmode Color Preset Enabled"
+#: inc/class-hooks.php:259
+msgid "50% OFF"
 msgstr ""
 
-#: admin/admin-templates/template-advance-settings.php:22
+#: admin/admin-templates/template-color-settings.php:74
+msgid "About Dynamic Dark Mode"
+msgstr ""
+
+#: admin/useful-plugins.php:184
+msgid "Activate"
+msgstr ""
+
+#. %s: Number of millions.
+#: admin/useful-plugins.php:345
+#, php-format
+msgctxt "Active plugin installations"
+msgid "%s+ Million"
+msgid_plural "%s+ Million"
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin/useful-plugins.php:349
+msgctxt "Active plugin installations"
+msgid "Less Than 10"
+msgstr ""
+
+#: admin/admin-templates/template-advance-settings.php:25
 msgid "ADVANCE SETTINGS"
+msgstr ""
+
+#: admin/admin-templates/template-tabs.php:49
+msgid "Advance Settings"
 msgstr ""
 
 #: page-builder/elementor-widget/elementor-darkmode-switch.php:68
@@ -43,29 +73,66 @@ msgstr ""
 #. Description of the plugin
 msgid ""
 "All in one WordPress plugin to create a stunning dark version for your "
-"WordPress website and dashboard"
+"WordPress website and dashboard."
 msgstr ""
 
-#: admin/admin-templates/template-home-settings.php:71
+#: admin/admin-templates/template-analytics-settings.php:48
+msgid "Analytics Duration?"
+msgstr ""
+
+#: admin/admin-templates/template-home-settings.php:85
 msgid ""
 "Are we missing any feature that you need a lot? We are requesting you to do "
-"a feature request so we can add that feature o our next update"
+"a feature request so we can add that feature our next update."
 msgstr ""
 
-#: admin/admin-templates/template-home-settings.php:70
+#: admin/admin-templates/template-home-settings.php:84
 msgid "ARE WE MISSING ANY FEATURE?"
 msgstr ""
 
-#: admin/admin-templates/template-advance-settings.php:38
+#: admin/admin-templates/template-advance-settings.php:61
 msgid "Automatically turn on the dark mode between a given time range."
 msgstr ""
 
-#: admin/admin-templates/template-style-settings.php:50
+#: admin/admin-templates/template-admin-settings.php:64
+#: admin/admin-templates/template-color-settings.php:261
+#: admin/admin-templates/template-color-settings.php:367
+msgid "Background Color"
+msgstr ""
+
+#: admin/admin-templates/template-admin-settings.php:100
+#: admin/admin-templates/template-color-settings.php:218
+#: admin/admin-templates/template-color-settings.php:303
+#: admin/admin-templates/template-color-settings.php:409
+msgid "Border Color"
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:97
 msgid "Bottom Left"
 msgstr ""
 
-#: admin/admin-templates/template-style-settings.php:49
+#: admin/admin-templates/template-style-settings.php:96
 msgid "Bottom Right "
+msgstr ""
+
+#: admin/admin-templates/template-admin-settings.php:107
+#: admin/admin-templates/template-color-settings.php:226
+#: admin/admin-templates/template-color-settings.php:311
+#: admin/admin-templates/template-color-settings.php:417
+msgid "Button Background Color"
+msgstr ""
+
+#: admin/admin-templates/template-admin-settings.php:114
+#: admin/admin-templates/template-color-settings.php:233
+#: admin/admin-templates/template-color-settings.php:319
+#: admin/admin-templates/template-color-settings.php:425
+msgid "Button Text Color"
+msgstr ""
+
+#. %s: Plugin author.
+#: admin/useful-plugins.php:116
+#, php-format
+msgid "By %s"
 msgstr ""
 
 #: page-builder/elementor-widget/elementor-darkmode-switch.php:76
@@ -73,12 +140,24 @@ msgstr ""
 msgid "Center"
 msgstr ""
 
+#: admin/setting-fields/image-switcher.php:94
+msgid "Choose Switch Style to preview switch toggle effect and style."
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:497
+msgid "Choose to display tooltip on switch hover."
+msgstr ""
+
 #: admin/setting-fields/color-picker.php:21
 msgid "Color Picker"
 msgstr ""
 
-#: admin/admin-templates/template-color-settings.php:23
+#: admin/admin-templates/template-color-settings.php:26
 msgid "COLOR SETTINGS"
+msgstr ""
+
+#: admin/admin-templates/template-tabs.php:65
+msgid "Color Settings"
 msgstr ""
 
 #: page-builder/wpbakery/vc-darkmode-switch.php:24
@@ -89,43 +168,40 @@ msgstr ""
 msgid "CSS Editor Field"
 msgstr ""
 
-#: admin/admin-templates/template-custom-css.php:32
+#: admin/admin-templates/template-custom-css.php:33
+#: admin/admin-templates/template-tabs.php:164
 msgid "Custom CSS"
 msgstr ""
 
-#: admin/admin-templates/template-custom-css.php:23
+#: admin/admin-templates/template-custom-css.php:24
 msgid "CUSTOM CSS SETTINGS"
 msgstr ""
 
-#: admin/admin-templates/template-color-settings.php:75
-msgid "Customize the admin darkmode background, text and link colors."
-msgstr ""
-
-#: admin/admin-templates/template-color-settings.php:51
-msgid "Customize the darkmode background, text and link colors."
-msgstr ""
-
-#: inc/class-dark-inline-css.php:86
+#: inc/class-helper.php:222
 msgid "Dark"
 msgstr ""
 
-#: admin/setting-fields/image-repeater.php:72
+#: admin/setting-fields/image-repeater.php:76
 msgid "Dark Image Url"
 msgstr ""
 
-#: admin/admin-templates/template-advance-settings.php:51
+#: admin/admin-templates/template-advance-settings.php:52
+msgid "Dark Mode as Default"
+msgstr ""
+
+#: admin/admin-templates/template-advance-settings.php:73
 msgid "Dark Mode End Time"
 msgstr ""
 
-#: admin/admin-templates/template-image-settings.php:59
+#: admin/admin-templates/template-image-settings.php:107
 msgid "Dark Mode Image Upload"
 msgstr ""
 
-#: admin/admin-templates/template-advance-settings.php:44
+#: admin/admin-templates/template-advance-settings.php:66
 msgid "Dark Mode Start Time"
 msgstr ""
 
-#: inc/class-hooks.php:115 page-builder/wp-widget/widget-darkmode-switch.php:56
+#: inc/class-hooks.php:188 page-builder/wp-widget/widget-darkmode-switch.php:56
 #: page-builder/wpbakery/vc-darkmode-switch.php:20
 msgid "Dark Mode Switch"
 msgstr ""
@@ -136,16 +212,14 @@ msgstr ""
 msgid "Dark Mode Switch Settings"
 msgstr ""
 
+#. Name of the plugin
 #. Author of the plugin
+#: admin/admin.php:133 admin/admin.php:134 admin/admin.php:143
 msgid "Darklup"
 msgstr ""
 
-#. Name of the plugin
-msgid "Darklup Lite - WP Dark Mode"
-msgstr ""
-
-#: admin/admin.php:47 admin/admin.php:48
-msgid "DarklupLite"
+#: admin/admin.php:400
+msgid "Darklup Dark Mode Usage"
 msgstr ""
 
 #: page-builder/elementor-widget/elementor-darkmode-switch.php:33
@@ -157,86 +231,176 @@ msgstr ""
 msgid "Darkmode Switch [DarklupLite]"
 msgstr ""
 
-#: admin/admin-templates/template-advance-settings.php:31
-msgid "Darkmode switch display in the menu."
+#: admin/admin-templates/template-admin-settings.php:26
+msgid "DASHBOARD COLORS"
 msgstr ""
 
-#: admin/admin-templates/template-advance-settings.php:30
-msgid "Display Switch in Menu"
+#: admin/admin-templates/template-admin-settings.php:49
+#: admin/admin-templates/template-color-settings.php:174
+msgid "Dashboard Darkmode Color Preset"
 msgstr ""
 
-#: admin/admin-templates/template-home-settings.php:50
-#: admin/admin-templates/template-home-settings.php:52
-msgid "Documantation"
+#: admin/admin-templates/template-analytics-settings.php:40
+msgid "Dashboard Widget?"
 msgstr ""
 
-#: admin/admin-templates/template-style-settings.php:76
-msgid "e.g Dark"
+#: admin/admin-templates/template-style-settings.php:51
+msgid "Display Floating Switch in Desktop"
 msgstr ""
 
-#: admin/admin-templates/template-style-settings.php:69
-msgid "e.g Light"
+#: admin/admin-templates/template-style-settings.php:362
+msgid "Display Switch on Menu"
 msgstr ""
 
-#: admin/admin-templates/template-general.php:38
-msgid "Enable Backend Darkmode"
+#: admin/admin-templates/template-style-settings.php:256
+msgid "Display Switch on Mobile"
 msgstr ""
 
-#: admin/admin-templates/template-general.php:33
-msgid "Enable Frontend Darkmode"
+#: admin/admin-templates/template-home-settings.php:59
+#: admin/admin-templates/template-home-settings.php:63
+msgid "Documentation"
 msgstr ""
 
-#: admin/admin-templates/template-general.php:43
+#: admin/admin-templates/template-exclude-settings.php:125
+#: admin/admin-templates/template-inc-exc-settings.php:39
+msgid "e.g: .className,#id,div"
+msgstr ""
+
+#: admin/admin-templates/template-home-settings.php:44
+msgid ""
+"Each website template has its unique design, and as a result, some sections "
+"may not appear in dark mode due to a background image that is not dark. This "
+"could be frustrating and lead to the assumption that a plugin is not useful. "
+"However, our dark mode functionality is designed to ensure that every "
+"website displays perfectly in dark mode. Please don't hesitate to contact us "
+"for assistance, as we are confident that we can provide you with a solution."
+msgstr ""
+
+#: admin/admin-templates/template-analytics-settings.php:60
+msgid "Email Reporting?"
+msgstr ""
+
+#: admin/admin-templates/template-analytics-settings.php:32
+msgid "Enable Analytics?"
+msgstr ""
+
+#: admin/admin-templates/template-advance-settings.php:39
+msgid "Enable Dashboard Dark mode"
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:521
+msgid "Enable Draggable Floating Switch"
+msgstr ""
+
+#: admin/admin-templates/template-advance-settings.php:32
+msgid "Enable Frontend Dark mode"
+msgstr ""
+
+#: admin/admin-templates/template-advance-settings.php:80
+msgid "Enable Keyboard Shortcut"
+msgstr ""
+
+#: admin/admin-templates/template-advance-settings.php:46
 msgid "Enable OS Aware Dark Mode"
 msgstr ""
 
-#: admin/admin-templates/template-general.php:39
+#: admin/admin-templates/template-style-settings.php:52
 msgid ""
-"Enable the backend darkmode to display a darkmode switch button in the admin "
-"bar for the admins on the backend."
+"Enable the switch to show the dark mode switch button on the Desktop screen."
 msgstr ""
 
-#: admin/admin-templates/template-style-settings.php:94
+#: admin/admin-templates/template-analytics-settings.php:33
+msgid "Enable/ disable the dark mode usage analytics."
+msgstr ""
+
+#: admin/admin-templates/template-analytics-settings.php:61
+msgid "Enable/ disable the dark mode usage email reporting."
+msgstr ""
+
+#: admin/admin-templates/template-exclude-settings.php:88
+#: admin/admin-templates/template-trigger-settings.php:66
+msgid "Exclude Categories"
+msgstr ""
+
+#: admin/admin-templates/template-exclude-settings.php:119
+#: admin/admin-templates/template-inc-exc-settings.php:33
+msgid "Exclude Element"
+msgstr ""
+
+#: admin/admin-templates/template-exclude-settings.php:54
+#: admin/admin-templates/template-trigger-settings.php:32
 msgid "Exclude Pages"
 msgstr ""
 
-#: admin/admin-templates/template-home-settings.php:60
+#: admin/admin-templates/template-exclude-settings.php:71
+#: admin/admin-templates/template-trigger-settings.php:49
+msgid "Exclude Posts"
+msgstr ""
+
+#: admin/admin-templates/template-tabs.php:141
+msgid "Exclude Settings"
+msgstr ""
+
+#: admin/admin-templates/template-exclude-settings.php:147
+#: admin/admin-templates/template-woocommerce-settings.php:32
+msgid "Exclude WooCommerce Products"
+msgstr ""
+
+#: admin/admin-templates/template-home-settings.php:71
 msgid ""
 "Facing any technical issue? Need consultation with an expert? Simply Take "
 "our live chat support option. We will respond to you shortly. We are ready "
 "to help you"
 msgstr ""
 
-#: admin/admin-templates/template-home-settings.php:72
+#: admin/admin-templates/template-home-settings.php:89
 msgid "FEATURE REQUEST"
 msgstr ""
 
-#: admin/admin-templates/template-color-settings.php:38
+#: admin/admin-templates/template-inc-exc-settings.php:24
+msgid "FILTER ELEMENTS"
+msgstr ""
+
+#: admin/admin-templates/template-color-settings.php:162
 msgid "Front-End Darkmode Color Preset"
 msgstr ""
 
-#: admin/admin-templates/template-color-settings.php:32
-msgid "Front-End Darkmode Color Preset Enabled"
+#: admin/admin.php:117 admin/admin.php:151 admin/admin.php:152
+#: inc/class-hooks.php:266
+msgid "Get Pro"
 msgstr ""
 
-#: admin/admin-templates/template-home-settings.php:61
+#: admin/admin-templates/template-home-settings.php:75
 msgid "GET SUPPORT"
 msgstr ""
 
-#: admin/admin-templates/template-home-settings.php:93
+#: admin/admin-templates/template-home-settings.php:113
 msgid "GIVE A 5* RATING"
 msgstr ""
 
-#: admin/admin-templates/template-home-settings.php:91
+#: inc/class-hooks.php:262
+msgid "Go Premium"
+msgstr ""
+
+#: admin/admin-templates/template-home-settings.php:108
 msgid "HAPPY WITH DARKLUPLITE?"
 msgstr ""
 
-#: admin/admin-templates/template-home-settings.php:59
+#: admin/admin-templates/template-style-settings.php:512
+msgid "Heartbeat"
+msgstr ""
+
+#: admin/admin-templates/template-home-settings.php:70
 msgid "Help and Support"
 msgstr ""
 
-#: admin/admin-templates/template-home-settings.php:22
+#: admin/admin-templates/template-home-settings.php:25
+#: admin/admin-templates/template-tabs.php:28
 msgid "Home"
+msgstr ""
+
+#: admin/admin.php:447
+msgid "How much percentage of users use dark mode in last 7 days."
 msgstr ""
 
 #. URI of the plugin
@@ -244,16 +408,13 @@ msgstr ""
 msgid "https://darklup.com/"
 msgstr ""
 
-#: admin/admin-templates/template-home-settings.php:92
+#: admin/admin-templates/template-home-settings.php:109
 msgid ""
 "If you are really happy and satisfied with our plugin, We hardly request you "
 "to give us a 5* rating in WordPress Org."
 msgstr ""
 
-#: admin/admin-templates/template-image-settings.php:48
-msgid "Image Opacity"
-msgstr ""
-
+#: admin/setting-fields/color-scheme-switcher.php:23
 #: admin/setting-fields/image-switcher.php:23
 msgid "Image Radio Field"
 msgstr ""
@@ -262,8 +423,44 @@ msgstr ""
 msgid "Image Repeater Field"
 msgstr ""
 
-#: admin/admin-templates/template-image-settings.php:24
+#: admin/admin-templates/template-image-settings.php:23
 msgid "IMAGE SETTINGS"
+msgstr ""
+
+#: admin/admin-templates/template-tabs.php:130
+msgid "Image Settings"
+msgstr ""
+
+#: admin/admin-templates/template-home-settings.php:39
+msgid "Important Note"
+msgstr ""
+
+#: admin/admin-templates/template-admin-settings.php:135
+#: admin/admin-templates/template-color-settings.php:343
+#: admin/admin-templates/template-color-settings.php:449
+msgid "Input Field  Text Color"
+msgstr ""
+
+#: admin/admin-templates/template-admin-settings.php:121
+#: admin/admin-templates/template-color-settings.php:240
+#: admin/admin-templates/template-color-settings.php:327
+#: admin/admin-templates/template-color-settings.php:433
+msgid "Input Field Background Color"
+msgstr ""
+
+#: admin/admin-templates/template-admin-settings.php:128
+#: admin/admin-templates/template-color-settings.php:335
+#: admin/admin-templates/template-color-settings.php:441
+msgid "Input Field Placeholder Color"
+msgstr ""
+
+#: admin/useful-plugins.php:143
+msgid "Install Now"
+msgstr ""
+
+#. %s: URL to Update PHP page.
+#: admin/useful-plugins.php:333
+msgid "Last Updated:"
 msgstr ""
 
 #: page-builder/elementor-widget/elementor-darkmode-switch.php:72
@@ -271,37 +468,168 @@ msgstr ""
 msgid "Left"
 msgstr ""
 
-#: inc/class-dark-inline-css.php:84
+#: inc/class-helper.php:221
 msgid "Light"
 msgstr ""
 
-#: admin/setting-fields/image-repeater.php:71
+#: admin/setting-fields/image-repeater.php:73
 msgid "Light Image Url"
 msgstr ""
 
-#: admin/admin-templates/template-image-settings.php:40
+#: admin/admin-templates/template-admin-settings.php:86
+#: admin/admin-templates/template-color-settings.php:204
+#: admin/admin-templates/template-color-settings.php:287
+#: admin/admin-templates/template-color-settings.php:393
+msgid "Link Color"
+msgstr ""
+
+#: admin/admin-templates/template-admin-settings.php:93
+#: admin/admin-templates/template-color-settings.php:211
+#: admin/admin-templates/template-color-settings.php:295
+#: admin/admin-templates/template-color-settings.php:401
+msgid "Link Hover Color"
+msgstr ""
+
+#: admin/admin-templates/template-image-settings.php:98
 msgid "Logo Dark Url"
 msgstr ""
 
-#: admin/admin-templates/template-image-settings.php:32
+#: admin/admin-templates/template-image-settings.php:90
 msgid "Logo Light Url"
+msgstr ""
+
+#: admin/admin-templates/template-advance-settings.php:53
+msgid ""
+"Make dark mode by default. Users will see dark mode first after visiting."
+msgstr ""
+
+#: admin/setting-fields/switch-margin.php:22
+msgid "Margin Field"
+msgstr ""
+
+#: admin/useful-plugins.php:222
+msgid "More Details"
+msgstr ""
+
+#. %s: Plugin name and version.
+#: admin/useful-plugins.php:220
+#, php-format
+msgid "More information about %s"
 msgstr ""
 
 #: admin/setting-fields/multiple-select.php:21
 msgid "Multiple Select Field"
 msgstr ""
 
+#: admin/admin-templates/template-style-settings.php:509
+msgid "None"
+msgstr ""
+
 #: admin/setting-fields/number.php:23
 msgid "Number Field"
 msgstr ""
 
-#: admin/inc/class-admin-page.php:17 admin/inc/class-admin-page.php:18
+#: admin/admin-templates/template-style-settings.php:109
+msgid "Percent (%)"
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:108
+msgid "Pixel (px)"
+msgstr ""
+
+#. %s: Plugin name.
+#: admin/useful-plugins.php:186
+#, php-format
+msgctxt "plugin"
+msgid "Activate %s"
+msgstr ""
+
+#: admin/useful-plugins.php:181
+msgctxt "plugin"
+msgid "Active"
+msgstr ""
+
+#: admin/useful-plugins.php:148
+msgctxt "plugin"
+msgid "Cannot Install"
+msgstr ""
+
+#: admin/useful-plugins.php:170
+msgctxt "plugin"
+msgid "Cannot Update"
+msgstr ""
+
+#. %s: Plugin name and version.
+#: admin/useful-plugins.php:141
+#, php-format
+msgctxt "plugin"
+msgid "Install %s now"
+msgstr ""
+
+#: admin/useful-plugins.php:204
+msgctxt "plugin"
+msgid "Installed"
+msgstr ""
+
+#. %s: Plugin name and version.
+#: admin/useful-plugins.php:163
+#, php-format
+msgctxt "plugin"
+msgid "Update %s now"
+msgstr ""
+
+#: admin/inc/class-admin-page.php:19 admin/inc/class-admin-page.php:22
 msgid "plugin logo"
+msgstr ""
+
+#: admin/admin-templates/template-advance-settings.php:81
+msgid "Press Ctrl+Alt+D to turn ON / OFF dark mode"
+msgstr ""
+
+#: admin/setting-fields/button-switcher.php:66
+#: admin/setting-fields/color-picker.php:61
+#: admin/setting-fields/color-scheme-switcher.php:69
+#: admin/setting-fields/css-editor.php:57
+#: admin/setting-fields/image-repeater.php:60
+#: admin/setting-fields/image-switcher.php:63
+#: admin/setting-fields/media-upload.php:54
+#: admin/setting-fields/multiple-select.php:61
+#: admin/setting-fields/number.php:64 admin/setting-fields/select.php:59
+#: admin/setting-fields/slider.php:67 admin/setting-fields/switch-margin.php:70
+#: admin/setting-fields/switcher.php:60 admin/setting-fields/text-area.php:55
+#: admin/setting-fields/text.php:55
+msgid "Pro"
+msgstr ""
+
+#: inc/class-hooks.php:263
+msgid "Purchase our premium version to unlock these features"
+msgstr ""
+
+#: admin/admin-templates/template-analytics-settings.php:68
+msgid "Reporting Frequency"
 msgstr ""
 
 #: page-builder/elementor-widget/elementor-darkmode-switch.php:80
 #: page-builder/wpbakery/vc-darkmode-switch.php:45
 msgid "Right"
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:513
+msgid "Rotate"
+msgstr ""
+
+#: admin/admin-templates/template-save-button.php:15
+msgid "Save Settings"
+msgstr ""
+
+#: admin/admin-templates/template-admin-settings.php:69
+#: admin/admin-templates/template-color-settings.php:267
+#: admin/admin-templates/template-color-settings.php:373
+msgid "Secondary Background Color"
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:506
+msgid "Select an animation effect for the switch."
 msgstr ""
 
 #: page-builder/wp-widget/widget-darkmode-switch.php:29
@@ -310,6 +638,10 @@ msgstr ""
 
 #: admin/setting-fields/select.php:22
 msgid "Select Field"
+msgstr ""
+
+#: admin/admin-templates/template-analytics-settings.php:49
+msgid "Select How much percentage of users use dark mode."
 msgstr ""
 
 #: page-builder/elementor-widget/elementor-darkmode-switch.php:58
@@ -324,54 +656,139 @@ msgstr ""
 msgid "Select Switch:"
 msgstr ""
 
-#: admin/admin-templates/template-color-settings.php:63
-msgid "Select the admin darkmode color."
+#: admin/admin-templates/template-admin-settings.php:50
+#: admin/admin-templates/template-color-settings.php:175
+msgid "Select the admin dashboard darkmode color."
 msgstr ""
 
-#: admin/admin-templates/template-color-settings.php:39
+#: admin/admin-templates/template-exclude-settings.php:89
+#: admin/admin-templates/template-trigger-settings.php:67
+msgid ""
+"Select the categories to exclude dark mode switch on the selected category "
+"posts"
+msgstr ""
+
+#: admin/admin-templates/template-color-settings.php:163
 msgid "Select the front-end darkmode color."
 msgstr ""
 
-#: admin/admin-templates/template-style-settings.php:95
+#: admin/admin-templates/template-exclude-settings.php:55
+#: admin/admin-templates/template-trigger-settings.php:33
 msgid "Select the pages where you don't want to show the dark mode switch"
 msgstr ""
 
-#: admin/admin-templates/template-style-settings.php:41
+#: admin/admin-templates/template-style-settings.php:89
 msgid ""
 "Select the position of the floating dark mode switcher button on the "
 "frontend."
 msgstr ""
 
-#: admin/admin-templates/template-color-settings.php:58
+#: admin/admin-templates/template-exclude-settings.php:72
+#: admin/admin-templates/template-trigger-settings.php:50
+msgid "Select the posts where you don't want to show the dark mode switch"
+msgstr ""
+
+#: admin/admin-templates/template-admin-settings.php:65
+#: admin/admin-templates/template-color-settings.php:262
+#: admin/admin-templates/template-color-settings.php:368
 msgid ""
-"Select the predefined admin darkmode background, text and link preset color."
+"Select the primary background color of your website when dark mode is "
+"enabled."
 msgstr ""
 
-#: admin/admin-templates/template-color-settings.php:33
-msgid "Select the predefined darkmode background, text and link preset color."
+#: admin/admin-templates/template-exclude-settings.php:148
+#: admin/admin-templates/template-woocommerce-settings.php:33
+msgid "Select the products where you don't want to show the dark mode switch"
 msgstr ""
 
-#: admin/admin-templates/template-style-settings.php:31
+#: admin/admin-templates/template-analytics-settings.php:69
+msgid "Select the reporting frequency, when the email will be send."
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:77
+#: admin/admin-templates/template-style-settings.php:264
+#: admin/admin-templates/template-style-settings.php:370
 msgid "Select the switcher button style for the frontend."
 msgstr ""
 
-#: admin/admin-templates/template-style-settings.php:55
-msgid "Set dark mode text font size."
+#: admin/admin-templates/template-style-settings.php:103
+msgid "Select the unit (pixel or percentage) to set Customized Switch Margin."
 msgstr ""
 
-#: admin/admin-templates/template-image-settings.php:60
+#: admin/admin-templates/template-admin-settings.php:70
+#: admin/admin-templates/template-admin-settings.php:76
+#: admin/admin-templates/template-color-settings.php:268
+#: admin/admin-templates/template-color-settings.php:275
+#: admin/admin-templates/template-color-settings.php:374
+#: admin/admin-templates/template-color-settings.php:381
+msgid "Set custom background color."
+msgstr ""
+
+#: admin/admin-templates/template-admin-settings.php:101
+#: admin/admin-templates/template-color-settings.php:219
+#: admin/admin-templates/template-color-settings.php:304
+#: admin/admin-templates/template-color-settings.php:410
+msgid "Set custom border color."
+msgstr ""
+
+#: admin/admin-templates/template-admin-settings.php:108
+#: admin/admin-templates/template-color-settings.php:227
+#: admin/admin-templates/template-color-settings.php:312
+#: admin/admin-templates/template-color-settings.php:418
+msgid "Set custom button background Color."
+msgstr ""
+
+#: admin/admin-templates/template-admin-settings.php:115
+#: admin/admin-templates/template-admin-settings.php:122
+#: admin/admin-templates/template-admin-settings.php:129
+#: admin/admin-templates/template-admin-settings.php:136
+#: admin/admin-templates/template-color-settings.php:234
+#: admin/admin-templates/template-color-settings.php:241
+#: admin/admin-templates/template-color-settings.php:320
+#: admin/admin-templates/template-color-settings.php:328
+#: admin/admin-templates/template-color-settings.php:336
+#: admin/admin-templates/template-color-settings.php:344
+#: admin/admin-templates/template-color-settings.php:426
+#: admin/admin-templates/template-color-settings.php:434
+#: admin/admin-templates/template-color-settings.php:442
+#: admin/admin-templates/template-color-settings.php:450
+msgid "Set custom button text Color."
+msgstr ""
+
+#: admin/admin-templates/template-admin-settings.php:87
+#: admin/admin-templates/template-color-settings.php:205
+#: admin/admin-templates/template-color-settings.php:288
+#: admin/admin-templates/template-color-settings.php:394
+msgid "Set custom link color."
+msgstr ""
+
+#: admin/admin-templates/template-admin-settings.php:94
+#: admin/admin-templates/template-color-settings.php:212
+#: admin/admin-templates/template-color-settings.php:296
+#: admin/admin-templates/template-color-settings.php:402
+msgid "Set custom link hover color."
+msgstr ""
+
+#: admin/admin-templates/template-admin-settings.php:82
+#: admin/admin-templates/template-color-settings.php:198
+#: admin/admin-templates/template-color-settings.php:282
+#: admin/admin-templates/template-color-settings.php:388
+msgid "Set custom text color."
+msgstr ""
+
+#: admin/admin-templates/template-image-settings.php:108
 msgid "Set darkmode image."
 msgstr ""
 
-#: admin/admin-templates/template-image-settings.php:49
-msgid "Set image opacity."
+#: admin/admin-templates/template-style-settings.php:114
+msgid "Set floating switch margin in given unit."
 msgstr ""
 
-#: admin/admin-templates/template-image-settings.php:41
+#: admin/admin-templates/template-image-settings.php:99
 msgid "Set logo dark mode url."
 msgstr ""
 
-#: admin/admin-templates/template-image-settings.php:34
+#: admin/admin-templates/template-image-settings.php:92
 msgid "Set logo light mode url."
 msgstr ""
 
@@ -379,73 +796,147 @@ msgstr ""
 msgid "Set section bottom padding"
 msgstr ""
 
+#: admin/admin-templates/template-style-settings.php:209
+msgid "Set the base background color on dark mode"
+msgstr ""
+
 #: admin/setting-fields/color-picker.php:22
 msgid "Set the color"
 msgstr ""
 
-#: admin/admin.php:80
+#: admin/admin-templates/template-exclude-settings.php:120
+#: admin/admin-templates/template-inc-exc-settings.php:34
+msgid ""
+"Set the element like div, section, class, id which you want to ignore "
+"darkmode. Add comma separated CSS selectors (classes, ids)"
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:217
+msgid "Set the icon plate color on dark mode"
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:182
+msgid "Set the switch background color"
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:198
+msgid "Set the switch border color"
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:226
+msgid "Set the switch border color on dark mode"
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:190
+msgid "Set the switch icon color"
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:235
+msgid "Set the switch text color"
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:245
+msgid "Set the switch text color on dark mode"
+msgstr ""
+
+#: admin/admin.php:116 admin/admin.php:144
+msgid "Settings"
+msgstr ""
+
+#: admin/admin.php:264
 msgid "Settings Saved"
 msgstr ""
 
-#: admin/admin-templates/template-style-settings.php:87
-msgid "Show Above Pages"
+#: admin/admin-templates/template-style-settings.php:511
+msgid "Shake"
 msgstr ""
 
-#: admin/admin-templates/template-style-settings.php:80
-msgid "Show Above Posts"
+#: admin/admin-templates/template-style-settings.php:496
+msgid "Show tooltip?"
 msgstr ""
 
-#: admin/admin-templates/template-general.php:48
-msgid "Show Floating Switch"
-msgstr ""
-
-#: admin/admin-templates/template-style-settings.php:88
-msgid "Show the dark mode switcher button above of all the pages."
-msgstr ""
-
-#: admin/admin-templates/template-style-settings.php:81
-msgid "Show the dark mode switcher button above of all the post."
-msgstr ""
-
-#: admin/admin-templates/template-general.php:49
-msgid ""
-"Show the floating dark mode switcher button on the frontend for the users."
-msgstr ""
-
-#: admin/admin-templates/template-style-settings.php:22
-msgid "STYLE SETTINGS"
+#: admin/admin-templates/template-analytics-settings.php:41
+msgid "Show/ hide the dark mode usage dashboard chart widget."
 msgstr ""
 
 #: page-builder/wpbakery/vc-darkmode-switch.php:38
 msgid "Switch Alignment"
 msgstr ""
 
-#: admin/admin-templates/template-style-settings.php:73
-msgid "Switch dark text."
+#: admin/admin-templates/template-style-settings.php:505
+msgid "Switch Animation"
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:181
+msgid "Switch Background Color"
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:208
+msgid "Switch Background Color on Dark Mode"
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:197
+msgid "Switch Border Color"
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:225
+msgid "Switch Border Color on Dark Mode"
 msgstr ""
 
 #: admin/setting-fields/switcher.php:23
 msgid "Switch Field"
 msgstr ""
 
-#: admin/admin-templates/template-style-settings.php:66
-msgid "Switch light text."
+#: admin/admin-templates/template-style-settings.php:189
+msgid "Switch Icon Color"
 msgstr ""
 
-#: admin/admin-templates/template-style-settings.php:40
+#: admin/admin-templates/template-style-settings.php:216
+msgid "Switch Icon Color on Dark Mode"
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:113
+msgid "Switch Margin"
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:102
+msgid "Switch Margin Unit"
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:88
 msgid "Switch Position"
 msgstr ""
 
-#: admin/admin-templates/template-style-settings.php:30
+#: admin/setting-fields/image-switcher.php:93
+msgid "Switch Preview"
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:76
+#: admin/admin-templates/template-style-settings.php:263
+#: admin/admin-templates/template-style-settings.php:369
 msgid "Switch Style"
 msgstr ""
 
-#: admin/admin-templates/template-style-settings.php:72
-msgid "Switch Text (Dark)"
+#: admin/admin-templates/template-style-settings.php:24
+msgid "SWITCH STYLES"
 msgstr ""
 
-#: admin/admin-templates/template-style-settings.php:65
-msgid "Switch Text (Light)"
+#: admin/admin-templates/template-tabs.php:107
+msgid "Switch Styles"
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:234
+msgid "Switch Text Color"
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:244
+msgid "Switch Text Color on Dark Mode"
+msgstr ""
+
+#: admin/admin-templates/template-admin-settings.php:75
+#: admin/admin-templates/template-color-settings.php:274
+#: admin/admin-templates/template-color-settings.php:380
+msgid "Tertiary Background Color"
 msgstr ""
 
 #: admin/setting-fields/media-upload.php:22
@@ -453,24 +944,34 @@ msgstr ""
 msgid "Text Area Field"
 msgstr ""
 
+#: admin/admin-templates/template-admin-settings.php:81
+#: admin/admin-templates/template-color-settings.php:197
+#: admin/admin-templates/template-color-settings.php:281
+#: admin/admin-templates/template-color-settings.php:387
+msgid "Text Color"
+msgstr ""
+
 #: admin/setting-fields/text.php:23
 msgid "Text Field"
 msgstr ""
 
-#: admin/admin-templates/template-style-settings.php:54
-msgid "Text Font Size"
-msgstr ""
-
-#: admin/admin-templates/template-home-settings.php:36
+#: admin/admin-templates/template-home-settings.php:41
 msgid ""
 "The dark mode is good for your eyes: dark mode is way less harmful to your "
 "vision in the long run than the light mode."
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:522
+msgid ""
+"This feature allow users to drag the floating toggle switch to any position "
+"on the page."
 msgstr ""
 
 #: admin/setting-fields/css-editor.php:25
 msgid "This is CSS editor Field"
 msgstr ""
 
+#: admin/setting-fields/color-scheme-switcher.php:24
 #: admin/setting-fields/image-switcher.php:24
 msgid "This is image radio Field"
 msgstr ""
@@ -485,6 +986,10 @@ msgstr ""
 
 #: admin/setting-fields/number.php:24
 msgid "This is number Field"
+msgstr ""
+
+#: admin/setting-fields/switch-margin.php:23
+msgid "This is number Field for Switch Margin"
 msgstr ""
 
 #: admin/setting-fields/select.php:23
@@ -504,25 +1009,39 @@ msgstr ""
 msgid "This is Text Field"
 msgstr ""
 
-#: admin/admin-templates/template-general.php:44
+#: admin/admin-templates/template-advance-settings.php:47
 msgid ""
 "This option will be served a dark mode of your website when their device "
 "preference is set to Dark Mode."
 msgstr ""
 
-#: admin/admin-templates/template-advance-settings.php:37
+#. %s: URL to WordPress Updates screen.
+#: admin/useful-plugins.php:285
+msgid "This plugin doesn&#8217;t work with your version of PHP."
+msgstr ""
+
+#. %s: URL to Update PHP page.
+#: admin/useful-plugins.php:276
+msgid "This plugin doesn&#8217;t work with your version of WordPress."
+msgstr ""
+
+#: admin/useful-plugins.php:252
+msgid "This plugin doesn&#8217;t work with your versions of WordPress and PHP."
+msgstr ""
+
+#: admin/admin-templates/template-advance-settings.php:60
 msgid "Time Based Dark Mode"
 msgstr ""
 
-#: admin/admin-templates/template-advance-settings.php:52
+#: admin/admin-templates/template-advance-settings.php:74
 msgid "Time to end dark mode."
 msgstr ""
 
-#: admin/admin-templates/template-advance-settings.php:45
+#: admin/admin-templates/template-advance-settings.php:67
 msgid "Time to start dark mode."
 msgstr ""
 
-#: admin/setting-fields/class-settings-fields-base.php:47
+#: admin/setting-fields/class-settings-fields-base.php:56
 msgid "Title goes here"
 msgstr ""
 
@@ -530,45 +1049,74 @@ msgstr ""
 msgid "Title:"
 msgstr ""
 
-#: admin/admin-templates/template-style-settings.php:48
+#: admin/admin-templates/template-style-settings.php:95
 msgid "Top Left"
 msgstr ""
 
-#: admin/admin-templates/template-style-settings.php:47
+#: admin/admin-templates/template-style-settings.php:94
 msgid "Top Right"
 msgstr ""
 
-#: admin/admin-templates/template-general.php:34
-msgid "Turn ON to enable the darkmode in the frontend."
+#: admin/admin-templates/template-trigger-settings.php:24
+msgid "TRIGGER SETTINGS"
 msgstr ""
 
-#: admin/setting-fields/media-upload.php:65
+#: admin/useful-plugins.php:66
+msgid "Try out more useful plugins by WPCommerz"
+msgstr ""
+
+#: admin/admin-templates/template-advance-settings.php:40
+msgid "Turn ON to enable the dark mode in the admin dashboard."
+msgstr ""
+
+#: admin/admin-templates/template-advance-settings.php:33
+msgid "Turn ON to enable the dark mode in the frontend."
+msgstr ""
+
+#: admin/admin-templates/template-style-settings.php:257
+#: admin/admin-templates/template-style-settings.php:363
+msgid "Turn on to show switch on mobile"
+msgstr ""
+
+#: admin/useful-plugins.php:165
+msgid "Update Now"
+msgstr ""
+
+#: admin/setting-fields/media-upload.php:71
 msgid "Upload"
 msgstr ""
 
-#: admin/admin-templates/template-color-settings.php:74
-msgid "Want to Admin customize colors?"
+#: admin/admin-templates/template-tabs.php:192
+msgid "Usage Analytics"
 msgstr ""
 
-#: admin/admin-templates/template-color-settings.php:50
-msgid "Want to Front-End customize colors?"
+#: admin/admin.php:159 admin/admin.php:160
+msgid "Useful Plugins"
 msgstr ""
 
-#: admin/admin-templates/template-home-settings.php:51
+#: admin/admin-templates/template-style-settings.php:510
+msgid "Vibrate"
+msgstr ""
+
+#: admin/admin-templates/template-home-settings.php:60
 msgid ""
 "We have created a well organized and detailed documentation to get familiar "
 "with DarklupLite- WP Dark Mode. You will easily understand how our plugin "
 "will work."
 msgstr ""
 
-#: admin/admin-templates/template-home-settings.php:35
-msgid "Welcome to Dark Mode for WordPress"
+#: admin/admin-templates/template-color-settings.php:77
+msgid ""
+"With the help of the dynamic dark mode option, you can easily enable the "
+"dark mode feature on your website without doing any complex configuration. "
+"Darklup Dark Mode utilizes an intelligent, dynamic algorithm to effortlessly "
+"generate stunning dark mode color schemes for your website."
 msgstr ""
 
-#: darklup-lite.php:16
-msgid "You should not access this file directly!."
+#: admin/admin-templates/template-woocommerce-settings.php:24
+msgid "WOOCOMMERCE SETTINGS"
 msgstr ""
 
-#: darklup-lite.php:25
+#: darklup-lite.php:23
 msgid "You should not access this file directly.!"
 msgstr ""

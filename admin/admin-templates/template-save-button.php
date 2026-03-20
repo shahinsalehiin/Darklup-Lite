@@ -12,6 +12,6 @@
     <span class="dashicons dashicons-admin-generic dashicons-darkluplite-ajax-save"></span>
     <?php 
       // Save Button                    
-      submit_button( esc_html( 'Save Settings', 'darklup-lite' ), 'darkluplite-btn darkluplite-btn-red darkluplite-ajax-save' );
+      submit_button( esc_html__( 'Save Settings', 'darklup-lite' ), 'darkluplite-btn darkluplite-btn-red darkluplite-ajax-save' );
     ?>
 </div>

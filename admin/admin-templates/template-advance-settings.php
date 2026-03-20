@@ -41,27 +41,21 @@ class Advance_Settings_Tab extends Settings_Fields_Base
             // 'condition' => ["key" => "full_color_settings", "value" => "dashoard_colors"],
             'name' => 'backend_darkmode',
         ]);
-        
         $this->switch_field([
             'title' => esc_html__('Enable OS Aware Dark Mode', 'darklup-lite'),
             'sub_title' => esc_html__('This option will be served a dark mode of your website when their device preference is set to Dark Mode.', 'darklup-lite'),
             'name' => 'enable_os_switcher',
         ]);
-
         $this->switch_field([
             'title' => esc_html__('Dark Mode as Default', 'darklup-lite'),
             'sub_title' => esc_html__('Make dark mode by default. Users will see dark mode first after visiting.', 'darklup-lite'),
             'name' => 'default_dark_mode',
         ]);
-
-
-
         $this->switch_field([
             'title' => esc_html__('Time Based Dark Mode', 'darklup-lite'),
             'sub_title' => esc_html__('Automatically turn on the dark mode between a given time range.', 'darklup-lite'),
             'name' => 'time_based_darkmode',
         ]);
-
         $this->select_box([
             'title' => esc_html__('Dark Mode Start Time', 'darklup-lite'),
             'sub_title' => esc_html__('Time to start dark mode.', 'darklup-lite'),
@@ -80,6 +74,11 @@ class Advance_Settings_Tab extends Settings_Fields_Base
             'title' => esc_html__('Enable Keyboard Shortcut', 'darklup-lite'),
             'sub_title' => esc_html__('Press Ctrl+Alt+D to turn ON / OFF dark mode', 'darklup-lite'),
             'name' => 'keyboard_shortcut',
+        ]);
+        $this->switch_field([
+            'title' => esc_html__('Exclude Darklup from Caching', 'darklup-lite'),
+            'sub_title' => esc_html__('Prevent Darklup from being cached by plugin like WP Rocket and others.', 'darklup-lite'),
+            'name' => 'exclude_from_cahcing',
         ]);
         $this->end_fields_section();
 

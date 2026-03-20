@@ -13,7 +13,7 @@ if( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Helper class
+ * Helper class (Mostly Static Methods)
  */
 class Helper{
 
@@ -218,8 +218,8 @@ class Helper{
     $dark   = self::getOptionData('switch_text_dark');
 
     return [
-      'light' => !empty( $light ) ? esc_html( $light ) : 'Light',
-      'dark'  => !empty( $dark ) ? esc_html( $dark ) : 'Dark'
+      'light' => !empty( $light ) ? esc_html( $light ) : esc_html__( 'Light', 'darklup-lite' ),
+      'dark'  => !empty( $dark ) ? esc_html( $dark ) : esc_html__( 'Dark', 'darklup-lite' )
     ];
 
   }

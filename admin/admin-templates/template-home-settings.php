@@ -31,27 +31,6 @@ class Home_Settings_Tab extends Settings_Fields_Base
         ]);
 
         ?>
-<div class="darkluplite-single-about mb-100">
-    <div class="darkluplite-row">
-        <div class="darkluplite-col-md-8 darkluplite-col-12 align-self-center">
-            <div class="details">
-                <h3><span
-                        class="dashicons dashicons-info-outline important-note--icon"></span><?php esc_html_e('Important Note', 'darklup-lite');?>
-                </h3>
-                <!-- <p><?php esc_html_e('The dark mode is good for your eyes: dark mode is way less harmful to your vision in the long run than the light mode.', 'darklup-lite')?>
-                </p> -->
-                <p class="darklup-welcome--notice">
-                    <?php esc_html_e("Each website template has its unique design, and as a result, some sections may not appear in dark mode due to a background image that is not dark. This could be frustrating and lead to the assumption that a plugin is not useful. However, our dark mode functionality is designed to ensure that every website displays perfectly in dark mode. Please don't hesitate to contact us for assistance, as we are confident that we can provide you with a solution.", 'darklup-lite')?>
-                </p>
-            </div>
-        </div>
-        <div class="darkluplite-col-md-4 darkluplite-col-12 align-self-center">
-            <div class="thumb">
-                <img src="<?php echo esc_url(DARKLUPLITE_DIR_ADMIN_ASSETS_URL . 'img/1.png'); ?>" alt="img">
-            </div>
-        </div>
-    </div>
-</div>
 <div class="darkluplite-row mb-100">
     <div class="darkluplite-col-md-6 darkluplite-col-12 align-self-center">
         <div class="darkluplite-single-about darkluplite-single-about-red">
@@ -59,7 +38,7 @@ class Home_Settings_Tab extends Settings_Fields_Base
                 <h3><?php esc_html_e('Documentation', 'darklup-lite')?></h3>
                 <p><?php esc_html_e('We have created a well organized and detailed documentation to get familiar with DarklupLite- WP Dark Mode. You will easily understand how our plugin will work.', 'darklup-lite')?>
                 </p>
-                <a class="darkluplite-btn darkluplite-btn-base" href="https://documentation.darklup.com/"
+                <a class="darkluplite-btn darkluplite-btn-base" href="https://darklup.com/docs/"
                     target="_blank"><?php esc_html_e('Documentation', 'darklup-lite');?></a>
             </div>
         </div>

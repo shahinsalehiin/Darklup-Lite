@@ -4,7 +4,7 @@
  * Plugin Name:       Darklup
  * Plugin URI:        https://darklup.com/
  * Description:       All in one WordPress plugin to create a stunning dark version for your WordPress website and dashboard.
- * Version:           3.2.2
+ * Version:           3.2.15
  * Author:            Darklup
  * Author URI:        https://darklup.com/
  * License:           GPL v2 or later
@@ -12,11 +12,6 @@
  * Text Domain:       darklup-lite
  * Domain Path:       /languages
  */
-
-// Block Direct access
-if (!defined('ABSPATH')) {
-    die(__('You should not access this file directly!.', 'darklup-lite'));
-}
 
 /**
  * Define all constant
@@ -30,7 +25,7 @@ if (!defined('DARKLUPLITE_ALERT_MSG')) {
 
 // Version constant
 if (!defined('DARKLUPLITE_VERSION')) {
-    define('DARKLUPLITE_VERSION', '3.2.2');
+    define('DARKLUPLITE_VERSION', '3.2.15');
 }
 
 // Plugin dir path constant
@@ -69,6 +64,11 @@ function pluginDarklupLiteDeleted()
     delete_option('darkluplite_settings');
 }
 
+add_action('init', function() {
+    load_plugin_textdomain( 'darklup-lite', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+});
+
+
 /**
  * Darklup final class
  */
@@ -94,7 +94,7 @@ final class DarklupLite
     public function __construct()
     {
 
-        $this->includeFiels();
+        add_action('init', [$this, 'initStuffs']);
         
         
         // $this->pluginActivate();
@@ -103,13 +103,16 @@ final class DarklupLite
         // Plugin activation hook
         register_activation_hook(__FILE__, [$this, 'pluginActivate']);
         
-        // Update recent settings
-        $this->updateRecentSettings();
-        $this->appsero_init_tracker_darklup_lite_wp_dark_mode();
-
         if (time() < 1638705540) {
             add_action('wp_dashboard_setup', [$this, 'darkluplite_dashboard_widgets']);
         }
+    }
+
+    public function initStuffs() {
+        $this->includeFiels();
+        // Update recent settings
+        $this->updateRecentSettings();
+        $this->appsero_init_tracker_darklup_lite_wp_dark_mode();
     }
 
     /**

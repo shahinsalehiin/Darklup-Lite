@@ -26,7 +26,10 @@ class DarklupLite_Settings_Page
      * @since  1.0.0
      * @return void
      */
-    public $offer_tran_key = 'darkluplite_offer_notice_dismissed';
+    public $offer_setting_key = 'darkluplite_offer_notice_dismissed';
+    public $offer_dismissed = 'offer_dismissed';
+    public $admin_slug = 'darkluplite-setting-admin';
+    
     public function __construct()
     {
 
@@ -43,22 +46,23 @@ class DarklupLite_Settings_Page
         add_action('wp_ajax_nopriv_darkluplite_save_admin_settings', [$this, 'saveAdminSettings']);
         add_action('wp_ajax_darkluplite_save_admin_settings', [$this, 'saveAdminSettings']);
         
+        // add_action( 'admin_notices', [$this, 'darklup_admin_darkluplite_offer_notice'] );
         
-        add_action( 'admin_notices', [$this, 'darklup_admin_darkluplite_offer_notice'] );
-        
-        
-        
-        add_action('wp_ajax_dismiss_darkluplite_offer_notice', [$this,'dismiss_darkluplite_offer_notice']);
-        add_action('wp_ajax_nopriv_dismiss_darkluplite_offer_notice', [$this,'dismiss_darkluplite_offer_notice']);
+        // add_action('wp_ajax_dismiss_darkluplite_offer_notice', [$this,'dismiss_darkluplite_offer_notice']);
+        // add_action('wp_ajax_nopriv_dismiss_darkluplite_offer_notice', [$this,'dismiss_darkluplite_offer_notice']);
         
         // Remove transient 
-        $this->delete_darkluplite_offer_notice_transient();
+        // $this->delete_darkluplite_offer_notice_transient();
         
     }
+    
+
     public function darklup_admin_darkluplite_offer_notice()
     {
-        $dismissed = get_transient($this->offer_tran_key);
-        if ($dismissed)  return;
+        
+        $dismissed = get_option( $this->offer_setting_key );
+        if ($dismissed == $this->offer_dismissed )  return;
+        
         
         $class = 'notice notice-info is-dismissible darkluplite-offer--notice';
         if(wp_is_mobile()){
@@ -88,16 +92,25 @@ class DarklupLite_Settings_Page
     }
     function dismiss_darkluplite_offer_notice() {
         
-        set_transient($this->offer_tran_key, true, 0); // Store the dismissed state
+        if ( get_option( $this->offer_setting_key ) !== false ) {
+            // The option already exists, so update it.
+            update_option( $this->offer_setting_key, $this->offer_dismissed );
+        } else {
+            // The option hasn't been created yet, so add it with $autoload set to 'no'.
+            $deprecated = null;
+            $autoload = 'no';
+            add_option( $this->offer_setting_key, $this->offer_dismissed, $deprecated, $autoload );
+        }
+        
     }
     function delete_darkluplite_offer_notice_transient() {
-        delete_transient($this->offer_tran_key);
+        update_option( $this->offer_setting_key, '' );
     }
     
     /* action links on plugin page */
     public function darkluplite_action_links($links)
     {
-        $settings_url = add_query_arg('page', 'darkluplite-setting-admin', get_admin_url() . 'admin.php');
+        $settings_url = add_query_arg('page', $this->admin_slug, get_admin_url() . 'admin.php');
         $pro_url = 'https://darklup.com';
 
         $setting_arr = array('<a href="' . esc_url($settings_url) . '">' . __('Settings', 'darklup-lite') . '</a>');
@@ -120,27 +133,41 @@ class DarklupLite_Settings_Page
             esc_html__('Darklup', 'darklup-lite'),
             esc_html__('Darklup', 'darklup-lite'),
             'manage_options',
-            'darkluplite-setting-admin',
+            $this->admin_slug,
             array($this, 'adminPage'),
             esc_url(DARKLUPLITE_DIR_ADMIN_ASSETS_URL . 'img/darkluplite-icon.svg'),
             6
         );
 
-        add_submenu_page('darkluplite-setting-admin',
+        add_submenu_page($this->admin_slug,
             esc_html__('Darklup', 'darklup-lite'),
             esc_html__('Settings', 'darklup-lite'),
             'manage_options',
-            'darkluplite-setting-admin',
+            $this->admin_slug,
             array($this, 'adminPage')
         );
 
-        add_submenu_page('darkluplite-setting-admin',
+        add_submenu_page($this->admin_slug,
             esc_html__('Get Pro', 'darklup-lite'),
             esc_html__('Get Pro', 'darklup-lite'),
             'manage_options',
             'darkluplite-get-pro',
             array($this, 'darkluplite_get_pro')
         );
+        add_submenu_page(
+            $this->admin_slug,
+            __( 'Useful Plugins', 'darklup-lite' ),
+            __( 'Useful Plugins', 'darklup-lite' ),
+            'manage_options',
+            'darklup-lite-useful-plugins',
+            [ $this, 'useful_plugins_page' ],
+            50
+        );
+    }
+    public function useful_plugins_page()
+    {
+        // include recomendedplugin page
+        require_once DARKLUPLITE_DIR_ADMIN . 'useful-plugins.php';
     }
     public function prepareSettingsForDb($darkluplite_settings = [])
     {
