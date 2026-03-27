@@ -68,6 +68,13 @@ add_action('init', function() {
     load_plugin_textdomain( 'darklup-lite', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 });
 
+// Ask for review notice (admin only).
+if ( is_admin() ) {
+    require_once DARKLUPLITE_DIR_ADMIN . 'inc/class-darklup-ask-review.php';
+    $darklup_ask_review = new DarklupLite\Darklup_Ask_Review();
+    $darklup_ask_review->hooks();
+}
+
 
 /**
  * Darklup final class
@@ -150,6 +157,7 @@ final class DarklupLite
         require_once DARKLUPLITE_DIR_ADMIN . 'setting-fields/class-settings-fields.php';
         require_once DARKLUPLITE_DIR_ADMIN . 'admin.php';
         require_once DARKLUPLITE_DIR_ADMIN . 'inc/class-admin-page.php';
+
         require_once DARKLUPLITE_DIR_PAGE_BUILDER . 'shortcode/class-switch-shortcode.php';
         require_once DARKLUPLITE_DIR_PAGE_BUILDER . 'wpbakery/darkluplite-vc-init.php';
 
