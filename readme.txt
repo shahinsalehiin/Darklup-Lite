@@ -253,11 +253,14 @@ screenshot-4.png
 
 == Changelog ==
 
+= 3.2.XX =
+
+1. Improved: Performance Improved.
+2. Fixed: Image swapping issue fixed for optimized images.
+
 = 3.2.15 =
 
 1. Added compatibility to 6.9
-
-
 
 = 3.2.14 =
 
