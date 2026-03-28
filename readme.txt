@@ -5,7 +5,7 @@ Tags: dark mode plugin, dark mode, dark theme, WordPress dark mode, wp dark mode
 Requires PHP: 7.4
 Requires at least: 6.5
 Tested up to: 6.9
-Stable tag: 3.2.15
+Stable tag: 3.2.16
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -258,7 +258,7 @@ screenshot-4.png
 1. Improved: Performance Improved.
 2. Fixed: Image swapping issue fixed for optimized images.
 
-= 3.2.15 =
+= 3.2.16 =
 
 1. Added compatibility to 6.9
 
