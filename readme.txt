@@ -258,7 +258,7 @@ screenshot-4.png
 1. Improved: Performance Improved.
 2. Fixed: Image swapping issue fixed for optimized images.
 
-= 3.2.16 =
+= 3.2.15 =
 
 1. Added compatibility to 6.9
 
