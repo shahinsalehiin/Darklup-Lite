@@ -253,7 +253,7 @@ screenshot-4.png
 
 == Changelog ==
 
-= 3.2.XX =
+= 3.2.16 =
 
 1. Improved: Performance Improved.
 2. Fixed: Image swapping issue fixed for optimized images.
