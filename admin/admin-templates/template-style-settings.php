@@ -47,13 +47,108 @@ class Style_Settings_Tab extends Settings_Fields_Base
 
 
         /******************************** Desktop Settings **********************************************/
-        $this->switch_field([
-            'title' => esc_html__('Display Floating Switch in Desktop', 'darklup-lite'),
-            'sub_title' => esc_html__('Enable the switch to show the dark mode switch button on the Desktop screen.', 'darklup-lite'),
-            'name' => 'switch_in_desktop',
-            'input_classes' => 'darklup_default_checked',
-            'condition' => ["key" => "switch_cases", "value" => "desktop_switch"],
-        ]);
+
+        // ╔══════════════════════════════════════════════════════════════════╗
+        // ║ Display On — unified master toggle + per-device checkboxes        ║
+        // ║ (Desktop / Mobile / Tablet). Ports Pro's Display On section so     ║
+        // ║ the UX matches 1:1. Keeps legacy option keys (`switch_in_desktop`,║
+        // ║ `switch_in_mobile`) for backward compatibility, adds              ║
+        // ║ `switch_in_tablet` and the master `display_floating_switch_enabled`║
+        // ║ used by Helper::isDisplayFloatingSwitchEnabled().                 ║
+        // ╚══════════════════════════════════════════════════════════════════╝
+        $darkluplite_display_float_on = \DarklupLite\Helper::isDisplayFloatingSwitchEnabled();
+        ?>
+        <div class="darklup-display-on-section" data-condition='{"key":"switch_cases","value":"desktop_switch"}'>
+            <div class="darklup-display-on-header">
+                <div class="darklup-display-on-title-area">
+                    <h4><?php esc_html_e( 'Display On', 'darklup-lite' ); ?></h4>
+                    <p><?php esc_html_e( 'Enable the switch on selected devices.', 'darklup-lite' ); ?></p>
+                </div>
+                <div class="darklup-display-on-toggle-area">
+                    <div class="on-off-toggle button-switch">
+                        <input type="hidden" name="darkluplite_settings[display_floating_switch_enabled]" value="no" />
+                        <input
+                            class="on-off-toggle__input display-floating-switch-master"
+                            name="darkluplite_settings[display_floating_switch_enabled]"
+                            value="yes"
+                            type="checkbox"
+                            <?php checked( $darkluplite_display_float_on ? 'yes' : 'no', 'yes' ); ?>
+                            id="darkluplite_display_floating_switch_enabled"
+                        />
+                        <label for="darkluplite_display_floating_switch_enabled" class="on-off-toggle__slider"></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="darklup-device-checkboxes-container" style="display: <?php echo $darkluplite_display_float_on ? 'grid' : 'none'; ?>;">
+
+                <!-- Desktop -->
+                <div class="darklup-device-checkbox-item">
+                    <label class="darklup-device-label">
+                        <input type="hidden" name="darkluplite_settings[switch_in_desktop]" value="no">
+                        <input
+                            type="checkbox"
+                            class="darklup-device-checkbox"
+                            name="darkluplite_settings[switch_in_desktop]"
+                            value="yes"
+                            <?php echo ( 'yes' === \DarklupLite\Helper::getOptionData( 'switch_in_desktop' ) ) ? 'checked' : ''; ?>
+                        >
+                        <div class="darklup-device-content">
+                            <svg class="darklup-device-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                            <span class="darklup-device-text"><?php esc_html_e( 'Desktop', 'darklup-lite' ); ?></span>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Mobile -->
+                <div class="darklup-device-checkbox-item">
+                    <label class="darklup-device-label">
+                        <input type="hidden" name="darkluplite_settings[switch_in_mobile]" value="no">
+                        <input
+                            type="checkbox"
+                            class="darklup-device-checkbox"
+                            name="darkluplite_settings[switch_in_mobile]"
+                            value="yes"
+                            <?php echo ( 'yes' === \DarklupLite\Helper::getOptionData( 'switch_in_mobile' ) ) ? 'checked' : ''; ?>
+                        >
+                        <div class="darklup-device-content">
+                            <svg class="darklup-device-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                            </svg>
+                            <span class="darklup-device-text"><?php esc_html_e( 'Mobile', 'darklup-lite' ); ?></span>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Tablet -->
+                <div class="darklup-device-checkbox-item">
+                    <label class="darklup-device-label">
+                        <input type="hidden" name="darkluplite_settings[switch_in_tablet]" value="no">
+                        <input
+                            type="checkbox"
+                            class="darklup-device-checkbox"
+                            name="darkluplite_settings[switch_in_tablet]"
+                            value="yes"
+                            <?php echo ( 'yes' === \DarklupLite\Helper::getOptionData( 'switch_in_tablet' ) ) ? 'checked' : ''; ?>
+                        >
+                        <div class="darklup-device-content">
+                            <svg class="darklup-device-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+                                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                            </svg>
+                            <span class="darklup-device-text"><?php esc_html_e( 'Tablet', 'darklup-lite' ); ?></span>
+                        </div>
+                    </label>
+                </div>
+
+            </div>
+        </div>
+        <?php
 
         $switch_styles = [
             '1' => DARKLUPLITE_DIR_URL . 'assets/img/switch-15.svg',
@@ -904,6 +999,18 @@ class Style_Settings_Tab extends Settings_Fields_Base
             toggleAllySections();
             $('input[name="darkluplite_settings[switch_cases]"]').on('click', toggleAllySections);
             $('input[name="darkluplite_settings[switch_style]"]').on('click', toggleAllySections);
+
+            // Display On master toggle: show/hide the 3 device checkboxes with fade.
+            $(document).on('change', '.display-floating-switch-master', function() {
+                var $container = $('.darklup-device-checkboxes-container');
+                if ( $(this).is(':checked') ) {
+                    $container.css({ display: 'grid', opacity: 1 });
+                } else {
+                    $container.animate({ opacity: 0 }, 250, function() {
+                        $container.css('display', 'none');
+                    });
+                }
+            });
 
             // Contrast master toggle: show/hide the 3 contrast mode checkboxes.
             $(document).on('change', '.ally-contrast-master', function() {

@@ -133,6 +133,13 @@ class Hooks
     public static function modeSwitcher()
     {
 
+        // Display On master toggle — honors the unified admin control.
+        // When the master is explicitly off, suppress every floating switch
+        // variant (including the ally hidden-checkbox trigger further down).
+        if ( ! \DarklupLite\Helper::isDisplayFloatingSwitchEnabled() ) {
+            return;
+        }
+
         $switchPosition = 'bottom_right';
         $getSwitchPosition = self::getOptionData('desktop_switch_position');
         if(($getSwitchPosition)){
