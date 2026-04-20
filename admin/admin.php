@@ -297,7 +297,7 @@ window.open("https://darklup.com", "_blank");
         wp_enqueue_style('nice-select', DARKLUPLITE_DIR_ADMIN_ASSETS_URL . 'css/nice-select.css', array(), DARKLUPLITE_VERSION, false);
         wp_enqueue_style('select2', DARKLUPLITE_DIR_ADMIN_ASSETS_URL . 'css/select2.min.css', array(), DARKLUPLITE_VERSION, false);
         wp_enqueue_style('darkluplite-style', DARKLUPLITE_DIR_ADMIN_ASSETS_URL . 'css/style.css', array(), DARKLUPLITE_VERSION, false);
-        wp_enqueue_style('darkluplite-new-style', DARKLUPLITE_DIR_ADMIN_ASSETS_URL . 'css/new-style.css', array(), DARKLUPLITE_VERSION, false);
+        wp_enqueue_style('darkluplite-new-style', DARKLUPLITE_DIR_ADMIN_ASSETS_URL . 'css/new-style.css', array(), @filemtime(DARKLUPLITE_DIR_PATH . 'admin/assets/css/new-style.css') ?: DARKLUPLITE_VERSION, false);
         wp_enqueue_style('darkluplite-switch', DARKLUPLITE_DIR_URL . 'assets/css/darkluplite-switch.css', array(), DARKLUPLITE_VERSION, false);
         wp_enqueue_style('darkluplite-responsive', DARKLUPLITE_DIR_ADMIN_ASSETS_URL . 'css/responsive.css', array(), DARKLUPLITE_VERSION, false);
         wp_enqueue_style('darkluplite-dashboard-widget', DARKLUPLITE_DIR_ADMIN_ASSETS_URL . 'css/dashboard-widget.css', array(), DARKLUPLITE_VERSION, false);

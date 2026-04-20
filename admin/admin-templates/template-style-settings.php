@@ -298,6 +298,7 @@ class Style_Settings_Tab extends Settings_Fields_Base
                 'name' => $name,
                 'input_classes' => 'darklup_default_checked',
                 'is_pro' => 'yes',
+                'wrapper_class' => 'pro-feature',
             ]);
         endforeach;
 
@@ -328,6 +329,7 @@ class Style_Settings_Tab extends Settings_Fields_Base
             'condition' => ["key" => "switch_style", "value" => "ally"],
             'name' => 'ally_hide_branding',
             'is_pro' => 'yes',
+            'wrapper_class' => 'pro-feature',
         ]);
         ?>
         </div>

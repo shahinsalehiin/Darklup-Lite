@@ -788,3 +788,18 @@ input.darkluplite-ajax-save:disabled{
 	display: block;
 }
 
+/* Pro-locked switcher cards: shift the card title a touch to the right
+   so the rotated corner ribbon no longer covers short labels like
+   "Monochrome". Scoped to rows that already use lite's .pro-feature hook,
+   so non-pro cards are untouched and the ribbon stays visually identical
+   to every other Pro badge in the admin. */
+.darkluplite-row.pro-feature.darkluplite-switcher--field .darkluplite-switcher-inner-content .details {
+	padding-left: 40px;
+}
+
+@media (max-width: 768px) {
+	.darkluplite-row.pro-feature.darkluplite-switcher--field .darkluplite-switcher-inner-content .details {
+		padding-left: 34px;
+	}
+}
+
