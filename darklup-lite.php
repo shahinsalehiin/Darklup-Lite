@@ -151,6 +151,7 @@ final class DarklupLite
         require_once DARKLUPLITE_DIR_INC . 'class-helper.php';
         require_once DARKLUPLITE_DIR_INC . 'class-enqueue.php';
         require_once DARKLUPLITE_DIR_INC . 'class-hooks.php';
+        require_once DARKLUPLITE_DIR_INC . 'class-ally-panel.php';
         require_once DARKLUPLITE_DIR_INC . 'class-color-preset.php';
         require_once DARKLUPLITE_DIR_INC . 'class-switcher-style.php';
         require_once DARKLUPLITE_DIR_INC . 'class-dark-inline-css.php';
