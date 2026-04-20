@@ -335,7 +335,15 @@ class Style_Settings_Tab extends Settings_Fields_Base
         </div>
         <?php
 
-
+        // ╔══════════════════════════════════════════════════════════════════╗
+        // ║ Regular (non-ally) desktop switch settings wrapper.               ║
+        // ║ Mirrors Pro: hidden when ally style is selected so the two        ║
+        // ║ configuration worlds don't stack on top of each other on the      ║
+        // ║ desktop_switch tab. Toggled by the inline JS at the bottom.       ║
+        // ╚══════════════════════════════════════════════════════════════════╝
+        ?>
+        <div class="darklup-regular-settings-wrapper">
+        <?php
 
         $this->select_box([
             'title' => esc_html__('Switch Position', 'darklup-lite'),
@@ -501,7 +509,9 @@ class Style_Settings_Tab extends Settings_Fields_Base
             'wrapper_class' => 'pro-feature',
             'name' => 'custom_switch_text_color_on_dark'
           ]);
-
+        ?>
+        </div>
+        <?php
 
             /******************************** Mobile Settings **********************************************/
 
@@ -635,7 +645,7 @@ class Style_Settings_Tab extends Settings_Fields_Base
                 'condition' => ["key" => "switch_cases", "value" => "menu_switch"],
                 // 'condition' => ["key" => "switch_in_menu", "value" => "yes"],
                 // 'condition' => [["key" => "switch_in_menu", "value" => "yes"], ["key" => "switch_cases", "value" => "menu_switch"]],
-                'options'   => \Darkluplite\Helper::getMenuLocations()
+                'options'   => \DarklupLite\Helper::getMenuLocations()
               ]);
 
               $this->margin_field([
@@ -885,8 +895,10 @@ class Style_Settings_Tab extends Settings_Fields_Base
 
                 if ( isAlly && isDesktopTab ) {
                     $('.darklup-ally-settings-wrapper').show();
+                    $('.darklup-regular-settings-wrapper').hide();
                 } else {
                     $('.darklup-ally-settings-wrapper').hide();
+                    $('.darklup-regular-settings-wrapper').show();
                 }
             }
             toggleAllySections();
