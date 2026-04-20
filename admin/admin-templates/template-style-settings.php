@@ -32,7 +32,7 @@ class Style_Settings_Tab extends Settings_Fields_Base
 
         $switch_cases = [
             'desktop_switch' => 'Floating Switch (Desktop)',
-            'mobile_switch' => 'Floating Switch (Mobile)',
+            // 'mobile_switch' => 'Floating Switch (Mobile)', // DEPRECATED: redundant with the unified "Display On" card on the Desktop tab (which now toggles mobile/tablet as checkboxes). The mobile-only fields below keep their data-condition but never match, so they stay hidden without removing code.
             'menu_switch' => 'Menu Switch',
             'advance_style' => 'Advance Settings',
         ];
