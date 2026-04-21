@@ -1,0 +1,1540 @@
+/* ============================================
+   DARKLUP ACCESSIBILITY PANEL — CSS
+   Version: 3.2.15
+   ============================================
+
+   MANDATORY SECTION ORDER:
+   1. CSS Custom Properties
+   2. Trigger Button
+   3. Trigger Tick Indicator
+   4. Panel Container
+   5. Panel Open State
+   6. Panel Header
+   7. Panel Body (scrollable)
+   8. Card Grid
+   9. Individual Cards
+   10. Card States (hover + active)
+   11. Reset Button
+   12. Branding
+   13. Reading Mask Overlays
+   14. Module Feature CSS
+   15. PANEL IMMUNITY — ALWAYS LAST
+   16. Responsive Mobile
+   17. RTL Support
+   ============================================ */
+
+/* ============================================
+   1. CSS CUSTOM PROPERTIES (Variables)
+   ============================================
+
+   CSS vars are set via inline style on the
+   panel element from PHP:
+   --ally-accent: from admin switch_bg_color
+   --ally-icon-color: from admin switch_icon_color
+*/
+
+:root {
+	--ally-panel-width: 460px;
+	--ally-animation-duration: 750ms;
+	--ally-animation-easing: cubic-bezier(0.23, 1, 0.32, 1);
+	--ally-z-trigger: 2147483640;
+	--ally-z-panel: 2147483641;
+	--ally-card-border-default: 2px solid #ffffff;
+	--ally-card-border-active: 2px solid var(--ally-accent);
+	--ally-body-bg: #eff1f5;
+	--ally-card-bg: #ffffff;
+	--ally-card-border-radius: 12px;
+	--ally-card-min-height: 114px;
+	--ally-grid-gap: 15px;
+	--ally-icon-size: 40px;
+	--ally-label-size: 14px;
+	--ally-label-weight: 600;
+	--ally-label-color: #121212;
+	--ally-header-height: 110px;
+	/* Space reserved for footer stack (reset + branding + padding); keeps body max-height in sync with 100vh layout. */
+	--ally-footer-chrome: 172px;
+	--ally-mobile-drag: 0px;
+	--ally-transition-speed: 0.2s;
+}
+
+/* ============================================
+   2. TRIGGER BUTTON
+   ============================================ */
+
+.darklup-ally-trigger,
+#darklup-ally-trigger.darklup-ally-trigger {
+	position: fixed;
+	width: 52px;
+	height: 52px;
+	border-radius: 50%;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: var(--ally-accent);
+	border: 0 !important;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: var(--ally-z-trigger);
+	transition: transform var(--ally-transition-speed) ease;
+	padding: 0;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	font-size: 0;
+	line-height: 0;
+	outline: none;
+	color: var(--ally-icon-color);
+}
+
+.darklup-ally-trigger:hover,
+#darklup-ally-trigger.darklup-ally-trigger:hover {
+	background-color: var(--ally-accent);
+	transform: scale(1.1);
+}
+
+.darklup-ally-trigger:focus,
+.darklup-ally-trigger:focus-visible,
+#darklup-ally-trigger.darklup-ally-trigger:focus,
+#darklup-ally-trigger.darklup-ally-trigger:focus-visible {
+	background-color: var(--ally-accent);
+	outline: none;
+}
+
+.darklup-ally-trigger svg {
+	fill: var(--ally-icon-color);
+	stroke: none;
+	width: 24px;
+	height: 24px;
+}
+
+/* Position variants for trigger */
+.darklup-ally-trigger.bottom_right {
+	bottom: 20px;
+	right: 20px;
+}
+
+.darklup-ally-trigger.bottom_left {
+	bottom: 20px;
+	left: 20px;
+}
+
+.darklup-ally-trigger.top_right {
+	top: 20px;
+	right: 20px;
+}
+
+.darklup-ally-trigger.top_left {
+	top: 20px;
+	left: 20px;
+}
+
+/* ============================================
+   2b. TRIGGER SIZE PRESETS (v3.2.15+)
+   ============================================
+
+   Responsive size classes: S, M, L, XL
+   Each size scales across desktop/tablet/mobile
+   breakpoints for optimal UX on all devices.
+*/
+
+/* ---- Size S (Small: 40px desktop) ---- */
+#darklup-ally-trigger.ally-size-s {
+	width: 40px;
+	height: 40px;
+	padding: 6px;
+}
+
+#darklup-ally-trigger.ally-size-s svg {
+	width: 28px;
+	height: 28px;
+}
+
+/* ---- Size M (Medium: 50px desktop) ---- */
+#darklup-ally-trigger.ally-size-m {
+	width: 50px;
+	height: 50px;
+	padding: 8px;
+}
+
+#darklup-ally-trigger.ally-size-m svg {
+	width: 34px;
+	height: 34px;
+}
+
+/* ---- Size L (Large: 60px desktop) ---- */
+#darklup-ally-trigger.ally-size-l {
+	width: 60px;
+	height: 60px;
+	padding: 10px;
+}
+
+#darklup-ally-trigger.ally-size-l svg {
+	width: 40px;
+	height: 40px;
+}
+
+/* ---- Size XL (Extra Large: 75px desktop) ---- */
+#darklup-ally-trigger.ally-size-xl {
+	width: 75px;
+	height: 75px;
+	padding: 12px;
+}
+
+#darklup-ally-trigger.ally-size-xl svg {
+	width: 51px;
+	height: 51px;
+}
+
+/* ---- Tablet Breakpoint (≤1024px) ---- */
+@media (max-width: 1024px) {
+	#darklup-ally-trigger.ally-size-s {
+		width: 36px;
+		height: 36px;
+		padding: 5px;
+	}
+
+	#darklup-ally-trigger.ally-size-s svg {
+		width: 26px;
+		height: 26px;
+	}
+
+	#darklup-ally-trigger.ally-size-m {
+		width: 45px;
+		height: 45px;
+		padding: 7px;
+	}
+
+	#darklup-ally-trigger.ally-size-m svg {
+		width: 31px;
+		height: 31px;
+	}
+
+	#darklup-ally-trigger.ally-size-l {
+		width: 54px;
+		height: 54px;
+		padding: 9px;
+	}
+
+	#darklup-ally-trigger.ally-size-l svg {
+		width: 36px;
+		height: 36px;
+	}
+
+	#darklup-ally-trigger.ally-size-xl {
+		width: 68px;
+		height: 68px;
+		padding: 11px;
+	}
+
+	#darklup-ally-trigger.ally-size-xl svg {
+		width: 46px;
+		height: 46px;
+	}
+}
+
+/* ---- Mobile Breakpoint (≤768px) ---- */
+@media (max-width: 768px) {
+	#darklup-ally-trigger.ally-size-s {
+		width: 32px;
+		height: 32px;
+		padding: 4px;
+	}
+
+	#darklup-ally-trigger.ally-size-s svg {
+		width: 24px;
+		height: 24px;
+	}
+
+	#darklup-ally-trigger.ally-size-m {
+		width: 40px;
+		height: 40px;
+		padding: 6px;
+	}
+
+	#darklup-ally-trigger.ally-size-m svg {
+		width: 28px;
+		height: 28px;
+	}
+
+	#darklup-ally-trigger.ally-size-l {
+		width: 48px;
+		height: 48px;
+		padding: 8px;
+	}
+
+	#darklup-ally-trigger.ally-size-l svg {
+		width: 32px;
+		height: 32px;
+	}
+
+	#darklup-ally-trigger.ally-size-xl {
+		width: 60px;
+		height: 60px;
+		padding: 10px;
+	}
+
+	#darklup-ally-trigger.ally-size-xl svg {
+		width: 40px;
+		height: 40px;
+	}
+}
+
+/* ============================================
+   3. TRIGGER TICK INDICATOR
+   ============================================
+
+   Small checkmark circle appears when any
+   module is active. Hidden when all are off.
+*/
+
+.darklup-ally-tick {
+	position: absolute;
+	top: -4px;
+	right: -4px;
+	width: 18px;
+	height: 18px;
+	background-color: var(--ally-accent);
+	border-radius: 50%;
+	border: 3px solid #ffffff;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	font-size: 10px;
+	color: #ffffff;
+	font-weight: 700;
+	animation: darklup-ally-tick-in 0.3s ease forwards;
+	line-height: 1;
+	text-align: center;
+}
+
+.darklup-ally-tick::after {
+	content: '✓';
+	display: block;
+	line-height: 1;
+}
+
+@keyframes darklup-ally-tick-in {
+	from {
+		transform: scale(0);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes darklup-ally-tick-out {
+	from {
+		transform: scale(1);
+		opacity: 1;
+	}
+	to {
+		transform: scale(0);
+		opacity: 0;
+	}
+}
+
+.darklup-ally-tick.active {
+	display: flex;
+}
+
+.darklup-ally-tick.hide {
+	animation: darklup-ally-tick-out 0.3s ease forwards;
+}
+
+/* ============================================
+   4. PANEL CONTAINER
+   ============================================
+
+   Main panel: 520px wide sidebar, full viewport height (100vh).
+   Slides in from left or right based on position.
+*/
+
+.darklup-ally-panel {
+	position: fixed;
+	width: var(--ally-panel-width);
+	/* 100vh shell; body uses content height (capped) so footer sits under the grid with no filler gap. */
+	height: 100vh;
+	max-height: 100vh;
+	min-height: 0;
+	background-color: var(--ally-body-bg);
+	box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+	border-radius: 16px 16px 0 0;
+	z-index: var(--ally-z-panel);
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	top: 0;
+	bottom: auto;
+	right: -520px;
+	transition: right var(--ally-animation-duration) var(--ally-animation-easing),
+	            left var(--ally-animation-duration) var(--ally-animation-easing);
+	overflow: hidden;
+	font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+	color: #1a1a1a;
+}
+
+/* Panel positioned left side */
+.darklup-ally-panel.bottom_left,
+.darklup-ally-panel.top_left {
+	right: auto;
+	left: -520px;
+}
+
+/* Panel positioned right side */
+.darklup-ally-panel.bottom_right,
+.darklup-ally-panel.top_right {
+	left: auto;
+	right: -520px;
+}
+
+/* ============================================
+   5. PANEL OPEN STATE
+   ============================================
+
+   When panel is open, slide it into view.
+*/
+
+.darklup-ally-panel.open {
+	right: 0;
+}
+
+.darklup-ally-panel.open.bottom_left,
+.darklup-ally-panel.open.top_left {
+	left: 0;
+}
+
+.darklup-ally-panel.open.bottom_right,
+.darklup-ally-panel.open.top_right {
+	right: 0;
+}
+
+/* ============================================
+   6. PANEL HEADER
+   ============================================
+
+   Flat color header with title + subtitle.
+   Uses accent color from admin setting.
+*/
+
+.darklup-ally-header {
+	background-color: var(--ally-accent);
+	padding: 12px 16px;
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	min-height: var(--ally-header-height);
+	gap: 12px;
+}
+
+.darklup-ally-header-text {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	min-width: 0;
+}
+
+.darklup-ally-title {
+	font-size: 20px;
+	font-weight: 700;
+	color: #ffffff;
+	margin: 0;
+	padding: 0;
+	line-height: 1.3;
+	word-break: break-word;
+}
+
+.darklup-ally-subtitle {
+	font-size: 13px;
+	color: rgba(255, 255, 255, 0.8);
+	margin: 0;
+	padding: 0;
+	line-height: 1.2;
+}
+
+/* Close button */
+.darklup-ally-close,
+#darklup-ally-close.darklup-ally-close {
+	flex-shrink: 0;
+	width: 44px;
+	height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	-webkit-appearance: none;
+	appearance: none;
+	background: rgba(255, 255, 255, 0.05);
+	border: 0 !important;
+	border-radius: 50%;
+	box-shadow: none;
+	cursor: pointer;
+	padding: 0;
+	color: #ffffff;
+	outline: none;
+	transition: transform var(--ally-transition-speed) ease,
+	            background-color var(--ally-transition-speed) ease;
+}
+
+.darklup-ally-close:hover {
+	background-color: rgba(255, 255, 255, 0.12);
+	transform: scale(1.1);
+}
+
+.darklup-ally-close:focus,
+.darklup-ally-close:focus-visible {
+	background-color: rgba(255, 255, 255, 0.08);
+	outline: none;
+}
+
+.darklup-ally-close svg {
+	width: 20px;
+	height: 20px;
+	stroke: currentColor;
+	fill: none;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+/* ============================================
+   7. PANEL BODY (scrollable area)
+   ============================================
+
+   flex: 0 1 auto — height follows the card grid when the list is short (footer moves up).
+   max-height — caps the scroll area so header + body + footer fit in ~100vh when the list is long.
+   Extra viewport space stays below the footer inside the panel (white), not between grid and footer.
+*/
+
+.darklup-ally-body {
+	flex: 0 1 auto;
+	min-height: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
+	background-color: var(--ally-body-bg);
+	padding: 16px;
+	max-height: calc(
+		100vh - var(--ally-header-height) - var(--ally-footer-chrome) - var(--ally-mobile-drag)
+	);
+	max-height: calc(
+		100svh - var(--ally-header-height) - var(--ally-footer-chrome) - var(--ally-mobile-drag)
+	);
+	scrollbar-width: thin;
+	scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+.darklup-ally-body::-webkit-scrollbar {
+	width: 4px;
+}
+
+.darklup-ally-body::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.darklup-ally-body::-webkit-scrollbar-thumb {
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 2px;
+	border: 1px solid transparent;
+	background-clip: padding-box;
+}
+
+/* ============================================
+   8. CARD GRID
+   ============================================
+
+   3-column grid, 10px gap.
+   Desktop: 3 columns
+   Mobile: 2 columns (handled in section 16)
+*/
+
+.darklup-ally-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: var(--ally-grid-gap);
+	align-content: start;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+/* ============================================
+   9. INDIVIDUAL CARDS
+   ============================================
+
+   Module cards: flex center, icon + label.
+   No checkmark badge, no underline, no fill.
+   UserWay style: border only.
+*/
+
+.darklup-ally-card {
+	background: #ffffff;
+	border: 1px solid #e5e7eb;
+	border-radius: var(--ally-card-border-radius);
+	padding: 16px 8px;
+	min-height: var(--ally-card-min-height);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	cursor: pointer;
+	transition: border var(--ally-transition-speed) ease;
+	font-size: 0;
+	line-height: 0;
+	appearance: none;
+	color: #374151;
+}
+
+.darklup-ally-card:focus {
+	outline: none;
+}
+
+/* Keyboard focus only — avoids a second ring on top of the active 2px border after mouse click. */
+.darklup-ally-card:focus-visible {
+	background-color: #ffffff !important;
+	outline: 2px solid var(--ally-accent);
+	outline-offset: 2px;
+}
+
+.darklup-ally-card[aria-pressed='true']:focus-visible {
+	outline: none;
+}
+
+.darklup-ally-card svg {
+	width: var(--ally-icon-size);
+	height: var(--ally-icon-size);
+	flex-shrink: 0;
+	fill: #374151 !important;
+	stroke: none;
+	transition: fill var(--ally-transition-speed) ease;
+}
+
+.darklup-ally-card-label {
+	font-size: 13px;
+	font-weight: 500;
+	color: #374151;
+	text-align: center;
+	line-height: 1.3;
+	transition: color var(--ally-transition-speed) ease;
+}
+
+/* ============================================
+   10. CARD STATES (hover + active)
+   ============================================
+
+   Hover: border color changes to accent.
+   Active: border accent + icon accent +
+           label accent. NO background fill.
+   Matches UserWay style exactly.
+*/
+
+.darklup-ally-card:hover {
+	border: 1px solid var(--ally-accent);
+	background: #ffffff;
+	color: #374151;
+}
+
+.darklup-ally-card[aria-pressed='true'] {
+	border: 2px solid var(--ally-accent);
+	background: #ffffff;
+	color: var(--ally-accent);
+}
+
+.darklup-ally-card[aria-pressed='true'] svg {
+	fill: var(--ally-accent);
+}
+
+.darklup-ally-card[aria-pressed='true'] .darklup-ally-card-label {
+	color: var(--ally-accent);
+}
+
+.darklup-ally-card[aria-pressed='true']:focus {
+	background-color: #ffffff !important;
+	outline: none;
+}
+
+.darklup-ally-card:not([aria-pressed='true']) svg {
+	fill: #374151 !important;
+}
+
+/* ============================================
+   10b. PANEL FOOTER
+   ============================================
+
+   Footer container: spacing aligned with body.
+   Padding matches body card area (16px).
+   Position: flex-shrink 0 (always visible).
+*/
+
+.darklup-ally-footer {
+	/* DYNAMIC SIZING (v3.2.15): Footer always visible, directly under the module grid when the list is short. */
+	flex-shrink: 0;
+	background-color: #f3f4f6;
+	padding: 12px 16px;
+	border-top: 1px solid #e5e7eb;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+/* ============================================
+   11. RESET BUTTON
+   ============================================
+
+   Full-width button in footer.
+   Accent background, white text.
+*/
+
+.darklup-ally-reset {
+	width: 100%;
+	background-color: var(--ally-accent);
+	color: var(--ally-icon-color);
+	border: none;
+	padding: 12px 18px;
+	border-radius: 10px;
+	font-size: 13px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: opacity var(--ally-transition-speed) ease;
+	appearance: none;
+	font-family: inherit;
+	margin: 0;
+}
+
+.darklup-ally-reset:hover {
+	background-color: var(--ally-accent);
+	opacity: 0.9;
+}
+
+.darklup-ally-reset:focus {
+	background-color: var(--ally-accent) !important;
+	outline: 2px solid var(--ally-accent);
+	outline-offset: 2px;
+}
+
+.darklup-ally-reset:active {
+	opacity: 0.8;
+}
+
+/* ============================================
+   12. BRANDING
+   ============================================
+
+   "Powered by Darklup" — small text + link.
+   Always visible unless hide_branding = on.
+   Free users: always visible, cannot hide.
+*/
+
+.darklup-ally-branding {
+	font-size: 11px;
+	color: #9ca3af;
+	text-align: center;
+	margin-top: 4px;
+	margin-bottom: 0;
+	padding: 0;
+	line-height: 1.3;
+}
+
+.darklup-ally-branding a {
+	color: #9ca3af;
+	text-decoration: none;
+	transition: color var(--ally-transition-speed) ease;
+}
+
+.darklup-ally-branding a:hover {
+	color: var(--ally-accent);
+	text-decoration: underline;
+}
+
+/* ============================================
+   13. READING MASK OVERLAYS
+   ============================================
+
+   Two semi-transparent divs:
+   - .darklup-ally-mask-top — above reading line
+   - .darklup-ally-mask-bottom — below reading line
+
+   Positioned fixed to cover full viewport.
+   Moved by JS on mousemove when reading mask
+   module is active.
+   Hidden on touch devices (no mousemove).
+*/
+
+.darklup-ally-mask-top,
+.darklup-ally-mask-bottom {
+	position: fixed;
+	left: 0;
+	right: 0;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: calc(var(--ally-z-panel) - 1);
+	pointer-events: none;
+}
+
+.darklup-ally-mask-top {
+	top: 0;
+}
+
+.darklup-ally-mask-bottom {
+	bottom: 0;
+}
+
+body.darklup-ally-reading-mask .darklup-ally-mask-top,
+body.darklup-ally-reading-mask .darklup-ally-mask-bottom {
+	display: block;
+}
+
+/* ============================================
+   14. MODULE FEATURE CSS
+   ============================================
+
+   ALL module CSS goes here.
+   Each module is conditionally applied via
+   a body class added by JS.
+
+   ALL OF THESE EXCLUDE .darkluplite-dark-ignore
+   and panel elements (immunity rules below).
+*/
+
+/* --- Dark Mode ---
+   Handled by Darklup's own dark mode engine.
+   Not re-implemented here.
+*/
+
+html.darklup-dark-mode-enabled {
+	/* Darklup's own dark mode applies here */
+}
+
+/* --- Contrast Dark ---
+   Invert colors + hue rotate.
+   Applied to body direct children, excluding ally UI (panel lives under body via JS hoist).
+*/
+
+html.darklup-ally-contrast-dark body > *:not(#darklup-ally-panel):not(.darklup-ally-trigger):not(.darklup-ally-backdrop):not(.darklup-ally-mask-top):not(.darklup-ally-mask-bottom) {
+	filter: invert(1) hue-rotate(180deg);
+}
+
+/* --- Contrast Light ---
+   White background + dark text.
+*/
+
+html.darklup-ally-contrast-light:not(.darklup-ally-contrast-dark):not(.darklup-ally-contrast-high) {
+	background-color: #ffffff !important;
+	color: #1a1a1a !important;
+}
+
+html.darklup-ally-contrast-light:not(.darklup-ally-contrast-dark):not(.darklup-ally-contrast-high) *:not(#darklup-ally-panel):not(#darklup-ally-panel *):not(#darklup-ally-trigger):not(#darklup-ally-trigger *):not(#darklup-ally-backdrop):not(.darklup-ally-mask-top):not(.darklup-ally-mask-bottom) {
+	background-color: inherit;
+	color: inherit;
+}
+
+/* --- Contrast High ---
+   Increased CSS contrast filter.
+   Applied to body direct children, excluding ally UI.
+*/
+
+html.darklup-ally-contrast-high body > *:not(#darklup-ally-panel):not(.darklup-ally-trigger):not(.darklup-ally-backdrop):not(.darklup-ally-mask-top):not(.darklup-ally-mask-bottom) {
+	filter: contrast(1.5);
+}
+
+/* --- Bigger Text ---
+   Scale all text 1.25em.
+   Exclusions match stop-animations / align-text (not span:not(#panel span)).
+*/
+
+body.darklup-ally-bigger-text *:not(#darklup-ally-panel):not(#darklup-ally-panel *):not(.darklup-ally-trigger):not(.darklup-ally-trigger *):is(p, li, span, td, label, input, textarea, select, dd, dt, h1, h2, h3, h4, h5, h6) {
+	font-size: 1.25em;
+}
+
+/* --- Readable Font ---
+   Apply system-ui ONLY to direct <body> children that are not ally UI; font-family inherits down from there.
+   <body> itself is NEVER targeted, so the panel's own font-family stack is never inherited through body. */
+
+body.darklup-ally-readable-font > *:not(#darklup-ally-panel):not(#darklup-ally-trigger):not(#darklup-ally-backdrop):not(.darklup-ally-trigger):not(.darklup-ally-mask-top):not(.darklup-ally-mask-bottom):not(#darklup-ally-announcer) {
+	font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* --- Highlight Links ---
+   Yellow background on all links.
+*/
+
+body.darklup-ally-highlight-links a:not(.darkluplite-dark-ignore a) {
+	background-color: #ffff00 !important;
+	color: #000000 !important;
+	text-decoration: underline;
+}
+
+/* --- Stop Animations ---
+   Disable all animations + transitions.
+*/
+
+body.darklup-ally-stop-animations *:not(#darklup-ally-panel):not(#darklup-ally-panel *):not(.darklup-ally-trigger):not(.darklup-ally-trigger *) {
+	animation-duration: 0.01ms !important;
+	animation-iteration-count: 1 !important;
+	transition-duration: 0.01ms !important;
+}
+
+/* --- Monochrome ---
+   Grayscale the entire page.
+   Applied to body direct children, excluding panel.
+*/
+
+html.darklup-ally-monochrome body > *:not(#darklup-ally-panel):not(.darklup-ally-trigger):not(.darklup-ally-backdrop):not(.darklup-ally-mask-top):not(.darklup-ally-mask-bottom) {
+	filter: grayscale(100%);
+}
+
+/* --- Font Weight ---
+   Bold text throughout.
+*/
+
+body.darklup-ally-font-weight p:not(#darklup-ally-panel p):not(.darklup-ally-trigger p),
+body.darklup-ally-font-weight li:not(#darklup-ally-panel li):not(.darklup-ally-trigger li),
+body.darklup-ally-font-weight label:not(#darklup-ally-panel label):not(.darklup-ally-trigger label),
+body.darklup-ally-font-weight td:not(#darklup-ally-panel td):not(.darklup-ally-trigger td),
+body.darklup-ally-font-weight dd:not(#darklup-ally-panel dd):not(.darklup-ally-trigger dd),
+body.darklup-ally-font-weight dt:not(#darklup-ally-panel dt):not(.darklup-ally-trigger dt),
+body.darklup-ally-font-weight span:not(#darklup-ally-panel span):not(.darklup-ally-trigger span) {
+	font-weight: 700;
+}
+
+/* --- Align Text ---
+   Cycles: Left → Center → Right.
+   Applied via class on body per state.
+*/
+
+body.darklup-ally-align-left *:not(#darklup-ally-panel):not(#darklup-ally-panel *):not(.darklup-ally-trigger):not(.darklup-ally-trigger *) {
+	text-align: left !important;
+}
+
+body.darklup-ally-align-center *:not(#darklup-ally-panel):not(#darklup-ally-panel *):not(.darklup-ally-trigger):not(.darklup-ally-trigger *) {
+	text-align: center !important;
+}
+
+body.darklup-ally-align-right *:not(#darklup-ally-panel):not(#darklup-ally-panel *):not(.darklup-ally-trigger):not(.darklup-ally-trigger *) {
+	text-align: right !important;
+}
+
+/* --- Hide Images ---
+   Visibility: hidden (layout preserved).
+*/
+
+body.darklup-ally-hide-images img:not(.darkluplite-dark-ignore img) {
+	visibility: hidden;
+}
+
+/* --- Dark Mode (CSS-only approach) ---
+   When ally panel sets darklup-dark-mode-enabled class,
+   these CSS rules apply dark styling without relying on
+   Darklup's Ge() JavaScript method.
+*/
+
+html.darklup-dark-mode-enabled body {
+	background-color: #242525 !important;
+}
+
+html.darklup-dark-mode-enabled
+*:not(.darkluplite-dark-ignore):not(.darkluplite-dark-ignore *) {
+	color: rgb(237, 237, 237) !important;
+	background-color: #242525 !important;
+	border-color: #3a3a3a !important;
+}
+
+html.darklup-dark-mode-enabled
+a:not(.darkluplite-dark-ignore) {
+	color: rgb(237, 237, 237) !important;
+}
+
+html.darklup-dark-mode-enabled
+img:not(.darkluplite-dark-ignore) {
+	filter: brightness(0.85) !important;
+}
+
+/* ============================================
+   15. PANEL IMMUNITY — ALWAYS LAST
+   ============================================ */
+
+/* BIGGER TEXT IMMUNITY — same strategy as readable-font: lock #darklup-ally-panel + * then restore tokens */
+body.darklup-ally-bigger-text #darklup-ally-panel,
+body.darklup-ally-bigger-text #darklup-ally-panel * {
+	font-size: 13px !important;
+	line-height: 1.3 !important;
+}
+body.darklup-ally-bigger-text #darklup-ally-panel .darklup-ally-card {
+	font-size: 0 !important;
+	line-height: 0 !important;
+}
+body.darklup-ally-bigger-text #darklup-ally-panel .darklup-ally-card-label {
+	font-size: 13px !important;
+	line-height: 1.3 !important;
+	font-weight: 500 !important;
+}
+body.darklup-ally-bigger-text #darklup-ally-panel span#darklup-ally-title,
+body.darklup-ally-bigger-text #darklup-ally-panel #darklup-ally-title.darklup-ally-title {
+	font-size: 20px !important;
+	line-height: 1.3 !important;
+	font-weight: 700 !important;
+}
+body.darklup-ally-bigger-text #darklup-ally-panel .darklup-ally-subtitle {
+	font-size: 13px !important;
+	line-height: 1.2 !important;
+	font-weight: 400 !important;
+}
+body.darklup-ally-bigger-text #darklup-ally-panel button#darklup-ally-reset.darklup-ally-reset,
+body.darklup-ally-bigger-text #darklup-ally-panel button.darklup-ally-reset {
+	font-size: 13px !important;
+	line-height: normal !important;
+	font-weight: 600 !important;
+}
+body.darklup-ally-bigger-text #darklup-ally-panel .darklup-ally-close {
+	font-size: 0 !important;
+	line-height: 0 !important;
+}
+body.darklup-ally-bigger-text #darklup-ally-panel .darklup-ally-branding,
+body.darklup-ally-bigger-text #darklup-ally-panel .darklup-ally-branding a {
+	font-size: 11px !important;
+	line-height: 1.3 !important;
+}
+
+/* READABLE FONT IMMUNITY
+   The global readable-font rule above only targets direct <body> children excluding ally UI,
+   so nothing inside #darklup-ally-panel is ever touched. No re-assertion needed here. */
+
+/* FONT WEIGHT IMMUNITY */
+body.darklup-ally-font-weight
+.darklup-ally-card-label {
+	font-weight: 500 !important;
+}
+body.darklup-ally-font-weight
+.darklup-ally-title {
+	font-weight: 700 !important;
+}
+body.darklup-ally-font-weight
+.darklup-ally-reset {
+	font-weight: 600 !important;
+}
+body.darklup-ally-font-weight
+.darklup-ally-branding {
+	font-weight: 400 !important;
+}
+
+/* ALIGN TEXT IMMUNITY */
+body.darklup-ally-align-left
+.darklup-ally-card-label,
+body.darklup-ally-align-center
+.darklup-ally-card-label,
+body.darklup-ally-align-right
+.darklup-ally-card-label {
+	text-align: center !important;
+}
+body.darklup-ally-align-left
+.darklup-ally-title,
+body.darklup-ally-align-center
+.darklup-ally-title,
+body.darklup-ally-align-right
+.darklup-ally-title,
+body.darklup-ally-align-left
+.darklup-ally-subtitle,
+body.darklup-ally-align-center
+.darklup-ally-subtitle,
+body.darklup-ally-align-right
+.darklup-ally-subtitle {
+	text-align: left !important;
+}
+body.darklup-ally-align-left
+.darklup-ally-branding,
+body.darklup-ally-align-center
+.darklup-ally-branding,
+body.darklup-ally-align-right
+.darklup-ally-branding {
+	text-align: center !important;
+}
+
+/* HIGHLIGHT LINKS IMMUNITY */
+body.darklup-ally-highlight-links
+#darklup-ally-panel a {
+	background-color: transparent !important;
+	color: var(--ally-accent) !important;
+	text-decoration: none !important;
+}
+
+/* MONOCHROME IMMUNITY */
+html.darklup-ally-monochrome
+#darklup-ally-panel,
+html.darklup-ally-monochrome
+#darklup-ally-panel *,
+html.darklup-ally-monochrome
+.darklup-ally-trigger {
+	filter: none !important;
+}
+
+/* CONTRAST DARK IMMUNITY
+   filter: none does not escape a filtered ancestor — .darklup-ally-filter-compensate doubles invert+hue to cancel. */
+html.darklup-ally-contrast-dark #darklup-ally-panel.darklup-ally-filter-compensate {
+	filter: invert(1) hue-rotate(180deg) !important;
+}
+html.darklup-ally-contrast-dark #darklup-ally-panel.darklup-ally-filter-compensate * {
+	filter: none !important;
+}
+html.darklup-ally-contrast-dark .darklup-ally-trigger.darklup-ally-filter-compensate {
+	filter: invert(1) hue-rotate(180deg) !important;
+}
+html.darklup-ally-contrast-dark .darklup-ally-trigger.darklup-ally-filter-compensate * {
+	filter: none !important;
+}
+html.darklup-ally-contrast-dark #darklup-ally-backdrop.darklup-ally-filter-compensate {
+	filter: invert(1) hue-rotate(180deg) !important;
+}
+html.darklup-ally-contrast-dark .darklup-ally-mask-top.darklup-ally-filter-compensate,
+html.darklup-ally-contrast-dark .darklup-ally-mask-bottom.darklup-ally-filter-compensate {
+	filter: invert(1) hue-rotate(180deg) !important;
+}
+
+html.darklup-ally-contrast-dark #darklup-ally-panel:not(.darklup-ally-filter-compensate),
+html.darklup-ally-contrast-dark #darklup-ally-panel:not(.darklup-ally-filter-compensate) *,
+html.darklup-ally-contrast-dark .darklup-ally-trigger:not(.darklup-ally-filter-compensate),
+html.darklup-ally-contrast-dark .darklup-ally-trigger:not(.darklup-ally-filter-compensate) * {
+	filter: none !important;
+}
+
+/* Close control — beat theme / UA styles under contrast-dark */
+html.darklup-ally-contrast-dark #darklup-ally-panel .darklup-ally-close {
+	-webkit-appearance: none !important;
+	appearance: none !important;
+	background: rgba(255, 255, 255, 0.05) !important;
+	color: #ffffff !important;
+	border: 0 !important;
+	box-shadow: none !important;
+	border-radius: 50% !important;
+}
+
+/* Floating trigger — same treatment (contrast / theme UA) */
+html.darklup-ally-contrast-dark #darklup-ally-trigger.darklup-ally-trigger {
+	-webkit-appearance: none !important;
+	appearance: none !important;
+	background-color: var(--ally-accent) !important;
+	color: var(--ally-icon-color) !important;
+	border: 0 !important;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+	border-radius: 50% !important;
+}
+html.darklup-ally-contrast-dark #darklup-ally-trigger.darklup-ally-trigger svg {
+	fill: var(--ally-icon-color) !important;
+}
+
+/* CONTRAST HIGH — cancel wrapper contrast() when nested (see darklup-ally-filter-compensate-high) */
+html.darklup-ally-contrast-high #darklup-ally-panel.darklup-ally-filter-compensate-high {
+	filter: contrast(0.6666667) !important;
+}
+html.darklup-ally-contrast-high #darklup-ally-panel.darklup-ally-filter-compensate-high * {
+	filter: none !important;
+}
+html.darklup-ally-contrast-high .darklup-ally-trigger.darklup-ally-filter-compensate-high {
+	filter: contrast(0.6666667) !important;
+}
+html.darklup-ally-contrast-high .darklup-ally-trigger.darklup-ally-filter-compensate-high * {
+	filter: none !important;
+}
+html.darklup-ally-contrast-high #darklup-ally-backdrop.darklup-ally-filter-compensate-high {
+	filter: contrast(0.6666667) !important;
+}
+html.darklup-ally-contrast-high .darklup-ally-mask-top.darklup-ally-filter-compensate-high,
+html.darklup-ally-contrast-high .darklup-ally-mask-bottom.darklup-ally-filter-compensate-high {
+	filter: contrast(0.6666667) !important;
+}
+
+html.darklup-ally-contrast-high #darklup-ally-panel:not(.darklup-ally-filter-compensate-high),
+html.darklup-ally-contrast-high #darklup-ally-panel:not(.darklup-ally-filter-compensate-high) *,
+html.darklup-ally-contrast-high .darklup-ally-trigger:not(.darklup-ally-filter-compensate-high),
+html.darklup-ally-contrast-high .darklup-ally-trigger:not(.darklup-ally-filter-compensate-high) * {
+	filter: none !important;
+}
+
+html.darklup-ally-contrast-high #darklup-ally-trigger.darklup-ally-trigger {
+	-webkit-appearance: none !important;
+	appearance: none !important;
+	background-color: var(--ally-accent) !important;
+	color: var(--ally-icon-color) !important;
+	border: 0 !important;
+	border-radius: 50% !important;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+html.darklup-ally-contrast-high #darklup-ally-trigger.darklup-ally-trigger svg {
+	fill: var(--ally-icon-color) !important;
+}
+
+/* CONTRAST LIGHT IMMUNITY */
+html.darklup-ally-contrast-light
+#darklup-ally-panel {
+	background-color: #ffffff !important;
+}
+html.darklup-ally-contrast-light
+.darklup-ally-header {
+	background-color: var(--ally-accent) !important;
+}
+html.darklup-ally-contrast-light
+.darklup-ally-card {
+	background-color: #ffffff !important;
+}
+html.darklup-ally-contrast-light
+.darklup-ally-body {
+	background-color: #f3f4f6 !important;
+}
+html.darklup-ally-contrast-light
+.darklup-ally-card-label {
+	color: #374151 !important;
+}
+html.darklup-ally-contrast-light
+.darklup-ally-title {
+	color: #ffffff !important;
+}
+html.darklup-ally-contrast-light
+.darklup-ally-subtitle {
+	color: rgba(255,255,255,0.8) !important;
+}
+html.darklup-ally-contrast-light
+.darklup-ally-reset {
+	background-color: var(--ally-accent) !important;
+	color: #ffffff !important;
+}
+html.darklup-ally-contrast-light
+.darklup-ally-branding {
+	color: #9ca3af !important;
+}
+
+/* Floating trigger — contrast-light no longer applies inherit() to it; lock tokens */
+html.darklup-ally-contrast-light #darklup-ally-trigger.darklup-ally-trigger,
+html.darklup-ally-contrast-light .darklup-ally-trigger {
+	-webkit-appearance: none !important;
+	appearance: none !important;
+	background-color: var(--ally-accent) !important;
+	color: var(--ally-icon-color) !important;
+	border: 0 !important;
+	border-radius: 50% !important;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+html.darklup-ally-contrast-light #darklup-ally-trigger.darklup-ally-trigger svg,
+html.darklup-ally-contrast-light .darklup-ally-trigger svg {
+	fill: var(--ally-icon-color) !important;
+}
+html.darklup-ally-contrast-light
+.darklup-ally-card {
+	color: #374151 !important;
+}
+html.darklup-ally-contrast-light
+.darklup-ally-card[aria-pressed='true'] {
+	color: var(--ally-accent) !important;
+}
+html.darklup-ally-contrast-light
+.darklup-ally-card[aria-pressed='true'] svg {
+	fill: var(--ally-accent) !important;
+}
+html.darklup-ally-contrast-light
+.darklup-ally-card[aria-pressed='true']
+.darklup-ally-card-label {
+	color: var(--ally-accent) !important;
+}
+
+/* DARK MODE IMMUNITY */
+html.darklup-dark-mode-enabled
+#darklup-ally-panel {
+	background-color: #ffffff !important;
+}
+html.darklup-dark-mode-enabled
+.darklup-ally-header {
+	background-color: var(--ally-accent) !important;
+}
+html.darklup-dark-mode-enabled
+.darklup-ally-title {
+	color: #ffffff !important;
+}
+html.darklup-dark-mode-enabled
+.darklup-ally-subtitle {
+	color: rgba(255,255,255,0.8) !important;
+}
+html.darklup-dark-mode-enabled
+.darklup-ally-body {
+	background-color: #f3f4f6 !important;
+}
+html.darklup-dark-mode-enabled
+.darklup-ally-card {
+	background-color: #ffffff !important;
+}
+html.darklup-dark-mode-enabled
+.darklup-ally-card-label {
+	color: #374151 !important;
+}
+html.darklup-dark-mode-enabled
+.darklup-ally-card--active .darklup-ally-card-label {
+	color: var(--ally-accent) !important;
+}
+html.darklup-dark-mode-enabled
+.darklup-ally-footer {
+	background-color: #f3f4f6 !important;
+}
+html.darklup-dark-mode-enabled
+.darklup-ally-reset {
+	background-color: var(--ally-accent) !important;
+	color: #ffffff !important;
+}
+html.darklup-dark-mode-enabled
+.darklup-ally-branding {
+	color: #9ca3af !important;
+}
+
+html.darklup-dark-mode-enabled #darklup-ally-trigger.darklup-ally-trigger,
+html.darklup-dark-mode-enabled .darklup-ally-trigger {
+	-webkit-appearance: none !important;
+	appearance: none !important;
+	background-color: var(--ally-accent) !important;
+	color: var(--ally-icon-color) !important;
+	border: 0 !important;
+	border-radius: 50% !important;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+html.darklup-dark-mode-enabled #darklup-ally-trigger.darklup-ally-trigger svg,
+html.darklup-dark-mode-enabled .darklup-ally-trigger svg {
+	fill: var(--ally-icon-color) !important;
+}
+
+/* STOP ANIMATIONS IMMUNITY */
+body.darklup-ally-stop-animations
+#darklup-ally-panel,
+body.darklup-ally-stop-animations
+#darklup-ally-panel * {
+	animation-duration: 0.3s !important;
+	transition-duration: 0.3s !important;
+}
+
+/* HIDE IMAGES IMMUNITY */
+body.darklup-ally-hide-images
+#darklup-ally-panel img,
+body.darklup-ally-hide-images
+.darklup-ally-trigger img {
+	visibility: visible !important;
+}
+
+/* ============================================
+   16. RESPONSIVE — MOBILE
+   ============================================
+
+   Mobile: max-width 480px
+   - Full-width bottom sheet (100vw)
+   - Slides UP from bottom, not from side
+   - 2-column grid (repeat(2, 1fr))
+   - Drag handle at top (40px × 4px)
+   - Full viewport height (100vh) — no gap under the sheet
+   - Border-radius 20px 20px 0 0 (top corners)
+   - Trigger position: always bottom
+*/
+
+@media (max-width: 480px) {
+	:root {
+		/* Mobile sheet drag handle (::before) — subtract from scroll region cap. */
+		--ally-mobile-drag: 28px;
+	}
+
+	.darklup-ally-panel {
+		width: 100vw;
+		height: 100vh;
+		max-height: 100vh;
+		min-height: 0;
+		bottom: auto;
+		left: auto !important;
+		right: auto !important;
+		top: auto;
+		border-radius: 20px 20px 0 0;
+		box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
+		bottom: -100vh;
+		transition: bottom var(--ally-animation-duration) var(--ally-animation-easing);
+	}
+
+	.darklup-ally-panel.open {
+		bottom: 0;
+		left: auto !important;
+		right: auto !important;
+	}
+
+	.darklup-ally-panel.open.bottom_left,
+	.darklup-ally-panel.open.top_left {
+		left: auto !important;
+	}
+
+	.darklup-ally-panel.open.bottom_right,
+	.darklup-ally-panel.open.top_right {
+		right: auto !important;
+	}
+
+	/* Add drag handle for mobile */
+	.darklup-ally-panel::before {
+		content: '';
+		display: block;
+		width: 40px;
+		height: 4px;
+		background-color: #d1d5db;
+		border-radius: 2px;
+		margin: 8px auto;
+		flex-shrink: 0;
+	}
+
+	/* Trigger always bottom on mobile */
+	.darklup-ally-trigger {
+		bottom: 20px !important;
+		top: auto !important;
+	}
+
+	.darklup-ally-trigger.bottom_left,
+	.darklup-ally-trigger.bottom_right,
+	.darklup-ally-trigger.top_left,
+	.darklup-ally-trigger.top_right {
+		bottom: 20px !important;
+		top: auto !important;
+	}
+
+	/* 2-column grid on mobile */
+	.darklup-ally-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+/* Tablet landscape or small devices */
+@media (max-width: 768px) and (min-width: 481px) {
+	.darklup-ally-panel {
+		width: 100%;
+		max-width: var(--ally-panel-width);
+	}
+}
+
+/* ============================================
+   17. RTL SUPPORT
+   ============================================
+
+   When WordPress is in RTL mode, mirror
+   panel position and internal layout.
+*/
+
+[dir='rtl'] .darklup-ally-panel.bottom_right,
+[dir='rtl'] .darklup-ally-panel.top_right {
+	right: auto;
+	left: -520px;
+}
+
+[dir='rtl'] .darklup-ally-panel.bottom_left,
+[dir='rtl'] .darklup-ally-panel.top_left {
+	left: auto;
+	right: -520px;
+}
+
+[dir='rtl'] .darklup-ally-panel.open.bottom_right,
+[dir='rtl'] .darklup-ally-panel.open.top_right {
+	left: 0;
+	right: auto;
+}
+
+[dir='rtl'] .darklup-ally-panel.open.bottom_left,
+[dir='rtl'] .darklup-ally-panel.open.top_left {
+	right: 0;
+	left: auto;
+}
+
+[dir='rtl'] .darklup-ally-trigger.bottom_right {
+	right: auto;
+	left: 20px;
+}
+
+[dir='rtl'] .darklup-ally-trigger.bottom_left {
+	left: auto;
+	right: 20px;
+}
+
+[dir='rtl'] .darklup-ally-trigger.top_right {
+	right: auto;
+	left: 20px;
+}
+
+[dir='rtl'] .darklup-ally-trigger.top_left {
+	left: auto;
+	right: 20px;
+}
+
+[dir='rtl'] .darklup-ally-header {
+	flex-direction: row-reverse;
+}
+
+[dir='rtl'] .darklup-ally-card {
+	direction: rtl;
+}
+
+/* Bigger text — panel typography last (wins over theme !important on body/em) */
+body.darklup-ally-bigger-text #darklup-ally-panel,
+body.darklup-ally-bigger-text #darklup-ally-panel * {
+	font-size: 13px !important;
+	line-height: 1.3 !important;
+}
+body.darklup-ally-bigger-text #darklup-ally-panel .darklup-ally-card {
+	font-size: 0 !important;
+	line-height: 0 !important;
+}
+body.darklup-ally-bigger-text #darklup-ally-panel .darklup-ally-card-label {
+	font-size: 13px !important;
+	line-height: 1.3 !important;
+}
+body.darklup-ally-bigger-text #darklup-ally-panel #darklup-ally-title {
+	font-size: 20px !important;
+	line-height: 1.3 !important;
+}
+body.darklup-ally-bigger-text #darklup-ally-panel .darklup-ally-subtitle {
+	font-size: 13px !important;
+}
+body.darklup-ally-bigger-text #darklup-ally-panel button#darklup-ally-reset {
+	font-size: 13px !important;
+}
+body.darklup-ally-bigger-text #darklup-ally-panel .darklup-ally-close {
+	font-size: 0 !important;
+	line-height: 0 !important;
+}
+body.darklup-ally-bigger-text #darklup-ally-panel .darklup-ally-branding,
+body.darklup-ally-bigger-text #darklup-ally-panel .darklup-ally-branding a {
+	font-size: 11px !important;
+}
+
+/* =========================================================================
+   LOCKED MODULE CARDS (Free plugin — Pro-only modules)
+   Shows a lock badge over the card and tones it down. Click opens upgrade URL.
+   ========================================================================= */
+.darklup-ally-card[data-locked="1"] {
+	position: relative !important;
+	cursor: pointer !important;
+	opacity: .7 !important;
+}
+.darklup-ally-card[data-locked="1"]:hover {
+	opacity: 1 !important;
+}
+.darklup-ally-card[data-locked="1"] > svg,
+.darklup-ally-card[data-locked="1"] > .darklup-ally-card-label {
+	filter: grayscale(100%) !important;
+}
+.darklup-ally-card[data-locked="1"]:hover > svg,
+.darklup-ally-card[data-locked="1"]:hover > .darklup-ally-card-label {
+	filter: none !important;
+}
+.darklup-ally-card[data-locked="1"]::after {
+	content: "";
+	position: absolute !important;
+	top: 6px !important;
+	right: 6px !important;
+	width: 18px !important;
+	height: 18px !important;
+	border-radius: 50% !important;
+	background: #f59e0b url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='11' width='18' height='11' rx='2' ry='2'/><path d='M7 11V7a5 5 0 0 1 10 0v4'/></svg>") center / 11px 11px no-repeat !important;
+	box-shadow: 0 1px 3px rgba(0,0,0,.25) !important;
+	pointer-events: none !important;
+	z-index: 2 !important;
+}
+.darklup-ally-card[data-locked="1"][aria-pressed="true"],
+.darklup-ally-card[data-locked="1"].darklup-ally-card--active {
+	background: inherit !important;
+	color: inherit !important;
+}
+
+/* ============ END OF DARKLUP ALLY CSS ============ */

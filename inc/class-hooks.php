@@ -133,6 +133,13 @@ class Hooks
     public static function modeSwitcher()
     {
 
+        // Display On master toggle — honors the unified admin control.
+        // When the master is explicitly off, suppress every floating switch
+        // variant (including the ally hidden-checkbox trigger further down).
+        if ( ! \DarklupLite\Helper::isDisplayFloatingSwitchEnabled() ) {
+            return;
+        }
+
         $switchPosition = 'bottom_right';
         $getSwitchPosition = self::getOptionData('desktop_switch_position');
         if(($getSwitchPosition)){
@@ -143,6 +150,17 @@ class Hooks
         $switchInMobile = self::getOptionData('switch_in_mobile');
 
         if (self::getOptionData('frontend_darkmode') == 'yes') {
+
+            // Ally switch style: the Accessibility Panel handles its own
+            // trigger button, so emit only a hidden checkbox that the ally
+            // JS uses to drive Darklup's dark-mode engine. Skip the normal
+            // floating switcher markup.
+            if ( 'ally' === self::getOptionData( 'switch_style' ) ) {
+                ?>
+<input type="checkbox" class="toggle-checkbox switch-trigger" style="position:fixed;top:0;left:0;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;" aria-hidden="true" tabindex="-1">
+<?php
+                return;
+            }
 
             if (!empty($switchInDesktop) && $switchInDesktop == 'yes' && !$get_screen) {?>
                 <div class="darkluplite-mode-switcher <?php echo esc_attr($switchPosition); ?> darkluplite-desktop-switcher">

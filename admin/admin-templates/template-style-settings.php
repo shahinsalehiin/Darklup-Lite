@@ -32,7 +32,7 @@ class Style_Settings_Tab extends Settings_Fields_Base
 
         $switch_cases = [
             'desktop_switch' => 'Floating Switch (Desktop)',
-            'mobile_switch' => 'Floating Switch (Mobile)',
+            // 'mobile_switch' => 'Floating Switch (Mobile)', // DEPRECATED: redundant with the unified "Display On" card on the Desktop tab (which now toggles mobile/tablet as checkboxes). The mobile-only fields below keep their data-condition but never match, so they stay hidden without removing code.
             'menu_switch' => 'Menu Switch',
             'advance_style' => 'Advance Settings',
         ];
@@ -47,13 +47,108 @@ class Style_Settings_Tab extends Settings_Fields_Base
 
 
         /******************************** Desktop Settings **********************************************/
-        $this->switch_field([
-            'title' => esc_html__('Display Floating Switch in Desktop', 'darklup-lite'),
-            'sub_title' => esc_html__('Enable the switch to show the dark mode switch button on the Desktop screen.', 'darklup-lite'),
-            'name' => 'switch_in_desktop',
-            'input_classes' => 'darklup_default_checked',
-            'condition' => ["key" => "switch_cases", "value" => "desktop_switch"],
-        ]);
+
+        // ╔══════════════════════════════════════════════════════════════════╗
+        // ║ Display On — unified master toggle + per-device checkboxes        ║
+        // ║ (Desktop / Mobile / Tablet). Ports Pro's Display On section so     ║
+        // ║ the UX matches 1:1. Keeps legacy option keys (`switch_in_desktop`,║
+        // ║ `switch_in_mobile`) for backward compatibility, adds              ║
+        // ║ `switch_in_tablet` and the master `display_floating_switch_enabled`║
+        // ║ used by Helper::isDisplayFloatingSwitchEnabled().                 ║
+        // ╚══════════════════════════════════════════════════════════════════╝
+        $darkluplite_display_float_on = \DarklupLite\Helper::isDisplayFloatingSwitchEnabled();
+        ?>
+        <div class="darklup-display-on-section" data-condition='{"key":"switch_cases","value":"desktop_switch"}'>
+            <div class="darklup-display-on-header">
+                <div class="darklup-display-on-title-area">
+                    <h4><?php esc_html_e( 'Display On', 'darklup-lite' ); ?></h4>
+                    <p><?php esc_html_e( 'Enable the switch on selected devices.', 'darklup-lite' ); ?></p>
+                </div>
+                <div class="darklup-display-on-toggle-area">
+                    <div class="on-off-toggle button-switch">
+                        <input type="hidden" name="darkluplite_settings[display_floating_switch_enabled]" value="no" />
+                        <input
+                            class="on-off-toggle__input display-floating-switch-master"
+                            name="darkluplite_settings[display_floating_switch_enabled]"
+                            value="yes"
+                            type="checkbox"
+                            <?php checked( $darkluplite_display_float_on ? 'yes' : 'no', 'yes' ); ?>
+                            id="darkluplite_display_floating_switch_enabled"
+                        />
+                        <label for="darkluplite_display_floating_switch_enabled" class="on-off-toggle__slider"></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="darklup-device-checkboxes-container" style="display: <?php echo $darkluplite_display_float_on ? 'grid' : 'none'; ?>;">
+
+                <!-- Desktop -->
+                <div class="darklup-device-checkbox-item">
+                    <label class="darklup-device-label">
+                        <input type="hidden" name="darkluplite_settings[switch_in_desktop]" value="no">
+                        <input
+                            type="checkbox"
+                            class="darklup-device-checkbox"
+                            name="darkluplite_settings[switch_in_desktop]"
+                            value="yes"
+                            <?php echo ( 'yes' === \DarklupLite\Helper::getOptionData( 'switch_in_desktop' ) ) ? 'checked' : ''; ?>
+                        >
+                        <div class="darklup-device-content">
+                            <svg class="darklup-device-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                            <span class="darklup-device-text"><?php esc_html_e( 'Desktop', 'darklup-lite' ); ?></span>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Mobile -->
+                <div class="darklup-device-checkbox-item">
+                    <label class="darklup-device-label">
+                        <input type="hidden" name="darkluplite_settings[switch_in_mobile]" value="no">
+                        <input
+                            type="checkbox"
+                            class="darklup-device-checkbox"
+                            name="darkluplite_settings[switch_in_mobile]"
+                            value="yes"
+                            <?php echo ( 'yes' === \DarklupLite\Helper::getOptionData( 'switch_in_mobile' ) ) ? 'checked' : ''; ?>
+                        >
+                        <div class="darklup-device-content">
+                            <svg class="darklup-device-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                            </svg>
+                            <span class="darklup-device-text"><?php esc_html_e( 'Mobile', 'darklup-lite' ); ?></span>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Tablet -->
+                <div class="darklup-device-checkbox-item">
+                    <label class="darklup-device-label">
+                        <input type="hidden" name="darkluplite_settings[switch_in_tablet]" value="no">
+                        <input
+                            type="checkbox"
+                            class="darklup-device-checkbox"
+                            name="darkluplite_settings[switch_in_tablet]"
+                            value="yes"
+                            <?php echo ( 'yes' === \DarklupLite\Helper::getOptionData( 'switch_in_tablet' ) ) ? 'checked' : ''; ?>
+                        >
+                        <div class="darklup-device-content">
+                            <svg class="darklup-device-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+                                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                            </svg>
+                            <span class="darklup-device-text"><?php esc_html_e( 'Tablet', 'darklup-lite' ); ?></span>
+                        </div>
+                    </label>
+                </div>
+
+            </div>
+        </div>
+        <?php
 
         $switch_styles = [
             '1' => DARKLUPLITE_DIR_URL . 'assets/img/switch-15.svg',
@@ -82,7 +177,268 @@ class Style_Settings_Tab extends Settings_Fields_Base
             'options' => $switch_styles
         ]);
 
+        // ╔══════════════════════════════════════════════════════════════════╗
+        // ║ Accessibility Switch Styles — standalone section (matches Pro).   ║
+        // ║ Selecting this option reveals the full ally configuration block   ║
+        // ║ below (trigger size, colors, position, 11 module toggles, texts). ║
+        // ╚══════════════════════════════════════════════════════════════════╝
+        ?>
+        <div class="darkluplite-row darklup-ally-switch-section" data-condition='{"key":"switch_cases","value":"desktop_switch"}' style="border-top: 0px solid #e5e5e5; margin-top: 0px; padding-top: 0px;">
+            <div class="darkluplite-col-lg-6 darkluplite-col-md-12">
+                <div class="darkluplite-single-settings-inner radio-image-wrapper">
+                    <div class="details">
+                        <h5><?php esc_html_e( 'Accessibility Switch Styles', 'darklup-lite' ); ?></h5>
+                        <p><?php esc_html_e( 'Select the accessibility panel option.', 'darklup-lite' ); ?></p>
+                    </div>
+                    <div class="button-switch">
+                        <label class="radio-img">
+                            <input type="radio" name="darkluplite_settings[switch_style]" value="ally" <?php checked( \DarklupLite\Helper::getOptionData( 'switch_style' ), 'ally' ); ?> />
+                            <img src="<?php echo esc_url( DARKLUPLITE_DIR_URL . 'assets/img/ally-switch-thumbnail.svg' ); ?>" alt="<?php esc_attr_e( 'Accessibility Panel', 'darklup-lite' ); ?>" />
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="darkluplite-col-lg-2 darkluplite-col-md-12"></div>
+            <div class="darkluplite-col-lg-4 darkluplite-col-md-12"></div>
+        </div>
+        <?php
 
+        // ╔══════════════════════════════════════════════════════════════════╗
+        // ║ Ally configuration wrapper — visible only when ally is selected.  ║
+        // ║ JS fieldCondition watches data-condition and toggles display.     ║
+        // ╚══════════════════════════════════════════════════════════════════╝
+        ?>
+        <div class="darklup-ally-settings-wrapper" style="display:none;">
+        <?php
+
+        // --- Unified section: Size + BG color + Icon color + Position -----
+        ?>
+        <div class="darklup-ally-unified-section" data-condition='{"key":"switch_style","value":"ally"}'>
+            <div class="darkluplite-presets-customization-wrap">
+                <div class="darkluplite-row darkluplite-section--header">
+                    <h3><?php esc_html_e( 'Accessibility Switch Styles', 'darklup-lite' ); ?></h3>
+                    <p><?php esc_html_e( 'Configure the appearance and position of the floating accessibility panel trigger button.', 'darklup-lite' ); ?></p>
+                </div>
+
+                <?php
+                $current_size = \DarklupLite\Helper::getOptionData( 'ally_trigger_size' );
+                if ( '' === $current_size ) { $current_size = 'M'; }
+                $bg_color = \DarklupLite\Helper::getOptionData( 'ally_switch_bg_color' );
+                if ( '' === $bg_color ) { $bg_color = '#2563eb'; }
+                $size_map = array(
+                    'S'  => array( 'px' => '40', 'label' => 'S' ),
+                    'M'  => array( 'px' => '50', 'label' => 'M' ),
+                    'L'  => array( 'px' => '60', 'label' => 'L' ),
+                    'XL' => array( 'px' => '75', 'label' => 'XL' ),
+                );
+                ?>
+                <div class="darklup-ally-size-unified-section">
+                    <div class="darklup-ally-size-header">
+                        <div class="darklup-ally-size-title-area">
+                            <h4><?php esc_html_e( 'Trigger Size', 'darklup-lite' ); ?></h4>
+                            <p><?php esc_html_e( 'Choose the size of the trigger button. Automatically scales on tablets and phones.', 'darklup-lite' ); ?></p>
+                        </div>
+                    </div>
+                    <div class="darklup-ally-size-preview-icons" style="--size-color: <?php echo esc_attr( $bg_color ); ?>;">
+                        <?php foreach ( $size_map as $size => $data ) :
+                            $is_selected   = ( $current_size === $size );
+                            $selected_cls  = $is_selected ? ' selected' : '';
+                            ?>
+                            <div class="darklup-ally-size-icon-wrapper<?php echo esc_attr( $selected_cls ); ?>" data-size="ally-size-<?php echo esc_attr( strtolower( $size ) ); ?>">
+                                <div class="darklup-ally-size-icon-circle"></div>
+                                <div class="darklup-ally-size-icon-label">
+                                    <span class="size-letter"><?php echo esc_html( $size ); ?></span>
+                                    <span class="size-pixels"><?php echo esc_html( $data['px'] . 'px' ); ?></span>
+                                </div>
+                                <input type="radio" class="darklup-ally-size-radio" name="darkluplite_settings[ally_trigger_size]" value="<?php echo esc_attr( $size ); ?>" <?php checked( $current_size, $size ); ?> />
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+
+                <?php
+                $this->color_field([
+                    'title' => esc_html__( 'Background Color', 'darklup-lite' ),
+                    'sub_title' => esc_html__( 'Set the background color of the trigger button and panel.', 'darklup-lite' ),
+                    'name' => 'ally_switch_bg_color',
+                ]);
+                $this->color_field([
+                    'title' => esc_html__( 'Icon / Text Color', 'darklup-lite' ),
+                    'sub_title' => esc_html__( 'Set the color of the trigger icon and panel text.', 'darklup-lite' ),
+                    'name' => 'ally_switch_icon_color',
+                ]);
+                $this->select_box([
+                    'title' => esc_html__( 'Position', 'darklup-lite' ),
+                    'sub_title' => esc_html__( 'Select the position of the trigger button on the page.', 'darklup-lite' ),
+                    'class' => 'settings-switch-position',
+                    'name' => 'ally_switch_position',
+                    'options' => [
+                        'top_right'    => esc_html__( 'Top Right', 'darklup-lite' ),
+                        'top_left'     => esc_html__( 'Top Left', 'darklup-lite' ),
+                        'bottom_right' => esc_html__( 'Bottom Right', 'darklup-lite' ),
+                        'bottom_left'  => esc_html__( 'Bottom Left', 'darklup-lite' ),
+                    ],
+                ]);
+                ?>
+            </div>
+        </div>
+
+        <?php
+        $this->margin_field([
+            'title' => esc_html__( 'Switch Margin (px)', 'darklup-lite' ),
+            'sub_title' => esc_html__( 'Set the margin around the accessibility trigger button.', 'darklup-lite' ),
+            'condition' => ["key" => "switch_style", "value" => "ally"],
+            'name' => array( "ally_switch_margin_top", "ally_switch_margin_bottom", "ally_switch_margin_right", "ally_switch_margin_left" ),
+            'step' => '1',
+            'max' => '500',
+            'placeholder' => array( "Top Margin", "Bottom Margin", "Right Margin", "Left Margin" ),
+        ]);
+
+        // --- 11 module toggles (6 free + 5 pro-locked) ---------------------
+        ?>
+        <input type="hidden" name="darkluplite_settings[ally_module_dark_mode]" value="no">
+        <?php
+        $this->switch_field([
+            'title' => esc_html__( 'Dark Mode', 'darklup-lite' ),
+            'sub_title' => esc_html__( 'Allow users to toggle dark mode.', 'darklup-lite' ),
+            'condition' => ["key" => "switch_style", "value" => "ally"],
+            'name' => 'ally_module_dark_mode',
+            'input_classes' => 'darklup_default_checked',
+        ]);
+
+        // Contrast unified section — master toggle + 3 sub-modes.
+        ?>
+        <input type="hidden" name="darkluplite_settings[ally_module_contrast]" value="no">
+        <div class="darklup-contrast-unified-section" data-condition='{"key":"switch_style","value":"ally"}'>
+            <div class="darkluplite-row darkluplite-switcher--field">
+                <div class="darkluplite-col-lg-12 darkluplite-col-md-12">
+                    <div class="darkluplite-single-settings-inner">
+                        <div class="darkluplite-switcher-inner-content">
+                            <div class="details">
+                                <h5><?php esc_html_e( 'Contrast', 'darklup-lite' ); ?></h5>
+                                <p><?php esc_html_e( 'Allow users to toggle contrast modes.', 'darklup-lite' ); ?></p>
+                            </div>
+                            <div class="switcher-colon">:</div>
+                            <div class="on-off-toggle button-switch">
+                                <input class="on-off-toggle__input ally-contrast-master" name="darkluplite_settings[ally_module_contrast]" value="yes" type="checkbox"
+                                    <?php checked( \DarklupLite\Helper::getOptionData( 'ally_module_contrast' ), 'yes' ); ?>
+                                    id="darkluplite_ally_module_contrast" />
+                                <label for="darkluplite_ally_module_contrast" class="on-off-toggle__slider"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="darklup-contrast-modes-section">
+                <div class="darklup-contrast-modes-container" style="display: <?php echo ( 'yes' === \DarklupLite\Helper::getOptionData( 'ally_module_contrast' ) ) ? 'grid' : 'none'; ?>;">
+                    <?php
+                    $contrast_items = array(
+                        'ally_contrast_dark'  => esc_html__( 'Dark Contrast',  'darklup-lite' ),
+                        'ally_contrast_light' => esc_html__( 'Light Contrast', 'darklup-lite' ),
+                        'ally_contrast_high'  => esc_html__( 'High Contrast',  'darklup-lite' ),
+                    );
+                    foreach ( $contrast_items as $c_key => $c_label ) :
+                        $c_val = \DarklupLite\Helper::getOptionData( $c_key );
+                        $c_checked = ( 'no' !== $c_val && ( '' === $c_val || 'yes' === $c_val || 'on' === $c_val ) );
+                        ?>
+                        <div class="darklup-contrast-mode-item">
+                            <label class="darklup-contrast-mode-label">
+                                <input type="hidden" name="darkluplite_settings[<?php echo esc_attr( $c_key ); ?>]" value="no">
+                                <input type="checkbox" class="darklup-contrast-mode-checkbox" name="darkluplite_settings[<?php echo esc_attr( $c_key ); ?>]" value="yes" <?php echo $c_checked ? 'checked' : ''; ?> />
+                                <div class="darklup-contrast-mode-content">
+                                    <span class="darklup-contrast-mode-text"><?php echo esc_html( $c_label ); ?></span>
+                                </div>
+                            </label>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+        <?php
+
+        $free_module_toggles = array(
+            'ally_module_bigger_text'     => array( 'Bigger Text',     'Allow users to increase text size.' ),
+            'ally_module_readable_font'   => array( 'Readable Font',   'Allow users to switch to a readable font.' ),
+            'ally_module_highlight_links' => array( 'Highlight Links', 'Allow users to highlight all links on the page.' ),
+            'ally_module_stop_animations' => array( 'Stop Animations', 'Allow users to disable all animations.' ),
+        );
+        foreach ( $free_module_toggles as $name => $meta ) :
+            ?>
+            <input type="hidden" name="darkluplite_settings[<?php echo esc_attr( $name ); ?>]" value="no">
+            <?php
+            $this->switch_field([
+                'title' => esc_html__( $meta[0], 'darklup-lite' ),
+                'sub_title' => esc_html__( $meta[1], 'darklup-lite' ),
+                'condition' => ["key" => "switch_style", "value" => "ally"],
+                'name' => $name,
+                'input_classes' => 'darklup_default_checked',
+            ]);
+        endforeach;
+
+        $pro_module_toggles = array(
+            'ally_module_monochrome'   => array( 'Monochrome',    'Allow users to enable grayscale mode.' ),
+            'ally_module_font_weight'  => array( 'Font Weight',   'Allow users to increase font weight.' ),
+            'ally_module_align_text'   => array( 'Align Text',    'Allow users to change text alignment.' ),
+            'ally_module_reading_mask' => array( 'Reading Mask',  'Allow users to use the reading mask feature.' ),
+            'ally_module_hide_images'  => array( 'Hide Images',   'Allow users to hide all images on the page.' ),
+        );
+        foreach ( $pro_module_toggles as $name => $meta ) :
+            ?>
+            <input type="hidden" name="darkluplite_settings[<?php echo esc_attr( $name ); ?>]" value="no">
+            <?php
+            $this->switch_field([
+                'title' => esc_html__( $meta[0], 'darklup-lite' ),
+                'sub_title' => esc_html__( $meta[1], 'darklup-lite' ),
+                'condition' => ["key" => "switch_style", "value" => "ally"],
+                'name' => $name,
+                'input_classes' => 'darklup_default_checked',
+                'is_pro' => 'yes',
+                'wrapper_class' => 'pro-feature',
+            ]);
+        endforeach;
+
+        $this->text_field([
+            'title' => esc_html__( 'Panel Title', 'darklup-lite' ),
+            'sub_title' => esc_html__( 'Set the title text displayed at the top of the accessibility panel.', 'darklup-lite' ),
+            'condition' => ["key" => "switch_style", "value" => "ally"],
+            'name' => 'ally_panel_title',
+            'placeholder' => esc_html__( 'e.g. Accessibility', 'darklup-lite' ),
+        ]);
+        $this->text_field([
+            'title' => esc_html__( 'Panel Subtitle', 'darklup-lite' ),
+            'sub_title' => esc_html__( 'Set the subtitle text below the title.', 'darklup-lite' ),
+            'condition' => ["key" => "switch_style", "value" => "ally"],
+            'name' => 'ally_panel_subtitle',
+            'placeholder' => esc_html__( 'e.g. Powered by Darklup', 'darklup-lite' ),
+        ]);
+        $this->text_field([
+            'title' => esc_html__( 'Reset Button Text', 'darklup-lite' ),
+            'sub_title' => esc_html__( 'Set the text for the reset button at the bottom of the panel.', 'darklup-lite' ),
+            'condition' => ["key" => "switch_style", "value" => "ally"],
+            'name' => 'ally_reset_text',
+            'placeholder' => esc_html__( 'e.g. Reset Settings', 'darklup-lite' ),
+        ]);
+        $this->switch_field([
+            'title' => esc_html__( 'Hide "Powered by Darklup"', 'darklup-lite' ),
+            'sub_title' => esc_html__( 'Hide the Darklup branding link in the accessibility panel.', 'darklup-lite' ),
+            'condition' => ["key" => "switch_style", "value" => "ally"],
+            'name' => 'ally_hide_branding',
+            'is_pro' => 'yes',
+            'wrapper_class' => 'pro-feature',
+        ]);
+        ?>
+        </div>
+        <?php
+
+        // ╔══════════════════════════════════════════════════════════════════╗
+        // ║ Regular (non-ally) desktop switch settings wrapper.               ║
+        // ║ Mirrors Pro: hidden when ally style is selected so the two        ║
+        // ║ configuration worlds don't stack on top of each other on the      ║
+        // ║ desktop_switch tab. Toggled by the inline JS at the bottom.       ║
+        // ╚══════════════════════════════════════════════════════════════════╝
+        ?>
+        <div class="darklup-regular-settings-wrapper">
+        <?php
 
         $this->select_box([
             'title' => esc_html__('Switch Position', 'darklup-lite'),
@@ -248,7 +604,9 @@ class Style_Settings_Tab extends Settings_Fields_Base
             'wrapper_class' => 'pro-feature',
             'name' => 'custom_switch_text_color_on_dark'
           ]);
-
+        ?>
+        </div>
+        <?php
 
             /******************************** Mobile Settings **********************************************/
 
@@ -382,7 +740,7 @@ class Style_Settings_Tab extends Settings_Fields_Base
                 'condition' => ["key" => "switch_cases", "value" => "menu_switch"],
                 // 'condition' => ["key" => "switch_in_menu", "value" => "yes"],
                 // 'condition' => [["key" => "switch_in_menu", "value" => "yes"], ["key" => "switch_cases", "value" => "menu_switch"]],
-                'options'   => \Darkluplite\Helper::getMenuLocations()
+                'options'   => \DarklupLite\Helper::getMenuLocations()
               ]);
 
               $this->margin_field([
@@ -619,6 +977,68 @@ class Style_Settings_Tab extends Settings_Fields_Base
 
 
         $this->end_fields_section(); // End fields section
+
+        // Ally settings visibility — show only on desktop_switch tab with ally selected.
+        ?>
+        <script>
+        jQuery(document).ready(function($) {
+            function toggleAllySections() {
+                var activeTab = $('input[name="darkluplite_settings[switch_cases]"]:checked').val();
+                var switchStyle = $('input[name="darkluplite_settings[switch_style]"]:checked').val();
+                var isAlly = ( switchStyle === 'ally' );
+                var isDesktopTab = ( activeTab === 'desktop_switch' );
+
+                if ( isAlly && isDesktopTab ) {
+                    $('.darklup-ally-settings-wrapper').show();
+                    $('.darklup-regular-settings-wrapper').hide();
+                } else {
+                    $('.darklup-ally-settings-wrapper').hide();
+                    $('.darklup-regular-settings-wrapper').show();
+                }
+            }
+            toggleAllySections();
+            $('input[name="darkluplite_settings[switch_cases]"]').on('click', toggleAllySections);
+            $('input[name="darkluplite_settings[switch_style]"]').on('click', toggleAllySections);
+
+            // Display On master toggle: show/hide the 3 device checkboxes with fade.
+            $(document).on('change', '.display-floating-switch-master', function() {
+                var $container = $('.darklup-device-checkboxes-container');
+                if ( $(this).is(':checked') ) {
+                    $container.css({ display: 'grid', opacity: 1 });
+                } else {
+                    $container.animate({ opacity: 0 }, 250, function() {
+                        $container.css('display', 'none');
+                    });
+                }
+            });
+
+            // Contrast master toggle: show/hide the 3 contrast mode checkboxes.
+            $(document).on('change', '.ally-contrast-master', function() {
+                var $container = $('.darklup-contrast-modes-container');
+                if ( $(this).is(':checked') ) {
+                    $container.css({ display: 'grid', opacity: 1 });
+                } else {
+                    $container.animate({ opacity: 0 }, 200, function() {
+                        $container.css('display', 'none');
+                    });
+                }
+            });
+
+            // Trigger-size visual circles: click to select, update hidden radio.
+            $(document).on('click', '.darklup-ally-size-icon-wrapper', function() {
+                var $this = $(this);
+                $this.siblings().removeClass('selected');
+                $this.addClass('selected');
+                $this.find('.darklup-ally-size-radio').prop('checked', true).trigger('change');
+            });
+            // When BG color changes, refresh the --size-color CSS custom prop.
+            $(document).on('change', 'input[name="darkluplite_settings[ally_switch_bg_color]"]', function() {
+                var v = $(this).val();
+                if ( v ) { $('.darklup-ally-size-preview-icons').css('--size-color', v); }
+            });
+        });
+        </script>
+        <?php
 
     }
 

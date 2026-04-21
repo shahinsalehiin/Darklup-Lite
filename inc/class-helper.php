@@ -65,6 +65,26 @@ class Helper{
     return $value;
 
   }
+
+  /**
+   * Display On — master toggle for the floating switch (and ally trigger).
+   * Unset option = on (legacy users don't lose functionality). Stored 'no'
+   * explicitly disables every device. Uses a raw option read so the
+   * literal 'no' value is never silently dropped by empty() checks.
+   *
+   * @return bool
+   */
+  public static function isDisplayFloatingSwitchEnabled() {
+    $options = get_option( 'darkluplite_settings', array() );
+
+    if ( ! is_array( $options ) || ! array_key_exists( 'display_floating_switch_enabled', $options ) ) {
+        return true;
+    }
+
+    $value = $options['display_floating_switch_enabled'];
+
+    return 'yes' === $value || 1 === $value || '1' === (string) $value;
+  }
   /**
    * get time list
    * 

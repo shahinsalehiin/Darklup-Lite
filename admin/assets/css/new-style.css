@@ -631,3 +631,352 @@ input.darkluplite-ajax-save:disabled{
 .darkluplite-main-area > .darkluplite-row{
   margin-right: 0 !important;
 }
+
+/* =====================================================================
+   ACCESSIBILITY PANEL — Admin Settings UI (ported from Pro v3.2.15)
+   ===================================================================== */
+
+/* Contrast unified section — master toggle + 3 sub-modes container */
+.darklup-contrast-unified-section {
+	background: #ffffff;
+	border: 1px solid #e5e5e5;
+	border-radius: 6px;
+	padding: 20px;
+	margin-top: 0;
+	margin-bottom: 20px;
+}
+.darklup-contrast-modes-section {
+	margin-left: 0;
+	margin-right: 0;
+	border-top: 1px solid #e5e5e5;
+	padding-top: 15px;
+	margin-top: 0;
+}
+.darklup-contrast-modes-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 12px;
+	transition: opacity 0.25s ease-in-out;
+}
+.darklup-contrast-modes-container[style*="display: none"] {
+	opacity: 0;
+	pointer-events: none;
+}
+.darklup-contrast-mode-item { display: flex; }
+.darklup-contrast-mode-label {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 12px;
+	cursor: pointer;
+	width: 100%;
+	padding: 12px 16px;
+	background: #ffffff;
+	border: 1px solid #e0e0e0;
+	border-radius: 6px;
+	transition: all 0.2s ease-in-out;
+	min-height: 50px;
+}
+.darklup-contrast-mode-label:hover { border-color: #2277e8; background: #f9fbff; }
+.darklup-contrast-mode-checkbox {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	width: 20px; height: 20px; min-width: 20px;
+	flex-shrink: 0;
+	border: 2px solid #d0d0d0;
+	border-radius: 4px;
+	cursor: pointer;
+	background: #ffffff;
+	transition: all 0.2s ease;
+	position: relative;
+	margin-top: 2px;
+}
+.darklup-contrast-mode-checkbox:hover  { border-color: #2277e8; box-shadow: 0 0 0 3px rgba(34,119,232,.1); }
+.darklup-contrast-mode-checkbox:active { transform: scale(0.95); }
+.darklup-contrast-mode-checkbox:checked { background: #2277e8; border-color: #2277e8; }
+.darklup-contrast-mode-checkbox:checked::after {
+	content: '\2713';
+	position: absolute; top: 50%; left: 50%;
+	transform: translate(-50%, -50%);
+	color: #ffffff; font-size: 14px; font-weight: bold; line-height: 1;
+}
+.darklup-contrast-mode-content { display: flex; flex-direction: column; gap: 0; justify-content: center; flex: 1; }
+.darklup-contrast-mode-text    { font-size: 14px; font-weight: 600; color: #333; margin: 0; line-height: 1.4; }
+
+@media (max-width: 1024px) {
+	.darklup-contrast-modes-container { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+	.darklup-contrast-modes-section   { margin-left: 20px; }
+	.darklup-contrast-modes-container { grid-template-columns: 1fr; gap: 10px; }
+}
+
+/* Trigger size preview circles (S/M/L/XL) */
+.darklup-ally-size-unified-section {
+	display: flex;
+	align-items: center;
+	gap: 40px;
+	padding: 20px;
+	margin: 20px 0;
+	border: 1px solid #d5d5d5;
+	border-radius: 10px;
+}
+.darklup-ally-size-header              { flex: 0 0 250px; margin: 0; padding: 0; border: none; }
+.darklup-ally-size-title-area h4       { color: #121212; font-size: 18px; font-weight: 700 !important; margin-bottom: 14px; display: block; }
+.darklup-ally-size-title-area p        { margin: 0; font-size: 14px; color: #666; }
+
+.darklup-ally-size-preview-icons {
+	display: flex;
+	flex: 1;
+	gap: 20px;
+	padding: 0;
+	background: transparent;
+	border: none;
+	--size-color: #2563eb;
+	align-items: center;
+	justify-content: flex-start;
+}
+.darklup-ally-size-icon-wrapper {
+	display: flex; flex-direction: column; align-items: center;
+	gap: 12px; cursor: pointer;
+	transition: all 0.25s ease;
+	user-select: none;
+}
+.darklup-ally-size-icon-wrapper[data-size="ally-size-s"]  .darklup-ally-size-icon-circle { width: 40px; height: 40px; }
+.darklup-ally-size-icon-wrapper[data-size="ally-size-m"]  .darklup-ally-size-icon-circle { width: 50px; height: 50px; }
+.darklup-ally-size-icon-wrapper[data-size="ally-size-l"]  .darklup-ally-size-icon-circle { width: 60px; height: 60px; }
+.darklup-ally-size-icon-wrapper[data-size="ally-size-xl"] .darklup-ally-size-icon-circle { width: 75px; height: 75px; }
+.darklup-ally-size-icon-circle {
+	border-radius: 50%;
+	background: #f5f5f5;
+	border: 2px solid #ddd;
+	transition: all 0.25s ease;
+	box-shadow: none;
+}
+.darklup-ally-size-icon-wrapper:hover .darklup-ally-size-icon-circle {
+	border-color: var(--size-color, #2563eb);
+	box-shadow: 0 0 8px rgba(37,99,235,.2);
+	transform: scale(1.05);
+}
+.darklup-ally-size-icon-wrapper.selected .darklup-ally-size-icon-circle {
+	border-color: var(--size-color, #2563eb);
+	background:   var(--size-color, #2563eb);
+	box-shadow: 0 0 12px rgba(37,99,235,.3);
+}
+.darklup-ally-size-icon-label                { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; font-weight: 500; }
+.darklup-ally-size-icon-label .size-letter   { font-size: 16px; font-weight: 600; color: #333; }
+.darklup-ally-size-icon-label .size-pixels   { font-size: 12px; color: #999; }
+.darklup-ally-size-icon-wrapper input[type="radio"] { display: none; }
+
+@media (max-width: 768px) {
+	.darklup-ally-size-unified-section { flex-direction: column; align-items: flex-start; gap: 20px; }
+	.darklup-ally-size-preview-icons   { flex-wrap: wrap; }
+	.darklup-ally-size-icon-label .size-letter { font-size: 14px; }
+	.darklup-ally-size-icon-label .size-pixels { font-size: 11px; }
+}
+
+/* Ally switch-style row — separator above to distinguish from the grid above */
+.darklup-ally-switch-section {
+	border-top: 1px solid #f0f0f0;
+	margin-top: 20px;
+	padding-top: 20px;
+}
+.darklup-ally-switch-section .radio-img img {
+	max-width: 240px;
+	height: auto;
+	display: block;
+}
+
+/* ====================================================================== */
+/*   Display On Section — Master Toggle + Device Checkboxes
+     Ported from Pro so the Desktop tab opens with the same unified UX.
+   ====================================================================== */
+
+.darklup-display-on-section {
+	background: #ffffff;
+	border: 1px solid #e5e5e5;
+	border-radius: 6px;
+	padding: 20px;
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+.darklup-display-on-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
+	margin-bottom: 20px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.darklup-display-on-title-area h4 {
+	margin: 0 0 5px 0;
+	font-size: 16px;
+	font-weight: 600;
+	color: #333333;
+	line-height: 1.4;
+}
+
+.darklup-display-on-title-area p {
+	margin: 0;
+	font-size: 13px;
+	color: #999999;
+	line-height: 1.4;
+}
+
+.darklup-display-on-toggle-area {
+	flex-shrink: 0;
+}
+
+.darklup-device-checkboxes-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	transition: opacity 0.25s ease-in-out;
+}
+
+.darklup-device-checkboxes-container[style*="display: none"] {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.darklup-device-checkbox-item {
+	display: flex;
+}
+
+.darklup-device-label {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	padding: 12px 16px;
+	background: #ffffff;
+	border: 1px solid #e0e0e0;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+	gap: 12px;
+}
+
+.darklup-device-label:hover {
+	border-color: #2563eb;
+	background: #f9fbff;
+}
+
+.darklup-device-checkbox {
+	appearance: none;
+	-webkit-appearance: none;
+	width: 20px;
+	height: 20px;
+	border: 2px solid #d0d0d0;
+	border-radius: 4px;
+	cursor: pointer;
+	background: #ffffff;
+	transition: all 0.2s ease-in-out;
+	flex-shrink: 0;
+	accent-color: #2563eb;
+}
+
+.darklup-device-checkbox:hover {
+	border-color: #2563eb;
+	background: #ffffff;
+}
+
+.darklup-device-checkbox:checked {
+	background: #2563eb;
+	border-color: #2563eb;
+	background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23ffffff' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 14px 14px;
+}
+
+.darklup-device-content {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex: 1;
+	min-width: 0;
+}
+
+.darklup-device-icon {
+	width: 24px;
+	height: 24px;
+	color: #666666;
+	stroke: currentColor;
+	stroke-width: 2;
+	flex-shrink: 0;
+	transition: color 0.2s ease-in-out;
+}
+
+.darklup-device-label:hover .darklup-device-icon {
+	color: #2563eb;
+}
+
+.darklup-device-checkbox:checked ~ .darklup-device-content .darklup-device-icon {
+	color: #2563eb;
+}
+
+.darklup-device-text {
+	font-size: 14px;
+	font-weight: 500;
+	color: #333333;
+	transition: color 0.2s ease-in-out;
+	white-space: nowrap;
+}
+
+.darklup-device-label:hover .darklup-device-text {
+	color: #2563eb;
+}
+
+.darklup-device-checkbox:checked ~ .darklup-device-content .darklup-device-text {
+	color: #2563eb;
+}
+
+.darklup-device-label:has(.darklup-device-checkbox:checked) {
+	border-color: #2563eb;
+	background: #f0f4ff;
+}
+
+@media (max-width: 1024px) {
+	.darklup-device-checkboxes-container {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 768px) {
+	.darklup-display-on-section {
+		padding: 16px;
+		margin-top: 20px;
+	}
+	.darklup-display-on-header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 12px;
+		margin-bottom: 15px;
+		padding-bottom: 12px;
+	}
+	.darklup-display-on-title-area h4 { font-size: 15px; }
+	.darklup-display-on-title-area p  { font-size: 12px; }
+	.darklup-display-on-toggle-area   { align-self: flex-end; margin-top: -40px; }
+	.darklup-device-checkboxes-container { grid-template-columns: 1fr; gap: 12px; }
+	.darklup-device-label { padding: 12px 12px; }
+}
+
+/* Pro-locked switcher cards: shift the card title a touch to the right
+   so the rotated corner ribbon no longer covers short labels like
+   "Monochrome". Scoped to rows that already use lite's .pro-feature hook,
+   so non-pro cards are untouched and the ribbon stays visually identical
+   to every other Pro badge in the admin. */
+.darkluplite-row.pro-feature.darkluplite-switcher--field .darkluplite-switcher-inner-content .details {
+	padding-left: 40px;
+}
+
+@media (max-width: 768px) {
+	.darkluplite-row.pro-feature.darkluplite-switcher--field .darkluplite-switcher-inner-content .details {
+		padding-left: 34px;
+	}
+}
+

@@ -151,6 +151,7 @@ final class DarklupLite
         require_once DARKLUPLITE_DIR_INC . 'class-helper.php';
         require_once DARKLUPLITE_DIR_INC . 'class-enqueue.php';
         require_once DARKLUPLITE_DIR_INC . 'class-hooks.php';
+        require_once DARKLUPLITE_DIR_INC . 'class-ally-panel.php';
         require_once DARKLUPLITE_DIR_INC . 'class-color-preset.php';
         require_once DARKLUPLITE_DIR_INC . 'class-switcher-style.php';
         require_once DARKLUPLITE_DIR_INC . 'class-dark-inline-css.php';
@@ -186,6 +187,8 @@ final class DarklupLite
             "apply_bg_overlay" => 'yes',
             "switch_in_desktop" => 'yes',
             "switch_in_mobile" => 'yes',
+            "switch_in_tablet" => 'yes',
+            "display_floating_switch_enabled" => 'yes',
             "color_preset_enabled" => 'yes',
             "color_mode" => 'presets',
             "custom_color_enabled" => 'no',
