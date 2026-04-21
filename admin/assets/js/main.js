@@ -675,11 +675,34 @@
       });
     },
     proPopupClose: function () {
-      $(".darklup-admin-close").on("click", function (e) {
-        e.preventDefault();
-
+      // Shared closer reused by the X button, outside-click, and Escape key.
+      var closePopup = function () {
         $(".darklup-admin-popup-wrapper").fadeOut();
         $(".darklup-single-popup-wrapper").hide();
+      };
+
+      // X (cross) button inside the popup card.
+      $(document).on("click", ".darklup-admin-close", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        closePopup();
+      });
+
+      // Outside-click: close when the click lands anywhere inside the popup
+      // wrapper but NOT on (or inside) the popup card. This covers both the
+      // full-viewport .darklup-single-container (z:10500) and the semitransparent
+      // .darklup-admin-popup-wrapper backdrop (z:1000) sitting beneath it.
+      $(document).on("click", ".darklup-single-popup-wrapper, .darklup-admin-popup-wrapper", function (e) {
+        if ( ! $(e.target).closest(".darklup-single-popup").length ) {
+          closePopup();
+        }
+      });
+
+      // Escape key closes the popup while it is visible.
+      $(document).on("keydown", function (e) {
+        if ( e.key === "Escape" && $(".darklup-single-popup-wrapper").is(":visible") ) {
+          closePopup();
+        }
       });
     },
     darklupliteAnalyticsChart: function () {
