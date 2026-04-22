@@ -38,6 +38,9 @@ class Hooks
      */
     public static function init()
     {
+        if ( \DarklupLite\Helper::is_pro_active() ) {
+            return;
+        }
 
         add_action('wp_footer', [__CLASS__, 'modeSwitcher']);
         add_action('login_footer', [__CLASS__, 'modeSwitcher']);
@@ -151,13 +154,17 @@ class Hooks
 
         if (self::getOptionData('frontend_darkmode') == 'yes') {
 
-            // Ally switch style: the Accessibility Panel handles its own
-            // trigger button, so emit only a hidden checkbox that the ally
-            // JS uses to drive Darklup's dark-mode engine. Skip the normal
-            // floating switcher markup.
+            // Hidden checkbox that drives the same engine as the normal floating
+            // switch. presets.js wires clicks on .darkluplite-mode-switcher — a bare
+            // .switch-trigger never runs the engine, so we mirror the usual wrapper.
             if ( 'ally' === self::getOptionData( 'switch_style' ) ) {
+                $ally_bridge_style = 'position:fixed;top:0;left:0;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;';
                 ?>
-<input type="checkbox" class="toggle-checkbox switch-trigger" style="position:fixed;top:0;left:0;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;" aria-hidden="true" tabindex="-1">
+<div class="darkluplite-mode-switcher darkluplite-ally-engine-bridge darkluplite-dark-ignore" style="<?php echo esc_attr( $ally_bridge_style ); ?>">
+	<div class="mode-switcher-inner switcher-darkmode-enabled darkluplite-dark-ignore">
+		<input type="checkbox" id="darkluplite-ally-engine-switch" class="toggle-checkbox switch-trigger" style="position:absolute;left:-9999px;" aria-hidden="true" tabindex="-1" />
+	</div>
+</div>
 <?php
                 return;
             }
