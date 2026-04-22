@@ -272,45 +272,46 @@
 	var settings = window.darklupAllySettings || {};
 
 	/**
-	 * Dark Mode — delegates to Darklup's existing engine.
-	 * Triggers the existing .switch-trigger checkbox so the full
-	 * Darklup dark mode stack (CSS variables, image swap, etc.) fires normally.
-	 * A MutationObserver (wired in init) keeps state.darkMode in sync.
+	 * Hidden ally bridge input (see class-hooks.php) or any .switch-trigger.
+	 * Prefer the bridge so we do not click a menu/admin switch by mistake.
+	 */
+	function getEngineSwitchTrigger() {
+		return document.getElementById( 'darklup-ally-engine-switch' ) ||
+			document.getElementById( 'darkluplite-ally-engine-switch' ) ||
+			document.querySelector( '.darklup-ally-engine-bridge .switch-trigger' ) ||
+			document.querySelector( '.darkluplite-ally-engine-bridge .switch-trigger' ) ||
+			document.querySelector( '.switch-trigger' );
+	}
+
+	/**
+	 * Dark Mode — reuses the same path as the regular (floating / menu) switch.
+	 * Clicks the real .switch-trigger so dynamic colors and localStorage stay in
+	 * sync with the main engine. The MutationObserver in init() mirrors
+	 * state.darkMode for the ally cards; fixStaticSvgFills is not in the observer.
 	 */
 	function toggleDarkMode() {
-		var html = document.documentElement;
-		var isDark = html.classList.contains(
-			'darklup-dark-mode-enabled'
-		);
-
-		if ( isDark ) {
-			html.classList.remove( 'darklup-dark-mode-enabled' );
-			localStorage.removeItem( 'darklupModeEnabled' );
+		var switchTrigger = getEngineSwitchTrigger();
+		if ( switchTrigger ) {
+			switchTrigger.click();
 		} else {
-			html.classList.add( 'darklup-dark-mode-enabled' );
-			localStorage.setItem(
-				'darklupModeEnabled',
-				'darklup-dark-mode-enabled'
-			);
+			// Edge case: no checkbox in the DOM (ally without engineered markup).
+			var html = document.documentElement;
+			var isDark = html.classList.contains( 'darklup-dark-mode-enabled' );
+			if ( isDark ) {
+				html.classList.remove( 'darklup-dark-mode-enabled' );
+				localStorage.removeItem( 'darklupModeEnabled' );
+			} else {
+				html.classList.add( 'darklup-dark-mode-enabled' );
+				localStorage.setItem(
+					'darklupModeEnabled',
+					'darklup-dark-mode-enabled'
+				);
+			}
+			html.style.setProperty( 'display', 'block', 'important' );
 		}
 
-		// Force page visible always
-		html.style.setProperty( 'display', 'block', 'important' );
-
-		// TEMPORARY TEST: Try triggering events that might wake up Darklup's JS
-		// to re-evaluate styles and apply dynamic colors via Ge() method
-		window.dispatchEvent( new Event( 'resize' ) );
-		window.dispatchEvent( new Event( 'scroll' ) );
-
 		setTimeout( function () {
-			state.darkMode = html.classList.contains(
-				'darklup-dark-mode-enabled'
-			);
-			saveState( state );
-			updateCards( state );
 			fixStaticSvgFills();
-			updateTick( state );
-			stampDarkIgnore();
 		}, 60 );
 	}
 
@@ -474,7 +475,7 @@
 	function resetAll() {
 		// Turn dark mode OFF if currently active before wiping state.
 		if ( state.darkMode ) {
-			var switchTrigger = document.querySelector( '.switch-trigger' );
+			var switchTrigger = getEngineSwitchTrigger();
 			if ( switchTrigger ) {
 				switchTrigger.click();
 			}

@@ -73,6 +73,9 @@ class Ally_Panel {
 	 * Constructor — registers WordPress hooks.
 	 */
 	private function __construct() {
+		if ( Helper::is_pro_active() ) {
+			return;
+		}
 		add_action( 'wp_footer',          array( $this, 'renderPanel' ),    99 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueueScripts' ), 99999 );
 		add_action( 'init',               array( $this, 'writeDefaults' )      );

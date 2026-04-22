@@ -31,6 +31,9 @@ if (!class_exists('DarklupLite_Enqueue')) {
          */
         public function __construct()
         {
+            if ( Helper::is_pro_active() ) {
+                return;
+            }
 
             if (\DarklupLite\Helper::getOptionData('frontend_darkmode') == 'yes') {
                 add_action('wp_enqueue_scripts', array($this, 'frontendEnqueueScripts'));
