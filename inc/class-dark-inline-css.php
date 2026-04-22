@@ -27,6 +27,9 @@ class Dark_Inline_CSS
      */
     public function __construct()
     {
+        if ( Helper::is_pro_active() ) {
+            return;
+        }
         add_action('wp_enqueue_scripts', [__CLASS__, 'enqueueStyle']);
         add_action('login_enqueue_scripts', [__CLASS__, 'enqueueStyle']);
         add_action('admin_enqueue_scripts', [__CLASS__, 'adminEnqueueStyle']);

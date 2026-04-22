@@ -67,6 +67,25 @@ class Helper{
   }
 
   /**
+   * True when Darklup Pro is active. Free and Pro share the same script handles; Pro must own
+   * the frontend engine, hooks, and ally UI when both plugins are required together.
+   *
+   * @return bool
+   */
+  public static function is_pro_active() {
+    if ( ! function_exists( 'is_plugin_active' ) ) {
+        require_once ABSPATH . 'wp-admin/includes/plugin.php';
+    }
+    if ( is_plugin_active( 'darklup/darklup.php' ) ) {
+        return true;
+    }
+    if ( is_multisite() && is_plugin_active_for_network( 'darklup/darklup.php' ) ) {
+        return true;
+    }
+    return false;
+  }
+
+  /**
    * Display On — master toggle for the floating switch (and ally trigger).
    * Unset option = on (legacy users don't lose functionality). Stored 'no'
    * explicitly disables every device. Uses a raw option read so the
