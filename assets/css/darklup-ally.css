@@ -978,12 +978,23 @@ html.darklup-ally-contrast-high body > *:not(#darklup-ally-panel):not(.darklup-a
 }
 
 /* --- Bigger Text ---
-   Scale all text 1.25em.
-   Exclusions match stop-animations / align-text (not span:not(#panel span)).
+   Inline copy: 1.25× parent font-size (typical body context).
+   Headings: do NOT use 1.25em here — em is relative to the *parent* block (e.g.
+   .wp-block-media-text__content at ~16px), which overrides hero h1/h2 clamp/rem
+   sizes and *shrinks* titles. Scale the rendered heading instead.
 */
 
-body.darklup-ally-bigger-text *:not(#darklup-ally-panel):not(#darklup-ally-panel *):not(.darklup-ally-trigger):not(.darklup-ally-trigger *):is(p, li, span, td, label, input, textarea, select, dd, dt, h1, h2, h3, h4, h5, h6) {
-	font-size: 1.25em;
+body.darklup-ally-bigger-text *:not(#darklup-ally-panel):not(#darklup-ally-panel *):not(.darklup-ally-trigger):not(.darklup-ally-trigger *):is(p, li, span, td, label, input, textarea, select, dd, dt) {
+	font-size: 1.25em !important;
+}
+
+body.darklup-ally-bigger-text *:not(#darklup-ally-panel):not(#darklup-ally-panel *):not(.darklup-ally-trigger):not(.darklup-ally-trigger *):is(h1, h2, h3, h4, h5, h6) {
+	-webkit-transform: scale(1.2) !important;
+	transform: scale(1.2) !important;
+	transform-origin: top left;
+}
+html[dir='rtl'] body.darklup-ally-bigger-text *:not(#darklup-ally-panel):not(#darklup-ally-panel *):not(.darklup-ally-trigger):not(.darklup-ally-trigger *):is(h1, h2, h3, h4, h5, h6) {
+	transform-origin: top right;
 }
 
 /* --- Readable Font ---
