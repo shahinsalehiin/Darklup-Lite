@@ -804,6 +804,58 @@
 }
 
 /* ============================================
+   11b. RESET BUTTON — THEME ISOLATION
+   ============================================
+   Themes often add inset box-shadow, borders, or filters to primary buttons.
+*/
+
+#darklup-ally-panel button#darklup-ally-reset.darklup-ally-reset,
+#darklup-ally-panel .darklup-ally-footer button.darklup-ally-reset,
+#darklup-ally-panel button#darklup-ally-reset.darklup-ally-reset:hover,
+#darklup-ally-panel .darklup-ally-footer button.darklup-ally-reset:hover,
+#darklup-ally-panel button#darklup-ally-reset.darklup-ally-reset:focus,
+#darklup-ally-panel .darklup-ally-footer button.darklup-ally-reset:focus,
+#darklup-ally-panel button#darklup-ally-reset.darklup-ally-reset:active,
+#darklup-ally-panel .darklup-ally-footer button.darklup-ally-reset:active {
+	background-color: var(--ally-accent) !important;
+	background-image: none !important;
+	color: var(--ally-icon-color) !important;
+	border: 0 !important;
+	border-style: none !important;
+	box-shadow: none !important;
+	filter: none !important;
+	text-decoration: none !important;
+	text-shadow: none !important;
+	-webkit-appearance: none !important;
+	appearance: none !important;
+	transform: none !important;
+}
+
+#darklup-ally-panel button#darklup-ally-reset.darklup-ally-reset:hover,
+#darklup-ally-panel .darklup-ally-footer button.darklup-ally-reset:hover {
+	opacity: 0.9;
+}
+
+#darklup-ally-panel button#darklup-ally-reset.darklup-ally-reset:active,
+#darklup-ally-panel .darklup-ally-footer button.darklup-ally-reset:active {
+	opacity: 0.8;
+}
+
+#darklup-ally-panel button#darklup-ally-reset.darklup-ally-reset:focus:not(:focus-visible),
+#darklup-ally-panel .darklup-ally-footer button.darklup-ally-reset:focus:not(:focus-visible) {
+	outline: none !important;
+}
+
+#darklup-ally-panel button#darklup-ally-reset.darklup-ally-reset:focus-visible,
+#darklup-ally-panel .darklup-ally-footer button.darklup-ally-reset:focus-visible {
+	outline: 2px solid var(--ally-accent) !important;
+	outline-offset: 2px !important;
+	background-color: var(--ally-accent) !important;
+	color: var(--ally-icon-color) !important;
+	box-shadow: none !important;
+}
+
+/* ============================================
    12. BRANDING
    ============================================
 
