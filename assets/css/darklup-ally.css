@@ -659,6 +659,92 @@
 }
 
 /* ============================================
+   10c. MODULE CARDS — THEME ISOLATION (:hover / :focus / :active)
+   ============================================
+   Global theme button styles often override our cards. #darklup-ally-panel +
+   button raises specificity so hover/focus match the intended panel chrome.
+*/
+
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card,
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card:hover,
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card:focus,
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card:focus-visible,
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card:active {
+	background-color: #ffffff !important;
+	background-image: none !important;
+	box-shadow: none !important;
+	filter: none !important;
+	transform: none !important;
+	text-decoration: none !important;
+	-webkit-appearance: none !important;
+	appearance: none !important;
+}
+
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card:not([aria-pressed='true']) {
+	border: 1px solid #e5e7eb !important;
+	color: #374151 !important;
+}
+
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card:not([aria-pressed='true']):hover {
+	border-color: var(--ally-accent) !important;
+	border-width: 1px !important;
+}
+
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card:focus:not(:focus-visible) {
+	outline: none !important;
+}
+
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card:focus-visible {
+	outline: 2px solid var(--ally-accent) !important;
+	outline-offset: 2px !important;
+	background-color: #ffffff !important;
+}
+
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card[aria-pressed='true']:focus-visible {
+	outline: none !important;
+}
+
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card[aria-pressed='true'],
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card[aria-pressed='true']:hover,
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card[aria-pressed='true']:focus,
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card[aria-pressed='true']:active {
+	background-color: #ffffff !important;
+	border: 2px solid var(--ally-accent) !important;
+	color: var(--ally-accent) !important;
+	box-shadow: none !important;
+	filter: none !important;
+	transform: none !important;
+}
+
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card:not([aria-pressed='true']) .darklup-ally-card-label,
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card:not([aria-pressed='true']):hover .darklup-ally-card-label {
+	color: #374151 !important;
+}
+
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card:not([aria-pressed='true']) svg,
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card:not([aria-pressed='true']):hover svg {
+	fill: #374151 !important;
+}
+
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card[aria-pressed='true'] .darklup-ally-card-label,
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card[aria-pressed='true']:hover .darklup-ally-card-label {
+	color: var(--ally-accent) !important;
+}
+
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card[aria-pressed='true'] svg,
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card[aria-pressed='true']:hover svg {
+	fill: var(--ally-accent) !important;
+}
+
+/* Free: locked Pro-only cards — keep dimmed default / full opacity on hover */
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card[data-locked='1'] {
+	opacity: 0.7 !important;
+}
+#darklup-ally-panel .darklup-ally-grid button.darklup-ally-card[data-locked='1']:hover {
+	opacity: 1 !important;
+}
+
+/* ============================================
    10b. PANEL FOOTER
    ============================================
 
@@ -802,8 +888,9 @@ body.darklup-ally-reading-mask .darklup-ally-mask-bottom {
    Not re-implemented here.
 */
 
-html.darklup-dark-mode-enabled {
-	/* Darklup's own dark mode applies here */
+html.darklup-dark-mode-enabled,
+html.darkluplite-dark-mode-enabled {
+	/* Darklup / Darklup Lite own dark mode applies here */
 }
 
 /* --- Contrast Dark ---
@@ -923,32 +1010,9 @@ body.darklup-ally-hide-images img:not(.darkluplite-dark-ignore img) {
 	visibility: hidden;
 }
 
-/* --- Dark Mode (CSS-only approach) ---
-   When ally panel sets darklup-dark-mode-enabled class,
-   these CSS rules apply dark styling without relying on
-   Darklup's Ge() JavaScript method.
-*/
-
-html.darklup-dark-mode-enabled body {
-	background-color: #242525 !important;
-}
-
-html.darklup-dark-mode-enabled
-*:not(.darkluplite-dark-ignore):not(.darkluplite-dark-ignore *) {
-	color: rgb(237, 237, 237) !important;
-	background-color: #242525 !important;
-	border-color: #3a3a3a !important;
-}
-
-html.darklup-dark-mode-enabled
-a:not(.darkluplite-dark-ignore) {
-	color: rgb(237, 237, 237) !important;
-}
-
-html.darklup-dark-mode-enabled
-img:not(.darkluplite-dark-ignore) {
-	filter: brightness(0.85) !important;
-}
+/* Dark mode paint comes from the same Lite stack as the regular switch
+   (darkluplite-variables, inline CSS, presets / dynamic JS). Do not duplicate a
+   universal * { background } layer here — it fought preset/include rules. */
 
 /* ============================================
    15. PANEL IMMUNITY — ALWAYS LAST
@@ -1235,55 +1299,57 @@ html.darklup-ally-contrast-light
 	color: var(--ally-accent) !important;
 }
 
-/* DARK MODE IMMUNITY */
-html.darklup-dark-mode-enabled
-#darklup-ally-panel {
+/* DARK MODE IMMUNITY (Lite: darkluplite-dark-mode-enabled; legacy: darklup-dark-mode-enabled) */
+html.darklup-dark-mode-enabled #darklup-ally-panel,
+html.darkluplite-dark-mode-enabled #darklup-ally-panel {
 	background-color: #ffffff !important;
 }
-html.darklup-dark-mode-enabled
-.darklup-ally-header {
+html.darklup-dark-mode-enabled .darklup-ally-header,
+html.darkluplite-dark-mode-enabled .darklup-ally-header {
 	background-color: var(--ally-accent) !important;
 }
-html.darklup-dark-mode-enabled
-.darklup-ally-title {
+html.darklup-dark-mode-enabled .darklup-ally-title,
+html.darkluplite-dark-mode-enabled .darklup-ally-title {
 	color: #ffffff !important;
 }
-html.darklup-dark-mode-enabled
-.darklup-ally-subtitle {
+html.darklup-dark-mode-enabled .darklup-ally-subtitle,
+html.darkluplite-dark-mode-enabled .darklup-ally-subtitle {
 	color: rgba(255,255,255,0.8) !important;
 }
-html.darklup-dark-mode-enabled
-.darklup-ally-body {
+html.darklup-dark-mode-enabled .darklup-ally-body,
+html.darkluplite-dark-mode-enabled .darklup-ally-body {
 	background-color: #f3f4f6 !important;
 }
-html.darklup-dark-mode-enabled
-.darklup-ally-card {
+html.darklup-dark-mode-enabled .darklup-ally-card,
+html.darkluplite-dark-mode-enabled .darklup-ally-card {
 	background-color: #ffffff !important;
 }
-html.darklup-dark-mode-enabled
-.darklup-ally-card-label {
+html.darklup-dark-mode-enabled .darklup-ally-card-label,
+html.darkluplite-dark-mode-enabled .darklup-ally-card-label {
 	color: #374151 !important;
 }
-html.darklup-dark-mode-enabled
-.darklup-ally-card--active .darklup-ally-card-label {
+html.darklup-dark-mode-enabled .darklup-ally-card--active .darklup-ally-card-label,
+html.darkluplite-dark-mode-enabled .darklup-ally-card--active .darklup-ally-card-label {
 	color: var(--ally-accent) !important;
 }
-html.darklup-dark-mode-enabled
-.darklup-ally-footer {
+html.darklup-dark-mode-enabled .darklup-ally-footer,
+html.darkluplite-dark-mode-enabled .darklup-ally-footer {
 	background-color: #f3f4f6 !important;
 }
-html.darklup-dark-mode-enabled
-.darklup-ally-reset {
+html.darklup-dark-mode-enabled .darklup-ally-reset,
+html.darkluplite-dark-mode-enabled .darklup-ally-reset {
 	background-color: var(--ally-accent) !important;
 	color: #ffffff !important;
 }
-html.darklup-dark-mode-enabled
-.darklup-ally-branding {
+html.darklup-dark-mode-enabled .darklup-ally-branding,
+html.darkluplite-dark-mode-enabled .darklup-ally-branding {
 	color: #9ca3af !important;
 }
 
 html.darklup-dark-mode-enabled #darklup-ally-trigger.darklup-ally-trigger,
-html.darklup-dark-mode-enabled .darklup-ally-trigger {
+html.darkluplite-dark-mode-enabled #darklup-ally-trigger.darklup-ally-trigger,
+html.darklup-dark-mode-enabled .darklup-ally-trigger,
+html.darkluplite-dark-mode-enabled .darklup-ally-trigger {
 	-webkit-appearance: none !important;
 	appearance: none !important;
 	background-color: var(--ally-accent) !important;
@@ -1293,7 +1359,9 @@ html.darklup-dark-mode-enabled .darklup-ally-trigger {
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
 }
 html.darklup-dark-mode-enabled #darklup-ally-trigger.darklup-ally-trigger svg,
-html.darklup-dark-mode-enabled .darklup-ally-trigger svg {
+html.darkluplite-dark-mode-enabled #darklup-ally-trigger.darklup-ally-trigger svg,
+html.darklup-dark-mode-enabled .darklup-ally-trigger svg,
+html.darkluplite-dark-mode-enabled .darklup-ally-trigger svg {
 	fill: var(--ally-icon-color) !important;
 }
 

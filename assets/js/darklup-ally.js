@@ -42,6 +42,18 @@
 	/** Same idea for contrast-high + contrast() on a wrapper. */
 	var FILTER_COMPENSATE_HIGH_CLASS = 'darklup-ally-filter-compensate-high';
 
+	/**
+	 * Whether the main dark-mode engine has enabled dark paint on the root element.
+	 * Lite uses `darkluplite-dark-mode-enabled`; Pro / legacy markup may use `darklup-dark-mode-enabled`.
+	 *
+	 * @return {boolean}
+	 */
+	function isHtmlDarkModeEnabled() {
+		var el = document.documentElement;
+		return el.classList.contains( 'darklup-dark-mode-enabled' ) ||
+			el.classList.contains( 'darkluplite-dark-mode-enabled' );
+	}
+
 	/* =========================================================================
 	   SECTION 2: STATE MANAGEMENT
 	   ========================================================================= */
@@ -100,7 +112,7 @@
 		}
 
 		// Sync dark mode with Darklup's actual state — source of truth is the html class.
-		state.darkMode = document.documentElement.classList.contains( 'darklup-dark-mode-enabled' );
+		state.darkMode = isHtmlDarkModeEnabled();
 
 		// Apply all restored active states to the DOM.
 		applyState( state );
@@ -296,16 +308,25 @@
 		} else {
 			// Edge case: no checkbox in the DOM (ally without engineered markup).
 			var html = document.documentElement;
-			var isDark = html.classList.contains( 'darklup-dark-mode-enabled' );
+			var isDark = isHtmlDarkModeEnabled();
 			if ( isDark ) {
 				html.classList.remove( 'darklup-dark-mode-enabled' );
-				localStorage.removeItem( 'darklupModeEnabled' );
+				html.classList.remove( 'darkluplite-dark-mode-enabled' );
+				try {
+					localStorage.removeItem( 'darklupModeEnabled' );
+					localStorage.removeItem( 'triggerChecked' );
+				} catch ( e ) {
+					// ignore
+				}
 			} else {
-				html.classList.add( 'darklup-dark-mode-enabled' );
-				localStorage.setItem(
-					'darklupModeEnabled',
-					'darklup-dark-mode-enabled'
-				);
+				// Match Lite main engine (darklup.js): class + storage keys.
+				html.classList.add( 'darkluplite-dark-mode-enabled' );
+				try {
+					localStorage.setItem( 'darklupModeEnabled', 'darkluplite-dark-mode-enabled' );
+					localStorage.setItem( 'triggerChecked', 'checked' );
+				} catch ( e ) {
+					// ignore
+				}
 			}
 			html.style.setProperty( 'display', 'block', 'important' );
 		}
@@ -1093,7 +1114,7 @@
 		var darkObserver = new MutationObserver( function ( mutations ) {
 			mutations.forEach( function ( m ) {
 				if ( m.type !== 'attributes' || m.attributeName !== 'class' ) { return; }
-				var isDark = document.documentElement.classList.contains( 'darklup-dark-mode-enabled' );
+				var isDark = isHtmlDarkModeEnabled();
 				if ( state.darkMode !== isDark ) {
 					state.darkMode = isDark;
 					saveState( state );
