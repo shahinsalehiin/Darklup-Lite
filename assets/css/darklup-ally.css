@@ -978,22 +978,23 @@ html.darklup-ally-contrast-high body > *:not(#darklup-ally-panel):not(.darklup-a
 }
 
 /* --- Bigger Text ---
-   Inline copy: 1.25× parent font-size (typical body context).
-   Headings: do NOT use 1.25em here — em is relative to the *parent* block (e.g.
-   .wp-block-media-text__content at ~16px), which overrides hero h1/h2 clamp/rem
-   sizes and *shrinks* titles. Scale the rendered heading instead.
+   Inline copy: 1.25× parent font-size (typical body context), excluding
+   .site-title paragraphs/spans (same em trap as hero headings).
+   Headings + p.site-title / span.site-title: scale rendered size so theme
+   clamp/rem sizes are not replaced by 1.25× a small parent.
 */
 
-body.darklup-ally-bigger-text *:not(#darklup-ally-panel):not(#darklup-ally-panel *):not(.darklup-ally-trigger):not(.darklup-ally-trigger *):is(p, li, span, td, label, input, textarea, select, dd, dt) {
+body.darklup-ally-bigger-text *:not(#darklup-ally-panel):not(#darklup-ally-panel *):not(.darklup-ally-trigger):not(.darklup-ally-trigger *):is(p:not(.site-title), li, span:not(.site-title), td, label, input, textarea, select, dd, dt) {
 	font-size: 1.25em !important;
 }
 
-body.darklup-ally-bigger-text *:not(#darklup-ally-panel):not(#darklup-ally-panel *):not(.darklup-ally-trigger):not(.darklup-ally-trigger *):is(h1, h2, h3, h4, h5, h6) {
+/* Headings + site title: scale rendered size (1.25em on p.site-title used parent size and shrank branded titles). */
+body.darklup-ally-bigger-text *:not(#darklup-ally-panel):not(#darklup-ally-panel *):not(.darklup-ally-trigger):not(.darklup-ally-trigger *):is(h1, h2, h3, h4, h5, h6, p.site-title, span.site-title) {
 	-webkit-transform: scale(1.2) !important;
 	transform: scale(1.2) !important;
 	transform-origin: top left;
 }
-html[dir='rtl'] body.darklup-ally-bigger-text *:not(#darklup-ally-panel):not(#darklup-ally-panel *):not(.darklup-ally-trigger):not(.darklup-ally-trigger *):is(h1, h2, h3, h4, h5, h6) {
+html[dir='rtl'] body.darklup-ally-bigger-text *:not(#darklup-ally-panel):not(#darklup-ally-panel *):not(.darklup-ally-trigger):not(.darklup-ally-trigger *):is(h1, h2, h3, h4, h5, h6, p.site-title, span.site-title) {
 	transform-origin: top right;
 }
 
