@@ -311,10 +311,12 @@ class Ally_Panel {
 
 			<div class="darklup-ally-header darkluplite-dark-ignore">
 				<div class="darklup-ally-header-text">
-					<span id="darklup-ally-title" class="darklup-ally-title">
+					<span id="darklup-ally-title" class="darklup-ally-title"
+						style="<?php echo esc_attr( "font:700 20px/1.3 system-ui,-apple-system,'Segoe UI',Roboto,sans-serif !important;-webkit-transform:none !important;transform:none !important;" ); ?>">
 						<?php echo esc_html( $panel_title ); ?>
 					</span>
-					<span class="darklup-ally-subtitle">
+					<span class="darklup-ally-subtitle"
+						style="<?php echo esc_attr( "font:400 13px/1.2 system-ui,-apple-system,'Segoe UI',Roboto,sans-serif !important;-webkit-transform:none !important;transform:none !important;" ); ?>">
 						<?php echo esc_html( $panel_sub ); ?>
 					</span>
 				</div>
@@ -340,17 +342,30 @@ class Ally_Panel {
 			<div class="darklup-ally-footer darkluplite-dark-ignore">
 				<button id="darklup-ally-reset"
 					class="darklup-ally-reset darkluplite-dark-ignore"
+					style="<?php echo esc_attr( "font:600 13px/1.35 system-ui,-apple-system,'Segoe UI',Roboto,sans-serif !important;-webkit-transform:none !important;transform:none !important;" ); ?>"
 					aria-label="<?php esc_attr_e( 'Reset all accessibility settings', 'darklup-lite' ); ?>">
 					<?php echo esc_html( $reset_text ); ?>
 				</button>
 
 				<?php if ( 'on' !== $hide_brand ) : ?>
-				<p class="darklup-ally-branding darkluplite-dark-ignore">
+				<p class="darklup-ally-branding darkluplite-dark-ignore"
+					style="<?php echo esc_attr( "font:400 11px/1.3 system-ui,-apple-system,'Segoe UI',Roboto,sans-serif !important;-webkit-transform:none !important;transform:none !important;" ); ?>">
 					<?php
+					$ally_branding_link = '<a href="https://darklup.com" target="_blank" rel="noopener noreferrer" style="' . esc_attr( "font:400 11px/1.3 system-ui,-apple-system,'Segoe UI',Roboto,sans-serif !important;-webkit-transform:none !important;transform:none !important;" ) . '">Darklup</a>';
 					printf(
 						/* translators: %s: Darklup website link */
 						esc_html__( 'Powered by %s', 'darklup-lite' ),
-						'<a href="https://darklup.com" target="_blank" rel="noopener noreferrer">Darklup</a>'
+						wp_kses(
+							$ally_branding_link,
+							array(
+								'a' => array(
+									'href'   => array(),
+									'target' => array(),
+									'rel'    => array(),
+									'style'  => array(),
+								),
+							)
+						)
 					);
 					?>
 				</p>
